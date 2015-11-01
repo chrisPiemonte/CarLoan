@@ -1,6 +1,6 @@
 package main.ids.transferObjects;
 
-public class FascieTO {
+public class FasciaTO {
 	
 	// attributi 
 	
@@ -8,12 +8,12 @@ public class FascieTO {
 	public String descrizione;
 	public int prezzo;
 	
-	public FascieTO(String id, int prezzo){
+	public FasciaTO(String id, int prezzo){
 		this.id = id;
 		this.prezzo = prezzo;
 	}
 	
-	public FascieTO(String id, String descrizione, int prezzo){
+	public FasciaTO(String id, String descrizione, int prezzo){
 		this.id = id;
 		this.descrizione = descrizione;
 		this.prezzo = prezzo;

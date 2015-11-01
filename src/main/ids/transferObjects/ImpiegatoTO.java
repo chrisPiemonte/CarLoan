@@ -1,20 +1,20 @@
 package main.ids.transferObjects;
 
-public class OperatoreTO {
+public class ImpiegatoTO {
 	
 	public String id; 
 	public String nome;
 	public String cognome; 
 	public String agenziaId;
 	
-	public OperatoreTO(String id, String nome, String cognome, String agenziaId){
+	public ImpiegatoTO(String id, String nome, String cognome, String agenziaId){
 		this.id = id;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.agenziaId = agenziaId;
 	}
 	
-	public OperatoreTO(String id, String nome, String cognome){
+	public ImpiegatoTO(String id, String nome, String cognome){
 		this.id = id;
 		this.nome = nome;
 		this.cognome = cognome;
@@ -41,5 +41,4 @@ public class OperatoreTO {
 		return id;
 	}
 	
-
 }
