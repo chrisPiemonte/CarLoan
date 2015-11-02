@@ -1,4 +1,4 @@
-package main.ids.util.conf;
+package main.ids.util.properties;
 
 import main.ids.util.exceptions.DBPropertiesFileException;
 

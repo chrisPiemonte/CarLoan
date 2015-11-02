@@ -1,12 +1,19 @@
 package main.ids.integration.mySqlDao.factory;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import main.ids.util.conf.DbPropertiesReader;
-import main.ids.util.conf.PropertiesReader;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+
+import main.ids.util.properties.DbPropertiesReader;
+import main.ids.util.properties.PropertiesReader;
 
 public class MySqlConnectionFactory {
 	
@@ -48,8 +55,22 @@ public class MySqlConnectionFactory {
 	// mysql -u root -p
 	public static void main(String[] args) {
 		
-		
-		
+		Gson gson = new Gson();
+		JsonObject jo = new JsonObject();
+		try{
+			BufferedReader br = new BufferedReader(new FileReader("resources/conf/queries.json"));  
+			jo = gson.fromJson(br, JsonObject.class);
+			System.out.println(jo.toString());
+			String s = jo.get("QUERIES").toString();
+			System.out.println(s + "###########");
+			JsonArray ja = jo.getAsJsonArray("SQL");
+			for(JsonElement j : ja){
+				
+			}
+		}catch(Exception e){
+			
+		}
+
 		Connection connection = null;
 		
 		try{

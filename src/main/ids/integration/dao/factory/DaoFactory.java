@@ -1,6 +1,7 @@
 package main.ids.integration.dao.factory;
 
 import main.ids.integration.dao.entity.*;
+import main.ids.integration.mySqlDao.factory.MySqlDaoFactory;
 
 public abstract class DaoFactory {
 	
@@ -19,4 +20,13 @@ public abstract class DaoFactory {
 	public abstract ImpiegatoDAO getImpiegatoDAO();
 	
 	public abstract ManagerDAO getManagerDAO();
+	
+	public static DaoFactory getDAOFactory(int factory) {
+        switch (factory) {
+            case MYSQL :
+                return new MySqlDaoFactory();
+            default :
+                return null;
+        }
+    }
 }
