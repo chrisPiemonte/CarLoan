@@ -2,6 +2,7 @@ package main.ids.integration.mySqlDao.factory;
 
 import java.sql.DriverManager;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import main.ids.util.conf.DbPropertiesReader;
@@ -46,20 +47,42 @@ public class MySqlConnectionFactory {
 	
 	// mysql -u root -p
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+		
+		
+		Connection connection = null;
+		
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
+		
+		
+		connection = getConnection();
+		
+		//-------------------------------------
+		
+		ResultSet resultSet = connection.getMetaData().getCatalogs();
+
+		//iterate each catalog in the ResultSet
+		while (resultSet.next()) {
+		  // Get the database name, which is at position 1
+		  String databaseName = resultSet.getString(1);
+		  if(databaseName.equals("ciao")) System.out.println("\t found");
+		  System.out.println(databaseName);
+		}
+		resultSet.close();
+		
+		//-------------------------------------
+		
 		}catch(Exception e){
 			
 		}
 		
-		Connection connection = getConnection();
-
 		if (connection != null) {
 			System.out.println("You made it, take control your database now!");
 		} else {
 			System.out.println("Failed to make connection!");
 		}
+		
 	}
 	
 	
