@@ -5,18 +5,26 @@ CREATE TABLE IF NOT EXISTS `carloan`.`agenzia` (
 	`id` INT(3) ZEROFILL NOT NULL AUTO_INCREMENT,
 	`citta` VARCHAR(45) NOT NULL,
 	`indirizzo` VARCHAR(45) NOT NULL,
-	`telefono` INT(10) NOT NULL,
+	`telefono` VARCHAR(10) NOT NULL,
 	PRIMARY KEY (`id`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = latin1;
 
+CREATE TABLE IF NOT EXISTS `carloan`.`account` (
+	`username` VARCHAR(20) NOT NULL,
+	`password` VARCHAR(5) NOT NULL,
+	`ruolo` ENUM('admin', 'manager', 'impiegato') DEFAULT 'impiegato',
+	PRIMARY KEY (`username`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
 CREATE TABLE IF NOT EXISTS `carloan`.`fascia` (
 	`id` CHARACTER(1) NOT NULL,
 	`descrizione` VARCHAR(100) NOT NULL,
-	`tariffa_giornaliera` DOUBLE UNSIGNED NOT NULL,
-	`tariffa_settimanale` DOUBLE UNSIGNED NOT NULL,
-	`tariffa_km` DOUBLE UNSIGNED NOT NULL,
+	`tariffa_giornaliera` DOUBLE(4, 2) UNSIGNED NOT NULL,
+	`tariffa_settimanale` DOUBLE(4, 2) UNSIGNED NOT NULL,
+	`tariffa_km` DOUBLE(4, 2) UNSIGNED NOT NULL,
 	PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
@@ -28,6 +36,16 @@ CREATE TABLE IF NOT EXISTS `carloan`.`stato` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
+CREATE TABLE IF NOT EXISTS `carloan`.`cliente` (
+	`cf` VARCHAR(16) NOT NULL,
+	`nome` VARCHAR(45) NOT NULL,
+	`cognome` VARCHAR(45) NOT NULL,
+	`data_nascita` DATE NOT NULL,
+	`telefono` VARCHAR(10) NOT NULL,
+	PRIMARY KEY (`cf`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1;
+
 CREATE TABLE IF NOT EXISTS `carloan`.`auto` (
 	`targa` VARCHAR(10) NOT NULL,
 	`modello` VARCHAR(30) NOT NULL,
@@ -35,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `carloan`.`auto` (
 	`fascia` CHARACTER(1) NOT NULL,
 	`km` FLOAT(8, 2) UNSIGNED NOT NULL,
 	`manutenzione_ord` DATE NOT NULL,
-	`agenzia` INT(3) NOT NULL,
+	`agenzia` INT(3) ZEROFILL NOT NULL,
 	PRIMARY KEY (`targa`),
 	INDEX `fk_autostato_idx` (`stato`),
 	FOREIGN KEY (`stato`) REFERENCES `carloan`.`stato` (`id`)
@@ -52,23 +70,13 @@ CREATE TABLE IF NOT EXISTS `carloan`.`auto` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
-CREATE TABLE IF NOT EXISTS `carloan`.`cliente` (
-	`cf` VARCHAR(16) NOT NULL,
-	`nome` VARCHAR(45) NOT NULL,
-	`cognome` VARCHAR(45) NOT NULL,
-	`data_nascita` DATE NOT NULL,
-	`telefono` INT(10) UNSIGNED NOT NULL,
-	PRIMARY KEY (`cf`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
-
 CREATE TABLE IF NOT EXISTS `carloan`.`impiegato` (
 	`cf` VARCHAR(16) NOT NULL,
 	`nome` VARCHAR(45) NOT NULL,
 	`cognome` VARCHAR(45) NOT NULL,
 	`data_nascita` DATE NOT NULL,
 	`telefono` INT(10) UNSIGNED NOT NULL,
-	`agenzia` INT(3) NOT NULL,
+	`agenzia` INT(3) ZEROFILL NOT NULL,
 	`username` VARCHAR(20),
 	PRIMARY KEY (`cf`),
 	INDEX `fk_impiegatoagenzia_idx` (`agenzia`),
@@ -82,14 +90,6 @@ CREATE TABLE IF NOT EXISTS `carloan`.`impiegato` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
-CREATE TABLE IF NOT EXISTS `carloan`.`account` (
-	`username` VARCHAR(20) NOT NULL,
-	`password` INT(5) NOT NULL,
-	`ruolo` ENUM('admin', 'manager', 'impiegato') DEFAULT 'impiegato',
-	PRIMARY KEY (`username`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
-
 CREATE TABLE IF NOT EXISTS `carloan`.`contratto` (
 	`id` INT(5) NOT NULL AUTO_INCREMENT,
 	`cliente` VARCHAR(16) NOT NULL,
@@ -98,15 +98,15 @@ CREATE TABLE IF NOT EXISTS `carloan`.`contratto` (
 	`km_noleggio` ENUM('limitato', 'illimitato'),
 	`data_inizio` DATE NOT NULL,
 	`data_fine` DATE NOT NULL,
-	`agenzia_inizio` INT(3) NOT NULL,
-	`agenzia_fine` INT(3) NOT NULL,
+	`agenzia_inizio` INT(3) ZEROFILL NOT NULL,
+	`agenzia_fine` INT(3) ZEROFILL NOT NULL,
 	`impiegato_inizio` VARCHAR(16) NOT NULL,
 	`impiegato_fine` VARCHAR(16),
-	`acconto` DOUBLE UNSIGNED NOT NULL,
-	`km_percorsi` DOUBLE UNSIGNED,
-	`tariffa_base` DOUBLE UNSIGNED NOT NULL,
+	`acconto` DOUBLE(4, 2) UNSIGNED NOT NULL,
+	`km_percorsi` DOUBLE(4, 2) UNSIGNED,
+	`tariffa_base` DOUBLE(4, 2) UNSIGNED NOT NULL,
 	`stato` ENUM('aperto', 'chiuso'),
-	`totale` DOUBLE UNSIGNED,
+	`totale` DOUBLE(4, 2) UNSIGNED,
 	PRIMARY KEY (`id`),
 	INDEX `fk_contrattocliente_idx` (`cliente`),
 	FOREIGN KEY (`cliente`) REFERENCES `carloan`.`cliente` (`cf`)
