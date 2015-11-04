@@ -96,6 +96,7 @@ CREATE TABLE IF NOT EXISTS `carloan`.`contratto` (
 	`auto` VARCHAR(10) NOT NULL,
 	`mod_noleggio` ENUM('giornaliero', 'settimanale'),
 	`km_noleggio` ENUM('limitato', 'illimitato'),
+	`prezzo_km` DOUBLE(4, 2) UNSIGNED NOT NULL,
 	`data_inizio` DATE NOT NULL,
 	`data_fine` DATE NOT NULL,
 	`agenzia_inizio` INT(3) ZEROFILL NOT NULL,
@@ -106,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `carloan`.`contratto` (
 	`km_percorsi` DOUBLE(4, 2) UNSIGNED,
 	`tariffa_base` DOUBLE(4, 2) UNSIGNED NOT NULL,
 	`stato_contratto` ENUM('aperto', 'chiuso'),
-	`totale` DOUBLE(4, 2) UNSIGNED,
+	`totale` DOUBLE(5, 2) UNSIGNED,
 	PRIMARY KEY (`id`),
 	INDEX `fk_contrattocliente_idx` (`cliente`),
 	FOREIGN KEY (`cliente`) REFERENCES `carloan`.`cliente` (`cf`)

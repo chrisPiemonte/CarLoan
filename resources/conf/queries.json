@@ -66,6 +66,182 @@
       {
         "id": "delete_fascia",
         "sql": "DELETE FROM `carloan`.`fascia` WHERE `carloan`.`fascia`.`id` = ?;"
+      },
+      {
+        "id": "create_stato",
+        "sql": "INSERT INTO `carloan`.`stato` VALUES (?, ?);"
+      },
+      {
+        "id": "read_stato",
+        "sql": "SELECT * FROM `carloan`.`stato` WHERE `carloan`.`stato`.`id` = ?;"
+      },
+      {
+        "id": "read_all_stato",
+        "sql": "SELECT * FROM `carloan`.`stato`;"
+      },
+      {
+        "id": "update_stato",
+        "sql": "UPDATE `carloan`.`stato` SET `carloan`.`stato`.`id` = ?, `carloan`.`stato`.`descrizione` = ? WHERE `carloan`.`stato`.`id` = ?;"
+      },
+      {
+        "id": "delete_stato",
+        "sql": "DELETE FROM `carloan`.`stato` WHERE `carloan`.`stato`.`id` = ?;"
+      },
+      {
+        "id": "create_cliente",
+        "sql": "INSERT INTO `carloan`.`cliente` VALUES (?, ?, ?, ?, ?);"
+      },
+      {
+        "id": "read_cliente",
+        "sql": "SELECT * FROM `carloan`.`cliente` WHERE `carloan`.`cliente`.`cf` = ?;"
+      },
+      {
+        "id": "read_all_cliente",
+        "sql": "SELECT * FROM `carloan`.`cliente`;"
+      },
+      {
+        "id": "read_cognome_cliente",
+        "sql": "SELECT * FROM `carloan`.`cliente` WHERE `carloan`.`cliente`.`cognome` = ?;"
+      },
+      {
+        "id": "update_cliente",
+        "sql": "UPDATE `carloan`.`cliente` SET `carloan`.`cliente`.`cf` = ?, `carloan`.`cliente`.`nome` = ?, `carloan`.`cliente`.`cognome` = ?, `carloan`.`cliente`.`data_nascita` = ?, `carloan`.`cliente`.`telefono` = ? WHERE `carloan`.`cliente`.`cf` = ?;"
+      },
+      {
+        "id": "delete_cliente",
+        "sql": "DELETE FROM `carloan`.`cliente` WHERE `carloan`.`cliente`.`cf` = ?;"
+      },
+      {
+        "id": "create_auto",
+        "sql": "INSERT INTO `carloan`.`auto` VALUES (?, ?, ?, ?, ?, ?, ?);"
+      },
+      {
+        "id": "read_auto",
+        "sql": "SELECT * FROM `carloan`.`auto` WHERE `carloan`.`auto`.`targa` = ?;"
+      },
+      {
+        "id": "read_all_auto",
+        "sql": "SELECT * FROM `carloan`.`auto`;"
+      },
+      {
+        "id": "read_fascia_auto",
+        "sql": "SELECT * FROM `carloan`.`auto` WHERE `carloan`.`auto`.`fascia` = ?;"
+      },
+      {
+        "id": "read_agenzia_auto",
+        "sql": "SELECT * FROM `carloan`.`auto` WHERE `carloan`.`auto`.`agenzia` = ?;"
+      },
+      {
+        "id": "read_stato_auto",
+        "sql": "SELECT * FROM `carloan`.`auto` WHERE `carloan`.`auto`.`stato` = ?;"
+      },
+      {
+        "id": "read_agenzia_stato_auto",
+        "sql": "SELECT * FROM `carloan`.`auto` WHERE `carloan`.`auto`.`agenzia` = ? AND `carloan`.`auto`.`stato` = ?;"
+      },
+      {
+        "id": "update_auto",
+        "sql": "UPDATE `carloan`.`auto` SET `carloan`.`auto`.`targa` = ?, `carloan`.`auto`.`modello` = ?, `carloan`.`auto`.`stato` = ?, `carloan`.`auto`.`fascia` = ?, `carloan`.`auto`.`km` = ?, `carloan`.`auto`.`manutenzione_ord` = ?, `carloan`.`auto`.`agenzia` = ? WHERE `carloan`.`auto`.`targa` = ?;"
+      },
+      {
+        "id": "update_stato_auto",
+        "sql": "UPDATE `carloan`.`auto` SET `carloan`.`auto`.`stato` = ? WHERE `carloan`.`auto`.`targa` = ?;"
+      },
+      {
+        "id": "update_km_auto",
+        "sql": "UPDATE `carloan`.`auto` SET `carloan`.`auto`.`km` = ? WHERE `carloan`.`auto`.`targa` = ?;"
+      },
+      {
+        "id": "delete_auto",
+        "sql": "DELETE FROM `carloan`.`auto` WHERE `carloan`.`auto`.`targa` = ?;"
+      },
+      {
+        "id": "create_impiegato",
+        "sql": "INSERT INTO `carloan`.`impiegato` VALUES (?, ?, ?, ?, ?, ?, ?);"
+      },
+      {
+        "id": "read_impiegato",
+        "sql": "SELECT * FROM `carloan`.`impiegato` WHERE `carloan`.`impiegato`.`cf` = ?;"
+      },
+      {
+        "id": "read_all_impiegato",
+        "sql": "SELECT * FROM `carloan`.`impiegato`;"
+      },
+      {
+        "id": "read_agenzia_impiegato",
+        "sql": "SELECT * FROM `carloan`.`impiegato` WHERE `carloan`.`impiegato`.`agenzia` = ?;"
+      },
+      {
+        "id": "read_cognome_impiegato",
+        "sql": "SELECT * FROM `carloan`.`impiegato` WHERE `carloan`.`impiegato`.`cognome` = ?;"
+      },
+      {
+        "id": "update_impiegato",
+        "sql": "UPDATE `carloan`.`impiegato` SET `carloan`.`impiegato`.`cf` = ?, `carloan`.`impiegato`.`nome` = ?, `carloan`.`impiegato`.`cognome` = ?, `carloan`.`impiegato`.`data_nascita` = ?, `carloan`.`impiegato`.`telefono` = ?, `carloan`.`impiegato`.`agenzia` = ?, `carloan`.`impiegato`.`username` = ? WHERE `carloan`.`impiegato`.`cf` = ?;"
+      },
+      {
+        "id": "update_agenzia_impiegato",
+        "sql": "UPDATE `carloan`.`impiegato` SET `carloan`.`impiegato`.`agenzia` = ? WHERE `carloan`.`impiegato`.`cf` = ?;"
+      },
+      {
+        "id": "update_telefono_impiegato",
+        "sql": "UPDATE `carloan`.`impiegato` SET `carloan`.`impiegato`.`telefono` = ? WHERE `carloan`.`impiegato`.`cf` = ?;"
+      },
+      {
+        "id": "delete_impiegato",
+        "sql": "DELETE FROM `carloan`.`impiegato` WHERE `carloan`.`impiegato`.`cf` = ?;"
+      },
+      {
+        "id": "create_contratto",
+        "sql": "INSERT INTO `carloan`.`contratto` (`cliente`, `auto`, `mod_noleggio`, `km_noleggio`, `prezzo_km`, `data_inizio`, `data_fine`, `agenzia_inizio`, `agenzia_fine`, `impiegato_inizio`, `impiegato_fine`, `acconto`, `km_percorsi`, `tariffa_base`, `stato_contratto`, `totale`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
+      },
+      {
+        "id": "read_contratto",
+        "sql": "SELECT * FROM `carloan`.`contratto` WHERE `carloan`.`contratto`.`id` = ?;"
+      },
+      {
+        "id": "read_cliente_contratto",
+        "sql": "SELECT * FROM `carloan`.`contratto` WHERE `carloan`.`contratto`.`cliente` = ?;"
+      },
+      {
+        "id": "read_auto_contratto",
+        "sql": "SELECT * FROM `carloan`.`contratto` WHERE `carloan`.`contratto`.`auto` = ?;"
+      },
+      {
+        "id": "read_agenzia_contratto",
+        "sql": "SELECT * FROM `carloan`.`contratto` WHERE `carloan`.`contratto`.`agenzia_inizio` = ? OR `carloan`.`contratto`.`agenzia_fine` = ?;"
+      },
+      {
+        "id": "update_mod_noleggio_contratto",
+        "sql": "UPDATE `carloan`.`contratto` SET `carloan`.`contratto`.`mod_noleggio` = ? WHERE `carloan`.`contratto`.`id` = ?;"
+      },
+      {
+        "id": "update_data_fine_contratto",
+        "sql": "UPDATE `carloan`.`contratto` SET `carloan`.`contratto`.`data_fine` = ? WHERE `carloan`.`contratto`.`id` = ?;"
+      },
+      {
+        "id": "update_agenzia_fine_contratto",
+        "sql": "UPDATE `carloan`.`contratto` SET `carloan`.`contratto`.`agenzia_fine` = ? WHERE `carloan`.`contratto`.`id` = ?;"
+      },
+      {
+        "id": "update_impiegato_fine_contratto",
+        "sql": "UPDATE `carloan`.`contratto` SET `carloan`.`contratto`.`impiegato_fine` = ? WHERE `carloan`.`contratto`.`id` = ?;"
+      },
+      {
+        "id": "update_km_percorsi_contratto",
+        "sql": "UPDATE `carloan`.`contratto` SET `carloan`.`contratto`.`km_percorsi` = ? WHERE `carloan`.`contratto`.`id` = ?;"
+      },
+      {
+        "id": "update_totale_contratto",
+        "sql": "UPDATE `carloan`.`contratto` SET `carloan`.`contratto`.`totale` = ? WHERE `carloan`.`contratto`.`id` = ?;"
+      },
+      {
+        "id": "update_chiudi_contratto",
+        "sql": "UPDATE `carloan`.`contratto` SET `carloan`.`contratto`.`impiegato_fine` = ?, `carloan`.`contratto`.`km_percorsi` = ?, `carloan`.`contratto`.`totale` = ? WHERE `carloan`.`contratto`.`id` = ?;"
+      },
+      {
+        "id": "delete_contratto",
+        "sql": "DELETE FROM `carloan`.`contratto` WHERE `carloan`.`contratto`.`id` = ?;"
       }
     ]
   
