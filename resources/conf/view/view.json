@@ -1,0 +1,20 @@
+{"VIEWS": [
+      {
+        "id": "bootstrap",
+        "path": "/main/ids/presentation/view/Bootstrap.fxml"
+      },
+      {
+        "id": "create_agenzia",
+        "path": "INSERT INTO `carloan`.`agenzia` (`citta`, `indirizzo`, `telefono`) VALUES (?, ?, ?);"
+      },
+      {
+        "id": "read_agenzia",
+        "path": "SELECT * FROM `carloan`.`agenzia` WHERE `carloan`.`agenzia`.`id` = ?;"
+      },
+      {
+        "id": "read_all_agenzia",
+        "path": "SELECT * FROM `carloan`.`agenzia`;"
+      }
+    ]
+  
+}

@@ -10,7 +10,7 @@ public class QueriesJsonParser extends JsonParser{
 	
 	private static QueriesJsonParser INSTANCE = new QueriesJsonParser();
 	private static final String PATH = "resources/conf/queries.json";
-	public static final String SQL = "sql";
+	public final String SQL = "sql";
 	
 	protected QueriesJsonParser(){
 		setJsonFile(PATH);
