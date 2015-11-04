@@ -1,0 +1,72 @@
+{"QUERIES": [
+      {
+        "id": "login",
+        "sql": "SELECT * FROM `carloan`.`account` INNER JOIN `carloan`.`impiegato` ON `carloan`.`account`.`username` = `carloan`.`impiegato`.`username` WHERE `carloan`.`account`.`username` = ? AND `carloan`.`account`.`password` = ?;"
+      },
+      {
+        "id": "create_agenzia",
+        "sql": "INSERT INTO `carloan`.`agenzia` (`citta`, `indirizzo`, `telefono`) VALUES (?, ?, ?);"
+      },
+      {
+        "id": "read_agenzia",
+        "sql": "SELECT * FROM `carloan`.`agenzia` WHERE `carloan`.`agenzia`.`id` = ?;"
+      },
+      {
+        "id": "read_all_agenzia",
+        "sql": "SELECT * FROM `carloan`.`agenzia`;"
+      },
+      {
+        "id": "update_agenzia",
+        "sql": "UPDATE `carloan`.`agenzia` SET `carloan`.`agenzia`.`citta` = ?, `carloan`.`agenzia`.`indirizzo` = ?, `carloan`.`agenzia`.`telefono` = ? WHERE `carloan`.`agenzia`.`id` = ?;"
+      },
+      {
+        "id": "delete_agenzia",
+        "sql": "DELETE FROM `carloan`.`agenzia` WHERE `carloan`.`agenzia`.`id` = ?;"
+      },
+      {
+        "id": "create_account",
+        "sql": "INSERT INTO `carloan`.`account` VALUES (?, ?, ?);"
+      },
+      {
+        "id": "read_account",
+        "sql": "SELECT * FROM `carloan`.`account` WHERE `carloan`.`account`.`username` = ?;"
+      },
+      {
+        "id": "read_all_account",
+        "sql": "SELECT * FROM `carloan`.`account`;"
+      },
+      {
+        "id": "read_ruolo_account",
+        "sql": "SELECT * FROM `carloan`.`account` WHERE `carloan`.`account`.`ruolo` = ?;"
+      },
+      {
+        "id": "update_account",
+        "sql": "UPDATE `carloan`.`account` SET `carloan`.`account`.`username` = ?, `carloan`.`account`.`password` = ?, `carloan`.`account`.`ruolo` = ? WHERE `carloan`.`account`.`username` = ?;"
+      },
+      {
+        "id": "delete_account",
+        "sql": "DELETE FROM `carloan`.`account` WHERE `carloan`.`account`.`username` = ?;"
+      },
+      {
+        "id": "create_fascia",
+        "sql": "INSERT INTO `carloan`.`fascia` VALUES (?, ?, ?, ?, ?);"
+      },
+      {
+        "id": "read_fascia",
+        "sql": "SELECT * FROM `carloan`.`fascia` WHERE `carloan`.`fascia`.`id` = ?;"
+      },
+      {
+        "id": "read_all_fascia",
+        "sql": "SELECT * FROM `carloan`.`fascia`;"
+      },
+      {
+        "id": "update_fascia",
+        "sql": "UPDATE `carloan`.`fascia` SET `carloan`.`fascia`.`id` = ?, `carloan`.`fascia`.`descrizione` = ?, `carloan`.`fascia`.`tariffa_giornaliera` = ?, `carloan`.`fascia`.`tariffa_settimanale` = ?, `carloan`.`fascia`.`tariffa_km` = ? WHERE `carloan`.`fascia`.`id` = ?;"
+      },
+      {
+        "id": "delete_fascia",
+        "sql": "DELETE FROM `carloan`.`fascia` WHERE `carloan`.`fascia`.`id` = ?;"
+      }
+    ]
+  
+}
