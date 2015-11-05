@@ -1,6 +1,7 @@
 package main.ids.application;
 
 import javafx.application.Application;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,13 +11,15 @@ import main.ids.integration.dao.factory.QueryFactory;
 import main.ids.integration.mySqlDao.factory.SqlQueryFactory;
 
 import main.ids.presentation.CurrentSessionHandler;
+import main.ids.presentation.request.Request;
+import main.ids.presentation.FrontController;
 
 public class EntryPoint extends Application{
 	
 	Stage window;
 	Scene scene;
 	TextField usernameInput;
-	final static String BOOTSTRAP = "/main/ids/presentation/view/Bootstrap.fxml";
+	
 	
 	
 	
@@ -34,18 +37,18 @@ public class EntryPoint extends Application{
 		
 		try {
 			window = primaryStage;
-			Parent root = FXMLLoader.load(getClass().getResource(BOOTSTRAP));
-			Scene scene = new Scene(root,400,400);
+			Request request = new Request();
+			request.setRequest("bootstrap");
+			FrontController frontController = new FrontController();
+			Scene scene = (Scene)frontController.processRequest(request);
+			CurrentSessionHandler.setSessioneScene(scene);
 			window.setScene(scene);
+			window.setResizable(false);
 			window.show();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		/*window = primaryStage;
 		
-		window.setScene(scene);
-		window.show();
-		*/
 	}
 	
 	

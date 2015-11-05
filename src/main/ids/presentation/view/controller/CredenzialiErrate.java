@@ -9,19 +9,20 @@ import main.ids.presentation.response.Response;
 import main.ids.presentation.request.Request;
 
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class Bootstrap implements Initializable {
+public class CredenzialiErrate implements Initializable {
 	
-	public TextField usernameInput;
-	public TextField passwordInput;
-	public ArrayList<String> data = new ArrayList<String>();
-	public Response response;
+	public Button button;
 	FrontController frontController = new FrontController();
+	ArrayList<String> parameter = new ArrayList<String>();
 	
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
 		System.out.println("Loading user data...");
+		
+		button.setOnAction(e -> onClick());
 	}
 	
 
@@ -29,12 +30,9 @@ public class Bootstrap implements Initializable {
 		
 		
 		Request request = new Request();
-		
-		request.setRequest("login");
-		data.add(0, usernameInput.getText());
-		data.add(1, passwordInput.getText());
-		request.setParameters(data);
-		response = frontController.processRequest(request,data);
+		parameter.add("errore");
+		request.setRequest("credenzialiErrate");
+		frontController.processRequest(request);
 		
 		
 	}

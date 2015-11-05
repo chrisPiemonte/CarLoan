@@ -1,22 +1,31 @@
 package main.ids.presentation;
 
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+
 public class CurrentSessionHandler {
-	public String username;
-	public String password;
-	
-	public String getUsername() {
+	public static String  username;
+	public static String getUsername() {
 		return username;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public static void setUsername(String username) {
+		CurrentSessionHandler.username = username;
 	}
-	public String getPassword() {
+	public static String getPassword() {
 		return password;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public static void setPassword(String password) {
+		CurrentSessionHandler.password = password;
 	}
+	public static Scene getSessioneScene() {
+		return sessioneScene;
+	}
+	public static void setSessioneScene(Scene sessioneScene) {
+		CurrentSessionHandler.sessioneScene = sessioneScene;
+	}
+	public static String password;
+	public static Scene sessioneScene;
 	
-	
+		
 
 }

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ids.presentation.view.controller.CrudCliente">
+   <right>
+      <VBox prefHeight="275.0" prefWidth="136.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0" />
+         </children>
+         <BorderPane.margin>
+            <Insets top="200.0" />
+         </BorderPane.margin>
+      </VBox>
+   </right>
+   <left>
+      <VBox prefHeight="310.0" prefWidth="85.0" spacing="5.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="clienti" layoutX="18.0" layoutY="10.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="87.0" style="-fx-background-color: #7cafc2; -fx-background-position: center center; -fx-background-repeat: stretch;" text="Clienti">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="contratti" layoutX="18.0" layoutY="10.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="155.0" style="-fx-background-color: #7cafc2;" text="Contratti">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="auto" layoutX="10.0" layoutY="122.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="155.0" style="-fx-background-color: #7cafc2;" text="Auto ">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="fascia" layoutX="10.0" layoutY="178.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="155.0" style="-fx-background-color: #7cafc2;" text="Fascia">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+            </Button>
+            <Button layoutX="10.0" layoutY="178.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="155.0" style="-fx-background-color: #7cafc2;" text="Aggiungi Contratto">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </BorderPane.margin>
+      </VBox>
+   </left>
+   <bottom>
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Label">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </HBox>
+   </bottom>
+   <top>
+      <BorderPane BorderPane.alignment="CENTER">
+         <right>
+            <MenuButton mnemonicParsing="false" text="dati personali" BorderPane.alignment="CENTER">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+               <BorderPane.margin>
+                  <Insets bottom="10.0" top="20.0" />
+               </BorderPane.margin>
+            </MenuButton>
+         </right>
+         <left>
+            <Label text="Buongiorno Gino Pino " BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets left="5.0" />
+               </BorderPane.margin>
+            </Label>
+         </left>
+      </BorderPane>
+   </top>
+   <center>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <TreeView fx:id="elementTree" prefHeight="320.0" prefWidth="146.0" />
+            <VBox prefHeight="320.0" prefWidth="221.0">
+               <children>
+                  <HBox prefHeight="31.0" prefWidth="221.0" spacing="5.0">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+         <BorderPane.margin>
+            <Insets top="5.0" />
+         </BorderPane.margin>
+      </HBox>
+   </center>
+</BorderPane>
