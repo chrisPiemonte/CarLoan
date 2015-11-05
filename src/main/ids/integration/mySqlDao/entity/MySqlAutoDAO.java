@@ -36,7 +36,7 @@ public class MySqlAutoDAO extends MySqlEntityDAO implements AutoDAO{
 	}
 
 	@Override
-	public List<AutoTO> getAll() {
+	public List<AutoTO> readAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}

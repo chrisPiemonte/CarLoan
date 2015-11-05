@@ -27,7 +27,7 @@ public class SqlQueryFactory extends QueryFactory{
 	
 	public static void main(String[] args) {
 		QueryFactory qf = SqlQueryFactory.getInstance();
-		System.out.println(qf.getQuery("login"));
+		System.out.println(qf.getQuery("create_impiegato"));
 
 	}
 	

@@ -12,7 +12,7 @@ public interface EntityDAO<T> {
 	
 	boolean delete(String id);
 	
-	List<T> getAll();
+	List<T> readAll();
 	
 	boolean isPresent(T elem);
 	

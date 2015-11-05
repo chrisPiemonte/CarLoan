@@ -36,7 +36,7 @@ public class MySqlFasciaDAO extends MySqlEntityDAO implements FasciaDAO {
 	}
 
 	@Override
-	public List<FasciaTO> getAll() {
+	public List<FasciaTO> readAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -36,7 +36,7 @@ public class MySqlContrattoDAO extends MySqlEntityDAO implements ContrattoDAO {
 	}
 
 	@Override
-	public List<ContrattoTO> getAll() {
+	public List<ContrattoTO> readAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -36,7 +36,7 @@ public class MySqlClienteDAO extends MySqlEntityDAO implements ClienteDAO {
 	}
 
 	@Override
-	public List<ClienteTO> getAll() {
+	public List<ClienteTO> readAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}

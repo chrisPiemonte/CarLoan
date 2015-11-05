@@ -79,7 +79,7 @@ INSERT INTO `carloan`.`impiegato` VALUES
 	('FRNLMB13G71F145S', 'Franco',     'Franchi',  '1971-07-03', '08041058', '001', 'admin');
 	
 INSERT INTO `carloan`.`contratto` (`cliente`, `auto`, `mod_noleggio`, `km_noleggio`, `prezzo_km`, `data_inizio`, `data_fine`, `agenzia_inizio`, `agenzia_fine`, `impiegato_inizio`, `impiegato_fine`, `acconto`, `km_percorsi`, `tariffa_base`, `stato_contratto`, `totale`) VALUES
-	('SFREDS13A01D447S', 'wc333jh', 'giornaliero', 'illimitato',   '10', '2015-11-17',  NULL,        '001', '001', 'RFLFRT13A01D332K',  NULL,              20.00,  NULL, 50.00, 'aperto', 100.00),
+	('SFREDS13A01D447S', 'wc333jh', 'giornaliero', 'illimitato', '10', '2015-11-17', '2015-11-17', '001', '001', 'RFLFRT13A01D332K',  NULL,              20.00,  NULL, 50.00, 'aperto', 100.00),
 	('XWESUG13A01D447S', 'vz444lk', 'settimanale', 'illimitato', '10', '2015-05-12', '2015-05-19', '003', '003', 'RBRBRS13G71F145H', 'RBRBRS13G71F145H', 30.00, '700', 50.00, 'chiuso', 100.00),
 	('SFREDS13A01D447S', 're555ei', 'giornaliero', 'limitato',   '10', '2015-12-19', '2015-12-19', '002', '002', 'DNTRMN13D14C931Z', 'DNTRMN13D14C931Z', 45.00, '100', 50.00, 'chiuso', 100.00),
 	('XWESUG13A01D447S', 'wc333jh', 'settimanale', 'illimitato', '10', '2015-07-09', '2015-07-16', '004', '004', 'PLDEDS13A01D332R', 'PLDEDS13A01D332R', 25.00, '700', 50.00, 'chiuso', 100.00),
@@ -90,4 +90,4 @@ INSERT INTO `carloan`.`contratto` (`cliente`, `auto`, `mod_noleggio`, `km_nolegg
 	('SFREDS13A01D447S', 'ui234ef', 'giornaliero', 'limitato',   '10', '2015-11-01', '2015-11-01', '001', '001', 'RFLFRT13A01D332K', 'RFLFRT13A01D332K', 10.00, '213', 50.00, 'chiuso', 100.00),
 	('QWERTY13A01D447S', 'yy432oo', 'settimanale', 'illimitato', '10', '2015-05-01', '2015-05-08', '002', '004', 'GVNCST13D14C931T', 'PLDEDS13A01D332R', 50.00, '123', 50.00, 'chiuso', 100.00),
 	('XWESUG13A01D447S', 'yy432oo', 'giornaliero', 'limitato',   '10', '2015-07-03', '2015-07-10', '003', '004', 'RBRBRS13G71F145H', 'PLDEDS13A01D332R', 25.00, '432', 50.00, 'chiuso', 100.00),
-	('FRANZS13A01D447S', 'vz444lk', 'settimanale', 'illimitato', '10', '2015-11-12',  NULL,        '004', '002', 'PLDEDS13A01D332R',  NULL,              45.00,  NULL, 50.00, 'aperto', 100.00);
+	('FRANZS13A01D447S', 'vz444lk', 'settimanale', 'illimitato', '10', '2015-11-12', '2015-11-19', '004', '002', 'PLDEDS13A01D332R',  NULL,              45.00,  NULL, 50.00, 'aperto', 100.00);

@@ -36,7 +36,7 @@ public class MySqlManagerDAO extends MySqlEntityDAO implements ManagerDAO{
 	}
 
 	@Override
-	public List<ManagerTO> getAll() {
+	public List<ManagerTO> readAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}

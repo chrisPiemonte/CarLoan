@@ -2,44 +2,53 @@ package main.ids.transferObjects;
 
 public class AgenziaTO implements TransferObject {
 	
-	//attributi 
-	
-	public String id ;
-	public String città;
-	public String indirizzo;
+	//attributi
+	private String id ;
+	private String citta;
+	private String indirizzo;
+	private String telefono;
 	
 	// costruttori
-	
-	public AgenziaTO(String id, String città, String indirizzo){
-		this.id = id;
-		this.città = città;
+	public AgenziaTO(String citta, String indirizzo, String telefono){
+		this.citta = citta;
 		this.indirizzo = indirizzo;
+		this.telefono = telefono;
 	}
 	
-	public AgenziaTO(String id){
-		this.id = id;
+	public AgenziaTO(){
 	}
 	
 	//operazioni
+	public void setId (String id){
+		this.id = id;
+	}
 	
 	public String getId (){
 		return id;
 	}
 	
-	public String getCittà(){
-		return città;
+	public String getCitta(){
+		return citta;
 	}
 	
 	public String getIndirizzo(){
 		return indirizzo;
 	}
 	
-	public void setCittà(String città){
-		this.città = città;
+	public void setCitta(String citta){
+		this.citta = citta;
 	}
 	
 	public void setIndirizzo(String indirizzo){
 		this.indirizzo = indirizzo;
 	}
+	
+	public String getTelefono() {
+		return telefono;
+	}
 
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+	
 }

@@ -36,7 +36,7 @@ public class MySqlImpiegatoDAO extends MySqlEntityDAO implements ImpiegatoDAO {
 	}
 
 	@Override
-	public List<ImpiegatoTO> getAll() {
+	public List<ImpiegatoTO> readAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
