@@ -60,6 +60,12 @@ public class ApplicationController {
 		case "gestioneFascia":
 			dispatcher = new Dispatcher();
 			dispatcher.setInterface("/main/ids/presentation/view/CrudFascia.fxml");
+			break;
+			
+		case "inserisciClienteLeaf":
+			dispatcher = new Dispatcher();
+			dispatcher.setInterface("/main/ids/presentation/view/InserisciClienteLeaf.fxml");
+			break;
 			
 		}
 		
@@ -80,8 +86,10 @@ public class ApplicationController {
 				dispatcher = new Dispatcher();
 				dispatcher.setInterface("/main/ids/presentation/view/CredenzialiErrate.fxml");
 				
-			}
+			} // close login switch...
 			break;
+		
+		
 		}
 		
 		return null;

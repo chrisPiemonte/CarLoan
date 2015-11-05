@@ -1,4 +1,5 @@
-package main.ids.presentation.view.controller;
+package main.ids.presentation.view.controller.gestioneCliente;
+
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 
-public class CrudCliente implements Initializable {
+public class InserisciClienteLeaf implements Initializable {
 	
 	public TextField usernameInput;
 	public TextField passwordInput;
@@ -38,18 +39,20 @@ public class CrudCliente implements Initializable {
 		fascia.setOnAction(e -> callFasciaView());
 		
 		root = new TreeItem<>("ei");
+		root.setExpanded(true);
 		
 		elemento = makeBranch("Operazioni",root);
 		makeBranch("inserisci Cliente", elemento);
 		makeBranch("modifica Cliente", elemento);
 		makeBranch("ricerca Cliente", elemento);
 		elemento.setExpanded(true);
-		elemento.expandedProperty().setValue(false);
+		//elemento.expandedProperty().setValue(false);
 		//set the entire tree
 		elementTree.setRoot(root);
 		elementTree.setShowRoot(false);
 		//set a listner for open table 
 		elementTree.getSelectionModel().selectedIndexProperty().addListener((v,oldValue,newValue)->{
+			
 			checkLeaf(newValue);
 		});
 		
@@ -90,10 +93,7 @@ public class CrudCliente implements Initializable {
 	
 	
 	private void checkLeaf(Number leaf){
-		Request request = new Request();
 		if (leaf.equals(1)) {
-			request.setRequest("inserisciClienteLeaf");
-			frontController.processRequest(request);
 			
 		};
 		

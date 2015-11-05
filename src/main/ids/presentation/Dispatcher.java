@@ -12,9 +12,8 @@ public class Dispatcher {
 	
 	final static String BOOTSTRAP = "/main/ids/presentation/view/Bootstrap.fxml";
 	
-	public int height = 600;
-	public int weight = 400;
-	Object r = new Object();
+	public int height = 900;
+	public int weight = 700;
 	
 	
 	private static Dispatcher dispatcher ;
