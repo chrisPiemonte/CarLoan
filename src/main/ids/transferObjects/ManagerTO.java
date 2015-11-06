@@ -1,46 +1,100 @@
 package main.ids.transferObjects;
 
+import java.time.LocalDate;
+
 public class ManagerTO {
 	
-	public String id;
-	public String nome;
-	public String cognome;
-	public String agenziaID;
+	private String cf; 
+	private String nome;
+	private String cognome; 
+	private LocalDate dataNascita;
+	private String telefono;
+	private String agenzia;
+	private String username;
 	
+	public ManagerTO(){
+		
+	}
 	
-	public ManagerTO(String id, String nome, String cognome){
-		this.id = id;
+	public ManagerTO(String cf, String nome, String cognome, String agenzia, LocalDate dataNascita, String telefono, String username){
+		this.cf = cf;
 		this.nome = nome;
 		this.cognome = cognome;
-		
-		
+		this.dataNascita = dataNascita;
+		this.telefono = telefono;
+		this.agenzia = agenzia;
+		this.username = username;
 	}
-	public ManagerTO(String id, String nome, String cognome, String agenziaID ){
-		this.id = id;
+	
+	public ManagerTO(String cf, String nome, String cognome, String agenzia, LocalDate dataNascita, String telefono){
+		this.cf = cf;
 		this.nome = nome;
 		this.cognome = cognome;
-		this.agenziaID = agenziaID ;
-		
+		this.dataNascita = dataNascita;
+		this.telefono = telefono;
+		this.agenzia = agenzia;
 	}
-	
-	public void setAgenzia(String agenziaID){
-		this.agenziaID = agenziaID;
+
+	public String getCf() {
+		return cf;
 	}
-	
+
+	public void setCf(String cf) {
+		this.cf = cf;
+	}
+
 	public String getNome() {
 		return nome;
 	}
-	
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
 	public String getCognome() {
 		return cognome;
 	}
-	
-	public String getId(){
-		return id;
-	}
-	
-	public String getAgenziaId(){
-		return agenziaID;
+
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
 	}
 
+	public LocalDate getDataNascita() {
+		return dataNascita;
+	}
+
+	public void setDataNascita(LocalDate dataNascita) {
+		this.dataNascita = dataNascita;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	public String getAgenzia() {
+		return agenzia;
+	}
+
+	public void setAgenzia(String agenzia) {
+		this.agenzia = agenzia;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	public String toString(){
+		return this.getCf() + " " + this.getNome() + " " + this.getCognome() + " " + 
+				this.getDataNascita() + " " + this.getTelefono() + " " + this.getAgenzia() + " " + 
+				this.getUsername();
+	}
+	
 }

@@ -1,20 +1,15 @@
 
 INSERT INTO `carloan`.`agenzia` VALUES
-	('1', 'Bari',     'via Cavour 5',    '080111111'),
-	('2', 'Foggia',   'corso Roma 79',   '088122222'),
-	('3', 'Lecce',    'via Orabona 3',   '333000000'),
-	('4', 'Brindisi', 'viale Ofanto 43', '347444444');
+	('1', 'Bari',     'via Cavour 5',    '080111111', 'aperta'),
+	('2', 'Foggia',   'corso Roma 79',   '088122222', 'aperta'),
+	('3', 'Lecce',    'via Orabona 3',   '333000000', 'aperta'),
+	('4', 'Brindisi', 'viale Ofanto 43', '347444444', 'aperta');
 
 INSERT INTO `carloan`.`fascia` VALUES
 	('A', 'sportiva',   20.00, 10.00, 30.00),
 	('B', 'suv',        20.00, 10.00, 30.00),
 	('C', 'berlina',    20.00, 10.00, 30.00),
 	('D', 'utilitaria', 20.00, 10.00, 30.00);
-
-INSERT INTO `carloan`.`stato` VALUES
-	('N', 'non disponibile'),
-	('D', 'disponibile'),
-	('M', 'in manutenzione');
 
 INSERT INTO `carloan`.`account` VALUES
 	('admin',      'admin', 'admin'),
@@ -60,23 +55,23 @@ INSERT INTO `carloan`.`auto` VALUES
 	('yy432oo', 'Hyundai i10',        'N', 'D', '3007',     '2016-03-15', '004');
 
 INSERT INTO `carloan`.`impiegato` VALUES
-	('RFLFRT13A01D332K', 'Raffaele',   'Fratta',   '1970-12-11', '08034333', '001', 'manag'),
-	('DNTRMN13D14C931Z', 'Donato',     'Romani',   '1979-02-10', '08056444', '002', 'impie'),
-	('ABRBRS13G71F145H', 'Alberto',    'Baresi',   '1992-07-07', '08078555', '003', 'rol001'),
-	('BRNSPN13A35T417Q', 'Bernardo',   'Spine',    '1957-03-14', '08090454', '004', 'fer001'),
-	('MRCCRX13A01D332Y', 'Marcello',   'Cori',     '1984-10-21', '08034777', '001', 'raff002'),
-	('FDRCST13D14C931T', 'Federica',   'Celesti',  '1971-05-30', '08056134', '002', 'franc002'),
-	('MRTLMB13G71F145S', 'Martina',    'Lombardo', '1991-05-01', '08078788', '003', 'fel002'),
-	('PLDEDS13A01D332R', 'Paolo',      'di Cagno', '1983-12-21', '08034123', '004', 'ger002'),
-	('LCFRFZ13D14C931W', 'Luca',       'Frizzo',   '1975-11-30', '08056321', '001', 'pier003'),
-	('ASNSFR13G71F145P', 'Alessandra', 'Sfrizzo',  '1981-02-05', '08078345', '002', 'ern003'),
-	('RBRBRS13G71F145H', 'Robert',     'Carli',    '1972-04-07', '08078575', '003', 'rin003'),
-	('CLNSPN13A35T417Q', 'Carlo',      'Roberti',  '1967-05-14', '08090414', '004', 'www003'),
-	('FBZCRX13A01D332Y', 'Fabrizio',   'Frizi',    '1987-10-27', '08034737', '001', 'manager004'),
-	('GVNCST13D14C931T', 'Giovanna',   'Sedia',    '1979-05-30', '08056704', '002', 'tre004'),
-	('ENSLMB13G71F145S', 'Ernesto',    'Mafelcio', '1951-05-05', '08078058', '003', 'frz004'),
-	('PINEDS13A01D332R', 'Pina',       'Inglese',  '1989-12-21', '08031023', '004', 'qqq004'),
-	('FRNLMB13G71F145S', 'Franco',     'Franchi',  '1971-07-03', '08041058', '001', 'admin');
+	('RFLFRT13A01D332K', 'Raffaele',   'Fratta',   '1970-12-11', '08034333', '001', 'manag',      'attivo'),
+	('DNTRMN13D14C931Z', 'Donato',     'Romani',   '1979-02-10', '08056444', '002', 'impie',      'attivo'),
+	('ABRBRS13G71F145H', 'Alberto',    'Baresi',   '1992-07-07', '08078555', '003', 'rol001',     'attivo'),
+	('BRNSPN13A35T417Q', 'Bernardo',   'Spine',    '1957-03-14', '08090454', '004', 'fer001',     'attivo'),
+	('MRCCRX13A01D332Y', 'Marcello',   'Cori',     '1984-10-21', '08034777', '002', 'raff002',    'attivo'),
+	('FDRCST13D14C931T', 'Federica',   'Celesti',  '1971-05-30', '08056134', '001', 'franc002',   'attivo'),
+	('MRTLMB13G71F145S', 'Martina',    'Lombardo', '1991-05-01', '08078788', '003', 'fel002',     'attivo'),
+	('PLDEDS13A01D332R', 'Paolo',      'di Cagno', '1983-12-21', '08034123', '004', 'ger002',     'attivo'),
+	('LCFRFZ13D14C931W', 'Luca',       'Frizzo',   '1975-11-30', '08056321', '003', 'pier003',    'attivo'),
+	('ASNSFR13G71F145P', 'Alessandra', 'Sfrizzo',  '1981-02-05', '08078345', '002', 'ern003',     'attivo'),
+	('RBRBRS13G71F145H', 'Robert',     'Carli',    '1972-04-07', '08078575', '001', 'rin003',     'attivo'),
+	('CLNSPN13A35T417Q', 'Carlo',      'Roberti',  '1967-05-14', '08090414', '001', 'www003',     'attivo'),
+	('FBZCRX13A01D332Y', 'Fabrizio',   'Frizi',    '1987-10-27', '08034737', '004', 'manager004', 'attivo'),
+	('GVNCST13D14C931T', 'Giovanna',   'Sedia',    '1979-05-30', '08056704', '002', 'tre004',     'attivo'),
+	('ENSLMB13G71F145S', 'Ernesto',    'Mafelcio', '1951-05-05', '08078058', '003', 'frz004',     'attivo'),
+	('PINEDS13A01D332R', 'Pina',       'Inglese',  '1989-12-21', '08031023', '004', 'qqq004',     'attivo'),
+	('FRNLMB13G71F145S', 'Franco',     'Franchi',  '1971-07-03', '08041058', '001', 'admin',      'attivo');
 	
 INSERT INTO `carloan`.`contratto` (`cliente`, `auto`, `mod_noleggio`, `km_noleggio`, `prezzo_km`, `data_inizio`, `data_fine`, `agenzia_inizio`, `agenzia_fine`, `impiegato_inizio`, `impiegato_fine`, `acconto`, `km_percorsi`, `tariffa_base`, `stato_contratto`, `totale`) VALUES
 	('SFREDS13A01D447S', 'wc333jh', 'giornaliero', 'illimitato', '10', '2015-11-17', '2015-11-17', '001', '001', 'RFLFRT13A01D332K',  NULL,              20.00,  NULL, 50.00, 'aperto', 100.00),

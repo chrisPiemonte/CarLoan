@@ -9,7 +9,7 @@ import main.ids.util.exceptions.QueriesJsonFileException;
 public class QueriesJsonParser extends JsonParser{
 	
 	private static QueriesJsonParser INSTANCE = new QueriesJsonParser();
-	private static final String PATH = "resources/conf/queries.json";
+	private static final String PATH = "resources/conf/db/queries.json";
 	public final String SQL = "sql";
 	
 	protected QueriesJsonParser(){

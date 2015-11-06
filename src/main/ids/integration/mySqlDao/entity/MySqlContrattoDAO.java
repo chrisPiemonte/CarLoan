@@ -42,7 +42,7 @@ public class MySqlContrattoDAO extends MySqlEntityDAO implements ContrattoDAO {
 	}
 
 	@Override
-	public boolean isPresent(ContrattoTO elem) {
+	public boolean isPresent(String id) {
 		// TODO Auto-generated method stub
 		return false;
 	}

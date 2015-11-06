@@ -42,7 +42,7 @@ public class MySqlManagerDAO extends MySqlEntityDAO implements ManagerDAO{
 	}
 
 	@Override
-	public boolean isPresent(ManagerTO elem) {
+	public boolean isPresent(String id) {
 		// TODO Auto-generated method stub
 		return false;
 	}

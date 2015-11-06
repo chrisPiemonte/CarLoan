@@ -42,7 +42,7 @@ public class MySqlAutoDAO extends MySqlEntityDAO implements AutoDAO{
 	}
 
 	@Override
-	public boolean isPresent(AutoTO elem) {
+	public boolean isPresent(String targa) {
 		// TODO Auto-generated method stub
 		return false;
 	}

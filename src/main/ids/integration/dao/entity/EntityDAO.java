@@ -4,16 +4,16 @@ import java.util.List;
 
 public interface EntityDAO<T> {
 	
-	boolean create(T elem);
+	public boolean create(T elem);
 	
-	T read(String id);
+	public T read(String id);
 	
-	boolean update(T elem);
+	public List<T> readAll();
 	
-	boolean delete(String id);
+	public boolean update(T elem);
 	
-	List<T> readAll();
+	public boolean delete(String id);
 	
-	boolean isPresent(T elem);
+	public boolean isPresent(String id);
 	
 }

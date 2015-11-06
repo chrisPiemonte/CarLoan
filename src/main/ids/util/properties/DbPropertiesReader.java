@@ -5,7 +5,7 @@ import main.ids.util.exceptions.DBPropertiesFileException;
 public class DbPropertiesReader extends PropertiesReader{
 	
 	private static DbPropertiesReader INSTANCE = new DbPropertiesReader();
-	private static final String PATH = "resources/conf/mySql.properties";
+	private static final String PATH = "resources/conf/db/mySql.properties";
 	
 	protected DbPropertiesReader(){
 		setProperties(PATH);

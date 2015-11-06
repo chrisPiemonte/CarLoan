@@ -4,38 +4,69 @@ import java.time.LocalDate;
 
 public class ClienteTO implements TransferObject {
 	
-	//attributi
-	
+	// attributi
+	public String cf;
 	public String nome;
 	public String cognome; 
-	public String sesso;
-	public String CF;
 	public LocalDate dataNascita;
-	public String luogoNascita;
-	public String estremiDocumento;
+	public String telefono;
 	
-	ClienteTO(String nome, String cognome, String sesso, String CF, LocalDate dataNascita,String luogoNascita,String estremiDocumento){
+	public ClienteTO(String cf, String nome, String cognome, LocalDate dataNascita, String telefono){
+		this.cf = cf;
 		this.nome = nome;
 		this.cognome = cognome;
-		this.sesso = sesso;
-		this.CF = CF;
 		this.dataNascita = dataNascita;
-		this.luogoNascita = luogoNascita;
-		this.estremiDocumento = estremiDocumento;
+		this.telefono = telefono;
 	}
 	
-	public String getNome(){
+	public ClienteTO(){
+		
+	}
+
+	public String getCf() {
+		return cf;
+	}
+
+	public void setCf(String cf) {
+		this.cf = cf;
+	}
+
+	public String getNome() {
 		return nome;
 	}
-	
-	public String getCognome(){
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getCognome() {
 		return cognome;
 	}
-	
-	public String getCF(){
-		return CF;
+
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
+	}
+
+	public LocalDate getDataNascita() {
+		return dataNascita;
+	}
+
+	public void setDataNascita(LocalDate dataNascita) {
+		this.dataNascita = dataNascita;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
 	}
 	
+	public String toString(){
+		return this.cf + " " + this.nome + " " + this.cognome + " " + 
+				this.dataNascita.toString() + " " + this.telefono;
+	}
 	
 
 }

@@ -5,7 +5,7 @@
       },
       {
         "id": "create_agenzia",
-        "sql": "INSERT INTO `carloan`.`agenzia` (`citta`, `indirizzo`, `telefono`) VALUES (?, ?, ?);"
+        "sql": "INSERT INTO `carloan`.`agenzia` (`citta`, `indirizzo`, `telefono`, `stato`) VALUES (?, ?, ?, ?);"
       },
       {
         "id": "read_agenzia",
@@ -13,11 +13,23 @@
       },
       {
         "id": "read_all_agenzia",
-        "sql": "SELECT * FROM `carloan`.`agenzia`;"
+        "sql": "SELECT * FROM `carloan`.`agenzia` WHERE `carloan`.`agenzia`.`stato` = 'aperta';"
+      },
+      {
+        "id": "read_manager_agenzia",
+        "sql": "SELECT `carloan`.`impiegato`.`cf`, `carloan`.`impiegato`.`nome`, `carloan`.`impiegato`.`cognome`, `carloan`.`impiegato`.`data_nascita`, `carloan`.`impiegato`.`telefono`, `carloan`.`impiegato`.`agenzia`, `carloan`.`impiegato`.`username` FROM `carloan`.`agenzia` INNER JOIN `carloan`.`impiegato` ON `carloan`.`agenzia`.`id` = `carloan`.`impiegato`.`agenzia` INNER JOIN `carloan`.`account` ON `carloan`.`account`.`username` = `carloan`.`impiegato`.`username` WHERE `carloan`.`agenzia`.`id` = ? AND `carloan`.`account`.`ruolo` = ? AND `carloan`.`impiegato`.`stato` = 'attivo';"
+      },
+      {
+        "id": "read_impiegati_agenzia",
+        "sql": "SELECT `carloan`.`impiegato`.`cf`, `carloan`.`impiegato`.`nome`, `carloan`.`impiegato`.`cognome`, `carloan`.`impiegato`.`data_nascita`, `carloan`.`impiegato`.`telefono`, `carloan`.`impiegato`.`agenzia`, `carloan`.`impiegato`.`username` FROM `carloan`.`agenzia` INNER JOIN `carloan`.`impiegato` ON `carloan`.`agenzia`.`id` = `carloan`.`impiegato`.`agenzia` WHERE `carloan`.`agenzia`.`id` = ? AND `carloan`.`impiegato`.`stato` = 'attivo';"
       },
       {
         "id": "update_agenzia",
         "sql": "UPDATE `carloan`.`agenzia` SET `carloan`.`agenzia`.`citta` = ?, `carloan`.`agenzia`.`indirizzo` = ?, `carloan`.`agenzia`.`telefono` = ? WHERE `carloan`.`agenzia`.`id` = ?;"
+      },
+      {
+        "id": "update_stato_agenzia",
+        "sql": "UPDATE `carloan`.`agenzia` SET `carloan`.`agenzia`.`stato` = 'chiusa' WHERE `carloan`.`agenzia`.`id` = ?;"
       },
       {
         "id": "delete_agenzia",
@@ -157,7 +169,7 @@
       },
       {
         "id": "create_impiegato",
-        "sql": "INSERT INTO `carloan`.`impiegato` VALUES (?, ?, ?, ?, ?, ?, ?);"
+        "sql": "INSERT INTO `carloan`.`impiegato` VALUES (?, ?, ?, ?, ?, ?, ?, ?);"
       },
       {
         "id": "read_impiegato",

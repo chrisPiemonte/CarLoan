@@ -1,6 +1,7 @@
 package main.ids.integration.mySqlDao.entity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import java.sql.Connection;
@@ -35,7 +36,7 @@ public class MySqlAgenziaDAO extends MySqlEntityDAO implements AgenziaDAO{
 			statement.setString(i++, agenzia.getCitta());
 			statement.setString(i++, agenzia.getIndirizzo());
 			statement.setString(i++, agenzia.getTelefono());
-			System.out.println(statement.toString());
+			statement.setString(i++, "aperta");
 			
 			result = statement.executeUpdate();
 			
@@ -86,18 +87,6 @@ public class MySqlAgenziaDAO extends MySqlEntityDAO implements AgenziaDAO{
 	}
 
 	@Override
-	public boolean update(AgenziaTO elem) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean delete(String id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public List<AgenziaTO> readAll() {
 		Connection conn = MySqlConnectionFactory.getConnection();
 		PreparedStatement statement = null;
@@ -128,40 +117,215 @@ public class MySqlAgenziaDAO extends MySqlEntityDAO implements AgenziaDAO{
 		
 		return listAgenzia;
 	}
-
+	
 	@Override
-	public boolean isPresent(AgenziaTO elem) {
-		// TODO Auto-generated method stub
-		return false;
+	public ManagerTO readManager(String id) {
+		Connection conn = MySqlConnectionFactory.getConnection();
+		PreparedStatement statement = null;
+		ManagerTO manager = new ManagerTO();
+		ResultSet resultSet = null;
+
+		try{
+			statement = conn.prepareStatement(queryFactory.getQuery("read_manager_agenzia"));
+			int i = 1;
+			statement.setString(i++, id);
+			statement.setString(i++, "manager");
+			
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				manager.setCf(resultSet.getString("cf"));
+				manager.setNome(resultSet.getString("nome"));
+				manager.setCognome(resultSet.getString("cognome"));
+				manager.setDataNascita(resultSet.getDate("data_nascita").toLocalDate());
+				manager.setTelefono(resultSet.getString("telefono"));
+				manager.setAgenzia(resultSet.getString("agenzia"));
+				manager.setUsername(resultSet.getString("username"));
+			}
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}catch(NullPointerException e){
+			e.printStackTrace();
+		}finally{
+			DbEntityCloser.close(statement);
+			DbEntityCloser.close(conn);
+		}
+		
+		return manager;
+		
+	}
+	
+	@Override
+	public List<ImpiegatoTO> readImpiegati(String id) {
+		Connection conn = MySqlConnectionFactory.getConnection();
+		PreparedStatement statement = null;
+		List<ImpiegatoTO> listImpiegato = new ArrayList<ImpiegatoTO>();
+		ResultSet resultSet = null;
+		
+		try{
+			statement = conn.prepareStatement(queryFactory.getQuery("read_impiegati_agenzia"));
+			statement.setString(1, id);
+			resultSet = statement.executeQuery();
+			
+			while (resultSet.next()) {
+				ImpiegatoTO impiegato = new ImpiegatoTO();
+				impiegato.setCf(resultSet.getString("cf"));
+				impiegato.setNome(resultSet.getString("nome"));
+				impiegato.setCognome(resultSet.getString("cognome"));
+				impiegato.setDataNascita(resultSet.getDate("data_nascita").toLocalDate());
+				impiegato.setTelefono(resultSet.getString("telefono"));
+				impiegato.setAgenzia(resultSet.getString("agenzia"));
+				impiegato.setUsername(resultSet.getString("username"));
+				listImpiegato.add(impiegato);
+			}
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}catch(NullPointerException e){
+			e.printStackTrace();
+		}finally{
+			DbEntityCloser.close(statement);
+			DbEntityCloser.close(conn);
+		}
+		
+		return listImpiegato;
 	}
 
 	@Override
-	public ManagerTO getManager(String id) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean update(AgenziaTO agenzia) {
+		Connection conn = MySqlConnectionFactory.getConnection();
+		PreparedStatement statement = null;
+		int result;
+		boolean response = false;
+		
+		try{
+			statement = conn.prepareStatement(queryFactory.getQuery("update_agenzia"));
+			int i = 1;
+			statement.setString(i++, agenzia.getCitta());
+			statement.setString(i++, agenzia.getIndirizzo());
+			statement.setString(i++, agenzia.getTelefono());
+
+			statement.setString(i++, agenzia.getId());
+			
+			result = statement.executeUpdate();
+			
+			if(result > 0){
+				response = true;
+			}
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DbEntityCloser.close(statement);
+			DbEntityCloser.close(conn);
+		}
+		
+		return response;
+	}
+	
+	@Override
+	public boolean delete(String id) {
+		Connection conn = MySqlConnectionFactory.getConnection();
+		PreparedStatement statement = null;
+		int result;
+		boolean response = false;
+		
+		try{
+			statement = conn.prepareStatement(queryFactory.getQuery("update_stato_agenzia"));
+			int i = 1;
+			
+			statement.setString(i++, id);
+			result = statement.executeUpdate();
+			
+			if(result > 0){
+				response = true;
+			}
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DbEntityCloser.close(statement);
+			DbEntityCloser.close(conn);
+		}
+		
+		return response;
 	}
 
 	@Override
-	public List<ImpiegatoTO> getImpiegati(String id) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean isPresent(String id) {
+		Connection conn = MySqlConnectionFactory.getConnection();
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		boolean present = false;
+		
+		try{
+			statement = conn.prepareStatement(queryFactory.getQuery("read_agenzia"));
+			statement.setInt(1, Integer.parseInt(id));
+			
+			resultSet = statement.executeQuery();
+			if(resultSet.next()){
+				present = true;
+			}
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			DbEntityCloser.close(statement);
+			DbEntityCloser.close(conn);
+		}
+		
+		return present;
 	}
 	
 	public static void main(String[] args){
 		AgenziaDAO agDAO = new MySqlAgenziaDAO();
+		
 		/*
+		// create
 		AgenziaTO agenzia = new AgenziaTO("Torino", "via minchio", "0101010");
 		agDAO.create(agenzia);
-		*/
-		/*
-		AgenziaTO ag = agDAO.read("001");
-		System.out.println(ag.getId() + " " + ag.getCitta() + " " + ag.getIndirizzo() + " " + ag.getTelefono());
-		*/
-		List<AgenziaTO> la = agDAO.readAll();
 		
+		
+		// read
+		AgenziaTO age = agDAO.read("001");
+		System.out.println(age.toString() + "\n");
+		
+		
+		// read_all
+		List<AgenziaTO> la = agDAO.readAll();
 		for(AgenziaTO ag : la){
-			System.out.println(ag.getId() + " " + ag.getCitta() + " " + ag.getIndirizzo() + " " + ag.getTelefono());
+			System.out.println(ag.toString());
 		}
+		
+		System.out.println("");
+		
+		// read_impiegati
+		List<ImpiegatoTO> li = agDAO.readImpiegati("001");
+		for(ImpiegatoTO im : li){
+			System.out.println(im.toString());
+		}
+		
+		
+		// update
+		AgenziaTO agen = new AgenziaTO("pornioe", "via sticchio", "0101010");
+		agen.setId("005");
+		System.out.println("\n" + agDAO.update(agen) + "\n");
+		
+		
+		// read_manager
+		ManagerTO manager = agDAO.readManager("001");
+		System.out.println(manager.toString() + "\n");
+		
+		
+		// delete
+		System.out.println(agDAO.delete("005"));
+		
+		
+		// isPresent read
+		System.out.println(agDAO.isPresent("001"));
+		*/
 	}
 	
 }

@@ -3,7 +3,7 @@ package main.ids.transferObjects;
 public class AgenziaTO implements TransferObject {
 	
 	//attributi
-	private String id ;
+	private String id;
 	private String citta;
 	private String indirizzo;
 	private String telefono;
@@ -49,6 +49,10 @@ public class AgenziaTO implements TransferObject {
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
+	}
+	
+	public String toString(){
+		return this.getId() + " " + this.getCitta() + " " + this.getIndirizzo() + " " + this.getTelefono();
 	}
 	
 }

@@ -4,36 +4,67 @@ public class FasciaTO {
 	
 	// attributi 
 	
-	public String id ;
-	public String descrizione;
-	public int prezzo;
+	private String id ;
+	private String descrizione;
+	private double tariffaGiornaliera;
+	private double tariffaSettimanale;
+	private double tariffaKm;
 	
-	public FasciaTO(String id, int prezzo){
-		this.id = id;
-		this.prezzo = prezzo;
-	}
-	
-	public FasciaTO(String id, String descrizione, int prezzo){
+	public FasciaTO(String id, String descrizione, double tariffaGiornaliera, double tariffaSettimanale, double tariffaKm){
 		this.id = id;
 		this.descrizione = descrizione;
-		this.prezzo = prezzo;
+		this.tariffaGiornaliera = tariffaGiornaliera;
+		this.tariffaSettimanale = tariffaSettimanale;
+		this.tariffaKm = tariffaKm;
+	}
+	
+	public FasciaTO(){
 		
 	}
-	
-	public void setDescrizione(String descrizione){
-		this.descrizione = descrizione;
-	}
-	
-	public String getId(){
+
+	public String getId() {
 		return id;
 	}
-	
-	public int getPrezzo() {
-		return prezzo;
+
+	public void setId(String id) {
+		this.id = id;
 	}
-	
-	public String getDescrizione(){
+
+	public String getDescrizione() {
 		return descrizione;
 	}
 
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
+	}
+
+	public double getTariffaGiornaliera() {
+		return tariffaGiornaliera;
+	}
+
+	public void setTariffaGiornaliera(double tariffaGiornaliera) {
+		this.tariffaGiornaliera = tariffaGiornaliera;
+	}
+
+	public double getTariffaSettimanale() {
+		return tariffaSettimanale;
+	}
+
+	public void setTariffaSettimanale(double tariffaSettimanale) {
+		this.tariffaSettimanale = tariffaSettimanale;
+	}
+
+	public double getTariffaKm() {
+		return tariffaKm;
+	}
+
+	public void setTariffaKm(double tariffaKm) {
+		this.tariffaKm = tariffaKm;
+	}
+	
+	public String toString(){
+		return this.id + " " + this.descrizione + " " + " " + this.tariffaGiornaliera + " " + 
+				this.tariffaSettimanale + " " + this.tariffaKm;
+	}
+	
 }

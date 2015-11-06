@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS `carloan`.`agenzia` (
 	`citta` VARCHAR(45) NOT NULL,
 	`indirizzo` VARCHAR(45) NOT NULL,
 	`telefono` VARCHAR(10) NOT NULL,
+	`stato` ENUM('aperta', 'chiusa'),
 	PRIMARY KEY (`id`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 1
@@ -29,13 +30,6 @@ CREATE TABLE IF NOT EXISTS `carloan`.`fascia` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
-CREATE TABLE IF NOT EXISTS `carloan`.`stato` (
-	`id` CHARACTER(1) NOT NULL,
-	`descrizione` VARCHAR(100) NOT NULL,
-	PRIMARY KEY(`id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
-
 CREATE TABLE IF NOT EXISTS `carloan`.`cliente` (
 	`cf` VARCHAR(16) NOT NULL,
 	`nome` VARCHAR(45) NOT NULL,
@@ -49,17 +43,12 @@ DEFAULT CHARACTER SET = latin1;
 CREATE TABLE IF NOT EXISTS `carloan`.`auto` (
 	`targa` VARCHAR(10) NOT NULL,
 	`modello` VARCHAR(30) NOT NULL,
-	`stato` CHARACTER(1) NOT NULL,
+	`stato` ENUM('D', 'M', 'N'),
 	`fascia` CHARACTER(1) NOT NULL,
 	`km` FLOAT(8, 2) UNSIGNED NOT NULL,
 	`manutenzione_ord` DATE NOT NULL,
 	`agenzia` INT(3) ZEROFILL NOT NULL,
 	PRIMARY KEY (`targa`),
-	INDEX `fk_autostato_idx` (`stato`),
-	FOREIGN KEY (`stato`) REFERENCES `carloan`.`stato` (`id`)
-		ON DELETE NO ACTION
-		ON UPDATE CASCADE,
-	INDEX `fk_autofascia_idx` (`fascia`),
 	FOREIGN KEY (`fascia`) REFERENCES `carloan`.`fascia` (`id`)
 		ON DELETE NO ACTION
 		ON UPDATE CASCADE,
@@ -78,6 +67,7 @@ CREATE TABLE IF NOT EXISTS `carloan`.`impiegato` (
 	`telefono` VARCHAR(10) NOT NULL,
 	`agenzia` INT(3) ZEROFILL NOT NULL,
 	`username` VARCHAR(20) UNIQUE,
+	`stato` ENUM('attivo', 'licenziato'),
 	PRIMARY KEY (`cf`),
 	INDEX `fk_impiegatoagenzia_idx` (`agenzia`),
 	FOREIGN KEY (`agenzia`) REFERENCES `carloan`.`agenzia` (`id`)
