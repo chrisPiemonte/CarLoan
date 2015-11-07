@@ -26,8 +26,7 @@ public class CrudCliente implements Initializable {
 	public Button contratti;
 	public Button auto;
 	public Button fascia;
-	public TreeView<String> elementTree;
-	TreeItem<String> root,elemento;
+	public Button staff;
 	
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
@@ -36,22 +35,7 @@ public class CrudCliente implements Initializable {
 		contratti.setOnAction(e -> callContrattiView());
 		auto.setOnAction(e -> callAutoView());
 		fascia.setOnAction(e -> callFasciaView());
-		
-		root = new TreeItem<>("ei");
-		
-		elemento = makeBranch("Operazioni",root);
-		makeBranch("inserisci Cliente", elemento);
-		makeBranch("modifica Cliente", elemento);
-		makeBranch("ricerca Cliente", elemento);
-		elemento.setExpanded(true);
-		elemento.expandedProperty().setValue(false);
-		//set the entire tree
-		elementTree.setRoot(root);
-		elementTree.setShowRoot(false);
-		//set a listner for open table 
-		elementTree.getSelectionModel().selectedIndexProperty().addListener((v,oldValue,newValue)->{
-			checkLeaf(newValue);
-		});
+		staff.setOnAction(e -> callStaffView());
 		
 		
 	}
@@ -81,23 +65,18 @@ public class CrudCliente implements Initializable {
 		frontController.processRequest(request);
 	}
 	
-	private TreeItem<String> makeBranch(String title, TreeItem<String> parent){
-		TreeItem<String> item = new TreeItem<>(title);
-		item.setExpanded(true);
-		parent.getChildren().add(item);
-		return item;
-	}
-	
-	
-	private void checkLeaf(Number leaf){
+	private void callStaffView(){
 		Request request = new Request();
-		if (leaf.equals(1)) {
-			request.setRequest("inserisciClienteLeaf");
-			frontController.processRequest(request);
-			
-		};
-		
+		request.setRequest("gestioneStaff");
+		frontController.processRequest(request);
 	}
+	
+	
+	
+		
+		
+		
+	
 
 
 

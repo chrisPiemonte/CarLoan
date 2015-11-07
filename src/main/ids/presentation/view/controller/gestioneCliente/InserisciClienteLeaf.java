@@ -33,7 +33,7 @@ public class InserisciClienteLeaf implements Initializable {
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
 		System.out.println("Loading user data...");
-		
+/*		
 		contratti.setOnAction(e -> callContrattiView());
 		auto.setOnAction(e -> callAutoView());
 		fascia.setOnAction(e -> callFasciaView());
@@ -55,7 +55,7 @@ public class InserisciClienteLeaf implements Initializable {
 			
 			checkLeaf(newValue);
 		});
-		
+		*/
 		
 	}
 	

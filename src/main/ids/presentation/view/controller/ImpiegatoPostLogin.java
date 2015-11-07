@@ -24,6 +24,7 @@ public class ImpiegatoPostLogin implements Initializable {
 	public Button contratti;
 	public Button auto;
 	public Button fascia;
+	public Button staff;
 	
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
@@ -33,7 +34,7 @@ public class ImpiegatoPostLogin implements Initializable {
 		contratti.setOnAction(e -> callContrattiView());
 		auto.setOnAction(e -> callAutoView());
 		fascia.setOnAction(e -> callFasciaView());
-		
+		staff.setOnAction(e -> callStaffView());
 	}
 	
 
@@ -61,6 +62,12 @@ public class ImpiegatoPostLogin implements Initializable {
 	private void callFasciaView(){
 		Request request = new Request();
 		request.setRequest("gestioneFascia");
+		frontController.processRequest(request);
+	}
+	
+	private void callStaffView(){
+		Request request = new Request();
+		request.setRequest("gestioneStaff");
 		frontController.processRequest(request);
 	}
 	

@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="900.0" styleClass="stageBackground" stylesheets="@style/carloan.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ids.presentation.view.controller.Contratti">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="900.0" styleClass="stageBackground" stylesheets="@style/carloan.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ids.presentation.view.controller.Staff">
    <bottom>
       <HBox BorderPane.alignment="CENTER">
          <children>
@@ -69,7 +69,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="clienti" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0">
+                 <Button fx:id="clienti" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0">
                      <styleClass>
                         <String fx:value="btnCliente" />
                         <String fx:value="btn" />
@@ -78,7 +78,11 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="fascia" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="btnFasciaPressed" />
+                  <Button fx:id="fascia" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0">
+                     <styleClass>
+                        <String fx:value="btnFascia" />
+                        <String fx:value="btn" />
+                     </styleClass></Button>
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">

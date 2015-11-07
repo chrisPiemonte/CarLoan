@@ -1,0 +1,126 @@
+.stageBackground {
+    -fx-background-color: #e8e8e8;
+    -fx-text-fill: #0b181f;
+
+}
+
+.darkbar {
+    -fx-background-color: #132935;     
+}
+
+
+.whiteBar {
+    -fx-background-color: #f8f8f8;
+}
+
+
+.btn {
+    -fx-background-color: #132935;
+}
+
+
+.btn:hover {
+    -fx-background-color: #408bb3;
+    -fx-text-fill: #ffffff;
+
+}
+
+
+.btn:active {
+    -fx-background-color: #408bb3;
+    -fx-text-fill: #ffffff;
+    -fx-opacity: 0.33;
+}
+
+
+
+.invisibleText {
+    -fx-text-fill: #e8e8e8;
+}
+
+
+.btnContratto {
+    -fx-background-image: url("img/icons/contratti.png");
+    -fx-background-size: 100% 100%;                     
+}
+
+
+.btnCliente {
+    -fx-background-image: url("img/icons/clienti.png");
+    -fx-background-size: 100% 100%;
+}
+
+
+.btnAuto {
+    -fx-background-image: url("img/icons/auto.png");
+    -fx-background-size: 100% 100%;
+}
+
+
+.btnFascia {
+    -fx-background-image: url("img/icons/fasce.png");
+    -fx-background-size: 100% 100%;
+}
+
+
+.btnStaff {
+    -fx-background-image: url("img/icons/staff.png");
+    -fx-background-size: 100% 100%;
+}
+
+.btnContrattoPressed {
+    -fx-background-image: url("img/icons/contratti.png");
+    -fx-background-color: #2c617d;
+    -fx-background-size: 100% 100%;
+}
+
+
+.btnClientePressed {
+    -fx-background-image: url("img/icons/clienti.png");
+    -fx-background-color: #2c617d;
+    -fx-background-size: 100% 100%;
+}   
+
+
+.btnAutoPressed {
+    -fx-background-image: url("img/icons/auto.png");
+    -fx-background-color: #2c617d;
+    -fx-background-size: 100% 100%;
+} 
+
+
+.btnFasciaPressed {
+    -fx-background-image: url("img/icons/fasce.png");
+    -fx-background-color: #2c617d;
+    -fx-background-size: 100% 100%;
+}
+
+
+.btnStaffPressed {
+    -fx-background-image: url("img/icons/staff.png");
+    -fx-background-color: #2c617d;
+    -fx-background-size: 100% 100%;
+}
+
+.btnOperation {
+  -fx-text-fill: #ffffff;
+  -fx-background-color: #408bb3;
+  -fx-padding: 16px;
+  -fx-font-size: 14px;
+  -fx-font-weight: normal;
+  -fx-background-insets: 1;
+  -fx-background-radius: 6px;
+}
+
+
+.btnOperation:hover {
+  -fx-text-fill: #ffffff;
+  -fx-background-color: #2c617d;
+  -fx-padding: 16px;
+  -fx-font-size: 14px;
+  -fx-font-weight: normal;
+  -fx-background-insets: 1;
+  -fx-background-radius: 6px;
+}
+
+

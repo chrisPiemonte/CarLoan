@@ -7,63 +7,17 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ids.presentation.view.controller.gestioneCliente.InserisciClienteLeaf">
-   <left>
-      <VBox prefHeight="310.0" prefWidth="85.0" spacing="5.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="clienti" layoutX="18.0" layoutY="10.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="155.0" text="Clienti">
-               <padding>
-                  <Insets left="10.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets left="5.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="contratti" layoutX="18.0" layoutY="10.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="155.0" text="Contratti">
-               <padding>
-                  <Insets left="10.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets left="5.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="auto" layoutX="10.0" layoutY="122.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="155.0" text="Auto ">
-               <padding>
-                  <Insets left="10.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets left="5.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="fascia" layoutX="10.0" layoutY="178.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="155.0" text="Fascia">
-               <padding>
-                  <Insets left="10.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets left="5.0" />
-               </VBox.margin>
-            </Button>
-            <Button layoutX="10.0" layoutY="178.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="155.0" text="Aggiungi Contratto">
-               <padding>
-                  <Insets left="10.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets left="5.0" />
-               </VBox.margin>
-            </Button>
-         </children>
-         <BorderPane.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </BorderPane.margin>
-      </VBox>
-   </left>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="900.0" styleClass="stageBackground" stylesheets="@style/carloan.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ids.presentation.view.controller.gestioneCliente.InserisciClienteLeaf">
    <bottom>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <Label text="Label">
+            <Label style="-fx-text-fill: #e8e8e8;" styleClass="invisibleText" text="Label">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
+               <font>
+                  <Font size="26.0" />
+               </font>
             </Label>
          </children>
          <BorderPane.margin>
@@ -73,59 +27,79 @@
    </bottom>
    <top>
       <BorderPane BorderPane.alignment="CENTER">
-         <right>
-            <MenuButton mnemonicParsing="false" text="dati personali" BorderPane.alignment="CENTER">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-              </items>
-               <BorderPane.margin>
-                  <Insets bottom="10.0" top="20.0" />
-               </BorderPane.margin>
-            </MenuButton>
-         </right>
-         <left>
-            <Label text="Buongiorno Gino Pino " BorderPane.alignment="CENTER">
-               <font>
-                  <Font size="17.0" />
-               </font>
-               <BorderPane.margin>
-                  <Insets left="5.0" />
-               </BorderPane.margin>
-            </Label>
-         </left>
+         <top>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" styleClass="whiteBar" stylesheets="@style/carloan.css" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="100.0" fitWidth="353.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="8.0" right="10.0" top="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+         </top>
       </BorderPane>
    </top>
-   <center>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+   <left>
+      <VBox prefHeight="200.0" prefWidth="64.0" spacing="10.0" styleClass="darkbar" BorderPane.alignment="CENTER">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <BorderPane.margin>
+            <Insets left="8.0" />
+         </BorderPane.margin>
          <children>
-            <TreeView fx:id="elementTree" prefHeight="320.0" prefWidth="146.0" />
-            <VBox prefHeight="320.0" prefWidth="221.0">
+            <HBox prefHeight="60.0" prefWidth="200.0">
+               <styleClass>
+                  <String fx:value="btnContratto" />
+                  <String fx:value="btn" />
+               </styleClass>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="10.0" prefHeight="60.0" prefWidth="200.0">
+               <styleClass>
+                  <String fx:value="btnAuto" />
+                  <String fx:value="btn" />
+               </styleClass>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="90.0" prefHeight="60.0" prefWidth="200.0">
+               <styleClass>
+                  <String fx:value="btnCliente" />
+                  <String fx:value="btn" />
+               </styleClass>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="170.0" prefHeight="60.0" prefWidth="200.0">
+               <styleClass>
+                  <String fx:value="btnFascia" />
+                  <String fx:value="btn" />
+               </styleClass>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="250.0" prefHeight="60.0" prefWidth="200.0">
+               <styleClass>
+                  <String fx:value="btnStaff" />
+                  <String fx:value="btn" />
+               </styleClass>
+            </HBox>
+         </children>
+      </VBox>
+   </left>
+   <right>
+      <VBox alignment="BOTTOM_LEFT" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="BOTTOM_LEFT">
+         <children>
+            <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <HBox prefHeight="31.0" prefWidth="221.0" spacing="5.0">
-                     <children>
-                        <Button fx:id="addButton" mnemonicParsing="false" text="Add..." />
-                        <Button fx:id="removeButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Remove" />
-                     </children>
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <TableView fx:id="tableView" prefHeight="279.0" prefWidth="221.0" >
-                    <columns>
-                      <TableColumn prefWidth="75.0" text="C1" />
-                      <TableColumn prefWidth="75.0" text="C2" />
-                    </columns>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </TableView>
+                  <Label text="Paolo" />
+                  <Label text="Saracino" />
+                  <Label text="592949">
+                     <padding>
+                        <Insets bottom="8.0" />
+                     </padding>
+                  </Label>
+                  <Label text="Christopher" />
+                  <Label text="Piemonte" />
+                  <Label text="#######" />
                </children>
             </VBox>
          </children>
-         <BorderPane.margin>
-            <Insets top="5.0" />
-         </BorderPane.margin>
-      </HBox>
-   </center>
+      </VBox>
+   </right>
 </BorderPane>

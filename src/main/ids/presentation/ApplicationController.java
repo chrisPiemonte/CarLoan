@@ -62,9 +62,14 @@ public class ApplicationController {
 			dispatcher.setInterface("/main/ids/presentation/view/CrudFascia.fxml");
 			break;
 			
-		case "inserisciClienteLeaf":
+		case "gestioneStaff":
 			dispatcher = new Dispatcher();
-			dispatcher.setInterface("/main/ids/presentation/view/InserisciClienteLeaf.fxml");
+			dispatcher.setInterface("/main/ids/presentation/view/Staff.fxml");
+			break;
+			
+		case "modificaCliente":
+			dispatcher = new Dispatcher();
+			dispatcher.setInterface("/main/ids/presentation/view/ModificaClienteLeaf.fxml");
 			break;
 			
 		}

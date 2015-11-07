@@ -26,8 +26,7 @@ public class CrudAuto implements Initializable {
 	public Button contratti;
 	public Button auto;
 	public Button fascia;
-	public TreeView<String> elementTree;
-	TreeItem<String> root,elemento;
+	public Button staff;
 	
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
@@ -37,17 +36,7 @@ public class CrudAuto implements Initializable {
 		contratti.setOnAction(e -> callContrattiView());
 		//auto.setOnAction(e -> callAutoView());
 		fascia.setOnAction(e -> callFasciaView());
-		
-		root = new TreeItem<>("ei");
-		
-		elemento = makeBranch("Operazioni",root);
-		makeBranch("inserisci Auto", elemento);
-		makeBranch("modifica Auto", elemento);
-		makeBranch("ricerca Auto", elemento);
-		elemento.setExpanded(true);
-		elemento.expandedProperty().setValue(false);
-		elementTree.setRoot(root);
-		elementTree.setShowRoot(false);
+		staff.setOnAction(e -> callStaffView());
 		
 		
 	}
@@ -74,11 +63,10 @@ public class CrudAuto implements Initializable {
 		frontController.processRequest(request);
 	}
 	
-	private TreeItem<String> makeBranch(String title, TreeItem<String> parent){
-		TreeItem<String> item = new TreeItem<>(title);
-		item.setExpanded(true);
-		parent.getChildren().add(item);
-		return item;
+	private void callStaffView(){
+		Request request = new Request();
+		request.setRequest("gestioneStaff");
+		frontController.processRequest(request);
 	}
 	
 

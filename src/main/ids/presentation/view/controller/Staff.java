@@ -1,6 +1,5 @@
 package main.ids.presentation.view.controller;
 
-
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -12,11 +11,10 @@ import main.ids.presentation.request.Request;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 
-public class CrudFascia implements Initializable {
+public class Staff implements Initializable {
 	
 	public TextField usernameInput;
 	public TextField passwordInput;
@@ -27,7 +25,8 @@ public class CrudFascia implements Initializable {
 	public Button contratti;
 	public Button auto;
 	public Button fascia;
-	public Button staff;
+	public TreeView<String> elementTree;
+	TreeItem<String> root,elemento;
 	
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
@@ -36,8 +35,7 @@ public class CrudFascia implements Initializable {
 		clienti.setOnAction(e -> callClientiView());
 		contratti.setOnAction(e -> callContrattiView());
 		auto.setOnAction(e -> callAutoView());
-		//fascia.setOnAction(e -> callFasciaView());
-		staff.setOnAction(e -> callStaffView());
+		fascia.setOnAction(e -> callFasciaView());
 		
 		
 		
@@ -68,15 +66,30 @@ public class CrudFascia implements Initializable {
 		frontController.processRequest(request);
 	}
 	
-
-	private void callStaffView(){
-		Request request = new Request();
-		request.setRequest("gestioneStaff");
-		frontController.processRequest(request);
+	private TreeItem<String> makeBranch(String title, TreeItem<String> parent){
+		TreeItem<String> item = new TreeItem<>(title);
+		item.setExpanded(true);
+		parent.getChildren().add(item);
+		return item;
 	}
 	
-
 	
+	private void checkLeaf(Number leaf){
+		Request request = new Request();
+		switch(leaf.intValue()){
+		case 1:
+			request.setRequest("inserisciClienteLeaf");
+			frontController.processRequest(request);
+			break;
+			
+		case 2:
+			request.setRequest("modificaCliente");
+			frontController.processRequest(request);
+		}
+		
+		
+		
+	}
 
 
 

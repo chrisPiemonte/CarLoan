@@ -12,8 +12,8 @@ public class Dispatcher {
 	
 	final static String BOOTSTRAP = "/main/ids/presentation/view/Bootstrap.fxml";
 	
-	public int height = 900;
-	public int weight = 700;
+	public int height = 700;
+	public int weight = 930;
 	
 	
 	private static Dispatcher dispatcher ;
@@ -34,7 +34,7 @@ public class Dispatcher {
 		
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource(BOOTSTRAP));
-			Scene scene = new Scene(root,height,weight);
+			Scene scene = new Scene(root,weight,height);
 			CurrentSessionHandler.setSessioneScene(scene);
 			return CurrentSessionHandler.getSessioneScene();
 		}catch (IOException | NullPointerException e) {

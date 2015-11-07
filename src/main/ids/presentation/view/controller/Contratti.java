@@ -26,8 +26,7 @@ public class Contratti implements Initializable {
 	public Button contratti;
 	public Button auto;
 	public Button fascia;
-	public TreeView<String> elementTree;
-	TreeItem<String> root,elemento,leggi;
+	public Button staff;
 	
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
@@ -37,18 +36,7 @@ public class Contratti implements Initializable {
 		//contratti.setOnAction(e -> callContrattiView());
 		auto.setOnAction(e -> callAutoView());
 		fascia.setOnAction(e -> callFasciaView());
-		
-		root = new TreeItem<>("ei");
-		
-		elemento = makeBranch("Operazioni",root);
-		makeBranch("Crea contratto", elemento);
-		leggi = makeBranch("Leggi contratti", elemento);
-		makeBranch("Aperti", leggi);
-		makeBranch("Chiusi", leggi);
-		elemento.setExpanded(true);
-		elemento.expandedProperty().setValue(false);
-		elementTree.setRoot(root);
-		elementTree.setShowRoot(false);
+		staff.setOnAction(e -> callStaffView());
 		
 		
 	}
@@ -78,12 +66,14 @@ public class Contratti implements Initializable {
 		frontController.processRequest(request);
 	}
 	
-	private TreeItem<String> makeBranch(String title, TreeItem<String> parent){
-		TreeItem<String> item = new TreeItem<>(title);
-		item.setExpanded(true);
-		parent.getChildren().add(item);
-		return item;
+	
+	private void callStaffView(){
+		Request request = new Request();
+		request.setRequest("gestioneStaff");
+		frontController.processRequest(request);
 	}
+	
+	
 	
 
 
