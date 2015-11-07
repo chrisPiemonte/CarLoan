@@ -5,11 +5,11 @@ import java.time.LocalDate;
 public class ClienteTO implements TransferObject {
 	
 	// attributi
-	public String cf;
-	public String nome;
-	public String cognome; 
-	public LocalDate dataNascita;
-	public String telefono;
+	private String cf;
+	private String nome;
+	private String cognome; 
+	private LocalDate dataNascita;
+	private String telefono;
 	
 	public ClienteTO(String cf, String nome, String cognome, LocalDate dataNascita, String telefono){
 		this.cf = cf;

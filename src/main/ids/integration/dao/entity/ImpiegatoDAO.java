@@ -6,10 +6,10 @@ import main.ids.transferObjects.ImpiegatoTO;
 
 public interface ImpiegatoDAO extends EntityDAO<ImpiegatoTO> {
 	
-	public List<ImpiegatoTO> readAgenzia(String agenziaId);
+	public String readAgenzia(String cf);
 	
 	public List<ImpiegatoTO> readCognome(String cognome);
 	
-	public boolean updateAgenzia(String cf);
+	public boolean updateAgenzia(String cf, String newAgenzia);
 	
 }

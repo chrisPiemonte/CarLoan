@@ -173,23 +173,27 @@
       },
       {
         "id": "read_impiegato",
-        "sql": "SELECT * FROM `carloan`.`impiegato` WHERE `carloan`.`impiegato`.`cf` = ?;"
+        "sql": "SELECT * FROM `carloan`.`impiegato` WHERE `carloan`.`impiegato`.`cf` = ? AND `carloan`.`impiegato`.`stato` = 'attivo';"
       },
       {
         "id": "read_all_impiegato",
-        "sql": "SELECT * FROM `carloan`.`impiegato`;"
+        "sql": "SELECT * FROM `carloan`.`impiegato` WHERE `carloan`.`impiegato`.`stato` = 'attivo';"
       },
       {
         "id": "read_agenzia_impiegato",
-        "sql": "SELECT * FROM `carloan`.`impiegato` WHERE `carloan`.`impiegato`.`agenzia` = ?;"
+        "sql": "SELECT `carloan`.`impiegato`.`agenzia` FROM `carloan`.`impiegato` WHERE `carloan`.`impiegato`.`cf` = ? AND `carloan`.`impiegato`.`stato` = 'attivo';"
       },
       {
         "id": "read_cognome_impiegato",
-        "sql": "SELECT * FROM `carloan`.`impiegato` WHERE `carloan`.`impiegato`.`cognome` = ?;"
+        "sql": "SELECT * FROM `carloan`.`impiegato` WHERE `carloan`.`impiegato`.`cognome` = ? AND  `carloan`.`impiegato`.`stato` = 'attivo';"
       },
       {
         "id": "update_impiegato",
         "sql": "UPDATE `carloan`.`impiegato` SET `carloan`.`impiegato`.`cf` = ?, `carloan`.`impiegato`.`nome` = ?, `carloan`.`impiegato`.`cognome` = ?, `carloan`.`impiegato`.`data_nascita` = ?, `carloan`.`impiegato`.`telefono` = ?, `carloan`.`impiegato`.`agenzia` = ?, `carloan`.`impiegato`.`username` = ? WHERE `carloan`.`impiegato`.`cf` = ?;"
+      },
+      {
+        "id": "update_stato_impiegato",
+        "sql": "UPDATE `carloan`.`impiegato` SET `carloan`.`impiegato`.`stato` = 'licenziato' WHERE `carloan`.`impiegato`.`cf` = ?;"
       },
       {
         "id": "update_agenzia_impiegato",
@@ -210,6 +214,10 @@
       {
         "id": "read_contratto",
         "sql": "SELECT * FROM `carloan`.`contratto` WHERE `carloan`.`contratto`.`id` = ?;"
+      },
+      {
+        "id": "read_all_contratto",
+        "sql": "SELECT * FROM `carloan`.`contratto`"
       },
       {
         "id": "read_cliente_contratto",

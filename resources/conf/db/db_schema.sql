@@ -14,7 +14,7 @@ DEFAULT CHARACTER SET = latin1;
 
 CREATE TABLE IF NOT EXISTS `carloan`.`account` (
 	`username` VARCHAR(20) NOT NULL,
-	`password` VARCHAR(5) NOT NULL,
+	`password` VARCHAR(32) NOT NULL,
 	`ruolo` ENUM('admin', 'manager', 'impiegato') DEFAULT 'impiegato',
 	PRIMARY KEY (`username`))
 ENGINE = InnoDB

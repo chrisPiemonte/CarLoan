@@ -1,8 +1,16 @@
 package main.ids.integration.mySqlDao.entity;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import main.ids.integration.dao.entity.AutoDAO;
+import main.ids.integration.mySqlDao.dbUtil.DbEntityCloser;
+import main.ids.integration.mySqlDao.factory.MySqlConnectionFactory;
 import main.ids.transferObjects.AutoTO;
 
 public class MySqlAutoDAO extends MySqlEntityDAO implements AutoDAO{
@@ -12,51 +20,429 @@ public class MySqlAutoDAO extends MySqlEntityDAO implements AutoDAO{
     }
 
 	@Override
-	public boolean create(AutoTO elem) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean create(AutoTO auto) {
+		Connection conn = MySqlConnectionFactory.getConnection();
+		PreparedStatement statement = null;
+		
+		int result = 0;
+		boolean response = false;
+		
+		try{
+			statement = conn.prepareStatement(queryFactory.getQuery("create_auto"));
+			int i = 1;
+			statement.setString(i++, auto.getTarga());
+			statement.setString(i++, auto.getModello());
+			statement.setString(i++, auto.getStato());
+			statement.setString(i++, auto.getFascia());
+			statement.setDouble(i++, auto.getKm());
+			statement.setDate  (i++, java.sql.Date.valueOf(auto.getManutenzioneOrdinaria()));
+			statement.setString(i++, auto.getAgenzia());
+			
+			result = statement.executeUpdate();
+			
+			if(result > 0) response = true;
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			DbEntityCloser.close(statement);
+			DbEntityCloser.close(conn);
+		}
+				
+		return response;
 	}
 
 	@Override
-	public AutoTO read(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean update(AutoTO elem) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean delete(String id) {
-		// TODO Auto-generated method stub
-		return false;
+	public AutoTO read(String targa) {
+		Connection conn = MySqlConnectionFactory.getConnection();
+		PreparedStatement statement = null;
+		AutoTO auto = null;
+		ResultSet resultSet = null;
+		
+		try{
+			statement = conn.prepareStatement(queryFactory.getQuery("read_auto"));
+			statement.setString(1, targa);
+			
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				auto = new AutoTO();
+				auto.setTarga(resultSet.getString("targa"));
+				auto.setModello(resultSet.getString("modello"));
+				auto.setStato(resultSet.getString("stato"));
+				auto.setFascia(resultSet.getString("fascia"));
+				auto.setKm(resultSet.getDouble("km"));
+				auto.setManutenzioneOrdinaria(resultSet.getDate("manutenzione_ord").toLocalDate());
+				auto.setAgenzia(resultSet.getString("agenzia"));
+			}
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			DbEntityCloser.close(statement);
+			DbEntityCloser.close(conn);
+		}
+		
+		return auto;
 	}
 
 	@Override
 	public List<AutoTO> readAll() {
+		Connection conn = MySqlConnectionFactory.getConnection();
+		PreparedStatement statement = null;
+		List<AutoTO> listAuto = new ArrayList<AutoTO>();;
+		ResultSet resultSet = null;
+		
+		try{
+			statement = conn.prepareStatement(queryFactory.getQuery("read_all_auto"));
+			resultSet = statement.executeQuery();
+			
+			while (resultSet.next()) {
+				AutoTO auto = new AutoTO();
+				auto.setTarga(resultSet.getString("targa"));
+				auto.setModello(resultSet.getString("modello"));
+				auto.setStato(resultSet.getString("stato"));
+				auto.setFascia(resultSet.getString("fascia"));
+				auto.setKm(resultSet.getDouble("km"));
+				auto.setManutenzioneOrdinaria(resultSet.getDate("manutenzione_ord").toLocalDate());
+				auto.setAgenzia(resultSet.getString("agenzia"));
+				listAuto.add(auto);
+			}
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			DbEntityCloser.close(statement);
+			DbEntityCloser.close(conn);
+		}
+		
+		return listAuto;
+	}
+
+	@Override
+	public List<AutoTO> readAgenzia(String agenzia) {
+		Connection conn = MySqlConnectionFactory.getConnection();
+		PreparedStatement statement = null;
+		List<AutoTO> listAuto = new ArrayList<AutoTO>();;
+		ResultSet resultSet = null;
+		
+		try{
+			statement = conn.prepareStatement(queryFactory.getQuery("read_agenzia_auto"));
+			statement.setString(1, agenzia);
+			resultSet = statement.executeQuery();
+			
+			while (resultSet.next()) {
+				AutoTO auto = new AutoTO();
+				auto.setTarga(resultSet.getString("targa"));
+				auto.setModello(resultSet.getString("modello"));
+				auto.setStato(resultSet.getString("stato"));
+				auto.setFascia(resultSet.getString("fascia"));
+				auto.setKm(resultSet.getDouble("km"));
+				auto.setManutenzioneOrdinaria(resultSet.getDate("manutenzione_ord").toLocalDate());
+				auto.setAgenzia(resultSet.getString("agenzia"));
+				listAuto.add(auto);
+			}
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			DbEntityCloser.close(statement);
+			DbEntityCloser.close(conn);
+		}
+		
+		return listAuto;
+	}
+
+	@Override
+	public List<AutoTO> readFascia(String fascia) {
+		Connection conn = MySqlConnectionFactory.getConnection();
+		PreparedStatement statement = null;
+		List<AutoTO> listAuto = new ArrayList<AutoTO>();;
+		ResultSet resultSet = null;
+		
+		try{
+			statement = conn.prepareStatement(queryFactory.getQuery("read_fascia_auto"));
+			statement.setString(1, fascia);
+			resultSet = statement.executeQuery();
+			
+			while (resultSet.next()) {
+				AutoTO auto = new AutoTO();
+				auto.setTarga(resultSet.getString("targa"));
+				auto.setModello(resultSet.getString("modello"));
+				auto.setStato(resultSet.getString("stato"));
+				auto.setFascia(resultSet.getString("fascia"));
+				auto.setKm(resultSet.getDouble("km"));
+				auto.setManutenzioneOrdinaria(resultSet.getDate("manutenzione_ord").toLocalDate());
+				auto.setAgenzia(resultSet.getString("agenzia"));
+				listAuto.add(auto);
+			}
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			DbEntityCloser.close(statement);
+			DbEntityCloser.close(conn);
+		}
+		
+		return listAuto;
+	}
+
+	@Override
+	public List<AutoTO> readStato(String stato) {
+		Connection conn = MySqlConnectionFactory.getConnection();
+		PreparedStatement statement = null;
+		List<AutoTO> listAuto = new ArrayList<AutoTO>();;
+		ResultSet resultSet = null;
+		
+		try{
+			statement = conn.prepareStatement(queryFactory.getQuery("read_stato_auto"));
+			statement.setString(1, stato);
+			resultSet = statement.executeQuery();
+			
+			while (resultSet.next()) {
+				AutoTO auto = new AutoTO();
+				auto.setTarga(resultSet.getString("targa"));
+				auto.setModello(resultSet.getString("modello"));
+				auto.setStato(resultSet.getString("stato"));
+				auto.setFascia(resultSet.getString("fascia"));
+				auto.setKm(resultSet.getDouble("km"));
+				auto.setManutenzioneOrdinaria(resultSet.getDate("manutenzione_ord").toLocalDate());
+				auto.setAgenzia(resultSet.getString("agenzia"));
+				listAuto.add(auto);
+			}
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			DbEntityCloser.close(statement);
+			DbEntityCloser.close(conn);
+		}
+		
+		return listAuto;
+	}
+	
+	@Override
+	public boolean update(AutoTO auto) {
+		Connection conn = MySqlConnectionFactory.getConnection();
+		PreparedStatement statement = null;
+		int result;
+		boolean response = false;
+		
+		try{
+			statement = conn.prepareStatement(queryFactory.getQuery("update_auto"));
+			int i = 1;
+			statement.setString(i++, auto.getTarga());
+			statement.setString(i++, auto.getModello());
+			statement.setString(i++, auto.getStato());
+			statement.setString(i++, auto.getFascia());
+			statement.setDouble(i++, auto.getKm());
+			statement.setDate  (i++, java.sql.Date.valueOf(auto.getManutenzioneOrdinaria()));
+			statement.setString(i++, auto.getAgenzia());
+			statement.setString(i++, auto.getTarga());
+			
+			result = statement.executeUpdate();
+			
+			if(result > 0) response = true;
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			DbEntityCloser.close(statement);
+			DbEntityCloser.close(conn);
+		}
+		
+		return response;
+	}
+
+	@Override
+	public boolean updateStato(String targa, String newStato) {
+		Connection conn = MySqlConnectionFactory.getConnection();
+		PreparedStatement statement = null;
+		int result;
+		boolean response = false;
+		
+		try{
+			statement = conn.prepareStatement(queryFactory.getQuery("update_stato_auto"));
+			int i = 1;
+			statement.setString(i++, newStato);
+			statement.setString(i++, targa);
+			
+			result = statement.executeUpdate();
+			
+			if(result > 0) response = true;
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			DbEntityCloser.close(statement);
+			DbEntityCloser.close(conn);
+		}
+		
+		return response;
+	}
+
+	@Override
+	public boolean updateKm(String targa, double newKm) {
+		Connection conn = MySqlConnectionFactory.getConnection();
+		PreparedStatement statement = null;
+		int result;
+		boolean response = false;
+		
+		try{
+			statement = conn.prepareStatement(queryFactory.getQuery("update_km_auto"));
+			int i = 1;
+			statement.setDouble(i++, newKm);
+			statement.setString(i++, targa);
+			
+			result = statement.executeUpdate();
+			
+			if(result > 0) response = true;
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			DbEntityCloser.close(statement);
+			DbEntityCloser.close(conn);
+		}
+		
+		return response;
+	}
+
+	@Override
+	public boolean delete(String targa) {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
+	}
+
+	@Override
+	public boolean isDisponibile(String targa) {
+		Connection conn = MySqlConnectionFactory.getConnection();
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		boolean disponibile = false;
+		
+		try{
+			statement = conn.prepareStatement(queryFactory.getQuery("read_auto"));
+			statement.setString(1, targa);
+			
+			resultSet = statement.executeQuery();
+			if(resultSet.next() && resultSet.getString("stato").equals("D")) disponibile = true;
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			DbEntityCloser.close(statement);
+			DbEntityCloser.close(conn);
+		}
+		
+		return disponibile;
 	}
 
 	@Override
 	public boolean isPresent(String targa) {
-		// TODO Auto-generated method stub
-		return false;
+		Connection conn = MySqlConnectionFactory.getConnection();
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		boolean present = false;
+		
+		try{
+			statement = conn.prepareStatement(queryFactory.getQuery("read_auto"));
+			statement.setString(1, targa);
+			
+			resultSet = statement.executeQuery();
+			if(resultSet.next()) present = true;
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			DbEntityCloser.close(statement);
+			DbEntityCloser.close(conn);
+		}
+		
+		return present;
 	}
-
-	@Override
-	public boolean isDisponibile(String id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public List<AutoTO> getAutoDisponibili() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public static void main(String[] args){
+		AutoDAO autoDAO = new MySqlAutoDAO();
+		/*
+		// create
+		AutoTO au = new AutoTO("ggtttgg", "very belli", "D", "A", 0, LocalDate.now(), "002");
+		System.out.println(autoDAO.create(au));
+		
+		
+		// read
+		System.out.println(autoDAO.read("ggtttgg").toString());
+		
+		
+		// read_all
+		List<AutoTO> liAuto = autoDAO.readAll();
+		for(AutoTO a : liAuto){
+			System.out.println(a.toString());
+		}
+		
+		
+		// read_agenzia
+		List<AutoTO> liAuto = autoDAO.readAgenzia("004");
+		for(AutoTO a : liAuto){
+			System.out.println(a.toString());
+		}
+		
+		
+		// read_fascia
+		List<AutoTO> liAuto = autoDAO.readFascia("C");
+		for(AutoTO a : liAuto){
+			System.out.println(a.toString());
+		}
+		
+		
+		// read_stato
+		List<AutoTO> liAuto = autoDAO.readStato("D");
+			for(AutoTO a : liAuto){
+			System.out.println(a.toString());
+		}
+		
+		
+		// update
+		AutoTO au = new AutoTO("ggtttgg", "VERY BELLY", "N", "A", 0, LocalDate.now(), "002");
+		System.out.println(autoDAO.update(au));
+		
+		
+		// update_stato
+		System.out.println(autoDAO.updateStato("ggtttgg", "D"));
+		
+		
+		// update_km
+		System.out.println(autoDAO.updateKm("ggtttgg", 25));
+		
+		
+		//isDisponibile
+		System.out.println(autoDAO.isDisponibile("ggtttgg"));
+		
+		
+		//isPresent
+		System.out.println(autoDAO.isPresent("ggtttgg"));
+		*/
 	}
 	
 }

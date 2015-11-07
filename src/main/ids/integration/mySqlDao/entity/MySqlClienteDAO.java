@@ -1,11 +1,9 @@
 package main.ids.integration.mySqlDao.entity;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +11,6 @@ import main.ids.integration.dao.entity.ClienteDAO;
 import main.ids.integration.mySqlDao.dbUtil.DbEntityCloser;
 import main.ids.integration.mySqlDao.factory.MySqlConnectionFactory;
 import main.ids.transferObjects.ClienteTO;
-import main.ids.transferObjects.FasciaTO;
 
 public class MySqlClienteDAO extends MySqlEntityDAO implements ClienteDAO {
 	
@@ -53,7 +50,7 @@ public class MySqlClienteDAO extends MySqlEntityDAO implements ClienteDAO {
 				
 		return response;
 	}
-
+	
 	@Override
 	public ClienteTO read(String cf) {
 		Connection conn = MySqlConnectionFactory.getConnection();
@@ -220,7 +217,7 @@ public class MySqlClienteDAO extends MySqlEntityDAO implements ClienteDAO {
 	}
 	
 	public static void main(String[] args){
-		ClienteDAO clienteDAO = new MySqlClienteDAO();
+		//ClienteDAO clienteDAO = new MySqlClienteDAO();
 		
 		/*
 		//create

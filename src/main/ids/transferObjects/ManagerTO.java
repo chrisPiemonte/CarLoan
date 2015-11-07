@@ -16,7 +16,7 @@ public class ManagerTO {
 		
 	}
 	
-	public ManagerTO(String cf, String nome, String cognome, String agenzia, LocalDate dataNascita, String telefono, String username){
+	public ManagerTO(String cf, String nome, String cognome, LocalDate dataNascita, String telefono, String agenzia, String username){
 		this.cf = cf;
 		this.nome = nome;
 		this.cognome = cognome;
@@ -26,15 +26,6 @@ public class ManagerTO {
 		this.username = username;
 	}
 	
-	public ManagerTO(String cf, String nome, String cognome, String agenzia, LocalDate dataNascita, String telefono){
-		this.cf = cf;
-		this.nome = nome;
-		this.cognome = cognome;
-		this.dataNascita = dataNascita;
-		this.telefono = telefono;
-		this.agenzia = agenzia;
-	}
-
 	public String getCf() {
 		return cf;
 	}
