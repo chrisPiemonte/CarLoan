@@ -180,9 +180,9 @@ public class MySqlFasciaDAO extends MySqlEntityDAO implements FasciaDAO {
 	}
 	
 	public static void main(String[] args){
+		/*
 		FasciaDAO fasciaDAO = new MySqlFasciaDAO();
 		
-		/*
 		// create
 		FasciaTO fascia = new FasciaTO("Y", "moltobella", 20.00, 30.00, 40.00);
 		System.out.println(fasciaDAO.create(fascia));

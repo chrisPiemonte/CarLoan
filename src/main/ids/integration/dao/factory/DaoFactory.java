@@ -8,6 +8,8 @@ public abstract class DaoFactory {
 	public static final int MYSQL = 0;
 	
 	public abstract AgenziaDAO getAgenziaDAO();
+
+	public abstract AccountDAO getAccountDAO();
 	
 	public abstract AutoDAO getAutoDAO();
 	

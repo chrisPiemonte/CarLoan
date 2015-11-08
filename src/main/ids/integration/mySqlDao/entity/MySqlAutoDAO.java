@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -384,8 +383,9 @@ public class MySqlAutoDAO extends MySqlEntityDAO implements AutoDAO{
 	}
 	
 	public static void main(String[] args){
-		AutoDAO autoDAO = new MySqlAutoDAO();
 		/*
+		AutoDAO autoDAO = new MySqlAutoDAO();
+		
 		// create
 		AutoTO au = new AutoTO("ggtttgg", "very belli", "D", "A", 0, LocalDate.now(), "002");
 		System.out.println(autoDAO.create(au));

@@ -1,7 +1,6 @@
 package main.ids.integration.mySqlDao.entity;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import java.sql.Connection;
@@ -280,9 +279,9 @@ public class MySqlAgenziaDAO extends MySqlEntityDAO implements AgenziaDAO{
 	}
 	
 	public static void main(String[] args){
+		/*
 		AgenziaDAO agDAO = new MySqlAgenziaDAO();
 		
-		/*
 		// create
 		AgenziaTO agenzia = new AgenziaTO("Torino", "via minchio", "0101010");
 		agDAO.create(agenzia);
@@ -326,6 +325,7 @@ public class MySqlAgenziaDAO extends MySqlEntityDAO implements AgenziaDAO{
 		// isPresent read
 		System.out.println(agDAO.isPresent("001"));
 		*/
+		
 	}
 	
 }

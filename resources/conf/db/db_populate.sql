@@ -12,23 +12,23 @@ INSERT INTO `carloan`.`fascia` VALUES
 	('D', 'utilitaria', 20.00, 10.00, 30.00);
 
 INSERT INTO `carloan`.`account` VALUES
-	('admin',      'admin', 'admin'),
-	('manag',      'manag', 'manager'),
-	('impie',      'impie', 'impiegato'),
-	('rol001',     'fghil', 'impiegato'),
-	('pier003',    '22222', 'manager'),
-	('fer001',     '55555', 'impiegato'),
-	('raff002',    '77777', 'manager'),
-	('franc002',   'frgth', 'impiegato'),
-	('fel002',     'htgrf', 'impiegato'),
-	('ger002',     'aaaaa', 'impiegato'),
-	('ern003',     'ghjkl', 'impiegato'),
-	('manager004', 'qwert', 'manager'),
-	('rin003',     'reqty', 'impiegato'),
-	('www003',     'uiopl', 'impiegato'),
-	('tre004',     'reqty', 'impiegato'),
-	('frz004',     'mrzzr', 'impiegato'),
-	('qqq004',     'huooh', 'impiegato');
+	('admin',      'X7rEg+zBg5IkhU3y5rSdjA==', 'admin'),
+	('manag',      'Uf0xQnkC8ZDuKO4bMx9Oqg==', 'manager'),
+	('impie',      '59eIKEH4BGljJW3pH+5NGA==', 'impiegato'),
+	('rol001',     '59eIKEH4BGljJW3pH+5NGA==', 'impiegato'),
+	('pier003',    'Uf0xQnkC8ZDuKO4bMx9Oqg==', 'manager'),
+	('fer001',     '59eIKEH4BGljJW3pH+5NGA==', 'impiegato'),
+	('raff002',    'Uf0xQnkC8ZDuKO4bMx9Oqg==', 'manager'),
+	('franc002',   '59eIKEH4BGljJW3pH+5NGA==', 'impiegato'),
+	('fel002',     '59eIKEH4BGljJW3pH+5NGA==', 'impiegato'),
+	('ger002',     '59eIKEH4BGljJW3pH+5NGA==', 'impiegato'),
+	('ern003',     '59eIKEH4BGljJW3pH+5NGA==', 'impiegato'),
+	('manager004', 'Uf0xQnkC8ZDuKO4bMx9Oqg==', 'manager'),
+	('rin003',     '59eIKEH4BGljJW3pH+5NGA==', 'impiegato'),
+	('www003',     '59eIKEH4BGljJW3pH+5NGA==', 'impiegato'),
+	('tre004',     '59eIKEH4BGljJW3pH+5NGA==', 'impiegato'),
+	('frz004',     '59eIKEH4BGljJW3pH+5NGA==', 'impiegato'),
+	('qqq004',     '59eIKEH4BGljJW3pH+5NGA==', 'impiegato');
 
 INSERT INTO `carloan`.`cliente` VALUES
 	('SFREDS13A01D447S', 'Roberto',   'Rossi',   '1980-11-21', '08034111'),

@@ -11,7 +11,6 @@ import java.util.List;
 import main.ids.integration.dao.entity.ContrattoDAO;
 import main.ids.integration.mySqlDao.dbUtil.DbEntityCloser;
 import main.ids.integration.mySqlDao.factory.MySqlConnectionFactory;
-import main.ids.transferObjects.AutoTO;
 import main.ids.transferObjects.ContrattoTO;
 
 public class MySqlContrattoDAO extends MySqlEntityDAO implements ContrattoDAO {
@@ -291,9 +290,9 @@ public class MySqlContrattoDAO extends MySqlEntityDAO implements ContrattoDAO {
 	}
 	
 	public static void main(String[] args){
+		/*
 		ContrattoDAO contraDAO = new MySqlContrattoDAO();
 		
-		/*
 		//create
 		ContrattoTO con = new ContrattoTO("QWERTY13A01D447S", "wc333jh", "giornaliero", 
 				"limitato", 10, LocalDate.now(), LocalDate.now(), "004","003", 
@@ -325,10 +324,10 @@ public class MySqlContrattoDAO extends MySqlEntityDAO implements ContrattoDAO {
 		
 		// update_data_fine
 		System.out.println(contraDAO.updateAgenziaFine("14", "001"));
-		*/
 		
 		// update_agenzia_fine
 		System.out.println(contraDAO.updateChiudiContratto("14", "GVNCST13D14C931T", 50, 50));
+		*/
 		
 	}
 	

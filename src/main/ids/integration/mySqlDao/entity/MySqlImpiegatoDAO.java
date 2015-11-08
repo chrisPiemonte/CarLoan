@@ -22,23 +22,11 @@ public class MySqlImpiegatoDAO extends MySqlEntityDAO implements ImpiegatoDAO {
 	public boolean create(ImpiegatoTO impiegato) {
 		Connection conn = MySqlConnectionFactory.getConnection();
 		PreparedStatement statement = null;
-		PreparedStatement accountStatement = null;
 		
 		int result = 0;
 		boolean response = false;
 		
 		try{
-			accountStatement = conn.prepareStatement(queryFactory.getQuery("create_account"));
-			int j = 1;
-			accountStatement.setString(j++, impiegato.getUsername());
-			accountStatement.setString(j++, "d6b558b81ab4503d3ce25c0001513921");
-			accountStatement.setString(j++, "impiegato");
-			result = accountStatement.executeUpdate();
-			if(result > 0) 
-				result = 0;
-			else 
-				return false;
-			
 			statement = conn.prepareStatement(queryFactory.getQuery("create_impiegato"));
 			int i = 1;
 			statement.setString(i++, impiegato.getCf());
@@ -318,11 +306,11 @@ public class MySqlImpiegatoDAO extends MySqlEntityDAO implements ImpiegatoDAO {
 	}
 	
 	public static void main(String[] args){
+		/*
 		ImpiegatoDAO impDAO = new MySqlImpiegatoDAO();
 		
-		/*
 		// create
-		ImpiegatoTO im = new ImpiegatoTO("1111111111111111", "gian", "naig", LocalDate.now(), "0881", "004", "ggg");
+		ImpiegatoTO im = new ImpiegatoTO("1111112435711111", "gian", "naig", LocalDate.now(), "0881", "004", "ggg");
 		System.out.println(impDAO.create(im));
 		
 		

@@ -12,6 +12,11 @@ public class MySqlDaoFactory extends DaoFactory{
 	}
 
 	@Override
+	public AccountDAO getAccountDAO() {
+		return (MySqlAccountDAO) getEntityDao(MySqlAccountDAO.class);
+	}
+	
+	@Override
 	public AutoDAO getAutoDAO() {
 		return (MySqlAutoDAO) getEntityDao(MySqlAutoDAO.class);
 	}
@@ -41,7 +46,7 @@ public class MySqlDaoFactory extends DaoFactory{
 		return (MySqlManagerDAO) getEntityDao(MySqlManagerDAO.class);
 	}
 	
-	private Object getEntityDao(Class daoClass){
+	private Object getEntityDao(Class<?> daoClass){
 		try{
 			return daoClass.newInstance();
 		}catch(Exception e){
