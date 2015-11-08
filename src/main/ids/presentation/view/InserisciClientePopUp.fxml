@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="550.0" spacing="8.0" stylesheets="@style/carloan.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ids.presentation.view.controller.gestioneCliente.InserisciClientePopUp">
+   <children>
+      <Label text="Inserisci Cliente">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </Label>
+      <TextField fx:id="cf" maxWidth="200.0">
+         <VBox.margin>
+            <Insets top="15.0" />
+         </VBox.margin></TextField>
+      <TextField fx:id="nome" layoutX="10.0" layoutY="78.0" maxWidth="200.0" />
+      <TextField fx:id="cognome" layoutX="10.0" layoutY="118.0" maxWidth="200.0" />
+      <HBox maxWidth="200.0" prefHeight="15.0" prefWidth="200.0">
+         <children>
+            <Label text="Inserisci data di nascita">
+               <HBox.margin>
+                  <Insets top="3.0" />
+               </HBox.margin></Label>
+         </children>
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER" maxWidth="200.0" prefHeight="25.0" prefWidth="200.0" spacing="5.0">
+         <children>
+            <TextArea fx:id="gg" maxHeight="40.0" minWidth="45.0" prefWidth="40.0" />
+            <Label alignment="CENTER" prefHeight="15.0" prefWidth="9.0" text="/" />
+            <TextArea fx:id="mm" layoutX="10.0" layoutY="10.0" minWidth="45.0" prefHeight="200.0" prefWidth="45.0" />
+            <Label alignment="CENTER" text="/" />
+            <TextArea fx:id="aa" layoutX="110.0" layoutY="10.0" minWidth="45.0" prefHeight="200.0" prefWidth="45.0" />
+         </children>
+      </HBox>
+      <TextField fx:id="telefono" layoutX="210.0" layoutY="155.0" maxWidth="200.0">
+         <VBox.margin>
+            <Insets top="3.0" />
+         </VBox.margin></TextField>
+      <HBox maxWidth="200.0" prefHeight="50.0" prefWidth="200.0" spacing="20.0">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
+         <children>
+            <Button fx:id="annulla" mnemonicParsing="false" styleClass="btnCancel" text="Annulla" />
+            <Button fx:id="conferma" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" styleClass="btnConfirm" text="Aggiungi" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

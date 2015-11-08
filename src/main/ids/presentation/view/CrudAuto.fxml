@@ -35,6 +35,30 @@
                         <Insets bottom="5.0" left="8.0" right="10.0" top="5.0" />
                      </HBox.margin>
                   </ImageView>
+                  <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" />
+                  <VBox alignment="BOTTOM_RIGHT" prefHeight="110.0" prefWidth="146.0" />
+                  <VBox alignment="BOTTOM_RIGHT" layoutX="596.0" layoutY="10.0" prefHeight="110.0" prefWidth="167.0">
+                     <children>
+                        <Label prefHeight="25.0" prefWidth="136.0" text="Label" />
+                        <MenuButton mnemonicParsing="false" prefHeight="25.0" prefWidth="144.0" text="MenuButton" textOverrun="CLIP">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Action 1" />
+                              <MenuItem mnemonicParsing="false" text="Action 2" />
+                           </items>
+                        </MenuButton>
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </VBox>
                </children>
             </HBox>
          </top>
@@ -138,8 +162,8 @@
             <HBox alignment="BOTTOM_RIGHT" prefHeight="137.0" prefWidth="508.0" spacing="6.0">
                <children>
 		  <Button mnemonicParsing="false" styleClass="btnOperation" text="Ricerca" />
-                  <Button mnemonicParsing="false" styleClass="btnOperation" text="Aggiungi" />
-                  <Button mnemonicParsing="false" styleClass="btnOperation" text="Cancella" />
+                  <Button fx:id="aggiungi" mnemonicParsing="false" styleClass="btnOperation" text="Aggiungi" />
+                  <Button fx:id="cancella" mnemonicParsing="false" styleClass="btnOperation" text="Cancella" />
                </children>
                <padding>
                   <Insets bottom="10.0" left="6.0" right="10.0" top="4.0" />

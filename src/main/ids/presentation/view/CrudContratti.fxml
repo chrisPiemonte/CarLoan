@@ -51,11 +51,7 @@
          <children>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="contratti" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0">
-                     <styleClass>
-                        <String fx:value="btnContratto" />
-                        <String fx:value="btn" />
-                     </styleClass></Button>
+                  <Button fx:id="contratti" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="btnContrattoPressed" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
@@ -78,12 +74,20 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="fascia" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="btnFasciaPressed" />
+                   <Button fx:id="fascia" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0">
+                     <styleClass>
+                        <String fx:value="btnFascia" />
+                        <String fx:value="btn" />
+                     </styleClass></Button>
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="staff" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="btnStaffPressed" />
+                  <Button fx:id="staff" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0">
+                     <styleClass>
+                        <String fx:value="btnStaff" />
+                        <String fx:value="btn" />
+                     </styleClass></Button>
                </children>
             </HBox>
          </children>

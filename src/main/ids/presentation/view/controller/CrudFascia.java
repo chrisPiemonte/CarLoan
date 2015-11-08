@@ -1,6 +1,7 @@
 package main.ids.presentation.view.controller;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -8,13 +9,18 @@ import java.util.ResourceBundle;
 import main.ids.presentation.FrontController;
 import main.ids.presentation.response.Response;
 import main.ids.presentation.request.Request;
-
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class CrudFascia implements Initializable {
 	
@@ -28,6 +34,8 @@ public class CrudFascia implements Initializable {
 	public Button auto;
 	public Button fascia;
 	public Button staff;
+	public Button aggiungi;
+	public Button cancella;
 	
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
@@ -38,6 +46,8 @@ public class CrudFascia implements Initializable {
 		auto.setOnAction(e -> callAutoView());
 		//fascia.setOnAction(e -> callFasciaView());
 		staff.setOnAction(e -> callStaffView());
+		
+		aggiungi.setOnAction(e -> addFascia());
 		
 		
 		
@@ -73,6 +83,26 @@ public class CrudFascia implements Initializable {
 		Request request = new Request();
 		request.setRequest("gestioneStaff");
 		frontController.processRequest(request);
+	}
+	
+	
+	private void addFascia(){
+		try {
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/ids/presentation/view/InserisciFasciaPopUp.fxml"));  
+	    Parent root = (Parent) loader.load();  
+	    Scene scene = new Scene(root,600,500);  
+	    Stage stage = new Stage();  
+	    stage.setScene(scene);  
+	    stage.setTitle("My Window");
+	    stage.initModality(Modality.APPLICATION_MODAL);  
+	    stage.initStyle(StageStyle.UNDECORATED);  
+	    stage.show();  
+		}catch (IOException | NullPointerException e) {
+			
+			e.printStackTrace();
+			
+
+		}
 	}
 	
 

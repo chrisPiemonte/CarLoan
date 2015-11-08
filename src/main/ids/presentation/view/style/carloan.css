@@ -124,3 +124,50 @@
 }
 
 
+.btnConfirm {
+  -fx-text-fill: #ffffff;
+  -fx-background-color: #5cb85c;
+  -fx-padding: 16px;
+  -fx-font-size: 14px;
+  -fx-font-weight: normal;
+  -fx-background-insets: 1;
+  -fx-background-radius: 6px;
+}
+
+
+.btnConfirm:hover {
+  -fx-text-fill: #ffffff;
+  -fx-background-color: #376e37;
+  -fx-padding: 16px;
+  -fx-font-size: 14px;
+  -fx-font-weight: normal;
+  -fx-background-insets: 1;
+  -fx-background-radius: 6px;
+  
+}
+
+
+
+.btnCancel {
+-fx-text-fill: #ffffff;
+  -fx-background-color: #d9534f;
+  -fx-padding: 16px;
+  -fx-font-size: 14px;
+  -fx-font-weight: normal;
+  -fx-background-insets: 1;
+  -fx-background-radius: 6px;
+}
+
+
+.btnCancel:hover {
+  -fx-text-fill: #ffffff;
+  -fx-background-color: #82312f;
+  -fx-padding: 16px;
+  -fx-font-size: 14px;
+  -fx-font-weight: normal;
+  -fx-background-insets: 1;
+  -fx-background-radius: 6px;
+}
+
+
+
