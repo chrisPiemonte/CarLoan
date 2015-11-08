@@ -4,13 +4,13 @@ import java.time.LocalDate;
 
 public class ImpiegatoTO {
 	
-	private String cf; 
-	private String nome;
-	private String cognome; 
-	private LocalDate dataNascita;
-	private String telefono;
-	private String agenzia;
-	private String username;
+	protected String cf; 
+	protected String nome;
+	protected String cognome; 
+	protected LocalDate dataNascita;
+	protected String telefono;
+	protected String agenzia;
+	protected String username;
 	
 	public ImpiegatoTO(){
 		

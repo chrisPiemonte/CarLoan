@@ -306,25 +306,25 @@ public class MySqlImpiegatoDAO extends MySqlEntityDAO implements ImpiegatoDAO {
 	}
 	
 	public static void main(String[] args){
-		/*
 		ImpiegatoDAO impDAO = new MySqlImpiegatoDAO();
+		/*
 		
 		// create
 		ImpiegatoTO im = new ImpiegatoTO("1111112435711111", "gian", "naig", LocalDate.now(), "0881", "004", "ggg");
 		System.out.println(impDAO.create(im));
 		
-		
+		*/
 		// read
-		ImpiegatoTO imp = impDAO.read("DNTRMN13D14C931Z");
-		System.out.println(imp);
+		System.out.println(impDAO.read("DNTRMN13D14C931Z"));
 		
+		System.out.println("");
 		
 		//read_all
 		List<ImpiegatoTO> limp = impDAO.readAll();
 		for(ImpiegatoTO imp : limp){
 			System.out.println(imp.toString());
 		}
-		
+		/*
 		
 		// read_agenzia
 		String agenzia = impDAO.readAgenzia("DNTRMN13D14C931Z");

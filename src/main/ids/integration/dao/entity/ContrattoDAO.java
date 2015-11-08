@@ -8,7 +8,7 @@ public interface ContrattoDAO extends EntityDAO<ContrattoTO> {
 	
 	public boolean updateModNoleggio(String id, String newModNoleggio);
 	
-	public boolean updateDataFine(String id, LocalDate dnewDataFine);
+	public boolean updateDataFine(String id, LocalDate newDataFine);
 	
 	public boolean updateAgenziaFine(String id, String newAgenziaFine);
 	
