@@ -10,6 +10,8 @@ public class ViewsJsonParser extends JsonParser {
 	
 	private static ViewsJsonParser INSTANCE = new ViewsJsonParser();
 	private static final String JSON_PATH = "resources/conf/view/view.json";
+	public final String VIEWS_ARRAY = "QUERIES";
+	public final String ID = "id";
 	public final String VIEW_PATH = "path";
 	
 	protected ViewsJsonParser(){
@@ -25,12 +27,14 @@ public class ViewsJsonParser extends JsonParser {
 	
 	
 	public String getViewPath(String id){
-		JsonArray views = json.getAsJsonArray("VIEWS");
+		JsonArray views = json.getAsJsonArray(VIEWS_ARRAY);
     	for(JsonElement j : views){
     		
     		JsonObject currentJsonObj = (JsonObject) j;
-    		if(currentJsonObj.get("id").toString().trim().replace("\"","").equals(id)){
-    			return currentJsonObj.get(VIEW_PATH).toString().trim().replace("\"","");
+    		String currentId = currentJsonObj.get(ID).toString();
+    		if(normalize(currentId).equals(id)){
+    			String currentViewPath = currentJsonObj.get(VIEW_PATH).toString();
+    			return normalize(currentViewPath);
     		}
     	}return null;
 	}

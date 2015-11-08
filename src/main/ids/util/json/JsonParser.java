@@ -22,8 +22,8 @@ public abstract class JsonParser {
 	}
 	
 	
-	public JsonElement getValue(String key){
-		return this.json.get(key);
+	public String normalize(String string){
+		return string.trim().replace("\"", "");
 	}
 	
 }

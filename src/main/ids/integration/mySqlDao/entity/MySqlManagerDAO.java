@@ -4,11 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.ids.integration.dao.entity.ImpiegatoDAO;
 import main.ids.integration.dao.entity.ManagerDAO;
 import main.ids.integration.mySqlDao.dbUtil.DbEntityCloser;
 import main.ids.integration.mySqlDao.factory.MySqlConnectionFactory;
@@ -76,7 +74,7 @@ public class MySqlManagerDAO extends MySqlEntityDAO implements ManagerDAO{
 		ResultSet resultSet = null;
 		
 		try{
-			statement = conn.prepareStatement(queryFactory.getQuery("read_impiegato"));
+			statement = conn.prepareStatement(queryFactory.getQuery("read_manager"));
 			statement.setString(1, cf);
 			
 			resultSet = statement.executeQuery();
@@ -111,7 +109,7 @@ public class MySqlManagerDAO extends MySqlEntityDAO implements ManagerDAO{
 		ResultSet resultSet = null;
 		
 		try{
-			statement = conn.prepareStatement(queryFactory.getQuery("read_all_impiegato"));
+			statement = conn.prepareStatement(queryFactory.getQuery("read_all_manager"));
 			resultSet = statement.executeQuery();
 			
 			while (resultSet.next()) {
@@ -292,19 +290,19 @@ public class MySqlManagerDAO extends MySqlEntityDAO implements ManagerDAO{
 		ManagerTO ma = new ManagerTO("1111111113111111", "gian", "naig", LocalDate.now(), "0881", "004", "gggdj");
 		System.out.println(manDAO.create(ma));
 		
-		
+		*/
 		// read
-		ManagerTO mana = manDAO.read("DNTRMN13D14C931Z");
+		ManagerTO mana = manDAO.read("FBZCRX13A01D332Y");
 		System.out.println(mana);
 		
-		
+		System.out.println("");
 		//read_all
 		List<ManagerTO> limp = manDAO.readAll();
 		for(ManagerTO man : limp){
 			System.out.println(man.toString());
 		}
 		
-		
+		/*
 		// read_agenzia
 		String agenzia = manDAO.readAgenzia("DNTRMN13D14C931Z");
 		System.out.println(agenzia);

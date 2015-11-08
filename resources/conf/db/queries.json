@@ -44,6 +44,10 @@
         "sql": "SELECT * FROM `carloan`.`account` WHERE `carloan`.`account`.`username` = ?;"
       },
       {
+        "id": "read_password_account",
+        "sql": "SELECT `carloan`.`account`.`password` FROM `carloan`.`account` WHERE `carloan`.`account`.`username` = ?;"
+      },
+      {
         "id": "read_all_account",
         "sql": "SELECT * FROM `carloan`.`account`;"
       },
@@ -173,11 +177,19 @@
       },
       {
         "id": "read_impiegato",
-        "sql": "SELECT * FROM `carloan`.`impiegato` WHERE `carloan`.`impiegato`.`cf` = ? AND `carloan`.`impiegato`.`stato` = 'attivo';"
+        "sql": "SELECT * FROM `carloan`.`impiegato` INNER JOIN `carloan`.`account` ON `carloan`.`impiegato`.`username` = `carloan`.`account`.`username` WHERE `carloan`.`impiegato`.`cf` = ? AND `carloan`.`impiegato`.`stato` = 'attivo' AND `carloan`.`account`.`ruolo` = 'impiegato';"
+      },
+      {
+        "id": "read_manager",
+        "sql": "SELECT * FROM `carloan`.`impiegato` INNER JOIN `carloan`.`account` ON `carloan`.`impiegato`.`username` = `carloan`.`account`.`username` WHERE `carloan`.`impiegato`.`cf` = ? AND `carloan`.`impiegato`.`stato` = 'attivo' AND `carloan`.`account`.`ruolo` = 'manager';"
       },
       {
         "id": "read_all_impiegato",
-        "sql": "SELECT * FROM `carloan`.`impiegato` WHERE `carloan`.`impiegato`.`stato` = 'attivo';"
+        "sql": "SELECT * FROM `carloan`.`impiegato` INNER JOIN `carloan`.`account` ON `carloan`.`impiegato`.`username` = `carloan`.`account`.`username` WHERE `carloan`.`impiegato`.`stato` = 'attivo' AND `carloan`.`account`.`ruolo` = 'impiegato';"
+      },
+      {
+        "id": "read_all_manager",
+        "sql": "SELECT * FROM `carloan`.`impiegato` INNER JOIN `carloan`.`account` ON `carloan`.`impiegato`.`username` = `carloan`.`account`.`username` WHERE `carloan`.`impiegato`.`stato` = 'attivo' AND `carloan`.`account`.`ruolo` = 'manager';"
       },
       {
         "id": "read_agenzia_impiegato",

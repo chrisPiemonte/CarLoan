@@ -11,6 +11,9 @@ import main.ids.integration.dao.entity.AccountDAO;
 import main.ids.integration.mySqlDao.dbUtil.DbEntityCloser;
 import main.ids.integration.mySqlDao.factory.MySqlConnectionFactory;
 import main.ids.transferObjects.AccountTO;
+import main.ids.transferObjects.AdminTO;
+import main.ids.transferObjects.ImpiegatoTO;
+import main.ids.transferObjects.ManagerTO;
 import main.ids.util.security.*;
 
 public class MySqlAccountDAO  extends MySqlEntityDAO implements AccountDAO{
@@ -20,7 +23,55 @@ public class MySqlAccountDAO  extends MySqlEntityDAO implements AccountDAO{
 	public MySqlAccountDAO() {
         super();
     }
-
+	
+	@Override
+	public ImpiegatoTO login(String username, String password){
+		Connection conn = MySqlConnectionFactory.getConnection();
+		PreparedStatement statement = null;
+		ImpiegatoTO impiegato = null;
+		ResultSet resultSet = null;
+		
+		try{
+			statement = conn.prepareStatement(queryFactory.getQuery("login"));
+			int i = 1;
+			statement.setString(i++, username);
+			statement.setString(i++, encrypter.encrypt(password));
+			
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				
+				switch (resultSet.getString("ruolo")){
+					case "impiegato": 
+						impiegato = new ImpiegatoTO();
+						break;
+					case "manager": 
+						impiegato = new ManagerTO();
+						break;
+					case "admin": 
+						impiegato = new AdminTO();
+						break;
+				}
+				impiegato.setCf(resultSet.getString("cf"));
+				impiegato.setNome(resultSet.getString("nome"));
+				impiegato.setCognome(resultSet.getString("cognome"));
+				impiegato.setDataNascita(resultSet.getDate("data_nascita").toLocalDate());
+				impiegato.setTelefono(resultSet.getString("telefono"));
+				impiegato.setAgenzia(resultSet.getString("agenzia"));
+				impiegato.setUsername(resultSet.getString("username"));
+			}
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			DbEntityCloser.close(statement);
+			DbEntityCloser.close(conn);
+		}
+		
+		return impiegato;
+	}
+	
 	@Override
 	public boolean create(AccountTO account) {
 		Connection conn = MySqlConnectionFactory.getConnection();
@@ -86,7 +137,7 @@ public class MySqlAccountDAO  extends MySqlEntityDAO implements AccountDAO{
 		
 		return account;
 	}
-
+	
 	@Override
 	public List<AccountTO> readAll() {
 		Connection conn = MySqlConnectionFactory.getConnection();
@@ -118,7 +169,36 @@ public class MySqlAccountDAO  extends MySqlEntityDAO implements AccountDAO{
 		
 		return listAccount;
 	}
-
+	
+	@Override
+	public String readPassword(String username){
+		Connection conn = MySqlConnectionFactory.getConnection();
+		PreparedStatement statement = null;
+		String password = null;
+		ResultSet resultSet = null;
+		
+		try{
+			statement = conn.prepareStatement(queryFactory.getQuery("read_password_account"));
+			statement.setString(1, username);
+			
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				String encryptedPassword = resultSet.getString("password");
+				password = encrypter.decrypt(encryptedPassword);
+			}
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			DbEntityCloser.close(statement);
+			DbEntityCloser.close(conn);
+		}
+		
+		return password;
+	}
+	
 	@Override
 	public boolean update(AccountTO account) {
 		Connection conn = MySqlConnectionFactory.getConnection();
@@ -184,9 +264,9 @@ public class MySqlAccountDAO  extends MySqlEntityDAO implements AccountDAO{
 	}
 	
 	public static void main(String[] args){
-		
 		/*
 		AccountDAO accDAO = new MySqlAccountDAO();
+		
 		// create
 		AccountTO ac = new AccountTO("sfaccimmey", "0000", "impiegato");
 		System.out.println(accDAO.create(ac));
@@ -206,6 +286,14 @@ public class MySqlAccountDAO  extends MySqlEntityDAO implements AccountDAO{
 		
 		// isPresent
 		System.out.println(accDAO.isPresent("sfaccimmey"));
+		
+		// login
+		ImpiegatoTO impi = accDAO.login("admin", "admin");
+		if (impi != null) System.out.println(impi.toString() + "\n " + impi.getClass().getName().toString());
+		else System.out.println("null");
+		
+		// read_password
+		System.out.println(accDAO.readPassword("fel002"));
 		*/
 		
 	}
