@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import main.ids.presentation.FrontController;
 import main.ids.presentation.response.Response;
+import main.ids.presentation.request.BasicRequest;
 import main.ids.presentation.request.Request;
 
 import javafx.fxml.Initializable;
@@ -41,32 +42,32 @@ public class ImpiegatoPostLogin implements Initializable {
 	
 	
 	private void callClientiView(){
-		Request request = new Request();
+		Request request = new BasicRequest();
 		request.setRequest("gestioneCliente");
 		System.out.println(request.getRequest());
 		frontController.processRequest(request);
 	}
 	
 	private void callContrattiView(){
-		Request request = new Request();
+		Request request = new BasicRequest();
 		request.setRequest("gestioneContratti");
 		frontController.processRequest(request);
 	}
 	
 	private void callAutoView(){
-		Request request = new Request();
+		Request request = new BasicRequest();
 		request.setRequest("gestioneAuto");
 		frontController.processRequest(request);
 	}
 	
 	private void callFasciaView(){
-		Request request = new Request();
+		Request request = new BasicRequest();
 		request.setRequest("gestioneFascia");
 		frontController.processRequest(request);
 	}
 	
 	private void callStaffView(){
-		Request request = new Request();
+		Request request = new BasicRequest();
 		request.setRequest("gestioneStaff");
 		frontController.processRequest(request);
 	}

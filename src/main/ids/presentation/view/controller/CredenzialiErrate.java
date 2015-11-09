@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import main.ids.presentation.FrontController;
 import main.ids.presentation.response.Response;
+import main.ids.presentation.request.ComplexRequest;
 import main.ids.presentation.request.Request;
 
 import javafx.fxml.Initializable;
@@ -29,7 +30,7 @@ public class CredenzialiErrate implements Initializable {
 	public void onClick(){
 		
 		
-		Request request = new Request();
+		ComplexRequest request = new ComplexRequest();
 		parameter.add("errore");
 		request.setRequest("credenzialiErrate");
 		frontController.processRequest(request);

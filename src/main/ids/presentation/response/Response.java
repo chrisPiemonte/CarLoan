@@ -1,19 +1,11 @@
 package main.ids.presentation.response;
 
-public class Response {
-	
-	boolean response;
-	
-	public Response(){
-		this.response = false;
-	}
+public interface Response {
 
-	public boolean isResponse() {
-		return response;
-	}
+	public boolean isResponse();
 
-	public void setResponse(boolean response) {
-		this.response = response;
-	}
+	public void setResponse(boolean response);
+	
+	
 
 }

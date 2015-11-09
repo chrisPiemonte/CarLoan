@@ -6,8 +6,9 @@ import java.util.ResourceBundle;
 
 import main.ids.presentation.FrontController;
 import main.ids.presentation.response.Response;
+import main.ids.presentation.request.ComplexRequest;
 import main.ids.presentation.request.Request;
-
+import main.ids.presentation.request.RequestType;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 
@@ -28,13 +29,15 @@ public class Bootstrap implements Initializable {
 	public void onClick(){
 		
 		
-		Request request = new Request();
-		
+		ComplexRequest<String> request = new ComplexRequest<String>();
+		data.add(usernameInput.getText().toString());
+		data.add(passwordInput.getText().toString());
+		System.out.println(usernameInput.getText().toString() + " " + passwordInput.getText().toString());
 		request.setRequest("login");
-		data.add(0, usernameInput.getText());
-		data.add(1, passwordInput.getText());
 		request.setParameters(data);
-		response = frontController.processRequest(request,data);
+		request.setType(RequestType.SERVICE);
+		//response = 
+		frontController.processRequest(request);
 		
 		
 	}

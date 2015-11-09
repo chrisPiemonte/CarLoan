@@ -7,12 +7,15 @@ import java.util.ResourceBundle;
 
 import main.ids.presentation.FrontController;
 import main.ids.presentation.response.Response;
+import main.ids.presentation.request.BasicRequest;
 import main.ids.presentation.request.Request;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.TreeItem;
@@ -35,10 +38,11 @@ public class CrudCliente implements Initializable {
 	public Button staff;
 	public Button aggiungi;
 	public Button cancella;
-	
+	public TableView<String> tabella;
+	public TableColumn<Request, String> cf;
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
-		System.out.println("Loading user data...");
+		cf = new TableColumn<>("Codice Fiscale");
 		
 		contratti.setOnAction(e -> callContrattiView());
 		auto.setOnAction(e -> callAutoView());
@@ -58,9 +62,8 @@ public class CrudCliente implements Initializable {
 	    Scene scene = new Scene(root,600,500);  
 	    Stage stage = new Stage();  
 	    stage.setScene(scene);  
-	    stage.setTitle("My Window");
-	    stage.initModality(Modality.APPLICATION_MODAL);  
-	    stage.initStyle(StageStyle.UNDECORATED);  
+	    stage.setTitle("Inserisci Cliente");
+	    stage.initModality(Modality.APPLICATION_MODAL);    
 	    stage.show();  
 		}catch (IOException | NullPointerException e) {
 			
@@ -72,25 +75,25 @@ public class CrudCliente implements Initializable {
 	
 	
 	private void callContrattiView(){
-		Request request = new Request();
+		Request request = new BasicRequest();
 		request.setRequest("gestioneContratti");
 		frontController.processRequest(request);
 	}
 	
 	private void callAutoView(){
-		Request request = new Request();
+		Request request = new BasicRequest();
 		request.setRequest("gestioneAuto");
 		frontController.processRequest(request);
 	}
 	
 	private void callFasciaView(){
-		Request request = new Request();
+		Request request = new BasicRequest();
 		request.setRequest("gestioneFascia");
 		frontController.processRequest(request);
 	}
 	
 	private void callStaffView(){
-		Request request = new Request();
+		Request request = new BasicRequest();
 		request.setRequest("gestioneStaff");
 		frontController.processRequest(request);
 	}

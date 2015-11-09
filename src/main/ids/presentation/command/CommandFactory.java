@@ -4,43 +4,51 @@ import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.Map;
 
-import main.ids.presentation.command.classCommand.Login;
+import main.ids.presentation.command.gestioneAccount.Login;
+import main.ids.presentation.request.ComplexRequest;
 import main.ids.presentation.request.Request;
 public class CommandFactory {
 	
-	private static CommandFactory sigleton = new CommandFactory();
+	private static CommandFactory singleton = new CommandFactory();
 	final static String PATH = "main.ids.presentation.command.classCommand.";
-	Class c ;
-	Constructor ctor;
 	
-	private HashMap <String,String> commandMap ; 
+	
+	
+	private Map <String,Class> commandMap ; 
 	private CommandFactory(){
-		commandMap = new HashMap<String,String>();
-		commandMap.put("login", "Login");
+		commandMap = new HashMap<String,Class>();
+		commandMap.put("login", Login.class);
 		
 	}
 	
-	public static CommandFactory getSigleton(){
-		return sigleton;
+	public static CommandFactory getIstance(){
+		return singleton;
 	}
 	
-	public /*Command*/void  getCommand(String name, Request request) throws ClassNotFoundException{
+	public Command getCommand(String commandName, Request request) throws ClassNotFoundException{
 		
-		String className = commandMap.get(name);
-		className = PATH + className;
-		try{
-		c.forName(className);
-		ctor = c.getConstructor();
+		Command command = null;
+		Class c = commandMap.get(commandName);
+		if (c != null){
+			try{
+				if (request.getClass().equals(ComplexRequest.class)){
+					Constructor costructor = c.getConstructor(Request.class);
+					command = (Command)costructor.newInstance(request);
+					return command;
+				} else {
+						command = (Command) c.newInstance();
+						return command;
+				}
 		
-		
-		}
-		catch(Exception e){
-			e.printStackTrace();
+			}
+			catch(Exception e){
+				e.printStackTrace();
 			
-		}
-		
-		
-		
+			}
+		} else {
+				
+			}
+	return null;	
 	}
 
 }

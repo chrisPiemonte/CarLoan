@@ -30,10 +30,13 @@
          <top>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" styleClass="whiteBar" stylesheets="@style/carloan.css" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fitHeight="100.0" fitWidth="353.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="100.0" fitWidth="353.0" pickOnBounds="true" preserveRatio="true" styleClass="logo">
                      <HBox.margin>
                         <Insets bottom="5.0" left="8.0" right="10.0" top="5.0" />
                      </HBox.margin>
+                     <image>
+                        <Image url="@style/img/logo.png" />
+                     </image>
                   </ImageView>
                </children>
             </HBox>

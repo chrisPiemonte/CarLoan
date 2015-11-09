@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 
 import main.ids.presentation.FrontController;
 import main.ids.presentation.response.Response;
+import main.ids.presentation.request.BasicRequest;
 import main.ids.presentation.request.Request;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -55,32 +56,33 @@ public class CrudFascia implements Initializable {
 	
 	
 	private void callClientiView(){
-		Request request = new Request();
+		Request request = new BasicRequest();
 		request.setRequest("gestioneCliente");
 		frontController.processRequest(request);
 	}
 	
 	private void callContrattiView(){
-		Request request = new Request();
+		Request request = new BasicRequest();
 		request.setRequest("gestioneContratti");
 		frontController.processRequest(request);
 	}
 	
 	private void callAutoView(){
-		Request request = new Request();
+		Request request = new BasicRequest();
 		request.setRequest("gestioneAuto");
 		frontController.processRequest(request);
 	}
-	
+
+/*
 	private void callFasciaView(){
-		Request request = new Request();
+		Request request = new BasicRequest();
 		request.setRequest("gestioneFascia");
 		frontController.processRequest(request);
 	}
-	
+*/	
 
 	private void callStaffView(){
-		Request request = new Request();
+		Request request = new BasicRequest();
 		request.setRequest("gestioneStaff");
 		frontController.processRequest(request);
 	}
@@ -93,9 +95,8 @@ public class CrudFascia implements Initializable {
 	    Scene scene = new Scene(root,600,500);  
 	    Stage stage = new Stage();  
 	    stage.setScene(scene);  
-	    stage.setTitle("My Window");
-	    stage.initModality(Modality.APPLICATION_MODAL);  
-	    stage.initStyle(StageStyle.UNDECORATED);  
+	    stage.setTitle("Inserisci Fascia");
+	    stage.initModality(Modality.APPLICATION_MODAL);    
 	    stage.show();  
 		}catch (IOException | NullPointerException e) {
 			

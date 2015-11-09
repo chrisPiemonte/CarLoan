@@ -11,14 +11,18 @@ import main.ids.integration.dao.factory.QueryFactory;
 import main.ids.integration.mySqlDao.factory.SqlQueryFactory;
 
 import main.ids.presentation.CurrentSessionHandler;
+import main.ids.presentation.request.BasicRequest;
+import main.ids.presentation.request.ComplexRequest;
 import main.ids.presentation.request.Request;
+import main.ids.presentation.request.RequestType;
+import main.ids.presentation.response.ComplexResponse;
+import main.ids.presentation.response.Response;
 import main.ids.presentation.FrontController;
 
 public class EntryPoint extends Application{
 	
 	Stage window;
 	Scene scene;
-	TextField usernameInput;
 	
 	
 	
@@ -36,11 +40,14 @@ public class EntryPoint extends Application{
 		// the scene are the content of that
 		
 		try {
+			ComplexResponse response ;
 			window = primaryStage;
-			Request request = new Request();
+			ComplexRequest request = new ComplexRequest();
 			request.setRequest("bootstrap");
+			request.setType(RequestType.VIEW);
 			FrontController frontController = new FrontController();
-			Scene scene = (Scene)frontController.processRequest(request);
+			response = (ComplexResponse<Scene>)frontController.processRequest(request);
+			scene = (Scene)response.getParameters().get(0);
 			CurrentSessionHandler.setSessioneScene(scene);
 			window.setScene(scene);
 			window.setResizable(false);

@@ -39,6 +39,16 @@
 }
 
 
+.logo {
+    -fx-background-image: url("img/logo.png");
+}
+
+
+.bootstrapLogo {
+    -fx-background-image: url("img/home_logo.png");
+}
+
+
 .btnContratto {
     -fx-background-image: url("img/icons/contratti.png");
     -fx-background-size: 100% 100%;                     

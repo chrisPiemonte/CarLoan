@@ -122,13 +122,13 @@
          <children>
             <ScrollPane maxWidth="700.0" prefHeight="609.0" prefWidth="732.0">
                <content>
-                  <TableView maxWidth="700.0" prefHeight="641.0" prefWidth="732.0">
+                  <TableView fx:id="tabella"maxWidth="700.0" prefHeight="641.0" prefWidth="732.0">
                     <columns>
-                      <TableColumn prefWidth="104.0" text="C1" />
-                      <TableColumn prefWidth="99.0" text="C2" />
-                        <TableColumn prefWidth="150.0" text="Column X" />
-                        <TableColumn prefWidth="175.0" text="Column X" />
-                        <TableColumn prefWidth="154.0" text="Column X" />
+                      <TableColumn fx:id="cf" prefWidth="104.0" text="C1" />
+                      <TableColumn fx:id="nome" prefWidth="99.0" text="C2" />
+                        <TableColumn fx:id="cognome" prefWidth="150.0" text="Column X" />
+                        <TableColumn fx:id="data" prefWidth="175.0" text="Column X" />
+                        <TableColumn fx:id="telefono" prefWidth="154.0" text="Column X" />
                     </columns>
                   </TableView>
                </content>

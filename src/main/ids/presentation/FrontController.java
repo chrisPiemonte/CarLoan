@@ -21,14 +21,14 @@ public class FrontController {
 		
 	}
 	
-	public Object processRequest(Request request){
+	/*public Object processRequest(Request request){
 		 applicationController.handleRequest(request);
 		 return applicationController.result;
 		
 	}
-	
-	public Response processRequest(Request request, ArrayList<String> parameters){
-		return (Response) applicationController.handleRequest(request, parameters);
+	*/
+	public Response processRequest(Request request){
+		return (Response) applicationController.handleRequest(request);
 	}
 
 }

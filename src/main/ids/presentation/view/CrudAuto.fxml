@@ -148,7 +148,7 @@
                <content>
                   <TableView maxWidth="700.0" prefHeight="641.0" prefWidth="732.0">
                     <columns>
-                      <TableColumn prefWidth="104.0" text="C1" />
+                      <TableColumn  prefWidth="104.0" text="C1" />
                       <TableColumn prefWidth="99.0" text="C2" />
                         <TableColumn prefWidth="57.0" text="Column X" />
                         <TableColumn prefWidth="57.0" text="Column X" />

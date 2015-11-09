@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import main.ids.presentation.FrontController;
 import main.ids.presentation.response.Response;
+import main.ids.presentation.request.BasicRequest;
 import main.ids.presentation.request.Request;
 
 import javafx.fxml.Initializable;
@@ -43,54 +44,27 @@ public class Staff implements Initializable {
 	
 	
 	private void callClientiView(){
-		Request request = new Request();
+		Request request = new BasicRequest();
 		request.setRequest("gestioneCliente");
 		frontController.processRequest(request);
 	}
 	
 	private void callContrattiView(){
-		Request request = new Request();
+		Request request = new BasicRequest();
 		request.setRequest("gestioneContratti");
 		frontController.processRequest(request);
 	}
 	
 	private void callAutoView(){
-		Request request = new Request();
+		Request request = new BasicRequest();
 		request.setRequest("gestioneAuto");
 		frontController.processRequest(request);
 	}
 	
 	private void callFasciaView(){
-		Request request = new Request();
+		Request request = new BasicRequest();
 		request.setRequest("gestioneFascia");
 		frontController.processRequest(request);
 	}
 	
-	private TreeItem<String> makeBranch(String title, TreeItem<String> parent){
-		TreeItem<String> item = new TreeItem<>(title);
-		item.setExpanded(true);
-		parent.getChildren().add(item);
-		return item;
-	}
-	
-	
-	private void checkLeaf(Number leaf){
-		Request request = new Request();
-		switch(leaf.intValue()){
-		case 1:
-			request.setRequest("inserisciClienteLeaf");
-			frontController.processRequest(request);
-			break;
-			
-		case 2:
-			request.setRequest("modificaCliente");
-			frontController.processRequest(request);
-		}
-		
-		
-		
-	}
-
-
-
 }
