@@ -4,17 +4,35 @@
         "path": "/main/ids/presentation/view/Bootstrap.fxml"
       },
       {
-        "id": "create_agenzia",
-        "path": "INSERT INTO `carloan`.`agenzia` (`citta`, `indirizzo`, `telefono`) VALUES (?, ?, ?);"
+        "id": "impiegatoBoot",
+        "path": "/main/ids/presentation/view/ImpiegatoPostLogin.fxml"
       },
       {
-        "id": "read_agenzia",
-        "path": "SELECT * FROM `carloan`.`agenzia` WHERE `carloan`.`agenzia`.`id` = ?;"
+        "id": "errore",
+        "path": "/main/ids/presentation/view/Bootstrap.fxml"
       },
       {
-        "id": "read_all_agenzia",
-        "path": "SELECT * FROM `carloan`.`agenzia`;"
-      }
+        "id": "gestioneContratti",
+        "path": "/main/ids/presentation/view/CrudContratti.fxml"
+      },
+{
+        "id": "gestioneCliente",
+        "path": "/main/ids/presentation/view/CrudCliente.fxml"
+      },
+{
+        "id": "gestioneAuto",
+        "path": "/main/ids/presentation/view/CrudAuto.fxml"
+      },
+{
+        "id": "gestioneFascia",
+        "path": "/main/ids/presentation/view/CrudFascia.fxml"
+      },
+{
+        "id": "gestioneStaff",
+        "path": "/main/ids/presentation/view/Staff.fxml"
+      },
+
+
     ]
   
 }

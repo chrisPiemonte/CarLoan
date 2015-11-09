@@ -3,6 +3,7 @@ package main.ids.presentation;
 import main.ids.presentation.request.Request;
 import main.ids.presentation.response.Response;
 import main.ids.presentation.command.Command;
+import main.ids.util.json.ViewsJsonParser;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,8 +17,11 @@ public class ApplicationController {
 	
 	ArrayList<String> parameters = new ArrayList<String>();
 	private Dispatcher dispatcher;
+	private ViewsJsonParser vjp;
 	Object result;
 	Command command;
+
+	
 
 	
 	public ApplicationController(){
@@ -30,50 +34,22 @@ public class ApplicationController {
 	//richieste che non chiedono l'utilizzo di parametri
 	
 	public Object handleRequest(Request request){
+		System.out.println(request.getRequest());
 		switch(request.getRequest()){
 		
 		case "bootstrap" :
 			dispatcher = new Dispatcher();
+			vjp = ViewsJsonParser.getInstance();
 			result = dispatcher.begin();
 			break;
 			
-		case "credenzialiErrate":
-			dispatcher = new Dispatcher();
-			dispatcher.setInterface("/main/ids/presentation/view/Bootstrap.fxml");
-			break;
-			
-		case "gestioneCliente":
-			dispatcher = new Dispatcher();
-			dispatcher.setInterface("/main/ids/presentation/view/CrudCliente.fxml");
-			break;
+		}	
 		
-		case "gestioneAuto":
-			dispatcher = new Dispatcher();
-			dispatcher.setInterface("/main/ids/presentation/view/CrudAuto.fxml");
-			break;
+		vjp = ViewsJsonParser.getInstance();
+		//vjp.getInstance();
+		dispatcher = new Dispatcher();
+		dispatcher.setInterface(vjp.getViewPath(request.getRequest()));
 			
-		case "gestioneContratti":
-			dispatcher = new Dispatcher();
-			dispatcher.setInterface("/main/ids/presentation/view/CrudContratti.fxml");
-			break;
-			
-		case "gestioneFascia":
-			dispatcher = new Dispatcher();
-			dispatcher.setInterface("/main/ids/presentation/view/CrudFascia.fxml");
-			break;
-			
-		case "gestioneStaff":
-			dispatcher = new Dispatcher();
-			dispatcher.setInterface("/main/ids/presentation/view/Staff.fxml");
-			break;
-			
-		case "modificaCliente":
-			dispatcher = new Dispatcher();
-			dispatcher.setInterface("/main/ids/presentation/view/ModificaClienteLeaf.fxml");
-			break;
-			
-		
-		}
 		
 		return result;
 	}
@@ -85,8 +61,10 @@ public class ApplicationController {
 			String result = login(request.getParameters());
 			switch(result){
 			case "impiegato":
-				dispatcher = new Dispatcher();
-				dispatcher.setInterface("/main/ids/presentation/view/ImpiegatoPostLogin.fxml");
+				String pathImpiegato = "impiegatoBoot";
+				vjp = ViewsJsonParser.getInstance();
+				dispatcher = new Dispatcher(); 
+				dispatcher.setInterface(vjp.getViewPath(pathImpiegato));
 				break;
 			case "errore":
 				dispatcher = new Dispatcher();
