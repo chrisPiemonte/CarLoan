@@ -10,7 +10,6 @@ import main.ids.transferObjects.ManagerTO;
 
 public class AgenziaBO {
 	 
-	
 	private AgenziaDAO dao;
 
 	public AgenziaBO() {

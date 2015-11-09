@@ -55,9 +55,8 @@ public class ContrattoBO {
 		return this.dao.updateAgenziaFine(id, newAgenziaFine);
 	}
 	
-	public boolean ChiudiContratto(String id, String impFine, double kmPercorsi, double totale){
+	public boolean chiudiContratto(String id, String impFine, double kmPercorsi, double totale){
 		return this.dao.updateChiudiContratto(id, impFine, kmPercorsi, totale);
 	}
-	
 	
 }

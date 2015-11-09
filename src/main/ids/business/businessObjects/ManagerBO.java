@@ -8,7 +8,6 @@ import main.ids.transferObjects.ImpiegatoTO;
 import main.ids.transferObjects.ManagerTO;
 
 public class ManagerBO {
-	
 
 	private ImpiegatoDAO dao;
 
@@ -19,7 +18,6 @@ public class ManagerBO {
 			e.printStackTrace();
 		}
 	}
-	
 
 	public boolean add(ManagerTO manager){
 		return this.dao.create(manager);
@@ -58,6 +56,5 @@ public class ManagerBO {
 	public boolean changeAgenzia(String cf, String newAgenzia){
 		return this.dao.updateAgenzia(cf, newAgenzia);
 	}
-	
 	
 }

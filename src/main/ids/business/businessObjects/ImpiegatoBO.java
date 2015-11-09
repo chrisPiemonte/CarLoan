@@ -17,7 +17,6 @@ public class ImpiegatoBO {
 			e.printStackTrace();
 		}
 	}
-	
 
 	public boolean add(ImpiegatoTO impiegato){
 		return this.dao.create(impiegato);
@@ -42,7 +41,6 @@ public class ImpiegatoBO {
 	public boolean exists(String cf){
 		return this.dao.isPresent(cf);
 	}
-	
 
 	public String getAgenzia(String cf){
 		return this.dao.readAgenzia(cf);
@@ -55,6 +53,5 @@ public class ImpiegatoBO {
 	public boolean changeAgenzia(String cf, String newAgenzia){
 		return this.dao.updateAgenzia(cf, newAgenzia);
 	}
-	
 	
 }

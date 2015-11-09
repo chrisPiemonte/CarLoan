@@ -18,7 +18,6 @@ public class FasciaBO {
 		}
 	}
 	
-
 	public boolean add(FasciaTO fascia){
 		return this.dao.create(fascia);
 	}
@@ -42,6 +41,5 @@ public class FasciaBO {
 	public boolean exists(String id){
 		return this.dao.isPresent(id);
 	}
-	
 	
 }
