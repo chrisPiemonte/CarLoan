@@ -12,6 +12,7 @@ import main.ids.presentation.command.gestioneContratti.*;
 import main.ids.presentation.command.gestioneFasce.*;
 import main.ids.presentation.command.gestioneImpiegati.*;
 import main.ids.presentation.command.gestioneManager.*;
+import main.ids.presentation.request.BasicRequest;
 import main.ids.presentation.request.ComplexRequest;
 import main.ids.presentation.request.Request;
 public class CommandFactory {
@@ -102,14 +103,14 @@ public class CommandFactory {
 	public Command getCommand(String commandName, Request request) throws ClassNotFoundException{
 		
 		Command command = null;
-		Class c = commandMap.get(commandName);
+		Class<?> c = commandMap.get(commandName);
 		if (c != null){
 			try{
 				if (request.getClass().equals(ComplexRequest.class)){
-					Constructor costructor = c.getConstructor(Request.class);
-					command = (Command)costructor.newInstance(request);
+					Constructor<?> constructor = c.getConstructor(Request.class);
+					command = (Command)constructor.newInstance(request);
 					return command;
-				} else {
+				}else{
 						command = (Command) c.newInstance();
 						return command;
 				}
@@ -117,12 +118,25 @@ public class CommandFactory {
 			}
 			catch(Exception e){
 				e.printStackTrace();
-			
 			}
-		} else {
-				
-			}
-	return null;	
+		}else{
+				throw new ClassNotFoundException();
+		}
+		return null;	
 	}
+	
+	
+	public static void main(String[] args){
+		CommandFactory cf = CommandFactory.getIstance();
+		try{
+			Command c = cf.getCommand("getAllClienti", new ComplexRequest());
+			System.out.println(c.getClass().toString());
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
 
 }

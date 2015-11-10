@@ -4,6 +4,7 @@ import java.util.List;
 
 import main.ids.business.applicationServices.GestioneClienti;
 import main.ids.presentation.command.Command;
+import main.ids.presentation.request.BasicRequest;
 import main.ids.presentation.request.Request;
 import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.response.Response;
@@ -28,5 +29,21 @@ public class GetAllClienti implements Command  {
 		response.setParameters(listClienti);
 		return response;
 	}
-
+	
+	public static void main(String[] args){
+		
+		BasicRequest req = new BasicRequest();
+		GetAllClienti gac = new GetAllClienti(req);
+		
+		ComplexResponse<ClienteTO> cr = (ComplexResponse<ClienteTO>)gac.execute();
+		List<ClienteTO> lc = cr.getParameters();
+		
+		for(ClienteTO c : lc){
+			System.out.println(c.toString());
+		}
+		
+		
+	}
+	
+	
 }
