@@ -4,31 +4,27 @@ import main.ids.business.applicationServices.GestioneAccount;
 import main.ids.presentation.command.Command;
 import main.ids.presentation.request.ComplexRequest;
 import main.ids.presentation.request.Request;
-import main.ids.presentation.response.ComplexResponse;
+import main.ids.presentation.response.BasicResponse;
 import main.ids.presentation.response.Response;
-import main.ids.transferObjects.ImpiegatoTO;
 
-public class Login implements Command {
+public class ExistsAccount implements Command  {
 
 	private ComplexRequest<String> request;
 	private GestioneAccount gestioneAccount;
 	
 	
-	public Login(Request request){
+	public ExistsAccount(Request request){
 		this.gestioneAccount = new GestioneAccount();
 		this.request = (ComplexRequest<String>) request;
 	}
 	
 	@Override
 	public Response execute() {
-		
-		ImpiegatoTO impiegato = gestioneAccount.login(request.getParameters().get(0), 
-				request.getParameters().get(1));
-		ComplexResponse<ImpiegatoTO> response = new ComplexResponse<ImpiegatoTO>();
-		response.addParameter(impiegato);
+
+		boolean esiste = gestioneAccount.exists(request.getParameters().get(0));
+		BasicResponse response = new BasicResponse();
+		response.setResponse(esiste);
 		return response;
 	}
-	
-	
 
 }

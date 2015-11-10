@@ -57,7 +57,7 @@ public class GestioneAuto {
 		return this.autoBO.changeKm(targa, newKm);
 	}
 	
-	boolean isAvailable(String targa){
+	public boolean isAvailable(String targa){
 		return this.autoBO.isAvailable(targa);
 	}
 	

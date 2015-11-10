@@ -6,29 +6,27 @@ import main.ids.presentation.request.ComplexRequest;
 import main.ids.presentation.request.Request;
 import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.response.Response;
-import main.ids.transferObjects.ImpiegatoTO;
+import main.ids.transferObjects.AccountTO;
 
-public class Login implements Command {
+public class GetAccount implements Command  {
+	
 
 	private ComplexRequest<String> request;
 	private GestioneAccount gestioneAccount;
 	
 	
-	public Login(Request request){
+	public GetAccount(Request request){
 		this.gestioneAccount = new GestioneAccount();
 		this.request = (ComplexRequest<String>) request;
 	}
 	
 	@Override
 	public Response execute() {
-		
-		ImpiegatoTO impiegato = gestioneAccount.login(request.getParameters().get(0), 
-				request.getParameters().get(1));
-		ComplexResponse<ImpiegatoTO> response = new ComplexResponse<ImpiegatoTO>();
-		response.addParameter(impiegato);
+
+		AccountTO account = gestioneAccount.getAccount(request.getParameters().get(0));
+		ComplexResponse<AccountTO> response = new ComplexResponse<AccountTO>();
+		response.addParameter(account);
 		return response;
 	}
-	
-	
 
 }
