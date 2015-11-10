@@ -50,10 +50,7 @@ public class ApplicationController {
 			
 			case "login":
 				return login(request);
-				 
-				
-				
-			
+	
 			
 			}
 
@@ -94,11 +91,20 @@ public class ApplicationController {
 		Command command = commandFactory.getCommand(request.getRequest(), request);
 		response = (ComplexResponse<ImpiegatoTO>) command.execute();
 		ImpiegatoTO impiegato = (ImpiegatoTO) response.getParameters().get(0);
-		if (impiegato != null){
+		if  (impiegato != null){
 			if (impiegato.getClass().equals(AdminTO.class)){
 				
+				String pathImpiegato = "impiegatoBoot";
+				vjp = ViewsJsonParser.getInstance();
+				dispatcher = new Dispatcher(); 
+				dispatcher.setInterface(vjp.getViewPath(pathImpiegato));
 			}
 			else if (impiegato.getClass().equals(ManagerTO.class)){
+				
+				String pathImpiegato = "impiegatoBoot";
+				vjp = ViewsJsonParser.getInstance();
+				dispatcher = new Dispatcher(); 
+				dispatcher.setInterface(vjp.getViewPath(pathImpiegato));
 				
 			}
 			
@@ -108,6 +114,9 @@ public class ApplicationController {
 				dispatcher = new Dispatcher(); 
 				dispatcher.setInterface(vjp.getViewPath(pathImpiegato));
 			}
+			response.setResponse(true);
+		} else {
+			response.setResponse(false);
 		}
 		
 		
@@ -117,7 +126,7 @@ public class ApplicationController {
 				
 				
 		
-		response.setResponse(true);
+		
 		return response;
 		
 		

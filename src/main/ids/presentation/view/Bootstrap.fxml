@@ -21,7 +21,7 @@
                   <Insets top="6.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="passwordInput" layoutX="10.0" layoutY="25.0" maxWidth="150.0" prefWidth="150.0" />
+            <PasswordField fx:id="passwordInput" layoutX="10.0" layoutY="25.0" maxWidth="150.0" prefWidth="150.0" />
             <Button id="logIn" mnemonicParsing="false" prefWidth="150.0" style="-fx-background-color: #7cafc2;" text="Log in" onAction="#onClick" />
          </children>
          <padding>
