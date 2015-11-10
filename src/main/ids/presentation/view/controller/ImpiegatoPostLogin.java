@@ -8,7 +8,7 @@ import main.ids.presentation.FrontController;
 import main.ids.presentation.response.Response;
 import main.ids.presentation.request.BasicRequest;
 import main.ids.presentation.request.Request;
-
+import main.ids.presentation.request.RequestType;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -20,7 +20,7 @@ public class ImpiegatoPostLogin implements Initializable {
 	public TextField passwordInput;
 	public ArrayList<String> data = new ArrayList<String>();
 	public Response response;
-	FrontController frontController = new FrontController();
+	FrontController frontController;
 	public Button clienti;
 	public Button contratti;
 	public Button auto;
@@ -30,6 +30,7 @@ public class ImpiegatoPostLogin implements Initializable {
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
 		System.out.println("Loading user data...");
+		frontController = new FrontController();
 		
 		clienti.setOnAction(e -> callClientiView());
 		contratti.setOnAction(e -> callContrattiView());
@@ -42,9 +43,9 @@ public class ImpiegatoPostLogin implements Initializable {
 	
 	
 	private void callClientiView(){
-		Request request = new BasicRequest();
+		BasicRequest request = new BasicRequest();
 		request.setRequest("gestioneCliente");
-		System.out.println(request.getRequest());
+		request.setType(RequestType.VIEW);
 		frontController.processRequest(request);
 	}
 	

@@ -6,9 +6,12 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import main.ids.presentation.FrontController;
+import main.ids.presentation.response.BasicResponse;
+import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.response.Response;
 import main.ids.presentation.view.inputValidation.InputValidation;
 import main.ids.presentation.view.inputValidation.InputValidationFactory;
+import main.ids.transferObjects.ImpiegatoTO;
 import main.ids.presentation.request.ComplexRequest;
 import main.ids.presentation.request.Request;
 import main.ids.presentation.request.RequestType;
@@ -16,6 +19,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
@@ -25,59 +29,75 @@ public class Bootstrap implements Initializable {
 	
 	public TextField usernameInput;
 	public PasswordField passwordInput;
-	public ArrayList<String> data = new ArrayList<String>();
-	public Response response;
+	public ArrayList<String> data ;
+	public ComplexResponse response;
 	
 	FrontController frontController;
 	
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
-		frontController = new FrontController();
+		
 	}
 	
 
 	public void onClick(){
-		
-	if (checkInput(usernameInput.getText().toString(),passwordInput.getText().toString())){; 
-		ComplexRequest<String> request = new ComplexRequest<String>();
-		data.add(usernameInput.getText().toString());
-		data.add(passwordInput.getText().toString());
-		System.out.println(usernameInput.getText().toString() + " " + passwordInput.getText().toString());
-		request.setRequest("login");
-		request.setParameters(data);
-		request.setType(RequestType.SERVICE);
-		response = frontController.processRequest(request);
-		if (!response.isResponse()) {
-			usernameInput.clear();
-            passwordInput.clear();
-			try {
-			    FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/ids/presentation/view/Warning.fxml"));  
-			    Parent root = (Parent) loader.load();  
-			    Scene scene = new Scene(root,400,400);  
-			    Stage stage = new Stage();  
-			    stage.setScene(scene);  
-			    stage.setTitle("Attenzione");
-			    stage.initModality(Modality.APPLICATION_MODAL);    
-			    stage.show();  
-				}catch (IOException | NullPointerException e) {
-					
-					e.printStackTrace();
-					
-
-				}
+		frontController = new FrontController();
+		System.out.println(usernameInput.getText().toString()+" "+passwordInput.getText().toString());
+		boolean isValidInput = login(usernameInput.getText().toString(),passwordInput.getText().toString());
+		if (!isValidInput){
+			System.out.println("OOH");
 			
-			}
-		} else { System.out.println("Cia");}
-	}
-	
+			clean();
+		}
+			
+		
+		
+		
+			
+	}		
 	
 	public boolean checkInput(String username, String password){
 		if ((username.isEmpty() || password.isEmpty())){
+			Message.display("Campi vuoti", AlertType.ERROR);
 			return false;
 		} else {
 			InputValidation passwordValidation = InputValidationFactory.getValidation("password");
-			return passwordValidation.isValid(password);
+			if(!passwordValidation.isValid(password)){
+				Message.display("Password troppo lunga", AlertType.ERROR);
+				return false;
+			} else return true;
+			
+			
+			
 		}
+	}
+	
+	
+	public boolean login(String username, String password){
+		if(checkInput(username,password)){
+			ComplexRequest<String> request = new ComplexRequest<String>();
+			data = new ArrayList<String>();
+			data.add(username);
+			data.add(password);
+			request.setRequest("login");
+			request.setParameters(data);
+			request.setType(RequestType.SERVICE);
+			response = (ComplexResponse<ImpiegatoTO>)frontController.processRequest(request);
+			System.out.println(response.isResponse());
+				if (!response.isResponse()){
+					Message.display("Credenziali errate", AlertType.ERROR);
+					return false;
+				} else {
+					return true;
+				}
+		} else {
+		return false;
+		}
+	}
+	
+	public void clean(){
+		usernameInput.clear();
+		passwordInput.clear();
 	}
 		
 		

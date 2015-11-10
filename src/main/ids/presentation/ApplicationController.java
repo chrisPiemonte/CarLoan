@@ -44,20 +44,30 @@ public class ApplicationController {
 	
 	public Response handleRequest(Request request){
 		//System.out.println(request.getRequest());
-	 if(request.getType() == RequestType.SERVICE)
-		{
-			switch(request.getRequest()){
-			
-			case "login":
+		//System.out.println(request.getType()+"eieiei");
+	 if(request.getType().equals(RequestType.SERVICE))
+		
+	 {
+			if(request.getRequest().equals("login"))
 				return login(request);
-	
-			
+			else {
+				try{
+					Response response = null;
+					Command command = commandFactory.getCommand(request.getRequest(), request);
+					response = command.execute();
+					return response;
+				} catch (ClassNotFoundException e){
+					e.printStackTrace();
+				}
 			}
+			
+			
+			
 
 		}
 		
-	 else if (request.getType() == RequestType.VIEW){
-		 System.out.println("HEI");
+	 else if (request.getType().equals(RequestType.VIEW)){
+		
 		switch (request.getRequest()) {
 		case "bootstrap":
 			ComplexResponse<Scene> resp = new ComplexResponse<Scene>();
@@ -72,6 +82,7 @@ public class ApplicationController {
 		
 		
 		default:
+			
 			vjp = ViewsJsonParser.getInstance();
 			//vjp.getInstance();
 			dispatcher = new Dispatcher();
@@ -125,7 +136,6 @@ public class ApplicationController {
 		}
 				
 				
-		
 		
 		return response;
 		

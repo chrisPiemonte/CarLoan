@@ -2,13 +2,21 @@ package main.ids.presentation.view.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import main.ids.presentation.FrontController;
+import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.response.Response;
+import main.ids.presentation.view.model.ClienteModel;
+import main.ids.transferObjects.ClienteTO;
 import main.ids.presentation.request.BasicRequest;
 import main.ids.presentation.request.Request;
+import main.ids.presentation.request.RequestType;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -20,15 +28,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class CrudCliente implements Initializable {
 	
-	public TextField usernameInput;
-	public TextField passwordInput;
-	public ArrayList<String> data = new ArrayList<String>();
+	
+	
 	public Response response;
 	FrontController frontController = new FrontController();
 	public Button clienti;
@@ -38,12 +46,19 @@ public class CrudCliente implements Initializable {
 	public Button staff;
 	public Button aggiungi;
 	public Button cancella;
-	public TableView<String> tabella;
-	public TableColumn<Request, String> cf;
+	
+	public TableView<ClienteModel> tabella;
+	public TableColumn<ClienteModel, String> cf;
+	public TableColumn<ClienteModel, String> nome;
+	public TableColumn<ClienteModel, String> cognome;
+	public TableColumn<ClienteModel, String> dataNascita;
+	public TableColumn<ClienteModel, String> telefono;
+	
+	private ObservableList<ClienteModel> listaClienti;
+
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
-		cf = new TableColumn<>("Codice Fiscale");
-		
+
 		contratti.setOnAction(e -> callContrattiView());
 		auto.setOnAction(e -> callAutoView());
 		fascia.setOnAction(e -> callFasciaView());
@@ -51,6 +66,14 @@ public class CrudCliente implements Initializable {
 		
 		aggiungi.setOnAction(e -> addCliente());
 		
+		
+		cf.setCellValueFactory(new PropertyValueFactory<ClienteModel, String>("codice fiscale"));
+		nome.setCellValueFactory(new PropertyValueFactory<ClienteModel, String>("nome"));
+		cognome.setCellValueFactory(new PropertyValueFactory<ClienteModel, String>("cognome"));
+		dataNascita.setCellValueFactory(new PropertyValueFactory<ClienteModel, String>("dataNascita"));
+		telefono.setCellValueFactory(new PropertyValueFactory<ClienteModel, String>("telefono"));
+		
+		buildData();
 		
 	}
 	
@@ -96,6 +119,29 @@ public class CrudCliente implements Initializable {
 		Request request = new BasicRequest();
 		request.setRequest("gestioneStaff");
 		frontController.processRequest(request);
+	}
+	
+	
+	public void buildData(){
+		listaClienti = FXCollections.observableArrayList();
+		BasicRequest request = new BasicRequest();
+		request.setRequest("getAllClienti");
+		request.setType(RequestType.SERVICE);
+		ComplexResponse<ClienteTO> response = (ComplexResponse<ClienteTO>) frontController.processRequest(request);
+		for (ClienteTO cliente : response.getParameters()){
+			
+			ClienteModel tmpList = new ClienteModel();
+			tmpList.cf.set(cliente.getCf());
+			tmpList.nome.set(cliente.getNome());
+			tmpList.cognome.set(cliente.getCognome());
+			Format formatter = new SimpleDateFormat("dd-MM-yyyy");
+			String s = formatter.format(cliente.getDataNascita());
+			tmpList.dataNascita.set(s);
+			tmpList.telefono.set(cliente.getTelefono());
+			listaClienti.add(tmpList);
+			
+		}
+		System.out.println(listaClienti.get(0).getCf());
 	}
 	
 	

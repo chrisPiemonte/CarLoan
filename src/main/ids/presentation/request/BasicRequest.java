@@ -1,6 +1,5 @@
 package main.ids.presentation.request;
 
-import java.util.ArrayList;
 
 public class BasicRequest implements Request{
 
