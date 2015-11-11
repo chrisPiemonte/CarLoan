@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import main.ids.presentation.FrontController;
 import main.ids.presentation.response.Response;
+import main.ids.util.viewUtil.CallViewLoop;
 import main.ids.presentation.request.BasicRequest;
 import main.ids.presentation.request.Request;
 import main.ids.presentation.request.RequestType;
@@ -32,46 +33,13 @@ public class ImpiegatoPostLogin implements Initializable {
 		System.out.println("Loading user data...");
 		frontController = new FrontController();
 		
-		clienti.setOnAction(e -> callClientiView());
-		contratti.setOnAction(e -> callContrattiView());
-		auto.setOnAction(e -> callAutoView());
-		fascia.setOnAction(e -> callFasciaView());
-		staff.setOnAction(e -> callStaffView());
+		clienti.setOnAction(e -> CallViewLoop.clientiView());
+		contratti.setOnAction(e -> CallViewLoop.contrattiView());
+		auto.setOnAction(e -> CallViewLoop.autoView());
+		fascia.setOnAction(e -> CallViewLoop.fasciaView());
+		staff.setOnAction(e -> CallViewLoop.staffView());
 	}
 	
-
-	
-	
-	private void callClientiView(){
-		BasicRequest request = new BasicRequest();
-		request.setRequest("gestioneCliente");
-		request.setType(RequestType.VIEW);
-		frontController.processRequest(request);
-	}
-	
-	private void callContrattiView(){
-		Request request = new BasicRequest();
-		request.setRequest("gestioneContratti");
-		frontController.processRequest(request);
-	}
-	
-	private void callAutoView(){
-		Request request = new BasicRequest();
-		request.setRequest("gestioneAuto");
-		frontController.processRequest(request);
-	}
-	
-	private void callFasciaView(){
-		Request request = new BasicRequest();
-		request.setRequest("gestioneFascia");
-		frontController.processRequest(request);
-	}
-	
-	private void callStaffView(){
-		Request request = new BasicRequest();
-		request.setRequest("gestioneStaff");
-		frontController.processRequest(request);
-	}
 	
 
 }

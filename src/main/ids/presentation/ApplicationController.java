@@ -28,6 +28,7 @@ public class ApplicationController {
 	//Object result;
 	ComplexResponse response ;
 	CommandFactory commandFactory ;
+	Command command ; 
 
 	
 
@@ -52,9 +53,9 @@ public class ApplicationController {
 				return login(request);
 			else {
 				try{
-					Response response = null;
+					Response response = null ;
 					Command command = commandFactory.getCommand(request.getRequest(), request);
-					response = command.execute();
+					response =  command.execute();
 					return response;
 				} catch (ClassNotFoundException e){
 					e.printStackTrace();

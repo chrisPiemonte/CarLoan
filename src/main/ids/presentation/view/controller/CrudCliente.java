@@ -4,19 +4,25 @@ import java.io.IOException;
 import java.net.URL;
 import java.text.Format;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.stream.Stream;
 
 import main.ids.presentation.FrontController;
 import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.response.Response;
 import main.ids.presentation.view.model.ClienteModel;
 import main.ids.transferObjects.ClienteTO;
+import main.ids.util.viewUtil.CallViewLoop;
 import main.ids.presentation.request.BasicRequest;
+import main.ids.presentation.request.ComplexRequest;
 import main.ids.presentation.request.Request;
 import main.ids.presentation.request.RequestType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -46,12 +52,14 @@ public class CrudCliente implements Initializable {
 	public Button staff;
 	public Button aggiungi;
 	public Button cancella;
+	public Button searchButton;
+	public TextField search;
 	
 	public TableView<ClienteModel> tabella;
 	public TableColumn<ClienteModel, String> cf;
 	public TableColumn<ClienteModel, String> nome;
 	public TableColumn<ClienteModel, String> cognome;
-	public TableColumn<ClienteModel, String> dataNascita;
+	//public TableColumn<ClienteModel, LocalData> dataNascita;
 	public TableColumn<ClienteModel, String> telefono;
 	
 	private ObservableList<ClienteModel> listaClienti;
@@ -59,22 +67,28 @@ public class CrudCliente implements Initializable {
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
 
-		contratti.setOnAction(e -> callContrattiView());
-		auto.setOnAction(e -> callAutoView());
-		fascia.setOnAction(e -> callFasciaView());
-		staff.setOnAction(e -> callStaffView());
+		contratti.setOnAction(e -> CallViewLoop.contrattiView());
+		auto.setOnAction(e -> CallViewLoop.autoView());
+		fascia.setOnAction(e -> CallViewLoop.fasciaView());
+		staff.setOnAction(e -> CallViewLoop.staffView());
 		
 		aggiungi.setOnAction(e -> addCliente());
+		searchButton.setOnAction(e -> cercaCliente(search.getText()));
 		
 		
-		cf.setCellValueFactory(new PropertyValueFactory<ClienteModel, String>("codice fiscale"));
+		cf.setCellValueFactory(new PropertyValueFactory<ClienteModel, String>("cf"));
+		cf.setText("Codice fiscale");
 		nome.setCellValueFactory(new PropertyValueFactory<ClienteModel, String>("nome"));
+		nome.setText("Nome");
 		cognome.setCellValueFactory(new PropertyValueFactory<ClienteModel, String>("cognome"));
-		dataNascita.setCellValueFactory(new PropertyValueFactory<ClienteModel, String>("dataNascita"));
+		cognome.setText("Cognome");
+		//dataNascita.setCellValueFactory(new PropertyValueFactory<ClienteModel, String>("dataNascita"));
 		telefono.setCellValueFactory(new PropertyValueFactory<ClienteModel, String>("telefono"));
+		telefono.setText("Numero di telefono");
 		
 		buildData();
 		
+		//tabella.getSelectionModel().selectedIndexProperty().addListener();
 	}
 	
 	
@@ -97,34 +111,11 @@ public class CrudCliente implements Initializable {
 	}
 	
 	
-	private void callContrattiView(){
-		Request request = new BasicRequest();
-		request.setRequest("gestioneContratti");
-		frontController.processRequest(request);
-	}
-	
-	private void callAutoView(){
-		Request request = new BasicRequest();
-		request.setRequest("gestioneAuto");
-		frontController.processRequest(request);
-	}
-	
-	private void callFasciaView(){
-		Request request = new BasicRequest();
-		request.setRequest("gestioneFascia");
-		frontController.processRequest(request);
-	}
-	
-	private void callStaffView(){
-		Request request = new BasicRequest();
-		request.setRequest("gestioneStaff");
-		frontController.processRequest(request);
-	}
 	
 	
 	public void buildData(){
 		listaClienti = FXCollections.observableArrayList();
-		BasicRequest request = new BasicRequest();
+		ComplexRequest request = new ComplexRequest();
 		request.setRequest("getAllClienti");
 		request.setType(RequestType.SERVICE);
 		ComplexResponse<ClienteTO> response = (ComplexResponse<ClienteTO>) frontController.processRequest(request);
@@ -134,14 +125,24 @@ public class CrudCliente implements Initializable {
 			tmpList.cf.set(cliente.getCf());
 			tmpList.nome.set(cliente.getNome());
 			tmpList.cognome.set(cliente.getCognome());
-			Format formatter = new SimpleDateFormat("dd-MM-yyyy");
-			String s = formatter.format(cliente.getDataNascita());
-			tmpList.dataNascita.set(s);
+			//Format formatter = new SimpleDateFormat("dd-MM-yyyy");
+			//LocalDate dataNascita = cliente.getDataNascita();
+			//String s = formatter.format(dataNascita);
+			//tmpList.dataNascita.set(s);
 			tmpList.telefono.set(cliente.getTelefono());
 			listaClienti.add(tmpList);
 			
 		}
-		System.out.println(listaClienti.get(0).getCf());
+		
+		tabella.setItems(listaClienti);
+		//System.out.println(listaClienti.get(0).getCf());
+	}
+	
+	
+	public void cercaCliente(String key){
+		if (key.equals("")){tabella.setItems(listaClienti);}
+		FilteredList <ClienteModel> filteredData = new FilteredList<>(listaClienti, p->p.getCognome().toLowerCase().startsWith(key));
+		tabella.setItems(filteredData);
 	}
 	
 	

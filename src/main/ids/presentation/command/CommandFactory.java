@@ -81,6 +81,7 @@ public class CommandFactory {
 		commandMap.put("getAgenziaOfImpiegato", GetAgenziaOfImpiegato.class);
 		commandMap.put("getImpiegatiByCognome", GetImpiegatiByCognome.class);
 		commandMap.put("getImpiegato", GetImpiegato.class);
+		commandMap.put("getAllImpiegati", GetAllImpiegati.class);
 		commandMap.put("updateImpiegato", UpdateImpiegato.class);
 		//manager
 		commandMap.put("addManager", AddManager.class);

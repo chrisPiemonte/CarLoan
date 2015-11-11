@@ -127,7 +127,7 @@
                       <TableColumn fx:id="cf" prefWidth="104.0" text="C1" />
                       <TableColumn fx:id="nome" prefWidth="99.0" text="C2" />
                         <TableColumn fx:id="cognome" prefWidth="150.0" text="Column X" />
-                        <TableColumn fx:id="dataNascita" prefWidth="175.0" text="Column X" />
+                        
                         <TableColumn fx:id="telefono" prefWidth="154.0" text="Column X" />
                     </columns>
                   </TableView>
@@ -135,9 +135,11 @@
             </ScrollPane>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="137.0" prefWidth="508.0" spacing="6.0">
                <children>
-		  <Button mnemonicParsing="false" styleClass="btnOperation" text="Ricerca" />
-                  <Button fx:id="aggiungi" mnemonicParsing="false" styleClass="btnOperation" text="Aggiungi" />
-                  <Button fx:id="cancella" mnemonicParsing="false" styleClass="btnOperation" text="Cancella" />
+		  <Button fx:id="searchButton" mnemonicParsing="false" styleClass="btnOperation" text="Ricerca">
+                     <graphic>
+                        <TextField fx:id="search" />
+                     </graphic></Button>
+                  <Button fx:id="aggiungi" mnemonicParsing="false" prefHeight="59.0" prefWidth="94.0" styleClass="btnOperation" text="Aggiungi" />
                </children>
                <padding>
                   <Insets bottom="10.0" left="6.0" right="10.0" top="4.0" />
