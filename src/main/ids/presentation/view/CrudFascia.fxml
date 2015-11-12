@@ -30,10 +30,13 @@
          <top>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" styleClass="whiteBar" stylesheets="@style/carloan.css" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fitHeight="100.0" fitWidth="353.0" pickOnBounds="true" preserveRatio="true">
+                   <ImageView fitHeight="100.0" fitWidth="353.0" pickOnBounds="true" preserveRatio="true" styleClass="logo">
                      <HBox.margin>
                         <Insets bottom="5.0" left="8.0" right="10.0" top="5.0" />
                      </HBox.margin>
+                     <image>
+                        <Image url="@style/img/logo.png" />
+                     </image>
                   </ImageView>
                </children>
             </HBox>
@@ -135,9 +138,10 @@
             </ScrollPane>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="137.0" prefWidth="508.0" spacing="6.0">
                <children>
-		  <Button mnemonicParsing="false" styleClass="btnOperation" text="Ricerca" />
-                  <Button fx:id="aggiungi" mnemonicParsing="false" styleClass="btnOperation" text="Aggiungi" />
-                  <Button fx:id="cancella" mnemonicParsing="false" styleClass="btnOperation" text="Cancella" />
+		  		 <Button fx:id="searchButton" mnemonicParsing="false" styleClass="btnOperation" text="Ricerca">
+                     <graphic>
+                        <TextField fx:id="search" />
+                     </graphic></Button>
                </children>
                <padding>
                   <Insets bottom="10.0" left="6.0" right="10.0" top="4.0" />

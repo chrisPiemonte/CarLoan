@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="900.0" styleClass="stageBackground" stylesheets="@style/carloan.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ids.presentation.view.controller.Staff">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="900.0" styleClass="stageBackground" stylesheets="@../style/carloan.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ids.presentation.view.manager.controller.ManagerLogin">
    <bottom>
       <HBox BorderPane.alignment="CENTER">
          <children>
@@ -28,14 +28,14 @@
    <top>
       <BorderPane BorderPane.alignment="CENTER">
          <top>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" styleClass="whiteBar" stylesheets="@style/carloan.css" BorderPane.alignment="CENTER">
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" styleClass="whiteBar" stylesheets="@../style/carloan.css" BorderPane.alignment="CENTER">
                <children>
-                   <ImageView fitHeight="100.0" fitWidth="353.0" pickOnBounds="true" preserveRatio="true" styleClass="logo">
+                  <ImageView fitHeight="100.0" fitWidth="353.0" pickOnBounds="true" preserveRatio="true" styleClass="logo">
                      <HBox.margin>
                         <Insets bottom="5.0" left="8.0" right="10.0" top="5.0" />
                      </HBox.margin>
                      <image>
-                        <Image url="@style/img/logo.png" />
+                        <Image url="@../style/img/logo.png" />
                      </image>
                   </ImageView>
                </children>
@@ -72,7 +72,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
                <children>
-                 <Button fx:id="clienti" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0">
+                  <Button fx:id="clienti" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0">
                      <styleClass>
                         <String fx:value="btnCliente" />
                         <String fx:value="btn" />
@@ -90,20 +90,20 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="staff" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="btnStaffPressed" />
+                  <Button fx:id="staff" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0">
+                     <styleClass>
+                        <String fx:value="btnStaff" />
+                        <String fx:value="btn" />
+                     </styleClass></Button>
                </children>
             </HBox>
          </children>
       </VBox>
    </left>
    <right>
-      <VBox prefHeight="589.0" prefWidth="100.0" BorderPane.alignment="BOTTOM_LEFT">
+      <VBox alignment="BOTTOM_LEFT" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="BOTTOM_LEFT">
          <children>
-            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" />
-            <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" />
-            <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" />
-            <HBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" />
-            <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0">
+            <VBox alignment="BOTTOM_CENTER" maxWidth="82.0" prefHeight="200.0" prefWidth="100.0">
                <children>
                   <Label text="Paolo" />
                   <Label text="Saracino" />
@@ -114,42 +114,10 @@
                   </Label>
                   <Label text="Christopher" />
                   <Label text="Piemonte" />
-                  <Label text="5555" />
+                  <Label text="#######" />
                </children>
             </VBox>
          </children>
       </VBox>
    </right>
-   <center>
-      <VBox maxWidth="700.0" prefHeight="200.0" prefWidth="700.0" BorderPane.alignment="CENTER">
-         <children>
-            <ScrollPane maxWidth="700.0" prefHeight="609.0" prefWidth="732.0">
-               <content>
-                  <TableView fx:id="tabella" maxWidth="700.0" prefHeight="641.0" prefWidth="732.0">
-                    <columns>
-                      <TableColumn fx:id="cf" prefWidth="104.0" text="C1" />
-                      <TableColumn fx:id="nome" prefWidth="99.0" text="C2" />
-                        <TableColumn fx:id="cognome" prefWidth="150.0" text="Column X" />
-                        <TableColumn fx:id="dataNascita" prefWidth="175.0" text="Column X" />
-                         <TableColumn fx:id="telefono" prefWidth="154.0" text="Column X" />
-                        <TableColumn fx:id="agenzia" prefWidth="154.0" text="Column X" />
-                        <TableColumn fx:id="username" prefWidth="154.0" text="Column X" />
-                    </columns>
-                  </TableView>
-               </content>
-            </ScrollPane>
-            <HBox alignment="BOTTOM_RIGHT" prefHeight="137.0" prefWidth="508.0" spacing="6.0">
-               <children>
-		 <Button fx:id="searchButton" mnemonicParsing="false" styleClass="btnOperation" text="Ricerca">
-                     <graphic>
-                        <TextField fx:id="search" />
-                     </graphic></Button>
-               </children>
-               <padding>
-                  <Insets bottom="10.0" left="6.0" right="10.0" top="4.0" />
-               </padding>
-            </HBox>
-         </children>
-      </VBox>
-   </center>
 </BorderPane>

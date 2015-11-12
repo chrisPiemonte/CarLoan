@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="250.0" spacing="8.0" stylesheets="@style/carloan.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ids.presentation.view.controller.NumberInput">
+   <children>
+      <Label text="Label">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="60.0" />
+         </VBox.margin>
+      </Label>
+      <TextField fx:id="input" maxWidth="150.0" prefWidth="150.0" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+         <children>
+            <Button fx:id="noBtn" mnemonicParsing="false" styleClass="btnCancel" text="Annulla" />
+            <Button fx:id="okBtn" mnemonicParsing="false" styleClass="btnConfirm" text="OK      " />
+         </children>
+      </HBox>
+   </children>
+</VBox>

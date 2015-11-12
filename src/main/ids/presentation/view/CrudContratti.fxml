@@ -30,10 +30,13 @@
          <top>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" styleClass="whiteBar" stylesheets="@style/carloan.css" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fitHeight="100.0" fitWidth="353.0" pickOnBounds="true" preserveRatio="true">
+                   <ImageView fitHeight="100.0" fitWidth="353.0" pickOnBounds="true" preserveRatio="true" styleClass="logo">
                      <HBox.margin>
                         <Insets bottom="5.0" left="8.0" right="10.0" top="5.0" />
                      </HBox.margin>
+                     <image>
+                        <Image url="@style/img/logo.png" />
+                     </image>
                   </ImageView>
                </children>
             </HBox>
@@ -56,7 +59,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="auto" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0">
+                  <Button fx:id="autoView" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0">
                      <styleClass>
                         <String fx:value="btnAuto" />
                         <String fx:value="btn" />
@@ -122,22 +125,25 @@
          <children>
             <ScrollPane maxWidth="700.0" prefHeight="609.0" prefWidth="732.0">
                <content>
-                  <TableView maxWidth="700.0" prefHeight="641.0" prefWidth="732.0">
+                  <TableView fx:id="tabella" maxWidth="700.0" prefHeight="641.0" prefWidth="732.0">
                     <columns>
-                      <TableColumn prefWidth="104.0" text="C1" />
-                      <TableColumn prefWidth="99.0" text="C2" />
-                        <TableColumn prefWidth="150.0" text="Column X" />
-                        <TableColumn prefWidth="175.0" text="Column X" />
-                        <TableColumn prefWidth="154.0" text="Column X" />
+                      <TableColumn fx:id="cliente" prefWidth="104.0" text="C1" />
+                      <TableColumn fx:id="auto" prefWidth="99.0" text="C2" />
+                        <TableColumn fx:id="modNoleggio" prefWidth="150.0" text="Column X" />
+                        <TableColumn fx:id="kmPercorsi" prefWidth="175.0" text="Column X" />
+                        <TableColumn fx:id="statoContratto" prefWidth="175.0" text="Column X" />
+                        <TableColumn fx:id="totale" prefWidth="154.0" text="Column X" />
                     </columns>
                   </TableView>
                </content>
             </ScrollPane>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="137.0" prefWidth="508.0" spacing="6.0">
                <children>
-		  <Button mnemonicParsing="false" styleClass="btnOperation" text="Ricerca" />
-                  <Button mnemonicParsing="false" styleClass="btnOperation" text="Aggiungi" />
-                  <Button mnemonicParsing="false" styleClass="btnOperation" text="Cancella" />
+		 		 <Button fx:id="searchButton" mnemonicParsing="false" styleClass="btnOperation" text="Ricerca">
+                     <graphic>
+                        <TextField fx:id="search" />
+                     </graphic></Button>
+                  <Button fx:id="apri" mnemonicParsing="false" prefHeight="59.0" prefWidth="132.0" styleClass="btnOperation" text="Apri Contratto" />
                </children>
                <padding>
                   <Insets bottom="10.0" left="6.0" right="10.0" top="4.0" />

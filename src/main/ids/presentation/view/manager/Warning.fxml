@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" stylesheets="@style/carloan.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ids.presentation.view.controller.Warning">
+   <children>
+      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="380.0" spacing="10.0">
+         <children>
+            <Label fx:id="message" text="Label">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </Label>
+            <Button fx:id="ok" mnemonicParsing="false" styleClass="btnConfirm" text="Button" />
+         </children>
+      </VBox>
+   </children>
+</HBox>

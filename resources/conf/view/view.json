@@ -15,22 +15,67 @@
         "id": "gestioneContratti",
         "path": "/main/ids/presentation/view/CrudContratti.fxml"
       },
-{
+	{
         "id": "gestioneCliente",
         "path": "/main/ids/presentation/view/CrudCliente.fxml"
       },
-{
+	{
         "id": "gestioneAuto",
         "path": "/main/ids/presentation/view/CrudAuto.fxml"
       },
-{
+	{
         "id": "gestioneFascia",
         "path": "/main/ids/presentation/view/CrudFascia.fxml"
       },
-{
+	{
         "id": "gestioneStaff",
         "path": "/main/ids/presentation/view/Staff.fxml"
       },
+ {
+        "id": "BootManager",
+        "path": "/main/ids/presentation/view/manager/ManagerLogin.fxml"
+      },
+      {
+        "id": "erroreManager",
+        "path": "/main/ids/presentation/view/manager/Bootstrap.fxml"
+      },
+      {
+        "id": "gestioneContrattiManager",
+        "path": "/main/ids/presentation/view/manager/CrudContratti.fxml"
+      },
+	{
+        "id": "gestioneClienteManager",
+        "path": "/main/ids/presentation/view/manager/CrudCliente.fxml"
+      },
+	{
+        "id": "gestioneAutoManager",
+        "path": "/main/ids/presentation/view/manager/CrudAuto.fxml"
+      },
+	{
+        "id": "gestioneFasciaManager",
+        "path": "/main/ids/presentation/view/manager/CrudFascia.fxml"
+      },
+	{
+        "id": "gestioneStaffManager",
+        "path": "/main/ids/presentation/view/manager/Staff.fxml"
+      },
+	{
+        "id": "inserisciClienteManager",
+        "path": "/main/ids/presentation/view/manager/InserisciClientePopUp.fxml"
+      },
+	{
+        "id": "inserisciFasciaManager",
+        "path": "/main/ids/presentation/view/manager/InserisciFasciaPopUp.fxml"
+      },
+	{
+        "id": "inserisciAutoManager",
+        "path": "/main/ids/presentation/view/manager/InserisciAutoPopUp.fxml"
+      },
+	{
+        "id": "inserisciStaffManager",
+        "path": "/main/ids/presentation/view/manager/InserisciStaffPopUp.fxml"
+      },
+
 
 
     ]

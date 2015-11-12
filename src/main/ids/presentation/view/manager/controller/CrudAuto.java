@@ -1,4 +1,5 @@
-package main.ids.presentation.view.controller;
+package main.ids.presentation.view.manager.controller;
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -14,6 +15,7 @@ import main.ids.presentation.view.model.AutoModel;
 import main.ids.presentation.view.model.ClienteModel;
 import main.ids.transferObjects.AutoTO;
 import main.ids.transferObjects.ClienteTO;
+import main.ids.util.json.ViewsJsonParser;
 import main.ids.util.viewUtil.CallViewLoop;
 import main.ids.presentation.request.BasicRequest;
 import main.ids.presentation.request.ComplexRequest;
@@ -75,11 +77,11 @@ public class CrudAuto implements Initializable {
 	public void initialize(URL location, ResourceBundle resources){
 		System.out.println("Loading user data...");
 		
-		clienti.setOnAction(e -> CallViewLoop.clientiView());
-		contratti.setOnAction(e -> CallViewLoop.contrattiView());
-		//auto.setOnAction(e -> callAutoView());
-		fascia.setOnAction(e -> CallViewLoop.fasciaView());
-		staff.setOnAction(e -> CallViewLoop.staffView());
+		clienti.setOnAction(e -> CallViewLoop.clientiViewManager());
+		contratti.setOnAction(e -> CallViewLoop.contrattiViewManager());
+		auto.setOnAction(e -> CallViewLoop.autoViewManager());
+		fascia.setOnAction(e -> CallViewLoop.fasciaViewManager());
+		staff.setOnAction(e -> CallViewLoop.staffViewManager());
 		cambiaStato.setDisable(true);
 		cambiaKm.setDisable(true);
 		
@@ -164,7 +166,7 @@ public class CrudAuto implements Initializable {
 			BasicResponse response = (BasicResponse) frontController.processRequest(request);
 			if (response.isResponse()){
 				request = new ComplexRequest();
-				request.setRequest("gestioneAuto");
+				request.setRequest("gestioneAutoManager");
 				request.setType(RequestType.VIEW);
 				frontController.processRequest(request);
 			} else {
@@ -191,7 +193,7 @@ public class CrudAuto implements Initializable {
 			BasicResponse response = (BasicResponse) frontController.processRequest(request);
 			if (response.isResponse()){
 				request = new ComplexRequest();
-				request.setRequest("gestioneAuto");
+				request.setRequest("gestioneAutoManager");
 				request.setType(RequestType.VIEW);
 				frontController.processRequest(request);
 			} else {
@@ -201,6 +203,27 @@ public class CrudAuto implements Initializable {
 		}
 	
 	}
+	
+	
+	private void addAuto(){
+		try {
+		ViewsJsonParser vjp = ViewsJsonParser.getInstance();
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource(vjp.getViewPath("InserisciAutoManager")));  
+	    Parent root = (Parent) loader.load();  
+	    Scene scene = new Scene(root,600,500);  
+	    Stage stage = new Stage();  
+	    stage.setScene(scene);  
+	    stage.setTitle("Inserisci Cliente");
+	    stage.initModality(Modality.APPLICATION_MODAL);    
+	    stage.show();  
+		}catch (IOException | NullPointerException e) {
+			
+			e.printStackTrace();
+			
+
+		}
+	}
+	
 
 
 

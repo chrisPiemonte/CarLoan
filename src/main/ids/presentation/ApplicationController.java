@@ -78,7 +78,7 @@ public class ApplicationController {
 			resp.addParameter(dispatcher.begin()) ;
 			return resp;
 			
-		case "astalavistababy":
+		case "logout":
 			break;
 		
 		
@@ -104,8 +104,10 @@ public class ApplicationController {
 		response = (ComplexResponse<ImpiegatoTO>) command.execute();
 		ImpiegatoTO impiegato = (ImpiegatoTO) response.getParameters().get(0);
 		if  (impiegato != null){
+			CurrentSessionHandler.setUsername(impiegato.getUsername());
 			if (impiegato.getClass().equals(AdminTO.class)){
 				
+				CurrentSessionHandler.setTipoAccesso("admin");
 				String pathImpiegato = "impiegatoBoot";
 				vjp = ViewsJsonParser.getInstance();
 				dispatcher = new Dispatcher(); 
@@ -113,7 +115,8 @@ public class ApplicationController {
 			}
 			else if (impiegato.getClass().equals(ManagerTO.class)){
 				
-				String pathImpiegato = "impiegatoBoot";
+				CurrentSessionHandler.setTipoAccesso("manager");
+				String pathImpiegato = "BootManager";
 				vjp = ViewsJsonParser.getInstance();
 				dispatcher = new Dispatcher(); 
 				dispatcher.setInterface(vjp.getViewPath(pathImpiegato));
@@ -121,6 +124,8 @@ public class ApplicationController {
 			}
 			
 			else {
+				
+				CurrentSessionHandler.setTipoAccesso("impiegato");
 				String pathImpiegato = "impiegatoBoot";
 				vjp = ViewsJsonParser.getInstance();
 				dispatcher = new Dispatcher(); 

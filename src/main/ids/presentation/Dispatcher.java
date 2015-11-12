@@ -52,6 +52,7 @@ public class Dispatcher {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource(path));
 			//Scene scene = new Scene(root,height,weight);
+			CurrentSessionHandler.setScenaPrecedente(CurrentSessionHandler.sessioneScene);
 			CurrentSessionHandler.getSessioneScene().setRoot(root);
 		}catch (IOException | NullPointerException e) {
 			

@@ -1,4 +1,5 @@
-package main.ids.presentation.view.controller;
+package main.ids.presentation.view.manager.controller;
+
   
 import java.net.URL;
 import java.util.ArrayList;
@@ -59,11 +60,11 @@ public class Contratti implements Initializable {
 	public void initialize(URL location, ResourceBundle resources){
 		System.out.println("Loading user data...");
 		
-		clienti.setOnAction(e -> CallViewLoop.clientiView());
-		contratti.setOnAction(e -> CallViewLoop.contrattiView());
-		autoView.setOnAction(e -> CallViewLoop.autoView());
-		fascia.setOnAction(e -> CallViewLoop.fasciaView());
-		staff.setOnAction(e -> CallViewLoop.staffView());
+		clienti.setOnAction(e -> CallViewLoop.clientiViewManager());
+		contratti.setOnAction(e -> CallViewLoop.contrattiViewManager());
+		autoView.setOnAction(e -> CallViewLoop.autoViewManager());
+		fascia.setOnAction(e -> CallViewLoop.fasciaViewManager());
+		staff.setOnAction(e -> CallViewLoop.staffViewManager());
 		searchButton.setOnAction(e -> cercaCliente(search.getText()));
 		
 		

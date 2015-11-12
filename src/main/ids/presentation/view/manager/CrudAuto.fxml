@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="900.0" styleClass="stageBackground" stylesheets="@style/carloan.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ids.presentation.view.controller.CrudAuto">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="900.0" styleClass="stageBackground" stylesheets="@../style/carloan.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ids.presentation.view.controller.CrudAuto">
    <bottom>
       <HBox BorderPane.alignment="CENTER">
          <children>
@@ -28,14 +28,14 @@
    <top>
       <BorderPane BorderPane.alignment="CENTER">
          <top>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" styleClass="whiteBar" stylesheets="@style/carloan.css" BorderPane.alignment="CENTER">
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" styleClass="whiteBar" stylesheets="@../style/carloan.css" BorderPane.alignment="CENTER">
                <children>
                   <ImageView fitHeight="100.0" fitWidth="353.0" pickOnBounds="true" preserveRatio="true" styleClass="logo">
                      <HBox.margin>
                         <Insets bottom="5.0" left="8.0" right="10.0" top="5.0" />
                      </HBox.margin>
                      <image>
-                        <Image url="@style/img/logo.png" />
+                        <Image url="@../style/img/logo.png" />
                      </image>
                   </ImageView>
                   <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0">
@@ -164,10 +164,11 @@
             </ScrollPane>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="137.0" prefWidth="508.0" spacing="6.0">
                <children>
-                  <Button fx:id="cambiaStato" layoutX="342.0" layoutY="14.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="132.0" styleClass="btnOperation" text="cambia stato" />
-                  <Button fx:id="cambiaKm" mnemonicParsing="false" prefHeight="60.0" prefWidth="195.0" styleClass="btnOperation" text="cambia chilometraggio">
+                  <Button fx:id="cambiaStato" layoutX="342.0" layoutY="14.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="126.0" styleClass="btnOperation" text="cambia stato" />
+                  <Button mnemonicParsing="false" prefHeight="64.0" prefWidth="94.0" styleClass="btnOperation" text="Aggiungi" />
+                  <Button fx:id="cambiaKm" mnemonicParsing="false" prefHeight="60.0" prefWidth="112.0" styleClass="btnOperation" text="cambia km">
                      <HBox.margin>
-                        <Insets right="50.0" />
+                        <Insets />
                      </HBox.margin>
                   </Button>
                   <Button fx:id="searchButton" mnemonicParsing="false" styleClass="btnOperation" text="Ricerca">

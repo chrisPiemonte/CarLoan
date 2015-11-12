@@ -21,6 +21,7 @@ public class CallViewLoop {
 	public static void contrattiView(){
 		FrontController frontController = new FrontController();
 		BasicRequest request = new BasicRequest();
+		request.setRequest("gestioneContratti");
 		request.setType(RequestType.VIEW);
 		frontController.processRequest(request);
 	}
@@ -45,6 +46,49 @@ public class CallViewLoop {
 		BasicRequest request = new BasicRequest();
 		request.setType(RequestType.VIEW);
 		request.setRequest("gestioneStaff");
+		frontController.processRequest(request);
+	}
+	
+	
+	// MANAGER 
+	
+	
+	public static void clientiViewManager(){
+		FrontController frontController = new FrontController();
+		BasicRequest request = new BasicRequest();
+		request.setRequest("gestioneClienteManager");
+		request.setType(RequestType.VIEW);
+		frontController.processRequest(request);
+	}
+	
+	public static void contrattiViewManager(){
+		FrontController frontController = new FrontController();
+		BasicRequest request = new BasicRequest();
+		request.setRequest("gestioneContrattiManager");
+		request.setType(RequestType.VIEW);
+		frontController.processRequest(request);
+	}
+	public static void autoViewManager(){
+		FrontController frontController = new FrontController();
+		BasicRequest request = new BasicRequest();
+		request.setType(RequestType.VIEW);
+		request.setRequest("gestioneAutoManager");
+		frontController.processRequest(request);
+	}
+	
+	public static void fasciaViewManager(){
+		FrontController frontController = new FrontController();
+		BasicRequest request = new BasicRequest();
+		request.setType(RequestType.VIEW);
+		request.setRequest("gestioneFasciaManager");
+		frontController.processRequest(request);
+	}
+	
+	public static void staffViewManager(){
+		FrontController frontController = new FrontController();
+		BasicRequest request = new BasicRequest();
+		request.setType(RequestType.VIEW);
+		request.setRequest("gestioneStaffManager");
 		frontController.processRequest(request);
 	}
 
