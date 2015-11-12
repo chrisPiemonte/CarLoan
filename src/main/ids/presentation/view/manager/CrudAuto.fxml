@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="900.0" styleClass="stageBackground" stylesheets="@../style/carloan.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ids.presentation.view.controller.CrudAuto">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="900.0" styleClass="stageBackground" stylesheets="@../style/carloan.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ids.presentation.view.manager.controller.CrudAuto">
    <bottom>
       <HBox BorderPane.alignment="CENTER">
          <children>
@@ -165,7 +165,7 @@
             <HBox alignment="BOTTOM_RIGHT" prefHeight="137.0" prefWidth="508.0" spacing="6.0">
                <children>
                   <Button fx:id="cambiaStato" layoutX="342.0" layoutY="14.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="126.0" styleClass="btnOperation" text="cambia stato" />
-                  <Button mnemonicParsing="false" prefHeight="64.0" prefWidth="94.0" styleClass="btnOperation" text="Aggiungi" />
+                  <Button fx:id="aggiungi" prefHeight="64.0" prefWidth="94.0" styleClass="btnOperation" text="Aggiungi" />
                   <Button fx:id="cambiaKm" mnemonicParsing="false" prefHeight="60.0" prefWidth="112.0" styleClass="btnOperation" text="cambia km">
                      <HBox.margin>
                         <Insets />

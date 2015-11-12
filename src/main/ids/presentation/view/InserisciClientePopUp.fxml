@@ -23,7 +23,7 @@
          </VBox.margin></TextField>
       <TextField fx:id="nome" layoutX="10.0" layoutY="78.0" maxWidth="200.0" />
       <TextField fx:id="cognome" layoutX="10.0" layoutY="118.0" maxWidth="200.0" />
-      <HBox maxWidth="200.0" prefHeight="15.0" prefWidth="200.0">
+      <HBox alignment="CENTER" maxWidth="200.0" prefHeight="15.0" prefWidth="200.0">
          <children>
             <Label text="Inserisci data di nascita">
                <HBox.margin>
@@ -34,15 +34,7 @@
             <Insets top="5.0" />
          </VBox.margin>
       </HBox>
-      <HBox alignment="CENTER" maxWidth="200.0" prefHeight="25.0" prefWidth="200.0" spacing="5.0">
-         <children>
-            <TextArea fx:id="gg" maxHeight="40.0" minWidth="45.0" prefWidth="40.0" />
-            <Label alignment="CENTER" prefHeight="15.0" prefWidth="9.0" text="/" />
-            <TextArea fx:id="mm" layoutX="10.0" layoutY="10.0" minWidth="45.0" prefHeight="200.0" prefWidth="45.0" />
-            <Label alignment="CENTER" text="/" />
-            <TextArea fx:id="aa" layoutX="110.0" layoutY="10.0" minWidth="45.0" prefHeight="200.0" prefWidth="45.0" />
-         </children>
-      </HBox>
+      <DatePicker fx:id="dataNascita"/>
       <TextField fx:id="telefono" layoutX="210.0" layoutY="155.0" maxWidth="200.0">
          <VBox.margin>
             <Insets top="3.0" />

@@ -143,6 +143,7 @@
                      <graphic>
                         <TextField fx:id="search" />
                      </graphic></Button>
+                  <Button fx:id="chiudi" prefHeight="60.0" prefWidth="153.0" styleClass="btnOperation" text="Chiudi Contratto" />
                   <Button fx:id="apri" mnemonicParsing="false" prefHeight="59.0" prefWidth="132.0" styleClass="btnOperation" text="Apri Contratto" />
                </children>
                <padding>

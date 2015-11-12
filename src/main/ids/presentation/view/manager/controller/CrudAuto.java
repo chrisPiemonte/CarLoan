@@ -75,7 +75,7 @@ public class CrudAuto implements Initializable {
 	
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
-		System.out.println("Loading user data...");
+		System.out.println("Auto manager...");
 		
 		clienti.setOnAction(e -> CallViewLoop.clientiViewManager());
 		contratti.setOnAction(e -> CallViewLoop.contrattiViewManager());
@@ -84,6 +84,7 @@ public class CrudAuto implements Initializable {
 		staff.setOnAction(e -> CallViewLoop.staffViewManager());
 		cambiaStato.setDisable(true);
 		cambiaKm.setDisable(true);
+		aggiungi.setOnAction(e -> addAuto());
 		
 		
 		searchButton.setOnAction(e -> cercaAuto(search.getText()));
@@ -208,7 +209,7 @@ public class CrudAuto implements Initializable {
 	private void addAuto(){
 		try {
 		ViewsJsonParser vjp = ViewsJsonParser.getInstance();
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource(vjp.getViewPath("InserisciAutoManager")));  
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource(vjp.getViewPath("inserisciAutoManager")));  
 	    Parent root = (Parent) loader.load();  
 	    Scene scene = new Scene(root,600,500);  
 	    Stage stage = new Stage();  

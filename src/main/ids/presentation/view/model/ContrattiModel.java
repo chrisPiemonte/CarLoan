@@ -5,7 +5,7 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class ContrattiModel {
 	
-	
+	public SimpleStringProperty id = new SimpleStringProperty();
 	public SimpleStringProperty cliente = new SimpleStringProperty();
 	public SimpleStringProperty auto = new SimpleStringProperty();
 	public SimpleStringProperty modNoleggio = new SimpleStringProperty();
@@ -13,6 +13,9 @@ public class ContrattiModel {
 	public SimpleStringProperty statoContratto = new SimpleStringProperty();
 	public SimpleDoubleProperty totale = new SimpleDoubleProperty();
 	
+	public String getId() {
+		return id.get();
+	}
 	
 	public String getCliente() {
 		return cliente.get();

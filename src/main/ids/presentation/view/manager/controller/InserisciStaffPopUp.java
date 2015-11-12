@@ -35,7 +35,7 @@ public class InserisciStaffPopUp implements Initializable {
 	public Button conferma;
 	public Button annulla;
 	
-	ArrayList<ClienteTO> nuovoStaff ;
+	ArrayList<ImpiegatoTO> nuovoStaff ;
 	
 	
 	@Override
@@ -78,14 +78,14 @@ public class InserisciStaffPopUp implements Initializable {
 	
 	public boolean buttonConfirm(){
 			 
-			boolean check = addCliente(cf.getText(), nome.getText(),cognome.getText(),dataNascita.getValue(),telefono.getText(),agenzia.getText(),username.getText());
+			boolean check = addStaff(cf.getText(), nome.getText(),cognome.getText(),dataNascita.getValue(),telefono.getText(),agenzia.getText(),username.getText());
 			return check;
 			
 		
 		
 	}
 	
-	public boolean addCliente (String cf,String nome,String cognome,LocalDate dataNascita, String telefono,String agenzia,String username){
+	public boolean addStaff(String cf,String nome,String cognome,LocalDate dataNascita, String telefono,String agenzia,String username){
 		ArrayList<String> list = new ArrayList<>();
 		ComplexRequest request = new ComplexRequest();
 		FrontController frontController = new FrontController();
@@ -96,24 +96,20 @@ public class InserisciStaffPopUp implements Initializable {
 		BasicResponse response = (BasicResponse)frontController.processRequest(request);
 		boolean exists = response.isResponse();
 		if(exists) {
-			ArrayList<Object> impiegato = new ArrayList<Object>();
-			impiegato.add(cf);
-			impiegato.add(nome);
-			impiegato.add(cognome);
-			impiegato.add(dataNascita.toString());
-			impiegato.add(telefono);
-			impiegato.add(agenzia);
-			impiegato.add(username);
-			response = new BasicResponse();
-			request = new ComplexRequest();
-			frontController = new FrontController();
-			request.setType(RequestType.SERVICE);
-			request.setRequest("updateImpiegato");
-			request.setParameters(impiegato);
-			response = (BasicResponse) frontController.processRequest(request);
-			if (response.isResponse())Message.display("elemento inserito", AlertType.INFORMATION);
-			else Message.display("elemento non inserito", AlertType.INFORMATION);
-			return true;
+				
+				ArrayList<ImpiegatoTO> impiegati = new ArrayList<ImpiegatoTO>();
+				ImpiegatoTO impiegato = new ImpiegatoTO(cf,nome,cognome,dataNascita,telefono,agenzia,username);
+				impiegati.add(impiegato);
+				response = new BasicResponse();
+				request = new ComplexRequest<>();
+				frontController = new FrontController();
+				request.setType(RequestType.SERVICE);
+				request.setRequest("updateImpiegato");
+				request.setParameters(impiegati);
+				response = (BasicResponse) frontController.processRequest(request);
+				if (response.isResponse())Message.display("elemento inserito", AlertType.INFORMATION);
+				else Message.display("elemento non inserito", AlertType.INFORMATION);
+				return true;
 		}
 		return false;
 	}

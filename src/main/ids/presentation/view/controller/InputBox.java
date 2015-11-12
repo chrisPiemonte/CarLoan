@@ -7,6 +7,9 @@ import java.util.Optional;
 
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.Alert.AlertType;
+import main.ids.presentation.view.inputValidation.InputValidation;
+import main.ids.presentation.view.inputValidation.InputValidationFactory;
 
 public class InputBox {
 	
@@ -31,7 +34,13 @@ public class InputBox {
 		if (result.isPresent()) {
 		 
 		    entered = result.get();
+		    InputValidation i = InputValidationFactory.getValidation("double");
+		    if(i.isValid(entered)){
 		    return result.get().toString();
+		    }else { 
+		    	Message.display("Chilometraggio non valido", AlertType.ERROR);
+				return "null";
+		    }
 		}
 		else 
 			return "null";

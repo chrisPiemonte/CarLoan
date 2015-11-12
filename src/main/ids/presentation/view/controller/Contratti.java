@@ -43,6 +43,7 @@ public class Contratti implements Initializable {
 	public Button staff;
 	public Button searchButton;
 	public TextField search;
+	public Button chiudi;
 	
 	
 	public TableView<ContrattiModel> tabella;
@@ -65,7 +66,7 @@ public class Contratti implements Initializable {
 		fascia.setOnAction(e -> CallViewLoop.fasciaView());
 		staff.setOnAction(e -> CallViewLoop.staffView());
 		searchButton.setOnAction(e -> cercaCliente(search.getText()));
-		
+		chiudi.setDisable(true);
 		
 		cliente.setCellValueFactory(new PropertyValueFactory<ContrattiModel, String>("cliente"));
 		cliente.setText("Cliente");
@@ -83,6 +84,16 @@ public class Contratti implements Initializable {
 		buildData();
 		
 		
+		tabella.getSelectionModel().selectedItemProperty().addListener((v,oldValue,newValue) -> {
+			if(newValue.getStatoContratto().equals("aperto"))
+				chiudi.setDisable(false);
+			chiudi.setOnAction(e -> System.out.println(newValue.getId()));
+			
+		});
+		
+		
+		
+		
 	}
 	
 	
@@ -95,6 +106,7 @@ public class Contratti implements Initializable {
 		for (ContrattoTO contratto : response.getParameters()){
 			
 			ContrattiModel tmpList = new ContrattiModel();
+			tmpList.id.set(contratto.getId());
 			tmpList.cliente.set(contratto.getCliente());
 			tmpList.auto.set(contratto.getAuto());
 			tmpList.modNoleggio.set(contratto.getModNoleggio());
@@ -117,6 +129,11 @@ public class Contratti implements Initializable {
 		if (key.equals("")){tabella.setItems(listaContratti);}
 		FilteredList <ContrattiModel> filteredData = new FilteredList<>(listaContratti, p->p.getCliente().toLowerCase().startsWith(key));
 		tabella.setItems(filteredData);
+	}
+	
+	
+	public boolean chiudiContratto(String id){
+		return true;
 	}
 	
 	

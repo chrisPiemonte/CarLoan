@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="550.0" spacing="8.0" stylesheets="@style/carloan.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ids.presentation.view.controller.InserisciAutoPopUp">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="550.0" spacing="8.0" stylesheets="@../style/carloan.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ids.presentation.view.manager.controller.InserisciAutoPopUp">
    <children>
       <Label text="Inserisci Auto">
          <font>
@@ -36,15 +36,7 @@
             <Insets top="5.0" />
          </VBox.margin>
       </HBox>
-      <HBox alignment="CENTER" maxWidth="200.0" prefHeight="25.0" prefWidth="200.0" spacing="5.0">
-         <children>
-            <TextArea fx:id="gg" maxHeight="40.0" minWidth="45.0" prefWidth="40.0" />
-            <Label alignment="CENTER" prefHeight="15.0" prefWidth="9.0" text="/" />
-            <TextArea fx:id="mm" layoutX="10.0" layoutY="10.0" minWidth="45.0" prefHeight="200.0" prefWidth="45.0" />
-            <Label alignment="CENTER" text="/" />
-            <TextArea fx:id="aa" layoutX="110.0" layoutY="10.0" minWidth="45.0" prefHeight="200.0" prefWidth="45.0" />
-         </children>
-      </HBox>
+      <DatePicker fx:id="dataManutenzione"/>
       <TextField fx:id="agenzia" layoutX="210.0" layoutY="155.0" maxWidth="200.0">
          <VBox.margin>
             <Insets top="3.0" />

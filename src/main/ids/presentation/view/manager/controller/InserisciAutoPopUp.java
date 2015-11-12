@@ -2,13 +2,22 @@ package main.ids.presentation.view.manager.controller;
 
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import main.ids.presentation.FrontController;
+import main.ids.presentation.request.ComplexRequest;
+import main.ids.presentation.request.RequestType;
+import main.ids.presentation.response.BasicResponse;
+import main.ids.transferObjects.AutoTO;
 
 public class InserisciAutoPopUp implements Initializable {
 	
@@ -20,9 +29,7 @@ public class InserisciAutoPopUp implements Initializable {
 	public TextField fascia;
 	public TextField chilometraggio;
 	public TextField agenzia;
-	public TextArea gg;
-	public TextArea mm;
-	public TextArea aa;
+	public DatePicker dataManutenzione;
 	
 	
 	
@@ -42,9 +49,11 @@ public class InserisciAutoPopUp implements Initializable {
 		agenzia.setPromptText("inserisci agenzia...");
 		agenzia.setFocusTraversable(false);
 		annulla.setOnAction(e -> buttonClose());
-		gg.setFocusTraversable(false);
-		mm.setFocusTraversable(false);
-		aa.setFocusTraversable(false);
+		conferma.setOnAction(e -> {
+			
+		buttonConfirm();
+		buttonClose();
+		});
 
 		
 	}
@@ -57,7 +66,46 @@ public class InserisciAutoPopUp implements Initializable {
 	}
 	
 	public boolean buttonConfirm(){
-		return true;
+		
+		boolean inserito = addAuto(targa.getText(),modello.getText(),stato.getText(),fascia.getText(),chilometraggio.getText(),dataManutenzione.getValue(),agenzia.getText());
+		return inserito;
+	}
+	
+	public boolean addAuto(String targa, String modello, String stato, String fascia, String chilometraggio,LocalDate dataManutenzione,String agenzia){
+		ArrayList<AutoTO> listaAuto = new ArrayList<AutoTO>();
+		FrontController frontController = new FrontController();
+		ComplexRequest request = new ComplexRequest();
+		request.setType(RequestType.SERVICE);
+		request.setRequest("addAuto");
+		double km = Double.parseDouble(chilometraggio);
+		AutoTO auto = new AutoTO(targa,modello,stato,fascia,km,dataManutenzione,agenzia);
+		listaAuto.add(auto);
+		request.setParameters(listaAuto);
+		BasicResponse response = (BasicResponse) frontController.processRequest(request);
+		if (response.isResponse()){
+			Message.display("Auto inserita", AlertType.INFORMATION);
+			return true;
+		}
+		else{
+			Message.display("Auto non inserita", AlertType.INFORMATION);
+			return false;
+		}
+		
+		
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
