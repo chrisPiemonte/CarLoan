@@ -1,5 +1,5 @@
 CREATE SCHEMA IF NOT EXISTS `carloan` DEFAULT CHARACTER SET latin1 ;
-USE `carloan` ;
+# USE `carloan` ;
 
 CREATE TABLE IF NOT EXISTS `carloan`.`agenzia` (
 	`id` INT(3) ZEROFILL NOT NULL AUTO_INCREMENT,
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `carloan`.`contratto` (
 	`impiegato_inizio` VARCHAR(16) NOT NULL,
 	`impiegato_fine` VARCHAR(16),
 	`acconto` DOUBLE(4, 2) UNSIGNED NOT NULL,
-	`km_percorsi` DOUBLE(4, 2) UNSIGNED,
+	`km_percorsi` DOUBLE(5, 2) UNSIGNED,
 	`tariffa_base` DOUBLE(4, 2) UNSIGNED NOT NULL,
 	`stato_contratto` ENUM('aperto', 'chiuso'),
 	`totale` DOUBLE(5, 2) UNSIGNED,

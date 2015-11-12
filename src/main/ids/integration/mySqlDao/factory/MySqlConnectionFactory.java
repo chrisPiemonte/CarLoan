@@ -39,7 +39,7 @@ public class MySqlConnectionFactory {
 	public Connection createConnection(){
 		Connection conn = null;
 		try{
-			conn = DriverManager.getConnection(src + db, user, password);
+			conn = DriverManager.getConnection(src, user, password);
 		}catch(SQLException e){
 			e.printStackTrace();
 		}

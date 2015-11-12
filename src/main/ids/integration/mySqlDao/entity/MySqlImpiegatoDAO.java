@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -307,52 +308,52 @@ public class MySqlImpiegatoDAO extends MySqlEntityDAO implements ImpiegatoDAO {
 	
 	public static void main(String[] args){
 		ImpiegatoDAO impDAO = new MySqlImpiegatoDAO();
-		/*
+		
 		
 		// create
-		ImpiegatoTO im = new ImpiegatoTO("1111112435711111", "gian", "naig", LocalDate.now(), "0881", "004", "ggg");
-		System.out.println(impDAO.create(im));
+		ImpiegatoTO im = new ImpiegatoTO("1111111435721111", "gian", "naig", LocalDate.now(), "0881", "004", "ggg");
+		System.out.println("create  " + impDAO.create(im));
 		
-		*/
+		
 		// read
-		System.out.println(impDAO.read("DNTRMN13D14C931Z"));
+		System.out.println("read  " + impDAO.read("1111111435711111"));
 		
 		System.out.println("");
 		
 		//read_all
 		List<ImpiegatoTO> limp = impDAO.readAll();
 		for(ImpiegatoTO imp : limp){
-			System.out.println(imp.toString());
+			System.out.println("read_all  " + imp.toString());
 		}
-		/*
+		
 		
 		// read_agenzia
 		String agenzia = impDAO.readAgenzia("DNTRMN13D14C931Z");
-		System.out.println(agenzia);
+		System.out.println("read_agenzia  " + agenzia);
 		
 		
 		//read_cognome
 		List<ImpiegatoTO> limpi = impDAO.readCognome("Sfrizzo");
 		for(ImpiegatoTO imp : limpi){
-			System.out.println(imp.toString());
+			System.out.println("read_cognome  " + imp.toString());
 		}
 		
 		// update
-		ImpiegatoTO impie = new ImpiegatoTO("1111111111111111", "giannnnn", "nnnnnnaig", LocalDate.now(), "0881", "004", "ggg");
-		System.out.println(impDAO.update(impie));
+		ImpiegatoTO impie = new ImpiegatoTO("1111112435711111", "giannnnn", "nnnnnnaig", LocalDate.now(), "0881", "004", "ggg");
+		System.out.println("update  " + impDAO.update(impie));
 		
 		
 		// update_agenzia
-		System.out.println(impDAO.updateAgenzia("1111111111111111", "003"));
+		System.out.println("update_agenzia  " + impDAO.updateAgenzia("1111112435711111", "003"));
 		
 		
 		// delete
-		System.out.println(impDAO.delete("1111111111111111"));
+		System.out.println("delete_agenzia  " + impDAO.delete("1111112435711111"));
 		
 		
 		// isPresent
-		System.out.println(impDAO.isPresent("1111111111111111"));
-		*/
+		System.out.println("isPresent  " + impDAO.isPresent("1111111435721111"));
+		
 		
 		
 		

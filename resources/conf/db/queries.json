@@ -269,7 +269,7 @@
       },
       {
         "id": "update_chiudi_contratto",
-        "sql": "UPDATE `carloan`.`contratto` SET `carloan`.`contratto`.`impiegato_fine` = ?, `carloan`.`contratto`.`km_percorsi` = ?, `carloan`.`contratto`.`totale` = ? WHERE `carloan`.`contratto`.`id` = ?;"
+        "sql": "UPDATE `carloan`.`contratto` SET `carloan`.`contratto`.`impiegato_fine` = ?, `carloan`.`contratto`.`km_percorsi` = ?, `carloan`.`contratto`.`totale` = ?, `carloan`.`contratto`.`stato_contratto` = 'chiuso' WHERE `carloan`.`contratto`.`id` = ?;"
       },
       {
         "id": "delete_contratto",
