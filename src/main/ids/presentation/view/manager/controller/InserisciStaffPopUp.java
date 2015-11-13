@@ -19,6 +19,7 @@ import main.ids.presentation.request.ComplexRequest;
 import main.ids.presentation.request.RequestType;
 import main.ids.presentation.response.BasicResponse;
 import main.ids.presentation.view.controller.Message;
+import main.ids.transferObjects.AccountTO;
 import main.ids.transferObjects.ClienteTO;
 import main.ids.transferObjects.ImpiegatoTO;
 
@@ -90,26 +91,38 @@ public class InserisciStaffPopUp implements Initializable {
 		ComplexRequest request = new ComplexRequest();
 		FrontController frontController = new FrontController();
 		request.setType(RequestType.SERVICE);
-		request.setRequest("existsImpiegato");
-		list.add(cf);
+		request.setRequest("existsAccount");
+		list.add(username);
 		request.setParameters(list);
 		BasicResponse response = (BasicResponse)frontController.processRequest(request);
 		boolean exists = response.isResponse();
-		if(exists) {
-				
-				ArrayList<ImpiegatoTO> impiegati = new ArrayList<ImpiegatoTO>();
-				ImpiegatoTO impiegato = new ImpiegatoTO(cf,nome,cognome,dataNascita,telefono,agenzia,username);
-				impiegati.add(impiegato);
-				response = new BasicResponse();
-				request = new ComplexRequest<>();
-				frontController = new FrontController();
+		if(!exists) {
+				ArrayList<AccountTO> account = new ArrayList<AccountTO>();
+				AccountTO newAccount = new AccountTO(username, "0000","impiegato");
+				account.add(newAccount);
+				request = new ComplexRequest();
 				request.setType(RequestType.SERVICE);
-				request.setRequest("updateImpiegato");
-				request.setParameters(impiegati);
-				response = (BasicResponse) frontController.processRequest(request);
-				if (response.isResponse())Message.display("elemento inserito", AlertType.INFORMATION);
+				request.setRequest("addAccount");
+				request.setParameters(account);
+				BasicResponse response2 = (BasicResponse) frontController.processRequest(request);
+				if(response2.isResponse()){
+					ArrayList<ImpiegatoTO> impiegati = new ArrayList<ImpiegatoTO>();
+					ImpiegatoTO impiegato = new ImpiegatoTO(cf,nome,cognome,dataNascita,telefono,agenzia,username);
+					impiegati.add(impiegato);
+					response = new BasicResponse();
+					request = new ComplexRequest<>();
+					frontController = new FrontController();
+					request.setType(RequestType.SERVICE);
+					request.setRequest("addImpiegato");
+					request.setParameters(impiegati);
+					response = (BasicResponse) frontController.processRequest(request);
+				}	
+				if (response.isResponse()&& response2.isResponse())Message.display("elemento inserito", AlertType.INFORMATION);
 				else Message.display("elemento non inserito", AlertType.INFORMATION);
 				return true;
+		} else { Message.display("Username non disponibile", AlertType.ERROR);
+				 
+			
 		}
 		return false;
 	}

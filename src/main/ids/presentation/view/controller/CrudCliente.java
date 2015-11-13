@@ -59,7 +59,7 @@ public class CrudCliente implements Initializable {
 	public TableColumn<ClienteModel, String> cf;
 	public TableColumn<ClienteModel, String> nome;
 	public TableColumn<ClienteModel, String> cognome;
-	//public TableColumn<ClienteModel, LocalData> dataNascita;
+	public TableColumn<ClienteModel, LocalDate> dataNascita;
 	public TableColumn<ClienteModel, String> telefono;
 	
 	private ObservableList<ClienteModel> listaClienti;
@@ -82,7 +82,8 @@ public class CrudCliente implements Initializable {
 		nome.setText("Nome");
 		cognome.setCellValueFactory(new PropertyValueFactory<ClienteModel, String>("cognome"));
 		cognome.setText("Cognome");
-		//dataNascita.setCellValueFactory(new PropertyValueFactory<ClienteModel, String>("dataNascita"));
+		dataNascita.setCellValueFactory( new PropertyValueFactory<ClienteModel, LocalDate>("dataNascita"));
+		dataNascita.setText("data di nascita");
 		telefono.setCellValueFactory(new PropertyValueFactory<ClienteModel, String>("telefono"));
 		telefono.setText("Numero di telefono");
 		
@@ -125,10 +126,8 @@ public class CrudCliente implements Initializable {
 			tmpList.cf.set(cliente.getCf());
 			tmpList.nome.set(cliente.getNome());
 			tmpList.cognome.set(cliente.getCognome());
-			//Format formatter = new SimpleDateFormat("dd-MM-yyyy");
-			//LocalDate dataNascita = cliente.getDataNascita();
-			//String s = formatter.format(dataNascita);
-			//tmpList.dataNascita.set(s);
+			tmpList.dataNascita.set(cliente.getDataNascita().toString());
+			System.out.println(tmpList.dataNascita.getValue());
 			tmpList.telefono.set(cliente.getTelefono());
 			listaClienti.add(tmpList);
 			

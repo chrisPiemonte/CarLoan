@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -30,9 +31,7 @@ public class InserisciClientePopUp implements Initializable {
 	public TextField nome;
 	public TextField cognome;
 	public TextField telefono;
-	public TextArea gg;
-	public TextArea mm;
-	public TextArea aa;
+	public DatePicker dataNascita;
 	ArrayList<ClienteTO> nuovoCliente ;
 	
 	FrontController frontController ;
@@ -52,10 +51,7 @@ public class InserisciClientePopUp implements Initializable {
 		cognome.setFocusTraversable(false);
 		telefono.setPromptText("inserisci numero di telefono...");
 		telefono.setFocusTraversable(false);
-		gg.setFocusTraversable(false);
-		mm.setFocusTraversable(false);
-		aa.setFocusTraversable(false);
-
+		
 		//bottoni
 		annulla.setOnAction(e -> buttonClose());
 		
@@ -79,11 +75,8 @@ public class InserisciClientePopUp implements Initializable {
 	public boolean buttonConfirm(){
 		
 		boolean inputCheck = checkInput();
-		final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-		String data = (gg.getText().toString()+"-"+mm.getText().toString()+"-"+aa.getText().toString());
-		final LocalDate dt = LocalDate.parse("22-02-1991", formatter); // @TODO 
 		if(inputCheck){
-		boolean check = addCliente(cf.getText().toString(), nome.getText().toString(),cognome.getText().toString(),dt,telefono.getText().toString());
+		boolean check = addCliente(cf.getText().toString(), nome.getText().toString(),cognome.getText().toString(),dataNascita.getValue(),telefono.getText().toString());
 		return check;
 		}else return false;
 		

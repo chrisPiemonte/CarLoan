@@ -130,7 +130,7 @@
                       <TableColumn fx:id="cf" prefWidth="104.0" text="C1" />
                       <TableColumn fx:id="nome" prefWidth="99.0" text="C2" />
                         <TableColumn fx:id="cognome" prefWidth="150.0" text="Column X" />
-                        
+                        <TableColumn fx:id="dataNascita" prefWidth="150.0" text="Column X" />
                         <TableColumn fx:id="telefono" prefWidth="154.0" text="Column X" />
                     </columns>
                   </TableView>
