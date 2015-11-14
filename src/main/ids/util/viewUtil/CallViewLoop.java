@@ -91,5 +91,47 @@ public class CallViewLoop {
 		request.setRequest("gestioneStaffManager");
 		frontController.processRequest(request);
 	}
+	
+	
+	//ADMIN 
+	
+	public static void clientiViewAdmin(){
+		FrontController frontController = new FrontController();
+		BasicRequest request = new BasicRequest();
+		request.setRequest("gestioneClienteAdmin");
+		request.setType(RequestType.VIEW);
+		frontController.processRequest(request);
+	}
+	
+	public static void contrattiViewAdmin(){
+		FrontController frontController = new FrontController();
+		BasicRequest request = new BasicRequest();
+		request.setRequest("gestioneContrattiAdmin");
+		request.setType(RequestType.VIEW);
+		frontController.processRequest(request);
+	}
+	public static void autoViewAdmin(){
+		FrontController frontController = new FrontController();
+		BasicRequest request = new BasicRequest();
+		request.setType(RequestType.VIEW);
+		request.setRequest("gestioneAutoAdmin");
+		frontController.processRequest(request);
+	}
+	
+	public static void fasciaViewAdmin(){
+		FrontController frontController = new FrontController();
+		BasicRequest request = new BasicRequest();
+		request.setType(RequestType.VIEW);
+		request.setRequest("gestioneFasciaAdmin");
+		frontController.processRequest(request);
+	}
+	
+	public static void staffViewAdmin(){
+		FrontController frontController = new FrontController();
+		BasicRequest request = new BasicRequest();
+		request.setType(RequestType.VIEW);
+		request.setRequest("gestioneStaffAdmin");
+		frontController.processRequest(request);
+	}
 
 }

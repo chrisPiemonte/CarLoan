@@ -2,6 +2,7 @@ package main.ids.presentation.view.model;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class AutoModel {
@@ -11,7 +12,7 @@ public class AutoModel {
 	public SimpleStringProperty stato = new SimpleStringProperty();
 	public SimpleDoubleProperty km = new SimpleDoubleProperty();
 	public SimpleStringProperty fasciaAuto = new SimpleStringProperty();
-	public SimpleStringProperty manutenzione = new SimpleStringProperty();
+	public SimpleObjectProperty<String> manutenzioneOrdinaria = new SimpleObjectProperty<>();
 	public SimpleStringProperty agenzia = new SimpleStringProperty();
 	
 	
@@ -30,8 +31,8 @@ public class AutoModel {
 	public String getFasciaAuto() {
 		return fasciaAuto.get();
 	}
-	public String getManutenzione() {
-		return manutenzione.get();
+	public String getManutenzioneOrdinaria() {
+		return manutenzioneOrdinaria.getValue().toString();
 	}
 	public String getAgenzia() {
 		return agenzia.get();

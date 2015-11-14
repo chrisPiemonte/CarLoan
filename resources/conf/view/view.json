@@ -79,6 +79,63 @@
         "id": "inserisciStaffManager",
         "path": "/main/ids/presentation/view/manager/InserisciStaffPopUp.fxml"
       },
+	{
+	"id": "inserisciFasciaManager",
+        "path": "/main/ids/presentation/view/manager/InserisciFasciaPopUp.fxml"
+      },
+{
+        "id": "BootAdmin",
+        "path": "/main/ids/presentation/view/admin/AdminLogin.fxml"
+      },
+      {
+        "id": "erroreAdmin",
+        "path": "/main/ids/presentation/view/admin/Bootstrap.fxml"
+      },
+      {
+        "id": "gestioneContrattiAdmin",
+        "path": "/main/ids/presentation/view/admin/CrudContratti.fxml"
+      },
+	{
+        "id": "gestioneClienteAdmin",
+        "path": "/main/ids/presentation/view/admin/CrudCliente.fxml"
+      },
+	{
+        "id": "gestioneAutoAdmin",
+        "path": "/main/ids/presentation/view/admin/CrudAuto.fxml"
+      },
+	{
+        "id": "gestioneFasciaAdmin",
+        "path": "/main/ids/presentation/view/admin/CrudFascia.fxml"
+      },
+	{
+        "id": "gestioneStaffAdmin",
+        "path": "/main/ids/presentation/view/admin/Staff.fxml"
+      },
+	{
+        "id": "inserisciClienteAdmin",
+        "path": "/main/ids/presentation/view/admin/InserisciClientePopUp.fxml"
+      },
+	{
+        "id": "inserisciFasciaAdmin",
+        "path": "/main/ids/presentation/view/admin/InserisciFasciaPopUp.fxml"
+      },
+	{
+        "id": "inserisciAutoAdmin",
+        "path": "/main/ids/presentation/view/admin/InserisciAutoPopUp.fxml"
+      },
+	{
+        "id": "inserisciStaffAdmin",
+        "path": "/main/ids/presentation/view/admin/InserisciStaffPopUp.fxml"
+      },
+	{
+	"id": "inserisciFasciaAdmin",
+        "path": "/main/ids/presentation/view/admin/InserisciFasciaPopUp.fxml"
+      },
+	{
+	"id": "inserisciAgenziaAdmin",
+        "path": "/main/ids/presentation/view/admin/InserisciAgenziaPopUp.fxml"
+      },
+
 
 
 

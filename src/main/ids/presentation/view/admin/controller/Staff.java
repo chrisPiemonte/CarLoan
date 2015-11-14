@@ -1,17 +1,22 @@
-package main.ids.presentation.view.manager.controller;
+package main.ids.presentation.view.admin.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import main.ids.presentation.CurrentSessionHandler;
 import main.ids.presentation.FrontController;
 import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.response.Response;
+import main.ids.presentation.view.model.AgenziaModel;
 import main.ids.presentation.view.model.ClienteModel;
 import main.ids.presentation.view.model.StaffModel;
+import main.ids.transferObjects.AgenziaTO;
 import main.ids.transferObjects.ClienteTO;
 import main.ids.transferObjects.ImpiegatoTO;
+import main.ids.transferObjects.ManagerTO;
 import main.ids.util.json.ViewsJsonParser;
 import main.ids.util.viewUtil.CallViewLoop;
 import main.ids.presentation.request.BasicRequest;
@@ -50,28 +55,37 @@ public class Staff implements Initializable {
 	public TextField search;
 	public Button staff;
 	public Button aggiungi;
+	public Button aggiungiAgenzia;
 	
 	public TableView<StaffModel> tabella;
 	public TableColumn<StaffModel, String> cf;
 	public TableColumn<StaffModel, String> nome;
 	public TableColumn<StaffModel, String> cognome;
-	//public TableColumn<ClienteModel, LocalData> dataNascita;
+	public TableColumn<StaffModel, LocalDate> dataNascita;
 	public TableColumn<StaffModel, String> telefono;
 	public TableColumn<StaffModel, String> agenzia;
 	public TableColumn<StaffModel, String> username;
 	
+	public TableView<AgenziaModel> tabellaAgenzie;
+	public TableColumn<AgenziaModel, String> id;
+	public TableColumn<AgenziaModel, String> città;
+	public TableColumn<AgenziaModel, String> indirizzo;
+	public TableColumn<AgenziaModel, String> telefonoAgenzia;
+	
+	private ObservableList<AgenziaModel> listaAgenzie;
 	private ObservableList<StaffModel> listaStaff;
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
 		System.out.println("Loading user data...");
 		
-		clienti.setOnAction(e -> CallViewLoop.clientiViewManager());
-		contratti.setOnAction(e -> CallViewLoop.contrattiViewManager());
-		auto.setOnAction(e -> CallViewLoop.autoViewManager());
-		fascia.setOnAction(e -> CallViewLoop.fasciaViewManager());
-		staff.setOnAction(e -> CallViewLoop.staffViewManager());
+		clienti.setOnAction(e -> CallViewLoop.clientiViewAdmin());
+		contratti.setOnAction(e -> CallViewLoop.contrattiViewAdmin());
+		auto.setOnAction(e -> CallViewLoop.autoViewAdmin());
+		fascia.setOnAction(e -> CallViewLoop.fasciaViewAdmin());
+		staff.setOnAction(e -> CallViewLoop.staffViewAdmin());
 		searchButton.setOnAction(e -> cercaCliente(search.getText()));
 		aggiungi.setOnAction(e -> addStaff());
+		aggiungiAgenzia.setOnAction(e -> addAgenzia());
 		
 		cf.setCellValueFactory(new PropertyValueFactory<StaffModel, String>("cf"));
 		cf.setText("Codice fiscale");
@@ -81,17 +95,30 @@ public class Staff implements Initializable {
 		cognome.setText("Cognome");
 		telefono.setCellValueFactory(new PropertyValueFactory<StaffModel, String>("telefono"));
 		telefono.setText("Numero telefono");
+		dataNascita.setCellValueFactory(new PropertyValueFactory<StaffModel, LocalDate>("dataNascita"));
+		dataNascita.setText("Data Nascita");
 		agenzia.setCellValueFactory(new PropertyValueFactory<StaffModel, String>("agenzia"));
 		agenzia.setText("Agenzia");
 		username.setCellValueFactory(new PropertyValueFactory<StaffModel, String>("username"));
 		username.setText("Username");
 		
+		id = new TableColumn<AgenziaModel, String>("ID agenzia");
+		id.setCellValueFactory(new PropertyValueFactory<AgenziaModel, String>("id"));
+		indirizzo = new TableColumn<AgenziaModel, String>("Indirizzo");
+		indirizzo.setCellValueFactory(new PropertyValueFactory<AgenziaModel, String>("indirizzo"));
+		città = new TableColumn<AgenziaModel, String>("Città");
+		città.setCellValueFactory(new PropertyValueFactory<AgenziaModel, String>("città"));
+		telefonoAgenzia = new TableColumn<AgenziaModel, String>("Telefono");
+		telefonoAgenzia.setCellValueFactory(new PropertyValueFactory<AgenziaModel, String>("telefono"));
+
 		buildData();
+		tabellaAgenzie.getColumns().addAll(id,indirizzo,città,telefonoAgenzia);
 		
 	}
 	
 	public void buildData(){
 		listaStaff = FXCollections.observableArrayList();
+		listaAgenzie = FXCollections.observableArrayList();
 		ComplexRequest request = new ComplexRequest();
 		request.setRequest("getAllImpiegati");
 		request.setType(RequestType.SERVICE);
@@ -102,19 +129,47 @@ public class Staff implements Initializable {
 			tmpList.cf.set(staff.getCf());
 			tmpList.nome.set(staff.getNome());
 			tmpList.cognome.set(staff.getCognome());
-			//Format formatter = new SimpleDateFormat("dd-MM-yyyy");
-			//LocalDate dataNascita = cliente.getDataNascita();
-			//String s = formatter.format(dataNascita);
-			//tmpList.dataNascita.set(s);
+			tmpList.dataNascita.set(staff.getDataNascita().toString());
 			tmpList.telefono.set(staff.getTelefono());
 			tmpList.agenzia.set(staff.getAgenzia());
 			tmpList.username.set(staff.getUsername());
 			listaStaff.add(tmpList);
 			
 		}
+		request = new ComplexRequest();
+		request.setType(RequestType.SERVICE);
+		request.setRequest("getAllManagers");
+		ComplexResponse<ImpiegatoTO> responseManager = (ComplexResponse<ImpiegatoTO>) frontController.processRequest(request);
+		for (ImpiegatoTO manager : responseManager.getParameters()){
+			StaffModel tmpList = new StaffModel();
+			tmpList.cf.set(manager.getCf());
+			tmpList.nome.set(manager.getNome());
+			tmpList.cognome.set(manager.getCognome());
+			tmpList.dataNascita.set(manager.getDataNascita().toString());
+			tmpList.telefono.set(manager.getTelefono());
+			tmpList.username.set(manager.getTelefono());
+			tmpList.agenzia.set(manager.getAgenzia());
+			listaStaff.add(tmpList);
+			
+		}
 		
 		tabella.setItems(listaStaff);
-		//System.out.println(listaClienti.get(0).getCf());
+		// agenzie
+		
+		request = new ComplexRequest();
+		request.setType(RequestType.SERVICE);
+		request.setRequest("getAllAgenzie");
+		ComplexResponse<AgenziaTO> response2 = (ComplexResponse<AgenziaTO>) frontController.processRequest(request);
+		for (AgenziaTO agenzia : response2.getParameters()){
+			AgenziaModel tmpList = new AgenziaModel();
+			tmpList.id.set(agenzia.getId());
+			tmpList.città.set(agenzia.getCitta());
+			tmpList.indirizzo.set(agenzia.getIndirizzo());
+			tmpList.telefonoAgenzia.set(agenzia.getTelefono());
+			listaAgenzie.add(tmpList);
+		}
+		
+		tabellaAgenzie.setItems(listaAgenzie);
 	}
 	
 	public void cercaCliente(String key){
@@ -126,7 +181,29 @@ public class Staff implements Initializable {
 	private void addStaff(){
 		try {
 		ViewsJsonParser vjp = ViewsJsonParser.getInstance();
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource(vjp.getViewPath("inserisciStaffManager")));  
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource(vjp.getViewPath("inserisciStaffAdmin")));  
+	    Parent root = (Parent) loader.load();  
+	    Scene scene = new Scene(root,600,500);  
+	    Stage stage = new Stage();  
+	    stage.setScene(scene);  
+	    stage.setTitle("Inserisci Staff");
+	    stage.initModality(Modality.APPLICATION_MODAL);    
+	    stage.show();  
+		}catch (IOException | NullPointerException e) {
+			
+			e.printStackTrace();
+			
+
+		}
+	
+	
+	
+	
+	}
+	private void addAgenzia(){
+		try {
+		ViewsJsonParser vjp = ViewsJsonParser.getInstance();
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource(vjp.getViewPath("inserisciAgenziaAdmin")));  
 	    Parent root = (Parent) loader.load();  
 	    Scene scene = new Scene(root,600,500);  
 	    Stage stage = new Stage();  

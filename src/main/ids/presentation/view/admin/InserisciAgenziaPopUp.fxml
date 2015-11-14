@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="550.0" spacing="8.0" stylesheets="@../style/carloan.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ids.presentation.view.admin.controller.InserisciAgenziaPopUp">
+   <children>
+      <Label text="Inserisci Agenzia">
+         <VBox.margin>
+            <Insets top="20.0" />
+         </VBox.margin>
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textFieldCittà" layoutX="10.0" layoutY="78.0" maxWidth="200.0">
+         <VBox.margin>
+            <Insets top="20.0" />
+         </VBox.margin></TextField>
+      <TextField fx:id="textFieldIndirizzo" layoutX="10.0" layoutY="118.0" maxWidth="200.0" />
+      <TextField fx:id="textFieldTelefono" layoutX="185.0" layoutY="165.0" maxWidth="200.0" />
+      <HBox maxWidth="200.0" prefHeight="50.0" prefWidth="200.0" spacing="20.0">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
+         <children>
+            <Button fx:id="annulla" mnemonicParsing="false" styleClass="btnCancel" text="Annulla" />
+            <Button fx:id="conferma" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" styleClass="btnConfirm" text="Aggiungi" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

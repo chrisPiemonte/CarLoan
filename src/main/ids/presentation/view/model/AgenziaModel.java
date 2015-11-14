@@ -8,7 +8,7 @@ public class AgenziaModel {
 	public SimpleStringProperty id = new SimpleStringProperty();
 	public SimpleStringProperty città = new SimpleStringProperty();
 	public SimpleStringProperty indirizzo = new SimpleStringProperty();
-	public SimpleStringProperty telefono = new SimpleStringProperty();
+	public SimpleStringProperty telefonoAgenzia = new SimpleStringProperty();
 	
 	
 	public String getId() {
@@ -21,7 +21,7 @@ public class AgenziaModel {
 		return indirizzo.get();
 	}
 	public String getTelefono() {
-		return telefono.get();
+		return telefonoAgenzia.get();
 	}
 
 }

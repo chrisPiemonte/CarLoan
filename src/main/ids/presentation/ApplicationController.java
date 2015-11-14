@@ -79,7 +79,12 @@ public class ApplicationController {
 			return resp;
 			
 		case "logout":
-			break;
+			resp = new ComplexResponse<Scene>();
+			CurrentSessionHandler.refresh();
+			dispatcher = new Dispatcher();
+			dispatcher.hastaLaVistaBaby() ;
+			return resp;
+			
 		
 		
 		default:
@@ -109,18 +114,18 @@ public class ApplicationController {
 			if (impiegato.getClass().equals(AdminTO.class)){
 				
 				CurrentSessionHandler.setTipoAccesso("admin");
-				String pathImpiegato = "impiegatoBoot";
+				String pathAdmin = "BootAdmin";
 				vjp = ViewsJsonParser.getInstance();
 				dispatcher = new Dispatcher(); 
-				dispatcher.setInterface(vjp.getViewPath(pathImpiegato));
+				dispatcher.setInterface(vjp.getViewPath(pathAdmin));
 			}
 			else if (impiegato.getClass().equals(ManagerTO.class)){
 				
 				CurrentSessionHandler.setTipoAccesso("manager");
-				String pathImpiegato = "BootManager";
+				String pathManager= "BootManager";
 				vjp = ViewsJsonParser.getInstance();
 				dispatcher = new Dispatcher(); 
-				dispatcher.setInterface(vjp.getViewPath(pathImpiegato));
+				dispatcher.setInterface(vjp.getViewPath(pathManager));
 				
 			}
 			

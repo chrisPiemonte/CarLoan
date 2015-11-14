@@ -47,6 +47,7 @@ public class InserisciClientePopUp implements Initializable {
 		nome.setFocusTraversable(false);
 		cognome.setPromptText("inserisci cognome...");
 		cognome.setFocusTraversable(false);
+		dataNascita.setFocusTraversable(false);
 		telefono.setPromptText("inserisci numero di telefono...");
 		telefono.setFocusTraversable(false);
 		

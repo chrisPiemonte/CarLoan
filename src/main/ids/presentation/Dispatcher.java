@@ -5,7 +5,8 @@ import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import main.ids.presentation.CurrentSessionHandler;
 
 public class Dispatcher {
@@ -45,6 +46,25 @@ public class Dispatcher {
 		}
 		
 		return null;
+		
+	}
+	
+	
+	public void hastaLaVistaBaby(){
+		try{
+			Parent parent = FXMLLoader.load(getClass().getResource(BOOTSTRAP));
+			BorderPane root = (BorderPane) CurrentSessionHandler.getSessioneScene().getRoot();
+			root.setCenter(parent);
+			root.setLeft(null);
+			root.setRight(null);
+			root.setBottom(null);
+			root.setTop(null);
+		}catch(IOException | NullPointerException e) {
+			
+			e.printStackTrace();
+			
+
+		}
 		
 	}
 	

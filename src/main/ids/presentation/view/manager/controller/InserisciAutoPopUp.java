@@ -13,7 +13,9 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import main.ids.presentation.CurrentSessionHandler;
 import main.ids.presentation.FrontController;
+import main.ids.presentation.request.BasicRequest;
 import main.ids.presentation.request.ComplexRequest;
 import main.ids.presentation.request.RequestType;
 import main.ids.presentation.response.BasicResponse;
@@ -28,7 +30,6 @@ public class InserisciAutoPopUp implements Initializable {
 	public TextField stato;
 	public TextField fascia;
 	public TextField chilometraggio;
-	public TextField agenzia;
 	public DatePicker dataManutenzione;
 	
 	
@@ -46,13 +47,11 @@ public class InserisciAutoPopUp implements Initializable {
 		fascia.setFocusTraversable(false);
 		chilometraggio.setPromptText("inserisci chilometraggio...");
 		chilometraggio.setFocusTraversable(false);
-		agenzia.setPromptText("inserisci agenzia...");
-		agenzia.setFocusTraversable(false);
 		annulla.setOnAction(e -> buttonClose());
 		conferma.setOnAction(e -> {
 			
 		buttonConfirm();
-		buttonClose();
+		chiudiPopUp();
 		});
 
 		
@@ -65,20 +64,31 @@ public class InserisciAutoPopUp implements Initializable {
 	    stage.close();
 	}
 	
+	public void chiudiPopUp() {
+			
+			FrontController frontController = new FrontController();
+			BasicRequest request = new BasicRequest();
+			request.setType(RequestType.VIEW);
+			request.setRequest("gestioneAutoManager");
+			frontController.processRequest(request);
+			buttonClose();
+			
+		}
+	
 	public boolean buttonConfirm(){
 		
-		boolean inserito = addAuto(targa.getText(),modello.getText(),stato.getText(),fascia.getText(),chilometraggio.getText(),dataManutenzione.getValue(),agenzia.getText());
+		boolean inserito = addAuto(targa.getText(),modello.getText(),stato.getText(),fascia.getText(),chilometraggio.getText(),dataManutenzione.getValue());
 		return inserito;
 	}
 	
-	public boolean addAuto(String targa, String modello, String stato, String fascia, String chilometraggio,LocalDate dataManutenzione,String agenzia){
+	public boolean addAuto(String targa, String modello, String stato, String fascia, String chilometraggio,LocalDate dataManutenzione){
 		ArrayList<AutoTO> listaAuto = new ArrayList<AutoTO>();
 		FrontController frontController = new FrontController();
 		ComplexRequest request = new ComplexRequest();
 		request.setType(RequestType.SERVICE);
 		request.setRequest("addAuto");
 		double km = Double.parseDouble(chilometraggio);
-		AutoTO auto = new AutoTO(targa,modello,stato,fascia,km,dataManutenzione,agenzia);
+		AutoTO auto = new AutoTO(targa,modello,stato,fascia,km,dataManutenzione,CurrentSessionHandler.getAgenzia());
 		listaAuto.add(auto);
 		request.setParameters(listaAuto);
 		BasicResponse response = (BasicResponse) frontController.processRequest(request);

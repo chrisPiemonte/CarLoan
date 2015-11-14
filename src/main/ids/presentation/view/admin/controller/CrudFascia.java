@@ -1,4 +1,4 @@
-package main.ids.presentation.view.manager.controller;
+package main.ids.presentation.view.admin.controller;
 
 
 
@@ -15,6 +15,7 @@ import main.ids.presentation.view.model.ClienteModel;
 import main.ids.presentation.view.model.FasciaModel;
 import main.ids.transferObjects.AutoTO;
 import main.ids.transferObjects.FasciaTO;
+import main.ids.util.json.ViewsJsonParser;
 import main.ids.util.viewUtil.CallViewLoop;
 import main.ids.presentation.request.BasicRequest;
 import main.ids.presentation.request.ComplexRequest;
@@ -69,11 +70,11 @@ public class CrudFascia implements Initializable {
 	public void initialize(URL location, ResourceBundle resources){
 		System.out.println("Loading user data...");
 		
-		clienti.setOnAction(e -> CallViewLoop.clientiViewManager());
-		contratti.setOnAction(e -> CallViewLoop.contrattiViewManager());
-		auto.setOnAction(e -> CallViewLoop.autoViewManager());
-		fascia.setOnAction(e -> CallViewLoop.fasciaViewManager());
-		staff.setOnAction(e -> CallViewLoop.staffViewManager());
+		clienti.setOnAction(e -> CallViewLoop.clientiViewAdmin());
+		contratti.setOnAction(e -> CallViewLoop.contrattiViewAdmin());
+		auto.setOnAction(e -> CallViewLoop.autoViewAdmin());
+		fascia.setOnAction(e -> CallViewLoop.fasciaViewAdmin());
+		staff.setOnAction(e -> CallViewLoop.staffViewAdmin());
 		aggiungi.setOnAction(e -> addFascia());
 		
 		searchButton.setOnAction(e -> cercaFascia(search.getText()));
@@ -134,8 +135,10 @@ public class CrudFascia implements Initializable {
 	
 	
 	private void addFascia(){
-		try {
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/ids/presentation/view/manager/InserisciFasciaPopUp.fxml"));  
+	  	try {
+	  		
+        ViewsJsonParser vjp = ViewsJsonParser.getInstance();
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource(vjp.getViewPath("inserisciFasciaAdmin")));  
 	    Parent root = (Parent) loader.load();  
 	    Scene scene = new Scene(root,600,500);  
 	    Stage stage = new Stage();  

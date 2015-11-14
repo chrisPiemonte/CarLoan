@@ -6,10 +6,12 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import main.ids.presentation.CurrentSessionHandler;
 import main.ids.presentation.FrontController;
 import main.ids.presentation.response.BasicResponse;
 import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.response.Response;
+import main.ids.presentation.view.controller.GestioneDatiPersonali;
 import main.ids.presentation.view.controller.InputBox;
 import main.ids.presentation.view.model.AutoModel;
 import main.ids.presentation.view.model.ClienteModel;
@@ -30,6 +32,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -68,15 +72,17 @@ public class CrudAuto implements Initializable {
 	public TableColumn<AutoModel, String> stato;
 	public TableColumn<AutoModel, String> fasciaAuto;
 	public TableColumn<AutoModel, Double> km;
-	public TableColumn<AutoModel, String> manutenzione;
+	public TableColumn<AutoModel, String> manutenzioneOrdinaria;
 	public TableColumn<AutoModel, String> agenzia;
-	
+	public MenuButton personalMenu;
 	private ObservableList<AutoModel> listaAuto;
 	
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
-		System.out.println("Auto manager...");
 		
+		MenuItem logout = new MenuItem("Logout");
+		logout.setOnAction(e -> GestioneDatiPersonali.logout());
+		personalMenu.getItems().addAll(logout);	
 		clienti.setOnAction(e -> CallViewLoop.clientiViewManager());
 		contratti.setOnAction(e -> CallViewLoop.contrattiViewManager());
 		auto.setOnAction(e -> CallViewLoop.autoViewManager());
@@ -99,8 +105,8 @@ public class CrudAuto implements Initializable {
 		fasciaAuto.setText("Fascia");
 		km.setCellValueFactory(new PropertyValueFactory<AutoModel, Double>("km"));
 		km.setText("km");
-		manutenzione.setCellValueFactory(new PropertyValueFactory<AutoModel, String>("manutenzione"));
-		manutenzione.setText("Data manutenzione");
+		manutenzioneOrdinaria.setCellValueFactory(new PropertyValueFactory<AutoModel, String>("manutenzioneOrdinaria"));
+		manutenzioneOrdinaria.setText("Data manutenzione");
 		agenzia.setCellValueFactory(new PropertyValueFactory<AutoModel, String>("agenzia"));
 		agenzia.setText("Agenzia");
 		
@@ -119,8 +125,11 @@ public class CrudAuto implements Initializable {
 	public void buildData(){
 		listaAuto = FXCollections.observableArrayList();
 		ComplexRequest request = new ComplexRequest();
-		request.setRequest("getAllAuto");
+		ArrayList<String> agenziaParam = new ArrayList<>();
+		agenziaParam.add(CurrentSessionHandler.getAgenzia());
+		request.setRequest("getAutoByAgenzia");
 		request.setType(RequestType.SERVICE);
+		request.setParameters(agenziaParam);
 		ComplexResponse<AutoTO> response = (ComplexResponse<AutoTO>) frontController.processRequest(request);
 		for (AutoTO cliente : response.getParameters()){
 			
@@ -128,13 +137,9 @@ public class CrudAuto implements Initializable {
 			tmpList.targa.set(cliente.getTarga());
 			tmpList.modello.set(cliente.getModello());
 			tmpList.stato.set(cliente.getStato());
-			//Format formatter = new SimpleDateFormat("dd-MM-yyyy");
-			//LocalDate dataNascita = cliente.getDataNascita();
-			//String s = formatter.format(dataNascita);
-			//tmpList.dataNascita.set(s);
 			tmpList.fasciaAuto.set(cliente.getFascia());
 			tmpList.km.set(cliente.getKm());
-			//tmpList.manutenzione.set(cliente.getManutenzioneOrdinaria());
+			tmpList.manutenzioneOrdinaria.set(cliente.getManutenzioneOrdinaria().toString());
 			tmpList.agenzia.set(cliente.getAgenzia());
 			listaAuto.add(tmpList);
 			

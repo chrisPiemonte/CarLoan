@@ -1,5 +1,6 @@
 package main.ids.presentation.view.model;
 
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class StaffModel {
@@ -7,7 +8,7 @@ public class StaffModel {
 	public SimpleStringProperty cf = new SimpleStringProperty();
 	public SimpleStringProperty nome = new SimpleStringProperty();
 	public SimpleStringProperty cognome = new SimpleStringProperty();
-	public SimpleStringProperty dataNascita = new SimpleStringProperty();
+	public SimpleObjectProperty<String> dataNascita = new SimpleObjectProperty<>();
 	public SimpleStringProperty telefono = new SimpleStringProperty();
 	public SimpleStringProperty agenzia = new SimpleStringProperty();
 	public SimpleStringProperty username = new SimpleStringProperty();
@@ -22,7 +23,7 @@ public class StaffModel {
 		return cognome.get();
 	}
 	public String getDataNascita() {
-		return dataNascita.get();
+		return dataNascita.getValue().toString();
 	}
 	public String getTelefono() {
 		return telefono.get();

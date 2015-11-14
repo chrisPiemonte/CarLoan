@@ -1,4 +1,4 @@
-package main.ids.presentation.view.manager.controller.gestioneCliente;
+package main.ids.presentation.view.admin.controller.gestioneCliente;
 
 import java.net.URL;
 import java.time.LocalDate;

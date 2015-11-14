@@ -1,6 +1,6 @@
 package main.ids.presentation.view.controller;
 
-import java.awt.TextArea;
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -12,15 +12,16 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
 import main.ids.presentation.CurrentSessionHandler;
 import main.ids.presentation.FrontController;
+import main.ids.presentation.request.BasicRequest;
 import main.ids.presentation.request.ComplexRequest;
 import main.ids.presentation.request.RequestType;
 import main.ids.presentation.response.BasicResponse;
@@ -51,11 +52,12 @@ public class ApriContratto implements Initializable {
 	public DatePicker dataFine;
 	public Button annulla;
 	public Button ok; 
+	public TextField acconto;
 	
 	FilteredList <AutoModel> autoList ;
 	ObservableList<AgenziaModel> agenzieList = FXCollections.observableArrayList() ;
 	ObservableList<AutoModel> tmp ;
-	ObservableList<String> listMod = FXCollections.observableArrayList("illimitato","limitato");
+	ObservableList<String> listMod = FXCollections.observableArrayList("Illimitato","Limitato");
 	
 	FrontController frontController;
 	ComplexRequest request ;
@@ -183,7 +185,6 @@ public class ApriContratto implements Initializable {
 			tmpList.agenzia.set(cliente.getAgenzia());
 			tmp.add(tmpList);
 		}
-		
 		autoList = new FilteredList<>(tmp, p -> p.getStato().equals("D"));
 		
 		
@@ -203,7 +204,7 @@ public class ApriContratto implements Initializable {
 			tmpList.id.set(a.getId());
 			tmpList.città.set(a.getCitta());
 			tmpList.indirizzo.set(a.getIndirizzo());
-			tmpList.telefono.set(a.getTelefono());
+			tmpList.telefonoAgenzia.set(a.getTelefono());
 			agenzieList.add(tmpList);
 		}
 		
@@ -231,9 +232,29 @@ public class ApriContratto implements Initializable {
 						modIllimitato = false;
 					double fattura = CalcoloTotale.setTotale(dataInizio.getValue(), dataFine.getValue(), selectedFascia, modIllimitato);
 					boolean confermaInserimento = Message.display("la fattura è di "+fattura+" prezzo base \nContinuare?", AlertType.CONFIRMATION);
-					if ( confermaInserimento){
-						addContratto();
-					}
+					if (confermaInserimento){
+						
+						ContrattoTO contrattoInserito = new ContrattoTO();
+						contrattoInserito.setCliente(cf.getText());
+						contrattoInserito.setAuto(autoList.get(autoIndex).getTarga());
+						contrattoInserito.setModNoleggio(comboMod.getValue().toString());
+						System.out.println(comboMod.getValue().toString());
+						contrattoInserito.setPrezzoKm(selectedFascia.getTariffaKm());
+						contrattoInserito.setDataInizio(dataInizio.getValue());
+						contrattoInserito.setDataFine(dataFine.getValue());
+						contrattoInserito.setAgenziaInizio(CurrentSessionHandler.getAgenzia());
+						contrattoInserito.setImpInizio(CurrentSessionHandler.getUsername());
+						contrattoInserito.setAcconto(Double.parseDouble(acconto.getText()));
+						if (addContratto(contrattoInserito));
+						
+						Message.display("Contratto inserito", AlertType.INFORMATION);
+						
+						// QUI AVVIENE LA CHIUSURA
+						chiudiPopUp();
+						
+						
+						
+						} 
 					
 		}else{
 			
@@ -314,14 +335,37 @@ public class ApriContratto implements Initializable {
 	}
 	
 	
-	public void addContratto(){
+	public boolean addContratto(ContrattoTO contrattoTO){
 		frontController = new FrontController();
 		ArrayList<ContrattoTO> contratti = new ArrayList<>();
-		ContrattoTO contratto = new ContrattoTO();
+		contratti.add(contrattoTO);
 		request = new ComplexRequest();
 		request.setType(RequestType.SERVICE);
 		request.setRequest("apriContratto");
+		request.setParameters(contratti);
+		BasicResponse response = (BasicResponse) frontController.processRequest(request);
+		return response.isResponse();
 		
+	}
+	
+	
+	
+	public void chiudiPopUp() {
+		
+		FrontController frontController = new FrontController();
+		BasicRequest request = new BasicRequest();
+		request.setType(RequestType.VIEW);
+		request.setRequest("gestioneCliente");
+		frontController.processRequest(request);
+		buttonClose();
+	
+}
+
+
+	public void buttonClose(){
+		Stage stage = (Stage) annulla.getScene().getWindow();
+	    // do what you have to do
+	    stage.close();
 	}
 
 

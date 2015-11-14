@@ -10,11 +10,13 @@ import java.util.ResourceBundle;
 import main.ids.presentation.FrontController;
 import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.response.Response;
+import main.ids.presentation.view.controller.GestioneDatiPersonali;
 import main.ids.presentation.view.model.AutoModel;
 import main.ids.presentation.view.model.ClienteModel;
 import main.ids.presentation.view.model.FasciaModel;
 import main.ids.transferObjects.AutoTO;
 import main.ids.transferObjects.FasciaTO;
+import main.ids.util.json.ViewsJsonParser;
 import main.ids.util.viewUtil.CallViewLoop;
 import main.ids.presentation.request.BasicRequest;
 import main.ids.presentation.request.ComplexRequest;
@@ -28,6 +30,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -62,13 +66,16 @@ public class CrudFascia implements Initializable {
 	public TableColumn<FasciaModel, Double> tariffaGiornaliera;
 	public TableColumn<FasciaModel, Double> tariffaSettimanale;
 	public TableColumn<FasciaModel, Double> tariffaKm;
-	
+	public MenuButton personalMenu;
 	private ObservableList<FasciaModel> listaFasce;
 	
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
 		System.out.println("Loading user data...");
-		
+		MenuItem logout = new MenuItem("Logout");
+		logout.setOnAction(e -> GestioneDatiPersonali.logout());
+		personalMenu.getItems().addAll(logout);
+
 		clienti.setOnAction(e -> CallViewLoop.clientiViewManager());
 		contratti.setOnAction(e -> CallViewLoop.contrattiViewManager());
 		auto.setOnAction(e -> CallViewLoop.autoViewManager());
@@ -119,7 +126,6 @@ public class CrudFascia implements Initializable {
 		}
 		
 		tabella.setItems(listaFasce);
-		//System.out.println(listaClienti.get(0).getCf());
 	}
 	
 	
@@ -135,7 +141,8 @@ public class CrudFascia implements Initializable {
 	
 	private void addFascia(){
 		try {
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/ids/presentation/view/manager/InserisciFasciaPopUp.fxml"));  
+		ViewsJsonParser vjp = ViewsJsonParser.getInstance();
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource(vjp.getViewPath("inserisciFasciaManager")));  
 	    Parent root = (Parent) loader.load();  
 	    Scene scene = new Scene(root,600,500);  
 	    Stage stage = new Stage();  

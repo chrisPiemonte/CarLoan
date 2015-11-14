@@ -40,7 +40,7 @@ public class CurrentSessionHandler {
 		CurrentSessionHandler.sessioneScene = sessioneScene;
 	}
 
-	public static void astaLaVistaBaby(){
+	public static void refresh(){
 		CurrentSessionHandler.username = null;
 		CurrentSessionHandler.tipoAccesso = null;
 	}

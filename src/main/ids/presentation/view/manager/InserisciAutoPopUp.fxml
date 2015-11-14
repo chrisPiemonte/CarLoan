@@ -36,11 +36,7 @@
             <Insets top="5.0" />
          </VBox.margin>
       </HBox>
-      <DatePicker fx:id="dataManutenzione"/>
-      <TextField fx:id="agenzia" layoutX="210.0" layoutY="155.0" maxWidth="200.0">
-         <VBox.margin>
-            <Insets top="3.0" />
-         </VBox.margin></TextField>
+      <DatePicker fx:id="dataManutenzione" />
       <HBox maxWidth="200.0" prefHeight="50.0" prefWidth="200.0" spacing="20.0">
          <opaqueInsets>
             <Insets />

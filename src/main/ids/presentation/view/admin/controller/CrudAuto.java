@@ -1,4 +1,4 @@
-package main.ids.presentation.view.manager.controller;
+package main.ids.presentation.view.admin.controller;
 
 
 import java.io.IOException;
@@ -75,13 +75,13 @@ public class CrudAuto implements Initializable {
 	
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
-		System.out.println("Auto manager...");
 		
-		clienti.setOnAction(e -> CallViewLoop.clientiViewManager());
-		contratti.setOnAction(e -> CallViewLoop.contrattiViewManager());
-		auto.setOnAction(e -> CallViewLoop.autoViewManager());
-		fascia.setOnAction(e -> CallViewLoop.fasciaViewManager());
-		staff.setOnAction(e -> CallViewLoop.staffViewManager());
+		
+		clienti.setOnAction(e -> CallViewLoop.clientiViewAdmin());
+		contratti.setOnAction(e -> CallViewLoop.contrattiViewAdmin());
+		auto.setOnAction(e -> CallViewLoop.autoViewAdmin());
+		fascia.setOnAction(e -> CallViewLoop.fasciaViewAdmin());
+		staff.setOnAction(e -> CallViewLoop.staffViewAdmin());
 		cambiaStato.setDisable(true);
 		cambiaKm.setDisable(true);
 		aggiungi.setOnAction(e -> addAuto());
@@ -209,12 +209,12 @@ public class CrudAuto implements Initializable {
 	private void addAuto(){
 		try {
 		ViewsJsonParser vjp = ViewsJsonParser.getInstance();
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource(vjp.getViewPath("inserisciAutoManager")));  
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource(vjp.getViewPath("inserisciAutoAdmin")));  
 	    Parent root = (Parent) loader.load();  
 	    Scene scene = new Scene(root,600,500);  
 	    Stage stage = new Stage();  
 	    stage.setScene(scene);  
-	    stage.setTitle("Inserisci Cliente");
+	    stage.setTitle("Inserisci Auto");
 	    stage.initModality(Modality.APPLICATION_MODAL);    
 	    stage.show();  
 		}catch (IOException | NullPointerException e) {

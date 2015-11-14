@@ -56,13 +56,14 @@
                      </VBox.margin>
                   </Label>
                   <DatePicker fx:id="dataFine" />
+                  <ComboBox fx:id="comboDurata" prefWidth="150.0" promptText="Modalità" />
                   <Label layoutX="76.0" layoutY="20.0" text="Modalità noleggio">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
                   <ComboBox fx:id="comboMod" prefWidth="150.0" promptText="scegli una modalità" />
-                  <TextField promptText="Inserire acconto...">
+                  <TextField fx:id="acconto" promptText="Inserire acconto...">
                      <VBox.margin>
                         <Insets top="13.0" />
                      </VBox.margin>

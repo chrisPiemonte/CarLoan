@@ -30,7 +30,7 @@
          <top>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" styleClass="whiteBar" stylesheets="@../style/carloan.css" BorderPane.alignment="CENTER">
                <children>
-                   <ImageView fitHeight="100.0" fitWidth="353.0" pickOnBounds="true" preserveRatio="true" styleClass="logo">
+                 <ImageView fitHeight="100.0" fitWidth="353.0" pickOnBounds="true" preserveRatio="true" styleClass="logo">
                      <HBox.margin>
                         <Insets bottom="5.0" left="8.0" right="10.0" top="5.0" />
                      </HBox.margin>
@@ -38,6 +38,27 @@
                         <Image url="@../style/img/logo.png" />
                      </image>
                   </ImageView>
+                  <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" />
+                  <VBox alignment="BOTTOM_RIGHT" prefHeight="110.0" prefWidth="146.0" />
+                  <VBox alignment="BOTTOM_RIGHT" layoutX="596.0" layoutY="10.0" prefHeight="110.0" prefWidth="167.0">
+                     <children>
+                        <Label prefHeight="25.0" prefWidth="136.0" text="Dati personali" />
+                        <MenuButton fx:id="personalMenu" mnemonicParsing="false" prefHeight="25.0" prefWidth="144.0" text="Opzioni" textOverrun="CLIP">
+                           
+                        </MenuButton>
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </VBox>
                </children>
             </HBox>
          </top>
@@ -142,7 +163,6 @@
                      <graphic>
                         <TextField fx:id="search" />
                      </graphic></Button>
-                     <Button fx:id="aggiungi" mnemonicParsing="false" styleClass="btnOperation" text="Aggiungi"/>
                </children>
                <padding>
                   <Insets bottom="10.0" left="6.0" right="10.0" top="4.0" />

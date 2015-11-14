@@ -25,7 +25,6 @@
       <TextField fx:id="cognome" layoutX="10.0" layoutY="118.0" maxWidth="200.0" />
       <DatePicker fx:id="dataNascita" />
       <TextField fx:id="telefono" layoutX="185.0" layoutY="165.0" maxWidth="200.0" />
-      <TextField fx:id="agenzia" layoutX="185.0" layoutY="198.0" maxWidth="200.0" />
       <TextField fx:id="username" layoutX="185.0" layoutY="198.0" maxWidth="200.0" />
       <HBox maxWidth="200.0" prefHeight="50.0" prefWidth="200.0" spacing="20.0">
          <opaqueInsets>

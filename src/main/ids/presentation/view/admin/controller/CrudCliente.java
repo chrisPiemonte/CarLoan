@@ -1,4 +1,4 @@
-package main.ids.presentation.view.manager.controller;
+package main.ids.presentation.view.admin.controller;
 
 
 import java.io.IOException;
@@ -69,11 +69,11 @@ public class CrudCliente implements Initializable {
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
 
-		contratti.setOnAction(e -> CallViewLoop.contrattiViewManager());
-		auto.setOnAction(e -> CallViewLoop.autoViewManager());
-		clienti.setOnAction(e -> CallViewLoop.clientiViewManager());
-		fascia.setOnAction(e -> CallViewLoop.fasciaViewManager());
-		staff.setOnAction(e -> CallViewLoop.staffViewManager());
+		contratti.setOnAction(e -> CallViewLoop.contrattiViewAdmin());
+		auto.setOnAction(e -> CallViewLoop.autoViewAdmin());
+		clienti.setOnAction(e -> CallViewLoop.clientiViewAdmin());
+		fascia.setOnAction(e -> CallViewLoop.fasciaViewAdmin());
+		staff.setOnAction(e -> CallViewLoop.staffViewAdmin());
 		
 		aggiungi.setOnAction(e -> addCliente());
 		searchButton.setOnAction(e -> cercaCliente(search.getText()));
@@ -98,7 +98,7 @@ public class CrudCliente implements Initializable {
 	private void addCliente(){
 		try {
 		ViewsJsonParser vjp = ViewsJsonParser.getInstance();
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource(vjp.getViewPath("InserisciClienteManager")));  
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource(vjp.getViewPath("InserisciClienteAdmin")));  
 	    Parent root = (Parent) loader.load();  
 	    Scene scene = new Scene(root,600,500);  
 	    Stage stage = new Stage();  

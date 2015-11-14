@@ -1,9 +1,8 @@
 package main.ids.presentation.view.manager.controller;
 
-import java.awt.List;
+
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -13,6 +12,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import main.ids.presentation.CurrentSessionHandler;
 import main.ids.presentation.FrontController;
 import main.ids.presentation.request.BasicRequest;
 import main.ids.presentation.request.ComplexRequest;
@@ -20,7 +20,6 @@ import main.ids.presentation.request.RequestType;
 import main.ids.presentation.response.BasicResponse;
 import main.ids.presentation.view.controller.Message;
 import main.ids.transferObjects.AccountTO;
-import main.ids.transferObjects.ClienteTO;
 import main.ids.transferObjects.ImpiegatoTO;
 
 public class InserisciStaffPopUp implements Initializable {
@@ -29,7 +28,6 @@ public class InserisciStaffPopUp implements Initializable {
 	public TextField nome;
 	public TextField cognome;
 	public TextField telefono;
-	public TextField agenzia;
 	public TextField username;
 	public DatePicker dataNascita;
 	
@@ -42,7 +40,19 @@ public class InserisciStaffPopUp implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
+		cf.setPromptText("inserisci Codice fiscale");
+		nome.setPromptText("inserisci Nome");
+		cognome.setPromptText("inserisci Cognome");
+		username.setPromptText("inserisci Username");
+		telefono.setPromptText("Numero di telefono");
+		cf.setFocusTraversable(false);
+		nome.setFocusTraversable(false);
+		cognome.setFocusTraversable(false);
+		telefono.setFocusTraversable(false);
+		username.setFocusTraversable(false);
+		dataNascita.setFocusTraversable(false);
 
+		
 		
 		
 		
@@ -79,14 +89,14 @@ public class InserisciStaffPopUp implements Initializable {
 	
 	public boolean buttonConfirm(){
 			 
-			boolean check = addStaff(cf.getText(), nome.getText(),cognome.getText(),dataNascita.getValue(),telefono.getText(),agenzia.getText(),username.getText());
+			boolean check = addStaff(cf.getText(), nome.getText(),cognome.getText(),dataNascita.getValue(),telefono.getText(),username.getText());
 			return check;
 			
 		
 		
 	}
 	
-	public boolean addStaff(String cf,String nome,String cognome,LocalDate dataNascita, String telefono,String agenzia,String username){
+	public boolean addStaff(String cf,String nome,String cognome,LocalDate dataNascita, String telefono,String username){
 		ArrayList<String> list = new ArrayList<>();
 		ComplexRequest request = new ComplexRequest();
 		FrontController frontController = new FrontController();
@@ -107,7 +117,7 @@ public class InserisciStaffPopUp implements Initializable {
 				BasicResponse response2 = (BasicResponse) frontController.processRequest(request);
 				if(response2.isResponse()){
 					ArrayList<ImpiegatoTO> impiegati = new ArrayList<ImpiegatoTO>();
-					ImpiegatoTO impiegato = new ImpiegatoTO(cf,nome,cognome,dataNascita,telefono,agenzia,username);
+					ImpiegatoTO impiegato = new ImpiegatoTO(cf,nome,cognome,dataNascita,telefono,CurrentSessionHandler.getAgenzia(),username);
 					impiegati.add(impiegato);
 					response = new BasicResponse();
 					request = new ComplexRequest<>();

@@ -47,12 +47,9 @@
                   <VBox alignment="BOTTOM_RIGHT" prefHeight="110.0" prefWidth="146.0" />
                   <VBox alignment="BOTTOM_RIGHT" layoutX="596.0" layoutY="10.0" prefHeight="110.0" prefWidth="167.0">
                      <children>
-                        <Label prefHeight="25.0" prefWidth="136.0" text="Label" />
-                        <MenuButton mnemonicParsing="false" prefHeight="25.0" prefWidth="144.0" text="MenuButton" textOverrun="CLIP">
-                           <items>
-                              <MenuItem mnemonicParsing="false" text="Action 1" />
-                              <MenuItem mnemonicParsing="false" text="Action 2" />
-                           </items>
+                        <Label prefHeight="25.0" prefWidth="136.0" text="Dati personali" />
+                        <MenuButton fx:id="personalMenu" mnemonicParsing="false" prefHeight="25.0" prefWidth="144.0" text="Opzioni" textOverrun="CLIP">
+                           
                         </MenuButton>
                      </children>
                      <HBox.margin>
@@ -156,7 +153,7 @@
                         <TableColumn fx:id="stato" prefWidth="57.0" text="Column X" />
                         <TableColumn fx:id="fasciaAuto" prefWidth="57.0" text="Column X" />
                         <TableColumn fx:id="km" minWidth="0.0" prefWidth="71.0" text="Column X" />
-                        <TableColumn fx:id="manutenzione" minWidth="0.0" prefWidth="104.0" text="Column X" />
+                        <TableColumn fx:id="manutenzioneOrdinaria" minWidth="0.0" prefWidth="104.0" text="Column X" />
                         <TableColumn fx:id="agenzia" maxWidth="354.0" prefWidth="188.0" text="Column X" />
                     </columns>
                   </TableView>

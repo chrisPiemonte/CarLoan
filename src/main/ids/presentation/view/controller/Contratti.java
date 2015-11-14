@@ -27,6 +27,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -53,6 +55,7 @@ public class Contratti implements Initializable {
 	public TextField search;
 	public Button chiudi;
 	public Button apri;
+	public MenuButton personalMenu;
 	
 	
 	public TableView<ContrattiModel> tabella;
@@ -69,6 +72,9 @@ public class Contratti implements Initializable {
 	public void initialize(URL location, ResourceBundle resources){
 		System.out.println("Loading user data...");
 		
+		MenuItem logout = new MenuItem("Logout");
+		logout.setOnAction(e -> GestioneDatiPersonali.logout());
+		personalMenu.getItems().addAll(logout);
 		clienti.setOnAction(e -> CallViewLoop.clientiView());
 		contratti.setOnAction(e -> CallViewLoop.contrattiView());
 		autoView.setOnAction(e -> CallViewLoop.autoView());

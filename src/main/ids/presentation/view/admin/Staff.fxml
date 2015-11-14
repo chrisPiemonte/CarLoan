@@ -123,7 +123,7 @@
    <center>
       <VBox maxWidth="700.0" prefHeight="200.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
-            <ScrollPane maxWidth="1100.0" prefHeight="700.0" prefWidth="1100.0">
+            <ScrollPane maxWidth="1100.0" prefHeight="315.0" prefWidth="700.0">
                <content>
                   <TableView fx:id="tabella" maxWidth="700.0" prefHeight="641.0" prefWidth="732.0">
                     <columns>
@@ -138,13 +138,19 @@
                   </TableView>
                </content>
             </ScrollPane>
+            <ScrollPane prefHeight="200.0" prefWidth="200.0">
+               <content>
+                  <TableView fx:id="tabellaAgenzie" prefHeight="332.0" prefWidth="722.0" />
+               </content>
+            </ScrollPane>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="137.0" prefWidth="508.0" spacing="6.0">
                <children>
 		 <Button fx:id="searchButton" mnemonicParsing="false" styleClass="btnOperation" text="Ricerca">
                      <graphic>
                         <TextField fx:id="search" />
                      </graphic></Button>
-                  <Button fx:id="aggiungi" mnemonicParsing="false" prefHeight="60.0" prefWidth="108.0" styleClass="btnOperation" text="Aggiungi" />
+                  <Button fx:id="aggiungiAgenzia" mnemonicParsing="false" prefHeight="61.0" prefWidth="154.0" styleClass="btnOperation" text="Aggiungi Agenzia" />
+                  <Button fx:id="aggiungi" mnemonicParsing="false" prefHeight="60.0" prefWidth="141.0" styleClass="btnOperation" text="Aggiungi Staff" />
                </children>
                <padding>
                   <Insets bottom="10.0" left="6.0" right="10.0" top="4.0" />

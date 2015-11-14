@@ -1,6 +1,7 @@
 package main.ids.presentation.view.controller;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -21,6 +22,8 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -41,12 +44,13 @@ public class Staff implements Initializable {
 	public Button fascia;
 	public Button searchButton;
 	public TextField search;
+	public MenuButton personalMenu;
 	
 	public TableView<StaffModel> tabella;
 	public TableColumn<StaffModel, String> cf;
 	public TableColumn<StaffModel, String> nome;
 	public TableColumn<StaffModel, String> cognome;
-	//public TableColumn<ClienteModel, LocalData> dataNascita;
+	public TableColumn<StaffModel, LocalDate> dataNascita;
 	public TableColumn<StaffModel, String> telefono;
 	public TableColumn<StaffModel, String> agenzia;
 	public TableColumn<StaffModel, String> username;
@@ -54,8 +58,9 @@ public class Staff implements Initializable {
 	private ObservableList<StaffModel> listaStaff;
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
-		System.out.println("Loading user data...");
-		
+		MenuItem logout = new MenuItem("Logout");
+		logout.setOnAction(e -> GestioneDatiPersonali.logout());
+		personalMenu.getItems().addAll(logout);
 		clienti.setOnAction(e -> CallViewLoop.clientiView());
 		contratti.setOnAction(e -> CallViewLoop.contrattiView());
 		auto.setOnAction(e -> CallViewLoop.autoView());
@@ -74,6 +79,8 @@ public class Staff implements Initializable {
 		agenzia.setText("Agenzia");
 		username.setCellValueFactory(new PropertyValueFactory<StaffModel, String>("username"));
 		username.setText("Username");
+		dataNascita.setCellValueFactory(new PropertyValueFactory<StaffModel, LocalDate>("dataNascita"));
+		dataNascita.setText("Data Nascita");
 		
 		buildData();
 		
@@ -91,10 +98,7 @@ public class Staff implements Initializable {
 			tmpList.cf.set(staff.getCf());
 			tmpList.nome.set(staff.getNome());
 			tmpList.cognome.set(staff.getCognome());
-			//Format formatter = new SimpleDateFormat("dd-MM-yyyy");
-			//LocalDate dataNascita = cliente.getDataNascita();
-			//String s = formatter.format(dataNascita);
-			//tmpList.dataNascita.set(s);
+			tmpList.dataNascita.set(staff.getDataNascita().toString());
 			tmpList.telefono.set(staff.getTelefono());
 			tmpList.agenzia.set(staff.getAgenzia());
 			tmpList.username.set(staff.getUsername());

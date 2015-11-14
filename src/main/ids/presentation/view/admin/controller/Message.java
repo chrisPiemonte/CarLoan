@@ -1,4 +1,4 @@
-package main.ids.presentation.view.manager.controller;
+package main.ids.presentation.view.admin.controller;
 
 import java.util.Optional;
 

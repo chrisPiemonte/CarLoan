@@ -38,6 +38,27 @@
                         <Image url="@style/img/logo.png" />
                      </image>
                   </ImageView>
+                  <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" />
+                  <VBox alignment="BOTTOM_RIGHT" prefHeight="110.0" prefWidth="146.0" />
+                  <VBox alignment="BOTTOM_RIGHT" layoutX="596.0" layoutY="10.0" prefHeight="110.0" prefWidth="167.0">
+                     <children>
+                        <Label prefHeight="25.0" prefWidth="136.0" text="Dati personali" />
+                        <MenuButton fx:id="personalMenu" mnemonicParsing="false" prefHeight="25.0" prefWidth="144.0" text="Opzioni" textOverrun="CLIP">
+                           
+                        </MenuButton>
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </VBox>
                </children>
             </HBox>
          </top>

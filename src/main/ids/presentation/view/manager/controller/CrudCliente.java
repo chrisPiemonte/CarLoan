@@ -61,13 +61,16 @@ public class CrudCliente implements Initializable {
 	public TableColumn<ClienteModel, String> cf;
 	public TableColumn<ClienteModel, String> nome;
 	public TableColumn<ClienteModel, String> cognome;
-	//public TableColumn<ClienteModel, LocalData> dataNascita;
+	public TableColumn<ClienteModel, LocalDate> dataNascita;
 	public TableColumn<ClienteModel, String> telefono;
-	
+	public MenuButton personalMenu;
 	private ObservableList<ClienteModel> listaClienti;
 
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
+		MenuItem logout = new MenuItem("Logout");
+		logout.setOnAction(e -> GestioneDatiPersonali.logout());
+		personalMenu.getItems().addAll(logout);
 
 		contratti.setOnAction(e -> CallViewLoop.contrattiViewManager());
 		auto.setOnAction(e -> CallViewLoop.autoViewManager());
@@ -85,7 +88,8 @@ public class CrudCliente implements Initializable {
 		nome.setText("Nome");
 		cognome.setCellValueFactory(new PropertyValueFactory<ClienteModel, String>("cognome"));
 		cognome.setText("Cognome");
-		//dataNascita.setCellValueFactory(new PropertyValueFactory<ClienteModel, String>("dataNascita"));
+		dataNascita.setCellValueFactory(new PropertyValueFactory<ClienteModel, LocalDate>("dataNascita"));
+		dataNascita.setText("Data Nascita");
 		telefono.setCellValueFactory(new PropertyValueFactory<ClienteModel, String>("telefono"));
 		telefono.setText("Numero di telefono");
 		
@@ -98,7 +102,7 @@ public class CrudCliente implements Initializable {
 	private void addCliente(){
 		try {
 		ViewsJsonParser vjp = ViewsJsonParser.getInstance();
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource(vjp.getViewPath("InserisciClienteManager")));  
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource(vjp.getViewPath("inserisciClienteManager")));  
 	    Parent root = (Parent) loader.load();  
 	    Scene scene = new Scene(root,600,500);  
 	    Stage stage = new Stage();  
@@ -129,17 +133,14 @@ public class CrudCliente implements Initializable {
 			tmpList.cf.set(cliente.getCf());
 			tmpList.nome.set(cliente.getNome());
 			tmpList.cognome.set(cliente.getCognome());
-			//Format formatter = new SimpleDateFormat("dd-MM-yyyy");
-			//LocalDate dataNascita = cliente.getDataNascita();
-			//String s = formatter.format(dataNascita);
-			//tmpList.dataNascita.set(s);
+			tmpList.dataNascita.set(cliente.getDataNascita().toString());
 			tmpList.telefono.set(cliente.getTelefono());
 			listaClienti.add(tmpList);
 			
 		}
 		
 		tabella.setItems(listaClienti);
-		//System.out.println(listaClienti.get(0).getCf());
+		
 	}
 	
 	

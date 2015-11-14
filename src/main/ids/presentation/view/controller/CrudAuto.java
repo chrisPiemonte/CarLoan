@@ -2,6 +2,7 @@ package main.ids.presentation.view.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -29,6 +30,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -67,15 +70,19 @@ public class CrudAuto implements Initializable {
 	public TableColumn<AutoModel, String> stato;
 	public TableColumn<AutoModel, String> fasciaAuto;
 	public TableColumn<AutoModel, Double> km;
-	public TableColumn<AutoModel, String> manutenzione;
+	public TableColumn<AutoModel, LocalDate> manutenzioneOrdinaria;
 	public TableColumn<AutoModel, String> agenzia;
 	
 	private ObservableList<AutoModel> listaAuto;
 	
+	public MenuButton personalMenu;
+	
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
-		System.out.println("Loading user data...");
 		
+		MenuItem logout = new MenuItem("Logout");
+		logout.setOnAction(e -> GestioneDatiPersonali.logout());
+		personalMenu.getItems().addAll(logout);
 		clienti.setOnAction(e -> CallViewLoop.clientiView());
 		contratti.setOnAction(e -> CallViewLoop.contrattiView());
 		//auto.setOnAction(e -> callAutoView());
@@ -97,8 +104,8 @@ public class CrudAuto implements Initializable {
 		fasciaAuto.setText("Fascia");
 		km.setCellValueFactory(new PropertyValueFactory<AutoModel, Double>("km"));
 		km.setText("km");
-		manutenzione.setCellValueFactory(new PropertyValueFactory<AutoModel, String>("manutenzione"));
-		manutenzione.setText("Data manutenzione");
+		manutenzioneOrdinaria.setCellValueFactory(new PropertyValueFactory<AutoModel, LocalDate>("manutenzioneOrdinaria"));
+		manutenzioneOrdinaria.setText("Data manutenzione");
 		agenzia.setCellValueFactory(new PropertyValueFactory<AutoModel, String>("agenzia"));
 		agenzia.setText("Agenzia");
 		
@@ -129,13 +136,9 @@ public class CrudAuto implements Initializable {
 			tmpList.targa.set(cliente.getTarga());
 			tmpList.modello.set(cliente.getModello());
 			tmpList.stato.set(cliente.getStato());
-			//Format formatter = new SimpleDateFormat("dd-MM-yyyy");
-			//LocalDate dataNascita = cliente.getDataNascita();
-			//String s = formatter.format(dataNascita);
-			//tmpList.dataNascita.set(s);
 			tmpList.fasciaAuto.set(cliente.getFascia());
 			tmpList.km.set(cliente.getKm());
-			//tmpList.manutenzione.set(cliente.getManutenzioneOrdinaria());
+			tmpList.manutenzioneOrdinaria.set(cliente.getManutenzioneOrdinaria().toString());
 			tmpList.agenzia.set(cliente.getAgenzia());
 			listaAuto.add(tmpList);
 			

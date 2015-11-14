@@ -27,12 +27,15 @@ public class ManagerLogin implements Initializable {
 	public Button auto;
 	public Button fascia;
 	public Button staff;
-	
+	public MenuButton personalMenu;
+
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
 		System.out.println("Loading user data...");
 		frontController = new FrontController();
-		
+		MenuItem logout = new MenuItem("Logout");
+		logout.setOnAction(e -> GestioneDatiPersonali.logout());
+		personalMenu.getItems().addAll(logout);
 		clienti.setOnAction(e -> CallViewLoop.clientiViewManager());
 		contratti.setOnAction(e -> CallViewLoop.contrattiViewManager());
 		auto.setOnAction(e -> CallViewLoop.autoViewManager());

@@ -28,6 +28,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -54,6 +56,7 @@ public class CrudCliente implements Initializable {
 	public Button cancella;
 	public Button searchButton;
 	public TextField search;
+	public MenuButton personalMenu;
 	
 	public TableView<ClienteModel> tabella;
 	public TableColumn<ClienteModel, String> cf;
@@ -67,6 +70,9 @@ public class CrudCliente implements Initializable {
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
 
+		MenuItem logout = new MenuItem("Logout");
+		logout.setOnAction(e -> GestioneDatiPersonali.logout());
+		personalMenu.getItems().addAll(logout);
 		contratti.setOnAction(e -> CallViewLoop.contrattiView());
 		auto.setOnAction(e -> CallViewLoop.autoView());
 		fascia.setOnAction(e -> CallViewLoop.fasciaView());
@@ -127,7 +133,6 @@ public class CrudCliente implements Initializable {
 			tmpList.nome.set(cliente.getNome());
 			tmpList.cognome.set(cliente.getCognome());
 			tmpList.dataNascita.set(cliente.getDataNascita().toString());
-			System.out.println(tmpList.dataNascita.getValue());
 			tmpList.telefono.set(cliente.getTelefono());
 			listaClienti.add(tmpList);
 			
