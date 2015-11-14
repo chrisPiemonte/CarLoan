@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="900.0" styleClass="stageBackground" stylesheets="@../style/carloan.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ids.presentation.view.manager.controller.CrudFascia">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="900.0" styleClass="stageBackground" stylesheets="@../style/carloan.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ids.presentation.view.admin.controller.CrudAuto">
    <bottom>
       <HBox BorderPane.alignment="CENTER">
          <children>
@@ -30,7 +30,7 @@
          <top>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" styleClass="whiteBar" stylesheets="@../style/carloan.css" BorderPane.alignment="CENTER">
                <children>
-                   <ImageView fitHeight="100.0" fitWidth="353.0" pickOnBounds="true" preserveRatio="true" styleClass="logo">
+                  <ImageView fitHeight="100.0" fitWidth="353.0" pickOnBounds="true" preserveRatio="true" styleClass="logo">
                      <HBox.margin>
                         <Insets bottom="5.0" left="8.0" right="10.0" top="5.0" />
                      </HBox.margin>
@@ -38,6 +38,30 @@
                         <Image url="@../style/img/logo.png" />
                      </image>
                   </ImageView>
+                  <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" />
+                  <VBox alignment="BOTTOM_RIGHT" prefHeight="110.0" prefWidth="146.0" />
+                  <VBox alignment="BOTTOM_RIGHT" layoutX="596.0" layoutY="10.0" prefHeight="110.0" prefWidth="167.0">
+                     <children>
+                        <Label prefHeight="25.0" prefWidth="136.0" text="Label" />
+                        <MenuButton mnemonicParsing="false" prefHeight="25.0" prefWidth="144.0" text="MenuButton" textOverrun="CLIP">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Action 1" />
+                              <MenuItem mnemonicParsing="false" text="Action 2" />
+                           </items>
+                        </MenuButton>
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
+                  </VBox>
                </children>
             </HBox>
          </top>
@@ -63,11 +87,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="auto" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0">
-                     <styleClass>
-                        <String fx:value="btnAuto" />
-                        <String fx:value="btn" />
-                     </styleClass></Button>
+                 <Button fx:id="auto" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="btnAutoPressed" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
@@ -81,7 +101,11 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="fascia" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="btnFasciaPressed" />
+                  <Button fx:id="fascia" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0">
+                     <styleClass>
+                        <String fx:value="btnFascia" />
+                        <String fx:value="btn" />
+                     </styleClass></Button>
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
@@ -127,22 +151,30 @@
                <content>
                   <TableView fx:id="tabella" maxWidth="700.0" prefHeight="641.0" prefWidth="732.0">
                     <columns>
-                      <TableColumn fx:id="id" prefWidth="104.0" text="C1" />
-                      <TableColumn fx:id="descrizione" prefWidth="99.0" text="C2" />
-                        <TableColumn fx:id="tariffaGiornaliera" prefWidth="150.0" text="Column X" />
-                        <TableColumn fx:id="tariffaSettimanale" prefWidth="175.0" text="Column X" />
-                        <TableColumn fx:id="tariffaKm" prefWidth="154.0" text="Column X" />
+                      <TableColumn fx:id="targa" prefWidth="104.0" text="C1" />
+                      <TableColumn fx:id="modello" prefWidth="99.0" text="C2" />
+                        <TableColumn fx:id="stato" prefWidth="57.0" text="Column X" />
+                        <TableColumn fx:id="fasciaAuto" prefWidth="57.0" text="Column X" />
+                        <TableColumn fx:id="km" minWidth="0.0" prefWidth="71.0" text="Column X" />
+                        <TableColumn fx:id="manutenzione" minWidth="0.0" prefWidth="104.0" text="Column X" />
+                        <TableColumn fx:id="agenzia" maxWidth="354.0" prefWidth="188.0" text="Column X" />
                     </columns>
                   </TableView>
                </content>
             </ScrollPane>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="137.0" prefWidth="508.0" spacing="6.0">
                <children>
-		  		 <Button fx:id="searchButton" mnemonicParsing="false" styleClass="btnOperation" text="Ricerca">
+                  <Button fx:id="cambiaStato" layoutX="342.0" layoutY="14.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="126.0" styleClass="btnOperation" text="cambia stato" />
+                  <Button fx:id="aggiungi" prefHeight="64.0" prefWidth="94.0" styleClass="btnOperation" text="Aggiungi" />
+                  <Button fx:id="cambiaKm" mnemonicParsing="false" prefHeight="60.0" prefWidth="112.0" styleClass="btnOperation" text="cambia km">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="searchButton" mnemonicParsing="false" styleClass="btnOperation" text="Ricerca">
                      <graphic>
                         <TextField fx:id="search" />
                      </graphic></Button>
-                     <Button fx:id="aggiungi" mnemonicParsing="false" styleClass="btnOperation" text="Aggiungi"/>
                </children>
                <padding>
                   <Insets bottom="10.0" left="6.0" right="10.0" top="4.0" />

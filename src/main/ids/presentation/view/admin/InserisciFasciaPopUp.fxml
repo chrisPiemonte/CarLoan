@@ -7,9 +7,9 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="550.0" spacing="8.0" stylesheets="@../style/carloan.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ids.presentation.view.controller.manager.gestioneCliente.InserisciClientePopUp">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="550.0" spacing="8.0" stylesheets="@../../../../../../bin/main/ids/presentation/view/style/carloan.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ids.presentation.view.admin.controller.InserisciFasciaPopUp">
    <children>
-      <Label text="Inserisci Cliente">
+      <Label text="Inserisci Fascia">
          <font>
             <Font size="17.0" />
          </font>
@@ -17,28 +17,17 @@
             <Insets top="10.0" />
          </VBox.margin>
       </Label>
-      <TextField fx:id="cf" maxWidth="200.0">
+      <TextField fx:id="id" maxWidth="200.0">
          <VBox.margin>
             <Insets top="15.0" />
          </VBox.margin></TextField>
-      <TextField fx:id="nome" layoutX="10.0" layoutY="78.0" maxWidth="200.0" />
-      <TextField fx:id="cognome" layoutX="10.0" layoutY="118.0" maxWidth="200.0" />
-      <HBox alignment="CENTER" maxWidth="200.0" prefHeight="15.0" prefWidth="200.0">
-         <children>
-            <Label text="Inserisci data di nascita">
-               <HBox.margin>
-                  <Insets top="3.0" />
-               </HBox.margin></Label>
-         </children>
-         <VBox.margin>
-            <Insets top="5.0" />
-         </VBox.margin>
-      </HBox>
-      <DatePicker fx:id="dataNascita"/>
-      <TextField fx:id="telefono" layoutX="210.0" layoutY="155.0" maxWidth="200.0">
+      <TextField fx:id="descrizione" layoutX="10.0" layoutY="78.0" maxWidth="200.0" />
+      <TextField fx:id="tariffaGiornaliera" layoutX="10.0" layoutY="118.0" maxWidth="200.0" />
+      <TextField fx:id="tariffaSettimanale" layoutX="210.0" layoutY="155.0" maxWidth="200.0">
          <VBox.margin>
             <Insets top="3.0" />
          </VBox.margin></TextField>
+      <TextField fx:id="tariffakm" layoutX="185.0" layoutY="165.0" maxWidth="200.0" />
       <HBox maxWidth="200.0" prefHeight="50.0" prefWidth="200.0" spacing="20.0">
          <opaqueInsets>
             <Insets />

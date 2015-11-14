@@ -105,7 +105,7 @@ public class InserisciClientePopUp implements Initializable {
 		frontController = new FrontController();
 		BasicRequest request = new BasicRequest();
 		request.setType(RequestType.VIEW);
-		request.setRequest("gestioneClienteManager");
+		request.setRequest("gestioneCliente");
 		frontController.processRequest(request);
 		buttonClose();
 		

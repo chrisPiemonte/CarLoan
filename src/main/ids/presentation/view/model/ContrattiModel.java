@@ -12,6 +12,7 @@ public class ContrattiModel {
 	public SimpleDoubleProperty kmPercorsi = new SimpleDoubleProperty();
 	public SimpleStringProperty statoContratto = new SimpleStringProperty();
 	public SimpleDoubleProperty totale = new SimpleDoubleProperty();
+	public SimpleStringProperty agenziaFine = new SimpleStringProperty();
 	
 	public String getId() {
 		return id.get();
@@ -34,6 +35,9 @@ public class ContrattiModel {
 	}
 	public Double getTotale() {
 		return totale.get();
+	}
+	public String getAgenziaFine() {
+		return agenziaFine.get();
 	}
 	
 

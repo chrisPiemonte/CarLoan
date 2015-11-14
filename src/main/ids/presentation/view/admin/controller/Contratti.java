@@ -1,11 +1,10 @@
-package main.ids.presentation.view.controller;
+package main.ids.presentation.view.manager.controller;
+
   
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import main.ids.presentation.CurrentSessionHandler;
 import main.ids.presentation.FrontController;
 import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.response.Response;
@@ -13,7 +12,6 @@ import main.ids.presentation.view.model.ClienteModel;
 import main.ids.presentation.view.model.ContrattiModel;
 import main.ids.transferObjects.ClienteTO;
 import main.ids.transferObjects.ContrattoTO;
-import main.ids.util.json.ViewsJsonParser;
 import main.ids.util.viewUtil.CallViewLoop;
 import main.ids.presentation.request.BasicRequest;
 import main.ids.presentation.request.ComplexRequest;
@@ -22,10 +20,7 @@ import main.ids.presentation.request.RequestType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -34,8 +29,6 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 public class Contratti implements Initializable {
 	
@@ -51,8 +44,6 @@ public class Contratti implements Initializable {
 	public Button staff;
 	public Button searchButton;
 	public TextField search;
-	public Button chiudi;
-	public Button apri;
 	
 	
 	public TableView<ContrattiModel> tabella;
@@ -69,14 +60,13 @@ public class Contratti implements Initializable {
 	public void initialize(URL location, ResourceBundle resources){
 		System.out.println("Loading user data...");
 		
-		clienti.setOnAction(e -> CallViewLoop.clientiView());
-		contratti.setOnAction(e -> CallViewLoop.contrattiView());
-		autoView.setOnAction(e -> CallViewLoop.autoView());
-		fascia.setOnAction(e -> CallViewLoop.fasciaView());
-		staff.setOnAction(e -> CallViewLoop.staffView());
+		clienti.setOnAction(e -> CallViewLoop.clientiViewManager());
+		contratti.setOnAction(e -> CallViewLoop.contrattiViewManager());
+		autoView.setOnAction(e -> CallViewLoop.autoViewManager());
+		fascia.setOnAction(e -> CallViewLoop.fasciaViewManager());
+		staff.setOnAction(e -> CallViewLoop.staffViewManager());
 		searchButton.setOnAction(e -> cercaCliente(search.getText()));
-		chiudi.setDisable(true);
-		apri.setOnAction(e -> apriContratto());
+		
 		
 		cliente.setCellValueFactory(new PropertyValueFactory<ContrattiModel, String>("cliente"));
 		cliente.setText("Cliente");
@@ -94,18 +84,6 @@ public class Contratti implements Initializable {
 		buildData();
 		
 		
-		tabella.getSelectionModel().selectedItemProperty().addListener((v,oldValue,newValue) -> {
-			if(newValue.getStatoContratto().equals("aperto") && newValue.getAgenziaFine().equals(CurrentSessionHandler.getAgenzia()))
-				chiudi.setDisable(false);
-			else
-				chiudi.setDisable(true);
-			chiudi.setOnAction(e -> System.out.println(newValue.getId()));
-			
-		});
-		
-		
-		
-		
 	}
 	
 	
@@ -118,7 +96,6 @@ public class Contratti implements Initializable {
 		for (ContrattoTO contratto : response.getParameters()){
 			
 			ContrattiModel tmpList = new ContrattiModel();
-			tmpList.id.set(contratto.getId());
 			tmpList.cliente.set(contratto.getCliente());
 			tmpList.auto.set(contratto.getAuto());
 			tmpList.modNoleggio.set(contratto.getModNoleggio());
@@ -129,7 +106,6 @@ public class Contratti implements Initializable {
 			tmpList.kmPercorsi.set(contratto.getKmPercorsi());
 			tmpList.statoContratto.set(contratto.getStatoContratto());
 			tmpList.totale.set(contratto.getTotale());
-			tmpList.agenziaFine.set(contratto.getAgenziaFine());
 			listaContratti.add(tmpList);
 			
 		}
@@ -142,31 +118,6 @@ public class Contratti implements Initializable {
 		if (key.equals("")){tabella.setItems(listaContratti);}
 		FilteredList <ContrattiModel> filteredData = new FilteredList<>(listaContratti, p->p.getCliente().toLowerCase().startsWith(key));
 		tabella.setItems(filteredData);
-	}
-	
-	
-	public boolean chiudiContratto(String id){
-		return true;
-	}
-	
-	private void apriContratto(){
-		try {
-		ViewsJsonParser vjp = ViewsJsonParser.getInstance();
-		String path = vjp.getViewPath("apriContratto");
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource(path));  
-	    Parent root = (Parent) loader.load();  
-	    Scene scene = new Scene(root,600,500);  
-	    Stage stage = new Stage();  
-	    stage.setScene(scene);  
-	    stage.setTitle("Apri Contratto");
-	    stage.initModality(Modality.APPLICATION_MODAL);    
-	    stage.show();  
-		}catch (IOException | NullPointerException e) {
-			
-			e.printStackTrace();
-			
-
-		}
 	}
 	
 	

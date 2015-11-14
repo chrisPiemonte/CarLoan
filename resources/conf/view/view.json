@@ -31,6 +31,10 @@
         "id": "gestioneStaff",
         "path": "/main/ids/presentation/view/Staff.fxml"
       },
+{
+        "id": "apriContratto",
+        "path": "/main/ids/presentation/view/ApriContratto.fxml"
+      },
  {
         "id": "BootManager",
         "path": "/main/ids/presentation/view/manager/ManagerLogin.fxml"

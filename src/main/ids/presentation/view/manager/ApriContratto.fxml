@@ -6,72 +6,73 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" stylesheets="@../style/carloan.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ids.presentation.view.manager.controller.ApriContratto">
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <VBox prefHeight="200.0" prefWidth="200.0" />
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Label text="Dati cliente">
+                     <padding>
+                        <Insets top="15.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="cf" maxWidth="150.0">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="nome" layoutX="19.0" layoutY="50.0" maxWidth="150.0" />
+                  <TextField fx:id="cognome" layoutX="19.0" layoutY="85.0" maxWidth="150.0" />
+                  <DatePicker fx:id="dataNascita" maxWidth="150.0" />
+                  <TextField fx:id="telefono" layoutX="19.0" layoutY="155.0" maxWidth="150.0" />
+               </children>
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin></VBox>
          </children>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="200.0" spacing="10.0">
                <children>
-                  <Label text="Label">
+                  <Label text="Dati noleggio">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <MenuButton mnemonicParsing="false" text="MenuButton">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                      <MenuItem mnemonicParsing="false" text="Action 2" />
-                    </items>
-                  </MenuButton>
-                  <Label layoutX="76.0" layoutY="10.0" text="Label">
+                  <ComboBox fx:id="comboAuto" prefWidth="150.0" promptText="Scegli un auto" />
+                  <Label layoutX="76.0" layoutY="10.0" text="Agenzia restituzione ">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <MenuButton layoutX="36.0" layoutY="35.0" mnemonicParsing="false" text="MenuButton">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                     </items>
-                  </MenuButton>
-                  <Label text="Label">
+                  <ComboBox fx:id="comboAgenzia" prefWidth="150.0" promptText="Scegli un agenzia" />
+                  <Label layoutX="45.0" layoutY="160.0" text="Data inizio" />
+                  <DatePicker fx:id="dataInizio" layoutX="10.0" layoutY="185.0" />
+                  <Label text="Data consegna">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <DatePicker />
-                  <Label layoutX="76.0" layoutY="20.0" text="Label">
+                  <DatePicker fx:id="dataFine" />
+                  <Label layoutX="76.0" layoutY="20.0" text="Modalità noleggio">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <MenuButton layoutX="36.0" layoutY="45.0" mnemonicParsing="false" text="MenuButton">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                     </items>
-                  </MenuButton>
-                  <TextField>
+                  <ComboBox fx:id="comboMod" prefWidth="150.0" promptText="scegli una modalità" />
+                  <TextField promptText="Inserire acconto...">
                      <VBox.margin>
                         <Insets top="13.0" />
                      </VBox.margin>
                   </TextField>
-                  <Label layoutX="76.0" layoutY="90.0" text="Label">
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </Label>
-                  <TextArea prefHeight="25.0" prefWidth="167.0">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </TextArea>
+                  <HBox alignment="CENTER" prefHeight="82.0" prefWidth="167.0">
+                     <children>
+                        <Button fx:id="annulla" mnemonicParsing="false" styleClass="btnCancel" text="Annulla" />
+                        <Button fx:id="ok" mnemonicParsing="false" styleClass="btnConfirm" text="OK     " />
+                     </children>
+                  </HBox>
                </children>
                <HBox.margin>
                   <Insets top="15.0" />

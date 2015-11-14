@@ -1,11 +1,11 @@
-package main.ids.presentation.view.controller;
+package main.ids.presentation.view.manager.controller;
+
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import main.ids.presentation.CurrentSessionHandler;
 import main.ids.presentation.FrontController;
 import main.ids.presentation.response.BasicResponse;
 import main.ids.presentation.response.ComplexResponse;
@@ -15,6 +15,7 @@ import main.ids.presentation.view.model.AutoModel;
 import main.ids.presentation.view.model.ClienteModel;
 import main.ids.transferObjects.AutoTO;
 import main.ids.transferObjects.ClienteTO;
+import main.ids.util.json.ViewsJsonParser;
 import main.ids.util.viewUtil.CallViewLoop;
 import main.ids.presentation.request.BasicRequest;
 import main.ids.presentation.request.ComplexRequest;
@@ -74,15 +75,16 @@ public class CrudAuto implements Initializable {
 	
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
-		System.out.println("Loading user data...");
+		System.out.println("Auto manager...");
 		
-		clienti.setOnAction(e -> CallViewLoop.clientiView());
-		contratti.setOnAction(e -> CallViewLoop.contrattiView());
-		//auto.setOnAction(e -> callAutoView());
-		fascia.setOnAction(e -> CallViewLoop.fasciaView());
-		staff.setOnAction(e -> CallViewLoop.staffView());
+		clienti.setOnAction(e -> CallViewLoop.clientiViewManager());
+		contratti.setOnAction(e -> CallViewLoop.contrattiViewManager());
+		auto.setOnAction(e -> CallViewLoop.autoViewManager());
+		fascia.setOnAction(e -> CallViewLoop.fasciaViewManager());
+		staff.setOnAction(e -> CallViewLoop.staffViewManager());
 		cambiaStato.setDisable(true);
 		cambiaKm.setDisable(true);
+		aggiungi.setOnAction(e -> addAuto());
 		
 		
 		searchButton.setOnAction(e -> cercaAuto(search.getText()));
@@ -117,10 +119,7 @@ public class CrudAuto implements Initializable {
 	public void buildData(){
 		listaAuto = FXCollections.observableArrayList();
 		ComplexRequest request = new ComplexRequest();
-		ArrayList<String> checkAgenzia = new ArrayList<String>();
-		checkAgenzia.add(CurrentSessionHandler.getAgenzia());
-		request.setRequest("getAutoByAgenzia");
-		request.setParameters(checkAgenzia);
+		request.setRequest("getAllAuto");
 		request.setType(RequestType.SERVICE);
 		ComplexResponse<AutoTO> response = (ComplexResponse<AutoTO>) frontController.processRequest(request);
 		for (AutoTO cliente : response.getParameters()){
@@ -168,7 +167,7 @@ public class CrudAuto implements Initializable {
 			BasicResponse response = (BasicResponse) frontController.processRequest(request);
 			if (response.isResponse()){
 				request = new ComplexRequest();
-				request.setRequest("gestioneAuto");
+				request.setRequest("gestioneAutoAdmin");
 				request.setType(RequestType.VIEW);
 				frontController.processRequest(request);
 			} else {
@@ -195,7 +194,7 @@ public class CrudAuto implements Initializable {
 			BasicResponse response = (BasicResponse) frontController.processRequest(request);
 			if (response.isResponse()){
 				request = new ComplexRequest();
-				request.setRequest("gestioneAuto");
+				request.setRequest("gestioneAutoAdmin");
 				request.setType(RequestType.VIEW);
 				frontController.processRequest(request);
 			} else {
@@ -205,6 +204,27 @@ public class CrudAuto implements Initializable {
 		}
 	
 	}
+	
+	
+	private void addAuto(){
+		try {
+		ViewsJsonParser vjp = ViewsJsonParser.getInstance();
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource(vjp.getViewPath("inserisciAutoManager")));  
+	    Parent root = (Parent) loader.load();  
+	    Scene scene = new Scene(root,600,500);  
+	    Stage stage = new Stage();  
+	    stage.setScene(scene);  
+	    stage.setTitle("Inserisci Cliente");
+	    stage.initModality(Modality.APPLICATION_MODAL);    
+	    stage.show();  
+		}catch (IOException | NullPointerException e) {
+			
+			e.printStackTrace();
+			
+
+		}
+	}
+	
 
 
 

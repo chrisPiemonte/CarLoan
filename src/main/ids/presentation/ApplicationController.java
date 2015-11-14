@@ -105,6 +105,7 @@ public class ApplicationController {
 		ImpiegatoTO impiegato = (ImpiegatoTO) response.getParameters().get(0);
 		if  (impiegato != null){
 			CurrentSessionHandler.setUsername(impiegato.getUsername());
+			CurrentSessionHandler.setAgenzia(impiegato.getAgenzia());
 			if (impiegato.getClass().equals(AdminTO.class)){
 				
 				CurrentSessionHandler.setTipoAccesso("admin");

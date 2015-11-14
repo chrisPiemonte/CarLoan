@@ -1,4 +1,5 @@
-package main.ids.presentation.view.controller;
+package main.ids.presentation.view.manager.controller;
+
 
 
 import java.io.IOException;
@@ -52,6 +53,7 @@ public class CrudFascia implements Initializable {
 	public Button staff;
 	public Button searchButton;
 	public TextField search;
+	public Button aggiungi;
 	
 	
 	public TableView<FasciaModel> tabella;
@@ -67,11 +69,12 @@ public class CrudFascia implements Initializable {
 	public void initialize(URL location, ResourceBundle resources){
 		System.out.println("Loading user data...");
 		
-		clienti.setOnAction(e -> CallViewLoop.clientiView());
-		contratti.setOnAction(e -> CallViewLoop.contrattiView());
-		auto.setOnAction(e -> CallViewLoop.autoView());
-		//fascia.setOnAction(e -> callFasciaView());
-		staff.setOnAction(e -> CallViewLoop.staffView());
+		clienti.setOnAction(e -> CallViewLoop.clientiViewManager());
+		contratti.setOnAction(e -> CallViewLoop.contrattiViewManager());
+		auto.setOnAction(e -> CallViewLoop.autoViewManager());
+		fascia.setOnAction(e -> CallViewLoop.fasciaViewManager());
+		staff.setOnAction(e -> CallViewLoop.staffViewManager());
+		aggiungi.setOnAction(e -> addFascia());
 		
 		searchButton.setOnAction(e -> cercaFascia(search.getText()));
 		
@@ -79,7 +82,7 @@ public class CrudFascia implements Initializable {
 		id.setText("Id");
 		descrizione.setCellValueFactory(new PropertyValueFactory<FasciaModel, String>("descrizione"));
 		descrizione.setText("Descrizione");
-		tariffaGiornaliera.setCellValueFactory(new PropertyValueFactory<FasciaModel, Double>("tariffaGiornaliera"));
+		tariffaGiornaliera.setCellValueFactory(new PropertyValueFactory<FasciaModel, Double>("id"));
 		tariffaGiornaliera.setText("T. gioraliera");
 		tariffaSettimanale.setCellValueFactory(new PropertyValueFactory<FasciaModel, Double>("tariffaSettimanale"));
 		tariffaSettimanale.setText("T. settimanale");
@@ -130,9 +133,9 @@ public class CrudFascia implements Initializable {
 		
 	
 	
-	/*private void addFascia(){
+	private void addFascia(){
 		try {
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/ids/presentation/view/InserisciFasciaPopUp.fxml"));  
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/ids/presentation/view/manager/InserisciFasciaPopUp.fxml"));  
 	    Parent root = (Parent) loader.load();  
 	    Scene scene = new Scene(root,600,500);  
 	    Stage stage = new Stage();  
@@ -147,7 +150,7 @@ public class CrudFascia implements Initializable {
 
 		}
 	}
-	*/
+	
 
 	
 

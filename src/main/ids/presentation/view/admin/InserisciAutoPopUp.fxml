@@ -7,9 +7,9 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="550.0" spacing="8.0" stylesheets="@../style/carloan.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ids.presentation.view.controller.manager.gestioneCliente.InserisciClientePopUp">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="550.0" spacing="8.0" stylesheets="@../style/carloan.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ids.presentation.view.admin.controller.InserisciAutoPopUp">
    <children>
-      <Label text="Inserisci Cliente">
+      <Label text="Inserisci Auto">
          <font>
             <Font size="17.0" />
          </font>
@@ -17,15 +17,17 @@
             <Insets top="10.0" />
          </VBox.margin>
       </Label>
-      <TextField fx:id="cf" maxWidth="200.0">
+      <TextField fx:id="targa" maxWidth="200.0">
          <VBox.margin>
             <Insets top="15.0" />
          </VBox.margin></TextField>
-      <TextField fx:id="nome" layoutX="10.0" layoutY="78.0" maxWidth="200.0" />
-      <TextField fx:id="cognome" layoutX="10.0" layoutY="118.0" maxWidth="200.0" />
-      <HBox alignment="CENTER" maxWidth="200.0" prefHeight="15.0" prefWidth="200.0">
+      <TextField fx:id="modello" layoutX="10.0" layoutY="78.0" maxWidth="200.0" />
+      <TextField fx:id="stato" layoutX="10.0" layoutY="118.0" maxWidth="200.0" />
+      <TextField fx:id="fascia" layoutX="210.0" layoutY="68.0" maxWidth="200.0" />
+      <TextField fx:id="chilometraggio" layoutX="210.0" layoutY="158.0" maxWidth="200.0" />
+      <HBox maxWidth="300.0" prefHeight="15.0" prefWidth="200.0">
          <children>
-            <Label text="Inserisci data di nascita">
+            <Label text="Inserire data della manutenzione ordinaria">
                <HBox.margin>
                   <Insets top="3.0" />
                </HBox.margin></Label>
@@ -34,8 +36,8 @@
             <Insets top="5.0" />
          </VBox.margin>
       </HBox>
-      <DatePicker fx:id="dataNascita"/>
-      <TextField fx:id="telefono" layoutX="210.0" layoutY="155.0" maxWidth="200.0">
+      <DatePicker fx:id="dataManutenzione"/>
+      <TextField fx:id="agenzia" layoutX="210.0" layoutY="155.0" maxWidth="200.0">
          <VBox.margin>
             <Insets top="3.0" />
          </VBox.margin></TextField>

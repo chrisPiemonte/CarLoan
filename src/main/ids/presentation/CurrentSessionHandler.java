@@ -8,6 +8,7 @@ public class CurrentSessionHandler {
 	public static Scene sessioneScene;
 	public static Scene scenaPrecedente;
 	public static String tipoAccesso;
+	public static String agenzia;
 	
 	
 	
@@ -45,6 +46,14 @@ public class CurrentSessionHandler {
 	}
 	
 	
+	
+
+	public static String getAgenzia() {
+		return agenzia;
+	}
+	public static void setAgenzia(String agenzia) {
+		CurrentSessionHandler.agenzia = agenzia;
+	}
 		
 
 }
