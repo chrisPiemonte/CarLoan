@@ -35,7 +35,7 @@
                         <Insets bottom="5.0" left="8.0" right="10.0" top="5.0" />
                      </HBox.margin>
                      <image>
-                        <Image url="@../style/img/logo.png" />
+                        <Image url="@style/img/logo.png" />
                      </image>
                   </ImageView>
                   <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0">
@@ -47,12 +47,9 @@
                   <VBox alignment="BOTTOM_RIGHT" prefHeight="110.0" prefWidth="146.0" />
                   <VBox alignment="BOTTOM_RIGHT" layoutX="596.0" layoutY="10.0" prefHeight="110.0" prefWidth="167.0">
                      <children>
-                        <Label prefHeight="25.0" prefWidth="136.0" text="Label" />
-                        <MenuButton mnemonicParsing="false" prefHeight="25.0" prefWidth="144.0" text="MenuButton" textOverrun="CLIP">
-                           <items>
-                              <MenuItem mnemonicParsing="false" text="Action 1" />
-                              <MenuItem mnemonicParsing="false" text="Action 2" />
-                           </items>
+                        <Label prefHeight="25.0" prefWidth="136.0" text="Dati personali" />
+                        <MenuButton fx:id="personalMenu" mnemonicParsing="false" prefHeight="25.0" prefWidth="144.0" text="Opzioni" textOverrun="CLIP">
+                           
                         </MenuButton>
                      </children>
                      <HBox.margin>

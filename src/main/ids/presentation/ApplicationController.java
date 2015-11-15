@@ -109,6 +109,7 @@ public class ApplicationController {
 		response = (ComplexResponse<ImpiegatoTO>) command.execute();
 		ImpiegatoTO impiegato = (ImpiegatoTO) response.getParameters().get(0);
 		if  (impiegato != null){
+			CurrentSessionHandler.setCf(impiegato.getCf());
 			CurrentSessionHandler.setUsername(impiegato.getUsername());
 			CurrentSessionHandler.setAgenzia(impiegato.getAgenzia());
 			if (impiegato.getClass().equals(AdminTO.class)){

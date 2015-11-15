@@ -57,7 +57,7 @@ public class CrudFascia implements Initializable {
 	public Button staff;
 	public Button searchButton;
 	public TextField search;
-	public Button aggiungi;
+
 	
 	
 	public TableView<FasciaModel> tabella;
@@ -81,7 +81,6 @@ public class CrudFascia implements Initializable {
 		auto.setOnAction(e -> CallViewLoop.autoViewManager());
 		fascia.setOnAction(e -> CallViewLoop.fasciaViewManager());
 		staff.setOnAction(e -> CallViewLoop.staffViewManager());
-		aggiungi.setOnAction(e -> addFascia());
 		
 		searchButton.setOnAction(e -> cercaFascia(search.getText()));
 		

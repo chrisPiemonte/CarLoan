@@ -12,6 +12,8 @@ import main.ids.presentation.request.Request;
 import main.ids.presentation.request.RequestType;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 
@@ -27,12 +29,14 @@ public class ImpiegatoPostLogin implements Initializable {
 	public Button auto;
 	public Button fascia;
 	public Button staff;
+	public MenuButton personalMenu;
 	
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
-		System.out.println("Loading user data...");
 		frontController = new FrontController();
-		
+		MenuItem logout = new MenuItem("Logout");
+		logout.setOnAction(e -> GestioneDatiPersonali.logout());
+		personalMenu.getItems().addAll(logout);
 		clienti.setOnAction(e -> CallViewLoop.clientiView());
 		contratti.setOnAction(e -> CallViewLoop.contrattiView());
 		auto.setOnAction(e -> CallViewLoop.autoView());

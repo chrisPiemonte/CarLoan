@@ -9,10 +9,17 @@ public class CurrentSessionHandler {
 	public static Scene scenaPrecedente;
 	public static String tipoAccesso;
 	public static String agenzia;
+	public static String cf ; 
 	
 	
 	
 	
+	public static String getCf() {
+		return cf;
+	}
+	public static void setCf(String cf) {
+		CurrentSessionHandler.cf = cf;
+	}
 	public static Scene getScenaPrecedente() {
 		return scenaPrecedente;
 	}

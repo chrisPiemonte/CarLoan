@@ -36,6 +36,8 @@ public final class InputValidationFactory {
 				
 			case "cf" :
 				return new CodiceFiscaleValidation();
+			case "id" :
+				return new IDValidation();
 	         default:
 	        	 return null;
 		}

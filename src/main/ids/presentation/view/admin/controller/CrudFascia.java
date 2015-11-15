@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import main.ids.presentation.FrontController;
 import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.response.Response;
+import main.ids.presentation.view.controller.GestioneDatiPersonali;
 import main.ids.presentation.view.model.AutoModel;
 import main.ids.presentation.view.model.ClienteModel;
 import main.ids.presentation.view.model.FasciaModel;
@@ -29,6 +30,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -63,12 +66,15 @@ public class CrudFascia implements Initializable {
 	public TableColumn<FasciaModel, Double> tariffaGiornaliera;
 	public TableColumn<FasciaModel, Double> tariffaSettimanale;
 	public TableColumn<FasciaModel, Double> tariffaKm;
+	public MenuButton personalMenu;
 	
 	private ObservableList<FasciaModel> listaFasce;
 	
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
-		System.out.println("Loading user data...");
+		MenuItem logout = new MenuItem("Logout");
+		logout.setOnAction(e -> GestioneDatiPersonali.logout());
+		personalMenu.getItems().addAll(logout);
 		
 		clienti.setOnAction(e -> CallViewLoop.clientiViewAdmin());
 		contratti.setOnAction(e -> CallViewLoop.contrattiViewAdmin());

@@ -14,6 +14,7 @@ import java.util.stream.Stream;
 import main.ids.presentation.FrontController;
 import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.response.Response;
+import main.ids.presentation.view.controller.GestioneDatiPersonali;
 import main.ids.presentation.view.model.ClienteModel;
 import main.ids.transferObjects.ClienteTO;
 import main.ids.util.json.ViewsJsonParser;
@@ -30,6 +31,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -61,14 +64,18 @@ public class CrudCliente implements Initializable {
 	public TableColumn<ClienteModel, String> cf;
 	public TableColumn<ClienteModel, String> nome;
 	public TableColumn<ClienteModel, String> cognome;
-	//public TableColumn<ClienteModel, LocalData> dataNascita;
+	public TableColumn<ClienteModel, LocalDate> dataNascita;
 	public TableColumn<ClienteModel, String> telefono;
 	
 	private ObservableList<ClienteModel> listaClienti;
+	public MenuButton personalMenu;
 
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
 
+		MenuItem logout = new MenuItem("Logout");
+		logout.setOnAction(e -> GestioneDatiPersonali.logout());
+		personalMenu.getItems().addAll(logout);
 		contratti.setOnAction(e -> CallViewLoop.contrattiViewAdmin());
 		auto.setOnAction(e -> CallViewLoop.autoViewAdmin());
 		clienti.setOnAction(e -> CallViewLoop.clientiViewAdmin());
@@ -85,7 +92,8 @@ public class CrudCliente implements Initializable {
 		nome.setText("Nome");
 		cognome.setCellValueFactory(new PropertyValueFactory<ClienteModel, String>("cognome"));
 		cognome.setText("Cognome");
-		//dataNascita.setCellValueFactory(new PropertyValueFactory<ClienteModel, String>("dataNascita"));
+		dataNascita = new TableColumn<>("Data Nascita");
+		dataNascita.setCellValueFactory(new PropertyValueFactory<ClienteModel, LocalDate>("dataNascita"));
 		telefono.setCellValueFactory(new PropertyValueFactory<ClienteModel, String>("telefono"));
 		telefono.setText("Numero di telefono");
 		
@@ -98,7 +106,7 @@ public class CrudCliente implements Initializable {
 	private void addCliente(){
 		try {
 		ViewsJsonParser vjp = ViewsJsonParser.getInstance();
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource(vjp.getViewPath("InserisciClienteAdmin")));  
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource(vjp.getViewPath("inserisciClienteAdmin")));  
 	    Parent root = (Parent) loader.load();  
 	    Scene scene = new Scene(root,600,500);  
 	    Stage stage = new Stage();  
@@ -129,16 +137,14 @@ public class CrudCliente implements Initializable {
 			tmpList.cf.set(cliente.getCf());
 			tmpList.nome.set(cliente.getNome());
 			tmpList.cognome.set(cliente.getCognome());
-			//Format formatter = new SimpleDateFormat("dd-MM-yyyy");
-			//LocalDate dataNascita = cliente.getDataNascita();
-			//String s = formatter.format(dataNascita);
-			//tmpList.dataNascita.set(s);
+			tmpList.dataNascita.set(cliente.getDataNascita().toString());
 			tmpList.telefono.set(cliente.getTelefono());
 			listaClienti.add(tmpList);
 			
 		}
 		
 		tabella.setItems(listaClienti);
+		tabella.getColumns().add(dataNascita);
 		//System.out.println(listaClienti.get(0).getCf());
 	}
 	

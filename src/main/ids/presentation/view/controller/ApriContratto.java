@@ -48,6 +48,7 @@ public class ApriContratto implements Initializable {
 	public ComboBox comboAuto;
 	public ComboBox comboAgenzia;
 	public ComboBox comboMod;
+	public ComboBox comboDurata;
 	public DatePicker dataInizio;
 	public DatePicker dataFine;
 	public Button annulla;
@@ -58,6 +59,7 @@ public class ApriContratto implements Initializable {
 	ObservableList<AgenziaModel> agenzieList = FXCollections.observableArrayList() ;
 	ObservableList<AutoModel> tmp ;
 	ObservableList<String> listMod = FXCollections.observableArrayList("Illimitato","Limitato");
+	ObservableList<String> listDurata = FXCollections.observableArrayList("giornaliero","settimanale");
 	
 	FrontController frontController;
 	ComplexRequest request ;
@@ -82,6 +84,7 @@ public class ApriContratto implements Initializable {
 		for (AgenziaModel a : agenzieList){
 		comboAgenzia.getItems().add(a.getCittà());
 		}
+		comboDurata.setItems(listDurata);
 		
 		
 		
@@ -237,14 +240,17 @@ public class ApriContratto implements Initializable {
 						ContrattoTO contrattoInserito = new ContrattoTO();
 						contrattoInserito.setCliente(cf.getText());
 						contrattoInserito.setAuto(autoList.get(autoIndex).getTarga());
-						contrattoInserito.setModNoleggio(comboMod.getValue().toString());
-						System.out.println(comboMod.getValue().toString());
+						contrattoInserito.setKmNoleggio(comboMod.getValue().toString());
 						contrattoInserito.setPrezzoKm(selectedFascia.getTariffaKm());
+						contrattoInserito.setModNoleggio(comboDurata.getValue().toString());
 						contrattoInserito.setDataInizio(dataInizio.getValue());
 						contrattoInserito.setDataFine(dataFine.getValue());
 						contrattoInserito.setAgenziaInizio(CurrentSessionHandler.getAgenzia());
-						contrattoInserito.setImpInizio(CurrentSessionHandler.getUsername());
+						contrattoInserito.setAgenziaFine(agenzieList.get(comboAgenzia.getSelectionModel().getSelectedIndex()).getId());
+						contrattoInserito.setImpInizio(CurrentSessionHandler.getCf());
 						contrattoInserito.setAcconto(Double.parseDouble(acconto.getText()));
+						contrattoInserito.setStatoContratto("aperto");
+						modificaStatoAuto(autoList.get(autoIndex).getTarga());
 						if (addContratto(contrattoInserito));
 						
 						Message.display("Contratto inserito", AlertType.INFORMATION);
@@ -326,7 +332,7 @@ public class ApriContratto implements Initializable {
 	
 	
 	public boolean checkInserimentoNoleggio(){
-		if (comboAuto.getValue() != null && comboAgenzia != null && comboMod != null){
+		if (comboAuto.getValue() != null && comboAgenzia != null && comboMod != null && comboDurata != null){
 			return true;
 		}else {
 			Message.display("Inserire tutti i campi della sezione noleggio", AlertType.ERROR);
@@ -355,7 +361,7 @@ public class ApriContratto implements Initializable {
 		FrontController frontController = new FrontController();
 		BasicRequest request = new BasicRequest();
 		request.setType(RequestType.VIEW);
-		request.setRequest("gestioneCliente");
+		request.setRequest("gestioneContratti");
 		frontController.processRequest(request);
 		buttonClose();
 	
@@ -366,6 +372,19 @@ public class ApriContratto implements Initializable {
 		Stage stage = (Stage) annulla.getScene().getWindow();
 	    // do what you have to do
 	    stage.close();
+	}
+	
+	public void modificaStatoAuto(String targa){
+		ArrayList<String> auto = new ArrayList<>();
+		frontController = new FrontController ();
+		ComplexRequest request = new ComplexRequest();
+		request.setType(RequestType.SERVICE);
+		request.setRequest("changeStatoOfAuto");
+		auto.add(targa);
+		auto.add("N");
+		request.setParameters(auto);
+		frontController.processRequest(request);
+		
 	}
 
 

@@ -6,12 +6,15 @@ import java.util.ResourceBundle;
 
 import main.ids.presentation.FrontController;
 import main.ids.presentation.response.Response;
+import main.ids.presentation.view.controller.GestioneDatiPersonali;
 import main.ids.util.viewUtil.CallViewLoop;
 import main.ids.presentation.request.BasicRequest;
 import main.ids.presentation.request.Request;
 import main.ids.presentation.request.RequestType;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 
@@ -31,7 +34,6 @@ public class ManagerLogin implements Initializable {
 
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
-		System.out.println("Loading user data...");
 		frontController = new FrontController();
 		MenuItem logout = new MenuItem("Logout");
 		logout.setOnAction(e -> GestioneDatiPersonali.logout());

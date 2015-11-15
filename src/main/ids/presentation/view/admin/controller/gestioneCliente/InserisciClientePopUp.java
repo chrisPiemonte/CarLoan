@@ -19,6 +19,7 @@ import main.ids.presentation.request.ComplexRequest;
 import main.ids.presentation.request.RequestType;
 import main.ids.presentation.response.BasicResponse;
 import main.ids.presentation.view.controller.Message;
+import main.ids.presentation.view.inputValidation.TaskValidationFactory;
 import main.ids.transferObjects.ClienteTO;
 
 public class InserisciClientePopUp implements Initializable {
@@ -72,11 +73,15 @@ public class InserisciClientePopUp implements Initializable {
 	}
 	
 	public boolean buttonConfirm(){
-		
-		
+		boolean validation = TaskValidationFactory.getClienteValidation(cf.getText(), nome.getText(), cognome.getText(), dataNascita.getValue(), telefono.getText());
+		if (validation){
 		boolean check = addCliente(cf.getText().toString(), nome.getText().toString(),cognome.getText().toString(),dataNascita.getValue(),telefono.getText().toString());
 		return check;
-		
+		}
+		else {
+			clear();
+			return false;
+		}
 		
 		
 	}
@@ -107,6 +112,13 @@ public class InserisciClientePopUp implements Initializable {
 		frontController.processRequest(request);
 		buttonClose();
 		
+	}
+	
+	public void clear(){
+		cf.clear();
+		nome.clear();
+		cognome.clear();
+		telefono.clear();
 	}
 
 }

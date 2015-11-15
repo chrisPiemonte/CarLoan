@@ -21,6 +21,7 @@ import main.ids.presentation.response.BasicResponse;
 import main.ids.presentation.view.controller.Message;
 import main.ids.presentation.view.inputValidation.InputValidation;
 import main.ids.presentation.view.inputValidation.InputValidationFactory;
+import main.ids.presentation.view.inputValidation.TaskValidationFactory;
 import main.ids.transferObjects.ClienteTO;
 
 public class InserisciClientePopUp implements Initializable {
@@ -68,17 +69,20 @@ public class InserisciClientePopUp implements Initializable {
 	
 	public void buttonClose(){
 		Stage stage = (Stage) annulla.getScene().getWindow();
-	    // do what you have to do
 	    stage.close();
 	}
 	
 	public boolean buttonConfirm(){
 		
-		boolean inputCheck = checkInput();
+		
+		boolean inputCheck = TaskValidationFactory.getClienteValidation(cf.getText(), nome.getText(), cognome.getText(), dataNascita.getValue(), telefono.getText());
 		if(inputCheck){
 		boolean check = addCliente(cf.getText().toString(), nome.getText().toString(),cognome.getText().toString(),dataNascita.getValue(),telefono.getText().toString());
 		return check;
-		}else return false;
+		}else {
+			clean();
+			return false;
+		}
 		
 		
 	}
@@ -111,33 +115,14 @@ public class InserisciClientePopUp implements Initializable {
 		
 	}
 	
-	public boolean checkInput(){
-		InputValidation i = InputValidationFactory.getValidation("cf");
-		if (i.isValid(cf.getText())){
-			i = InputValidationFactory.getValidation("nome");
-			if(i.isValid(nome.getText())){
-				i = InputValidationFactory.getValidation("cognome");
-				if(i.isValid(cognome.getText())){
-					i = InputValidationFactory.getValidation("telefono");
-					if(i.isValid(telefono.getText())){
-						return true;
-					}else { Message.display("telefono non valido", AlertType.ERROR);
-							telefono.clear();
-							return false;
-					}
-				}else { Message.display("Cognome non valido", AlertType.ERROR);
-						cognome.clear();
-						return false;
-				}
-			}else { Message.display("Nome non valido", AlertType.ERROR);
-					nome.clear();
-					return false;
-			}
-		}else { Message.display("Codice Fiscale non valido", AlertType.ERROR);
-				cf.clear();
-				return false;}
-		
+	public void clean(){
+		cf.clear();
+		nome.clear();
+		cognome.clear();
+		telefono.clear();
 	}
+	
+	
 
 }
 

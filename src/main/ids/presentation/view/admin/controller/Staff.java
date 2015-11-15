@@ -4,12 +4,15 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import main.ids.presentation.CurrentSessionHandler;
 import main.ids.presentation.FrontController;
 import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.response.Response;
+import main.ids.presentation.view.controller.GestioneDatiPersonali;
 import main.ids.presentation.view.model.AgenziaModel;
 import main.ids.presentation.view.model.ClienteModel;
 import main.ids.presentation.view.model.StaffModel;
@@ -31,6 +34,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -74,9 +79,14 @@ public class Staff implements Initializable {
 	
 	private ObservableList<AgenziaModel> listaAgenzie;
 	private ObservableList<StaffModel> listaStaff;
+	private ObservableList<StaffModel> listaManager;
+	private ObservableList<StaffModel> listaAllStaff;
+	public MenuButton personalMenu;
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
-		System.out.println("Loading user data...");
+		MenuItem logout = new MenuItem("Logout");
+		logout.setOnAction(e -> GestioneDatiPersonali.logout());
+		personalMenu.getItems().addAll(logout);
 		
 		clienti.setOnAction(e -> CallViewLoop.clientiViewAdmin());
 		contratti.setOnAction(e -> CallViewLoop.contrattiViewAdmin());
@@ -119,6 +129,8 @@ public class Staff implements Initializable {
 	public void buildData(){
 		listaStaff = FXCollections.observableArrayList();
 		listaAgenzie = FXCollections.observableArrayList();
+		listaManager = FXCollections.observableArrayList();
+		listaAllStaff = FXCollections.observableArrayList();
 		ComplexRequest request = new ComplexRequest();
 		request.setRequest("getAllImpiegati");
 		request.setType(RequestType.SERVICE);
@@ -135,6 +147,7 @@ public class Staff implements Initializable {
 			tmpList.username.set(staff.getUsername());
 			listaStaff.add(tmpList);
 			
+			
 		}
 		request = new ComplexRequest();
 		request.setType(RequestType.SERVICE);
@@ -149,11 +162,13 @@ public class Staff implements Initializable {
 			tmpList.telefono.set(manager.getTelefono());
 			tmpList.username.set(manager.getTelefono());
 			tmpList.agenzia.set(manager.getAgenzia());
-			listaStaff.add(tmpList);
+			listaManager.add(tmpList);
 			
 		}
 		
+		
 		tabella.setItems(listaStaff);
+
 		// agenzie
 		
 		request = new ComplexRequest();

@@ -22,8 +22,8 @@
             <Insets top="15.0" />
          </VBox.margin></TextField>
       <TextField fx:id="modello" layoutX="10.0" layoutY="78.0" maxWidth="200.0" />
-      <TextField fx:id="stato" layoutX="10.0" layoutY="118.0" maxWidth="200.0" />
-      <TextField fx:id="fascia" layoutX="210.0" layoutY="68.0" maxWidth="200.0" />
+      <ComboBox fx:id="stato" prefWidth="200.0" promptText="Seleziona uno stato" />
+      <ComboBox fx:id="fascia" prefWidth="200.0" promptText="Seleziona una fascia" />
       <TextField fx:id="chilometraggio" layoutX="210.0" layoutY="158.0" maxWidth="200.0" />
       <HBox maxWidth="300.0" prefHeight="15.0" prefWidth="200.0">
          <children>

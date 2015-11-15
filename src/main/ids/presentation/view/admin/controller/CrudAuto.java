@@ -10,6 +10,7 @@ import main.ids.presentation.FrontController;
 import main.ids.presentation.response.BasicResponse;
 import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.response.Response;
+import main.ids.presentation.view.controller.GestioneDatiPersonali;
 import main.ids.presentation.view.controller.InputBox;
 import main.ids.presentation.view.model.AutoModel;
 import main.ids.presentation.view.model.ClienteModel;
@@ -30,6 +31,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -72,10 +75,13 @@ public class CrudAuto implements Initializable {
 	public TableColumn<AutoModel, String> agenzia;
 	
 	private ObservableList<AutoModel> listaAuto;
+	public MenuButton personalMenu;
 	
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
-		
+		MenuItem logout = new MenuItem("Logout");
+		logout.setOnAction(e -> GestioneDatiPersonali.logout());
+		personalMenu.getItems().addAll(logout);
 		
 		clienti.setOnAction(e -> CallViewLoop.clientiViewAdmin());
 		contratti.setOnAction(e -> CallViewLoop.contrattiViewAdmin());
