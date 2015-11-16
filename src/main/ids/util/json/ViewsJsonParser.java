@@ -25,19 +25,21 @@ public class ViewsJsonParser extends JsonParser {
 		return INSTANCE;
 	}
 	
-	
 	public String getViewPath(String id){
-		JsonArray views = json.getAsJsonArray(VIEWS_ARRAY);
-    	for(JsonElement j : views){
-    		
-    		JsonObject currentJsonObj = (JsonObject) j;
-    		String currentId = currentJsonObj.get(ID).toString();
-    		//System.out.println(currentJsonObj.get(ID).toString());
-    		if(normalize(currentId).equals(id)){
-    			String currentViewPath = currentJsonObj.get(VIEW_PATH).toString();
-    			return normalize(currentViewPath);
-    		}
-    	}return null;
+		try{
+			JsonArray views = json.getAsJsonArray(VIEWS_ARRAY);
+	    	for(JsonElement j : views){
+	    		JsonObject currentJsonObj = (JsonObject) j;
+	    		String currentId = currentJsonObj.get(ID).toString();
+	    		if(normalize(currentId).equals(id)){
+	    			String currentViewPath = currentJsonObj.get(VIEW_PATH).toString();
+	    			return normalize(currentViewPath);
+	    		}
+	    	}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+    	return null;
 	}
 	
 	

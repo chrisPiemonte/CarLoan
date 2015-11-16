@@ -20,7 +20,6 @@ public class DbInitializer {
 		try{
 			
 		connection = MySqlConnectionFactory.getConnection();
-		
 		resultSet = connection.getMetaData().getCatalogs();
 
 		//iterate each catalog in the ResultSet
@@ -81,11 +80,4 @@ public class DbInitializer {
 		
 		return done;
 	}
-	
-	
-	public static void main(String[] args) {
-		//System.out.println(DbInitializer.isPresent("ciao"));
-		System.out.println(init());
-	}
-	
 }
