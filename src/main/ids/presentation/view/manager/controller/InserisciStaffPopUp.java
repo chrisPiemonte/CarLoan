@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import main.ids.presentation.CurrentSessionHandler;
+import main.ids.presentation.DefaultFrontController;
 import main.ids.presentation.FrontController;
 import main.ids.presentation.request.BasicRequest;
 import main.ids.presentation.request.ComplexRequest;
@@ -70,7 +71,7 @@ public class InserisciStaffPopUp implements Initializable {
 	
 	public void chiudiPopUp() {
 			
-			FrontController frontController = new FrontController();
+			FrontController frontController = new DefaultFrontController();
 			BasicRequest request = new BasicRequest();
 			request.setType(RequestType.VIEW);
 			request.setRequest("gestioneStaffManager");
@@ -99,7 +100,7 @@ public class InserisciStaffPopUp implements Initializable {
 	public boolean addStaff(String cf,String nome,String cognome,LocalDate dataNascita, String telefono,String username){
 		ArrayList<String> list = new ArrayList<>();
 		ComplexRequest request = new ComplexRequest();
-		FrontController frontController = new FrontController();
+		FrontController frontController = new DefaultFrontController();
 		request.setType(RequestType.SERVICE);
 		request.setRequest("existsAccount");
 		list.add(username);
@@ -121,7 +122,7 @@ public class InserisciStaffPopUp implements Initializable {
 					impiegati.add(impiegato);
 					response = new BasicResponse();
 					request = new ComplexRequest<>();
-					frontController = new FrontController();
+					frontController = new DefaultFrontController();
 					request.setType(RequestType.SERVICE);
 					request.setRequest("addImpiegato");
 					request.setParameters(impiegati);

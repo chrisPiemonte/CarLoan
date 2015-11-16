@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import main.ids.presentation.CurrentSessionHandler;
+import main.ids.presentation.DefaultFrontController;
 import main.ids.presentation.FrontController;
 import main.ids.presentation.response.BasicResponse;
 import main.ids.presentation.response.ComplexResponse;
@@ -51,7 +52,7 @@ public class CrudAuto implements Initializable {
 	public TextField passwordInput;
 	public ArrayList<String> data = new ArrayList<String>();
 	public Response response;
-	FrontController frontController = new FrontController();
+	FrontController frontController = new DefaultFrontController();
 	public Button clienti;
 	public Button contratti;
 	public Button auto;
@@ -161,7 +162,7 @@ public class CrudAuto implements Initializable {
 		
 		String newStato = InputBox.displayStato("");
 		if (!newStato.equals("null")){
-			frontController = new FrontController();
+			frontController = new DefaultFrontController();
 			ComplexRequest request = new ComplexRequest();
 			ArrayList<String> list = new ArrayList();
 			list.add(targa);
@@ -188,7 +189,7 @@ public class CrudAuto implements Initializable {
 		String newStato = InputBox.display("Inserire nuovo chilometraggio");
 		double value = Double.parseDouble(newStato) ;
 		if (! (value == 0)){
-			frontController = new FrontController();
+			frontController = new DefaultFrontController();
 			ComplexRequest request = new ComplexRequest();
 			ArrayList<Object> list = new ArrayList();
 			list.add(targa);

@@ -17,12 +17,14 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import main.ids.presentation.CurrentSessionHandler;
+import main.ids.presentation.DefaultFrontController;
 import main.ids.presentation.FrontController;
 import main.ids.presentation.request.BasicRequest;
 import main.ids.presentation.request.ComplexRequest;
 import main.ids.presentation.request.RequestType;
 import main.ids.presentation.response.BasicResponse;
 import main.ids.presentation.response.ComplexResponse;
+import main.ids.presentation.view.inputValidation.TaskValidationFactory;
 import main.ids.presentation.view.model.FasciaModel;
 import main.ids.transferObjects.AutoTO;
 import main.ids.transferObjects.FasciaTO;
@@ -75,7 +77,7 @@ public class InserisciAutoPopUp implements Initializable {
 	
 	public void chiudiPopUp() {
 			
-			FrontController frontController = new FrontController();
+			FrontController frontController = new DefaultFrontController();
 			BasicRequest request = new BasicRequest();
 			request.setType(RequestType.VIEW);
 			request.setRequest("gestioneAutoManager");
@@ -91,32 +93,33 @@ public class InserisciAutoPopUp implements Initializable {
 	}
 	
 	public boolean addAuto(String targa, String modello, String stato, String fascia, String chilometraggio,LocalDate dataManutenzione){
-		ArrayList<AutoTO> listaAuto = new ArrayList<AutoTO>();
-		FrontController frontController = new FrontController();
-		ComplexRequest request = new ComplexRequest();
-		request.setType(RequestType.SERVICE);
-		request.setRequest("addAuto");
-		double km = Double.parseDouble(chilometraggio);
-		AutoTO auto = new AutoTO(targa,modello,stato,fascia,km,dataManutenzione,CurrentSessionHandler.getAgenzia());
-		listaAuto.add(auto);
-		request.setParameters(listaAuto);
-		BasicResponse response = (BasicResponse) frontController.processRequest(request);
-		if (response.isResponse()){
-			Message.display("Auto inserita", AlertType.INFORMATION);
-			return true;
-		}
-		else{
-			Message.display("Auto non inserita", AlertType.INFORMATION);
-			return false;
-		}
-		
-		
+		if (TaskValidationFactory.controllaInserimentoAuto(targa,modello,stato,fascia,chilometraggio,dataManutenzione)){
+			ArrayList<AutoTO> listaAuto = new ArrayList<AutoTO>();
+			FrontController frontController = new DefaultFrontController();
+			ComplexRequest request = new ComplexRequest();
+			request.setType(RequestType.SERVICE);
+			request.setRequest("addAuto");
+			double km = Double.parseDouble(chilometraggio);
+			AutoTO auto = new AutoTO(targa,modello,stato,fascia,km,dataManutenzione,CurrentSessionHandler.getAgenzia());
+			listaAuto.add(auto);
+			request.setParameters(listaAuto);
+			BasicResponse response = (BasicResponse) frontController.processRequest(request);
+			if (response.isResponse()){
+				Message.display("Auto inserita", AlertType.INFORMATION);
+				return true;
+			}
+			else{
+				Message.display("Auto non inserita", AlertType.INFORMATION);
+				return false;
+			}
+			
+		}else return false;
 	}
 	
 	
 	public void buildFasce(){
 		fasciaList = FXCollections.observableArrayList();
-		FrontController frontController = new FrontController();
+		FrontController frontController = new DefaultFrontController();
 		ComplexRequest request = new ComplexRequest();
 		request.setType(RequestType.SERVICE);
 		request.setRequest("getAllFasce");

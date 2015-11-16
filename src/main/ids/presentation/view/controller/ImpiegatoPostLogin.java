@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import main.ids.presentation.DefaultFrontController;
 import main.ids.presentation.FrontController;
 import main.ids.presentation.response.Response;
 import main.ids.util.viewUtil.CallViewLoop;
@@ -33,7 +34,7 @@ public class ImpiegatoPostLogin implements Initializable {
 	
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
-		frontController = new FrontController();
+		frontController = new DefaultFrontController();
 		MenuItem logout = new MenuItem("Logout");
 		logout.setOnAction(e -> GestioneDatiPersonali.logout());
 		personalMenu.getItems().addAll(logout);

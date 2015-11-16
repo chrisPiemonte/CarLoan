@@ -11,6 +11,7 @@ import main.ids.integration.dao.factory.QueryFactory;
 import main.ids.integration.mySqlDao.factory.SqlQueryFactory;
 
 import main.ids.presentation.CurrentSessionHandler;
+import main.ids.presentation.DefaultFrontController;
 import main.ids.presentation.request.BasicRequest;
 import main.ids.presentation.request.ComplexRequest;
 import main.ids.presentation.request.Request;
@@ -45,7 +46,7 @@ public class EntryPoint extends Application{
 			ComplexRequest request = new ComplexRequest();
 			request.setRequest("bootstrap");
 			request.setType(RequestType.VIEW);
-			FrontController frontController = new FrontController();
+			FrontController frontController = new DefaultFrontController();
 			response = (ComplexResponse<Scene>)frontController.processRequest(request);
 			scene = (Scene)response.getParameters().get(0);
 			CurrentSessionHandler.setSessioneScene(scene);

@@ -10,10 +10,17 @@ public class CurrentSessionHandler {
 	public static String tipoAccesso;
 	public static String agenzia;
 	public static String cf ; 
+	public static String idContratto;
 	
 	
 	
 	
+	public static String getIdContratto() {
+		return idContratto;
+	}
+	public static void setIdContratto(String idContratto) {
+		CurrentSessionHandler.idContratto = idContratto;
+	}
 	public static String getCf() {
 		return cf;
 	}

@@ -2,10 +2,12 @@ package main.ids.presentation.view.controller;
   
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import main.ids.presentation.CurrentSessionHandler;
+import main.ids.presentation.DefaultFrontController;
 import main.ids.presentation.FrontController;
 import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.response.Response;
@@ -45,7 +47,7 @@ public class Contratti implements Initializable {
 	public TextField passwordInput;
 	public ArrayList<String> data = new ArrayList<String>();
 	public Response response;
-	FrontController frontController = new FrontController();
+	FrontController frontController = new DefaultFrontController();
 	public Button clienti;
 	public Button contratti;
 	public Button autoView;
@@ -70,11 +72,17 @@ public class Contratti implements Initializable {
 	
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
-		System.out.println("Loading user data...");
+		
 		
 		MenuItem logout = new MenuItem("Logout");
+		MenuItem cambiaPass = new MenuItem("Cambia Password...");
 		logout.setOnAction(e -> GestioneDatiPersonali.logout());
-		personalMenu.getItems().addAll(logout);
+		cambiaPass.setOnAction(e -> {
+		
+			GestionePassword i = new GestionePassword();
+			i.cambiaPassword();
+		});
+		personalMenu.getItems().addAll(cambiaPass,logout);
 		clienti.setOnAction(e -> CallViewLoop.clientiView());
 		contratti.setOnAction(e -> CallViewLoop.contrattiView());
 		autoView.setOnAction(e -> CallViewLoop.autoView());
@@ -101,12 +109,14 @@ public class Contratti implements Initializable {
 		
 		
 		tabella.getSelectionModel().selectedItemProperty().addListener((v,oldValue,newValue) -> {
-			if(newValue.getStatoContratto().equals("aperto") && newValue.getAgenziaFine().equals(CurrentSessionHandler.getAgenzia()))
+			if(newValue.getStatoContratto().equals("aperto") && newValue.getAgenziaFine().equals(CurrentSessionHandler.getAgenzia())){
 				chiudi.setDisable(false);
-			else
+				chiudi.setOnAction(e -> chiudiContratto(newValue.getId()));
+			}
+			else{
 				chiudi.setDisable(true);
-			chiudi.setOnAction(e -> System.out.println(newValue.getId()));
-			
+				
+			}
 		});
 		
 		
@@ -151,8 +161,30 @@ public class Contratti implements Initializable {
 	}
 	
 	
-	public boolean chiudiContratto(String id){
-		return true;
+	// input are tariffa settimanale,giornaliera, giorni, tipologia tariffa 
+	// tariffa al chilometro 
+	public void  chiudiContratto(String id){
+		CurrentSessionHandler.setIdContratto(id);
+		try {
+			ViewsJsonParser vjp = ViewsJsonParser.getInstance();
+			String path = vjp.getViewPath("chiudiContratto");
+		    FXMLLoader loader = new FXMLLoader(getClass().getResource(path));  
+		    Parent root = (Parent) loader.load();  
+		    Scene scene = new Scene(root,600,500);  
+		    Stage stage = new Stage();  
+		    stage.setScene(scene);  
+		    stage.setTitle("Apri Contratto");
+		    stage.initModality(Modality.APPLICATION_MODAL);    
+		    stage.show();  
+			}catch (IOException | NullPointerException e) {
+				
+				e.printStackTrace();
+				
+
+			}
+		
+		
+		
 	}
 	
 	private void apriContratto(){

@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import main.ids.presentation.DefaultFrontController;
 import main.ids.presentation.FrontController;
 import main.ids.presentation.request.BasicRequest;
 import main.ids.presentation.request.ComplexRequest;
@@ -66,7 +67,7 @@ public class InserisciFasciaPopUp implements Initializable {
 	
 	public void chiudiPopUp() {
 			
-			FrontController frontController = new FrontController();
+			FrontController frontController = new DefaultFrontController();
 			BasicRequest request = new BasicRequest();
 			request.setType(RequestType.VIEW);
 			request.setRequest("gestioneFasciaAdmin");
@@ -77,21 +78,22 @@ public class InserisciFasciaPopUp implements Initializable {
 	
 	
 	public void addFascia(FasciaTO fascia){
-		FrontController frontController = new FrontController();
-		ComplexRequest request = new ComplexRequest();
-		ArrayList<FasciaTO> fasce = new ArrayList<FasciaTO>();
-		fasce.add(fascia);
-		request.setType(RequestType.SERVICE);
-		request.setRequest("addFascia");
-		request.setParameters(fasce);
-		BasicResponse response = (BasicResponse) frontController.processRequest(request);
-		if (response.isResponse()){
-			Message.display("elemento inserito", AlertType.INFORMATION);
-		}else {
-			Message.display("elemento non inserito", AlertType.ERROR);
+		
+			FrontController frontController = new DefaultFrontController();
+			ComplexRequest request = new ComplexRequest();
+			ArrayList<FasciaTO> fasce = new ArrayList<FasciaTO>();
+			fasce.add(fascia);
+			request.setType(RequestType.SERVICE);
+			request.setRequest("addFascia");
+			request.setParameters(fasce);
+			BasicResponse response = (BasicResponse) frontController.processRequest(request);
+			if (response.isResponse()){
+				Message.display("elemento inserito", AlertType.INFORMATION);
+			}else {
+				Message.display("elemento non inserito", AlertType.ERROR);
+			}
 		}
-	}
-
+    //}
 }
 
 

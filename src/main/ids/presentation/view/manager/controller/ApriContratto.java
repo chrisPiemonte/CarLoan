@@ -1,4 +1,6 @@
-package main.ids.presentation.view.controller;
+package main.ids.presentation.view.manager.controller;
+
+
 
 
 import java.net.URL;
@@ -27,6 +29,7 @@ import main.ids.presentation.request.ComplexRequest;
 import main.ids.presentation.request.RequestType;
 import main.ids.presentation.response.BasicResponse;
 import main.ids.presentation.response.ComplexResponse;
+import main.ids.presentation.view.controller.CalcoloTotale;
 import main.ids.presentation.view.inputValidation.InputValidation;
 import main.ids.presentation.view.inputValidation.InputValidationFactory;
 import main.ids.presentation.view.inputValidation.TaskValidationFactory;
@@ -320,7 +323,7 @@ public class ApriContratto implements Initializable {
 		FrontController frontController = new DefaultFrontController();
 		BasicRequest request = new BasicRequest();
 		request.setType(RequestType.VIEW);
-		request.setRequest("gestioneContratti");
+		request.setRequest("gestioneContrattiManager");
 		frontController.processRequest(request);
 		buttonClose();
 	

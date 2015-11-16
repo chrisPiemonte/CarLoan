@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import main.ids.presentation.DefaultFrontController;
 import main.ids.presentation.FrontController;
 import main.ids.presentation.response.BasicResponse;
 import main.ids.presentation.response.ComplexResponse;
@@ -41,7 +42,7 @@ public class Bootstrap implements Initializable {
 	
 
 	public void onClick(){
-		frontController = new FrontController();
+		frontController = new DefaultFrontController();
 		System.out.println(usernameInput.getText().toString()+" "+passwordInput.getText().toString());
 		boolean isValidInput = login(usernameInput.getText().toString(),passwordInput.getText().toString());
 		if (!isValidInput){

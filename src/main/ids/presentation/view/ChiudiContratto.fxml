@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" spacing="15.0" stylesheets="@style/carloan.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ids.presentation.view.controller.ChiudiContratto">
+   <children>
+      <Label text="Inserire data rientro">
+         <VBox.margin>
+            <Insets top="50.0" />
+         </VBox.margin>
+      </Label>
+      <DatePicker fx:id="dataRientro" />
+      <TextField fx:id="textKm" layoutX="210.0" layoutY="40.0" maxWidth="200.0" prefWidth="200.0" promptText="inserisci chilometri percorsi..." />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="annulla" mnemonicParsing="false" styleClass="btnCancel" text="Annulla" />
+            <Button fx:id="ok" mnemonicParsing="false" styleClass="btnConfirm" text="Ok     " />
+         </children>
+      </HBox>
+   </children>
+</VBox>

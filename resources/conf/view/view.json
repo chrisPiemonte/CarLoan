@@ -32,8 +32,16 @@
         "path": "/main/ids/presentation/view/Staff.fxml"
       },
 {
+        "id": "cambiaPass",
+        "path": "/main/ids/presentation/view/CambiaPassword.fxml"
+      },
+{
         "id": "apriContratto",
         "path": "/main/ids/presentation/view/ApriContratto.fxml"
+      },
+	{
+	"id": "chiudiContratto",
+        "path": "/main/ids/presentation/view/ChiudiContratto.fxml"
       },
  {
         "id": "BootManager",
@@ -135,6 +143,7 @@
 	"id": "inserisciAgenziaAdmin",
         "path": "/main/ids/presentation/view/admin/InserisciAgenziaPopUp.fxml"
       },
+	
 
 
 

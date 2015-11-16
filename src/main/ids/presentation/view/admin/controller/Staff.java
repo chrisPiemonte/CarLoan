@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import main.ids.presentation.CurrentSessionHandler;
+import main.ids.presentation.DefaultFrontController;
 import main.ids.presentation.FrontController;
 import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.response.Response;
@@ -51,7 +52,7 @@ public class Staff implements Initializable {
 	public TextField passwordInput;
 	public ArrayList<String> data = new ArrayList<String>();
 	public Response response;
-	FrontController frontController = new FrontController();
+	FrontController frontController = new DefaultFrontController();
 	public Button clienti;
 	public Button contratti;
 	public Button auto;

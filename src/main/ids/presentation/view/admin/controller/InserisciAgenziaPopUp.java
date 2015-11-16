@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import main.ids.presentation.DefaultFrontController;
 import main.ids.presentation.FrontController;
 import main.ids.presentation.request.BasicRequest;
 import main.ids.presentation.request.ComplexRequest;
@@ -73,7 +74,7 @@ public class InserisciAgenziaPopUp implements Initializable{
 	
 	public void chiudiPopUp() {
 		
-		FrontController frontController = new FrontController();
+		FrontController frontController = new DefaultFrontController();
 		BasicRequest request = new BasicRequest();
 		request.setType(RequestType.VIEW);
 		request.setRequest("gestioneStaffAdmin");
@@ -93,7 +94,7 @@ public class InserisciAgenziaPopUp implements Initializable{
 		ArrayList<AgenziaTO> agenzie = new ArrayList<>();
 		AgenziaTO agenzia = new AgenziaTO(textFieldCittà.getText(),textFieldIndirizzo.getText(),textFieldTelefono.getText());
 		agenzie.add(agenzia);
-		FrontController frontController = new FrontController();
+		FrontController frontController = new DefaultFrontController();
 		ComplexRequest request = new ComplexRequest();
 		request.setType(RequestType.SERVICE);
 		request.setRequest("addAgenzia");

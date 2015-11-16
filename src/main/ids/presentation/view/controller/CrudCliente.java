@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.stream.Stream;
 
+import main.ids.presentation.DefaultFrontController;
 import main.ids.presentation.FrontController;
 import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.response.Response;
@@ -46,7 +47,7 @@ public class CrudCliente implements Initializable {
 	
 	
 	public Response response;
-	FrontController frontController = new FrontController();
+	FrontController frontController = new DefaultFrontController();
 	public Button clienti;
 	public Button contratti;
 	public Button auto;

@@ -16,6 +16,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import main.ids.presentation.DefaultFrontController;
 import main.ids.presentation.FrontController;
 import main.ids.presentation.request.BasicRequest;
 import main.ids.presentation.request.ComplexRequest;
@@ -23,6 +24,7 @@ import main.ids.presentation.request.RequestType;
 import main.ids.presentation.response.BasicResponse;
 import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.view.controller.Message;
+import main.ids.presentation.view.inputValidation.TaskValidationFactory;
 import main.ids.presentation.view.model.AgenziaModel;
 import main.ids.transferObjects.AccountTO;
 import main.ids.transferObjects.AgenziaTO;
@@ -87,7 +89,7 @@ public class InserisciStaffPopUp implements Initializable {
 	
 	public void chiudiPopUp() {
 			
-			FrontController frontController = new FrontController();
+			FrontController frontController = new DefaultFrontController();
 			BasicRequest request = new BasicRequest();
 			request.setType(RequestType.VIEW);
 			request.setRequest("gestioneStaffAdmin");
@@ -105,9 +107,10 @@ public class InserisciStaffPopUp implements Initializable {
 	
 	
 	public boolean buttonConfirm(){
+		//{
 			if (comboRuolo.getValue() != null){
 				if (comboRuolo.getValue().equals("Manager")){
-					frontController = new FrontController();
+					frontController = new DefaultFrontController();
 					ComplexRequest request = new ComplexRequest();
 					request.setType(RequestType.SERVICE);
 					request.setRequest("getManagerOfAgenzia");
@@ -143,10 +146,11 @@ public class InserisciStaffPopUp implements Initializable {
 				Message.display("Scegliere un ruolo", AlertType.INFORMATION);
 				return false;
 			}
-		
+		//}
 	}
 	
 	public boolean addManager(String cf,String nome,String cognome,LocalDate dataNascita, String telefono,String agenzia,String username){
+			if(TaskValidationFactory.controllaInserimentoCliente(cf, nome, cognome, telefono, dataNascita)) {
 				ArrayList<AccountTO> account = new ArrayList<AccountTO>();
 				AccountTO newAccount = new AccountTO(username, "manager","manager");
 				account.add(newAccount);
@@ -161,7 +165,7 @@ public class InserisciStaffPopUp implements Initializable {
 					impiegati.add(impiegato);
 					BasicResponse response = new BasicResponse();
 					request = new ComplexRequest();
-					frontController = new FrontController();
+					frontController = new DefaultFrontController();
 					request.setType(RequestType.SERVICE);
 					request.setRequest("addManager");
 					request.setParameters(impiegati);
@@ -184,6 +188,9 @@ public class InserisciStaffPopUp implements Initializable {
 			
 		}
 		return false;
+		
+		}
+			else return false;
 	}
 	
 		public boolean addImpiegato(String cf,String nome,String cognome,LocalDate dataNascita, String telefono,String agenzia,String username){
@@ -201,7 +208,7 @@ public class InserisciStaffPopUp implements Initializable {
 					impiegati.add(impiegato);
 					BasicResponse response = new BasicResponse();
 					request = new ComplexRequest();
-					frontController = new FrontController();
+					frontController = new DefaultFrontController();
 					request.setType(RequestType.SERVICE);
 					request.setRequest("addImpiegato");
 					request.setParameters(impiegati);
@@ -228,7 +235,7 @@ public class InserisciStaffPopUp implements Initializable {
 	
 	
 	public void buildData(){
-		frontController = new FrontController();
+		frontController = new DefaultFrontController();
 		listaAgenzia = FXCollections.observableArrayList();
 		ComplexRequest request = new ComplexRequest();
 		request.setType(RequestType.SERVICE);
@@ -251,7 +258,7 @@ public class InserisciStaffPopUp implements Initializable {
 	public boolean existsAccount(String username){
 		ArrayList<String> list = new ArrayList<>();
 		request = new ComplexRequest();
-		FrontController frontController = new FrontController();
+		FrontController frontController = new DefaultFrontController();
 		request.setType(RequestType.SERVICE);
 		request.setRequest("existsAccount");
 		list.add(username);

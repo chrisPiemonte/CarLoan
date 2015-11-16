@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import main.ids.presentation.DefaultFrontController;
 import main.ids.presentation.FrontController;
 import main.ids.presentation.response.Response;
 import main.ids.presentation.view.controller.GestioneDatiPersonali;
@@ -37,7 +38,7 @@ public class AdminLogin implements Initializable {
 		MenuItem logout = new MenuItem("Logout");
 		logout.setOnAction(e -> GestioneDatiPersonali.logout());
 		personalMenu.getItems().addAll(logout);
-		frontController = new FrontController();
+		frontController = new DefaultFrontController();
 		
 		clienti.setOnAction(e -> CallViewLoop.clientiViewAdmin());
 		contratti.setOnAction(e -> CallViewLoop.contrattiViewAdmin());

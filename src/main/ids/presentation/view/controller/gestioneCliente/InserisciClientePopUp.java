@@ -13,6 +13,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import main.ids.presentation.DefaultFrontController;
 import main.ids.presentation.FrontController;
 import main.ids.presentation.request.BasicRequest;
 import main.ids.presentation.request.ComplexRequest;
@@ -93,7 +94,7 @@ public class InserisciClientePopUp implements Initializable {
 		ArrayList<ClienteTO> listlist = new ArrayList<ClienteTO>();
 		ClienteTO newCli = new ClienteTO(cf,nome,cognome,dataNascita,telefono);
 		listlist.add(newCli);
-		frontController = new FrontController();
+		frontController = new DefaultFrontController();
 		ComplexRequest request = new ComplexRequest();
 		request.setType(RequestType.SERVICE);
 		request.setRequest("addCliente");
@@ -106,7 +107,7 @@ public class InserisciClientePopUp implements Initializable {
 	
 	public void chiudiPopUp() {
 		
-		frontController = new FrontController();
+		frontController = new DefaultFrontController();
 		BasicRequest request = new BasicRequest();
 		request.setType(RequestType.VIEW);
 		request.setRequest("gestioneCliente");

@@ -13,6 +13,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import main.ids.presentation.DefaultFrontController;
 import main.ids.presentation.FrontController;
 import main.ids.presentation.request.ComplexRequest;
 import main.ids.presentation.request.RequestType;
@@ -73,7 +74,7 @@ public class InserisciAutoPopUp implements Initializable {
 	
 	public boolean addAuto(String targa, String modello, String stato, String fascia, String chilometraggio,LocalDate dataManutenzione,String agenzia){
 		ArrayList<AutoTO> listaAuto = new ArrayList<AutoTO>();
-		FrontController frontController = new FrontController();
+		FrontController frontController = new DefaultFrontController();
 		ComplexRequest request = new ComplexRequest();
 		request.setType(RequestType.SERVICE);
 		request.setRequest("addAuto");
