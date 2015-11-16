@@ -121,7 +121,7 @@ public class MySqlAgenziaDAO extends MySqlEntityDAO implements AgenziaDAO{
 	public ManagerTO readManager(String id) {
 		Connection conn = MySqlConnectionFactory.getConnection();
 		PreparedStatement statement = null;
-		ManagerTO manager = new ManagerTO();
+		ManagerTO manager = null;
 		ResultSet resultSet = null;
 
 		try{
@@ -132,6 +132,7 @@ public class MySqlAgenziaDAO extends MySqlEntityDAO implements AgenziaDAO{
 			
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
+				manager = new ManagerTO();
 				manager.setCf(resultSet.getString("cf"));
 				manager.setNome(resultSet.getString("nome"));
 				manager.setCognome(resultSet.getString("cognome"));
@@ -158,13 +159,14 @@ public class MySqlAgenziaDAO extends MySqlEntityDAO implements AgenziaDAO{
 	public List<ImpiegatoTO> readImpiegati(String id) {
 		Connection conn = MySqlConnectionFactory.getConnection();
 		PreparedStatement statement = null;
-		List<ImpiegatoTO> listImpiegato = new ArrayList<ImpiegatoTO>();
+		List<ImpiegatoTO> listImpiegato = null;
 		ResultSet resultSet = null;
 		
 		try{
 			statement = conn.prepareStatement(queryFactory.getQuery("read_impiegati_agenzia"));
 			statement.setString(1, id);
 			resultSet = statement.executeQuery();
+			listImpiegato = new ArrayList<ImpiegatoTO>();
 			
 			while (resultSet.next()) {
 				ImpiegatoTO impiegato = new ImpiegatoTO();
@@ -230,6 +232,62 @@ public class MySqlAgenziaDAO extends MySqlEntityDAO implements AgenziaDAO{
 		boolean response = false;
 		
 		try{
+			statement = conn.prepareStatement(queryFactory.getQuery("delete_agenzia"));
+			int i = 1;
+			
+			statement.setString(i++, id);
+			result = statement.executeUpdate();
+			
+			if(result > 0){
+				response = true;
+			}
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+			close(id);
+		}finally{
+			DbEntityCloser.close(statement);
+			DbEntityCloser.close(conn);
+		}
+		
+		return response;
+	}
+	
+	@Override
+	public boolean deleteCitta(String citta) {
+		Connection conn = MySqlConnectionFactory.getConnection();
+		PreparedStatement statement = null;
+		int result;
+		boolean response = false;
+		
+		try{
+			statement = conn.prepareStatement(queryFactory.getQuery("delete_citta_agenzia"));
+			int i = 1;
+			
+			statement.setString(i++, citta);
+			result = statement.executeUpdate();
+			System.out.println(result);
+			if(result > 0){
+				response = true;
+			}
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DbEntityCloser.close(statement);
+			DbEntityCloser.close(conn);
+		}
+		
+		return response;
+	}
+	
+	private boolean close(String id) {
+		Connection conn = MySqlConnectionFactory.getConnection();
+		PreparedStatement statement = null;
+		int result;
+		boolean response = false;
+		
+		try{
 			statement = conn.prepareStatement(queryFactory.getQuery("update_stato_agenzia"));
 			int i = 1;
 			
@@ -276,56 +334,6 @@ public class MySqlAgenziaDAO extends MySqlEntityDAO implements AgenziaDAO{
 		}
 		
 		return present;
-	}
-	
-	public static void main(String[] args){
-		/*
-		AgenziaDAO agDAO = new MySqlAgenziaDAO();
-		
-		// create
-		AgenziaTO agenzia = new AgenziaTO("Torino", "via minchio", "0101010");
-		agDAO.create(agenzia);
-		
-		
-		// read
-		AgenziaTO age = agDAO.read("001");
-		System.out.println(age.toString() + "\n");
-		
-		
-		// read_all
-		List<AgenziaTO> la = agDAO.readAll();
-		for(AgenziaTO ag : la){
-			System.out.println(ag.toString());
-		}
-		
-		System.out.println("");
-		
-		// read_impiegati
-		List<ImpiegatoTO> li = agDAO.readImpiegati("001");
-		for(ImpiegatoTO im : li){
-			System.out.println(im.toString());
-		}
-		
-		
-		// update
-		AgenziaTO agen = new AgenziaTO("pornioe", "via sticchio", "0101010");
-		agen.setId("005");
-		System.out.println("\n" + agDAO.update(agen) + "\n");
-		
-		
-		// read_manager
-		ManagerTO manager = agDAO.readManager("001");
-		System.out.println(manager.toString() + "\n");
-		
-		
-		// delete
-		System.out.println(agDAO.delete("005"));
-		
-		
-		// isPresent read
-		System.out.println(agDAO.isPresent("001"));
-		*/
-		
 	}
 	
 }

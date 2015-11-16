@@ -36,6 +36,10 @@
         "sql": "DELETE FROM `carloan`.`agenzia` WHERE `carloan`.`agenzia`.`id` = ?;"
       },
       {
+        "id": "delete_citta_agenzia",
+        "sql": "DELETE FROM `carloan`.`agenzia` WHERE `carloan`.`agenzia`.`citta` = ?;"
+      },
+      {
         "id": "create_account",
         "sql": "INSERT INTO `carloan`.`account` VALUES (?, ?, ?);"
       },

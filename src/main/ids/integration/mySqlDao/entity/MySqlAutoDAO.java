@@ -326,8 +326,30 @@ public class MySqlAutoDAO extends MySqlEntityDAO implements AutoDAO{
 
 	@Override
 	public boolean delete(String targa) {
-		// TODO Auto-generated method stub
-		return false;
+		Connection conn = MySqlConnectionFactory.getConnection();
+		PreparedStatement statement = null;
+		int result;
+		boolean response = false;
+		
+		try{
+			statement = conn.prepareStatement(queryFactory.getQuery("delete_auto"));
+			int i = 1;
+			statement.setString(i++, targa);
+			
+			result = statement.executeUpdate();
+			
+			if(result > 0) response = true;
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			DbEntityCloser.close(statement);
+			DbEntityCloser.close(conn);
+		}
+		
+		return response;
 	}
 
 	@Override
@@ -380,69 +402,6 @@ public class MySqlAutoDAO extends MySqlEntityDAO implements AutoDAO{
 		}
 		
 		return present;
-	}
-	
-	public static void main(String[] args){
-		/*
-		AutoDAO autoDAO = new MySqlAutoDAO();
-		
-		// create
-		AutoTO au = new AutoTO("ggtttgg", "very belli", "D", "A", 0, LocalDate.now(), "002");
-		System.out.println(autoDAO.create(au));
-		
-		
-		// read
-		System.out.println(autoDAO.read("ggtttgg").toString());
-		
-		
-		// read_all
-		List<AutoTO> liAuto = autoDAO.readAll();
-		for(AutoTO a : liAuto){
-			System.out.println(a.toString());
-		}
-		
-		
-		// read_agenzia
-		List<AutoTO> liAuto = autoDAO.readAgenzia("004");
-		for(AutoTO a : liAuto){
-			System.out.println(a.toString());
-		}
-		
-		
-		// read_fascia
-		List<AutoTO> liAuto = autoDAO.readFascia("C");
-		for(AutoTO a : liAuto){
-			System.out.println(a.toString());
-		}
-		
-		
-		// read_stato
-		List<AutoTO> liAuto = autoDAO.readStato("D");
-			for(AutoTO a : liAuto){
-			System.out.println(a.toString());
-		}
-		
-		
-		// update
-		AutoTO au = new AutoTO("ggtttgg", "VERY BELLY", "N", "A", 0, LocalDate.now(), "002");
-		System.out.println(autoDAO.update(au));
-		
-		
-		// update_stato
-		System.out.println(autoDAO.updateStato("ggtttgg", "D"));
-		
-		
-		// update_km
-		System.out.println(autoDAO.updateKm("ggtttgg", 25));
-		
-		
-		//isDisponibile
-		System.out.println(autoDAO.isDisponibile("ggtttgg"));
-		
-		
-		//isPresent
-		System.out.println(autoDAO.isPresent("ggtttgg"));
-		*/
 	}
 	
 }

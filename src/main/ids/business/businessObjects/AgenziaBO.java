@@ -47,6 +47,10 @@ public class AgenziaBO {
 	public boolean delete(String id){
 		return this.dao.delete(id);
 	}
+
+	public boolean deleteCitta(String citta){
+		return this.dao.deleteCitta(citta);
+	}
 	
 	public boolean exists(String id){
 		return this.dao.isPresent(id);

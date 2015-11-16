@@ -3,17 +3,18 @@ package main.ids.business.businessObjects;
 import java.util.List;
 
 import main.ids.integration.dao.entity.ImpiegatoDAO;
+import main.ids.integration.dao.entity.ManagerDAO;
 import main.ids.integration.dao.factory.DaoFactory;
 import main.ids.transferObjects.ImpiegatoTO;
 import main.ids.transferObjects.ManagerTO;
 
 public class ManagerBO {
 
-	private ImpiegatoDAO dao;
+	private ManagerDAO dao;
 
 	public ManagerBO() {
 		try {
-			this.dao = DaoFactory.getDAOFactory(DaoFactory.MYSQL).getImpiegatoDAO();
+			this.dao = DaoFactory.getDAOFactory(DaoFactory.MYSQL).getManagerDAO();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -28,7 +29,7 @@ public class ManagerBO {
 	}
 	
 	public List<ManagerTO> getAll(){
-		List<ManagerTO> manList = (List<ManagerTO>)(List<?>) this.dao.readAll();
+		List<ManagerTO> manList = this.dao.readAll();
 		return manList;
 	}
 	
@@ -47,10 +48,6 @@ public class ManagerBO {
 
 	public String getAgenzia(String cf){
 		return this.dao.readAgenzia(cf);
-	}
-	
-	public List<ImpiegatoTO> getCognome(String cognome){
-		return this.dao.readCognome(cognome);
 	}
 	
 	public boolean changeAgenzia(String cf, String newAgenzia){

@@ -285,50 +285,28 @@ public class MySqlContrattoDAO extends MySqlEntityDAO implements ContrattoDAO {
 
 	@Override
 	public boolean isPresent(String id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
-	public static void main(String[] args){
-		/*
-		ContrattoDAO contraDAO = new MySqlContrattoDAO();
+		Connection conn = MySqlConnectionFactory.getConnection();
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		boolean present = false;
 		
-		//create
-		ContrattoTO con = new ContrattoTO("QWERTY13A01D447S", "wc333jh", "giornaliero", 
-				"limitato", 10, LocalDate.now(), LocalDate.now(), "004","003", 
-				"BRNSPN13A35T417Q", "ABRBRS13G71F145H", 10, 10, 10, "aperto", 100);
-		System.out.println(contraDAO.create(con));
-		
-		
-		// read
-		System.out.println(contraDAO.read("1").toString());
-		
-		// readAll
-		List<ContrattoTO> liC = contraDAO.readAll();
-		for(ContrattoTO c : liC){
-			System.out.println(c.toString());
+		try{
+			statement = conn.prepareStatement(queryFactory.getQuery("read_contratto"));
+			statement.setString(1, id);
+			
+			resultSet = statement.executeQuery();
+			if(resultSet.next()) present = true;
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			DbEntityCloser.close(statement);
+			DbEntityCloser.close(conn);
 		}
 		
-		
-		// update_mod_noleggio
-		System.out.println(contraDAO.updateModNoleggio("14", "settimanale"));
-		
-		
-		// update_data_fine
-		System.out.println(contraDAO.updateDataFine("14", LocalDate.of(2015, 01, 01)));
-		
-		
-		// update_agenzia_fine
-		System.out.println(contraDAO.updateAgenziaFine("14", "001"));
-		
-		
-		// update_data_fine
-		System.out.println(contraDAO.updateAgenziaFine("14", "001"));
-		
-		// update_agenzia_fine
-		System.out.println(contraDAO.updateChiudiContratto("14", "GVNCST13D14C931T", 50, 50));
-		*/
-		
+		return present;
 	}
 	
 }

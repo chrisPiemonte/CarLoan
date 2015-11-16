@@ -149,8 +149,28 @@ public class MySqlFasciaDAO extends MySqlEntityDAO implements FasciaDAO {
 
 	@Override
 	public boolean delete(String id) {
-		// TODO things
-		return false;
+		Connection conn = MySqlConnectionFactory.getConnection();
+		PreparedStatement statement = null;
+		int result;
+		boolean response = false;
+		
+		try{
+			statement = conn.prepareStatement(queryFactory.getQuery("delete_fascia"));
+			int i = 1;
+			statement.setString(i++, id);
+			
+			result = statement.executeUpdate();
+			
+			if(result > 0) response = true;
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			DbEntityCloser.close(statement);
+			DbEntityCloser.close(conn);
+		}
+		
+		return response;
 	}
 
 	@Override
@@ -177,41 +197,6 @@ public class MySqlFasciaDAO extends MySqlEntityDAO implements FasciaDAO {
 		}
 		
 		return present;
-	}
-	
-	public static void main(String[] args){
-		/*
-		FasciaDAO fasciaDAO = new MySqlFasciaDAO();
-		
-		// create
-		FasciaTO fascia = new FasciaTO("Y", "moltobella", 20.00, 30.00, 40.00);
-		System.out.println(fasciaDAO.create(fascia));
-		
-		
-		// read 
-		FasciaTO f = fasciaDAO.read("A");
-		System.out.println(f.toString());
-		
-		
-		// readAll
-		List<FasciaTO> lf = fasciaDAO.readAll();
-		for(FasciaTO fa : lf){
-			System.out.println(fa.toString());
-		}
-		
-		
-		// update
-		FasciaTO fas = new FasciaTO("Y", "verybella", 10.00, 20.00, 50.00);
-		System.out.println(fasciaDAO.update(fas));
-		
-		
-		// delete
-		
-		
-		// isPresent
-		System.out.println(fasciaDAO.isPresent("A"));
-		*/
-		
 	}
 	
 }

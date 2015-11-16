@@ -185,9 +185,31 @@ public class MySqlClienteDAO extends MySqlEntityDAO implements ClienteDAO {
 	}
 
 	@Override
-	public boolean delete(String id) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean delete(String cf) {
+		Connection conn = MySqlConnectionFactory.getConnection();
+		PreparedStatement statement = null;
+		int result;
+		boolean response = false;
+		
+		try{
+			statement = conn.prepareStatement(queryFactory.getQuery("delete_cliente"));
+			int i = 1;
+			statement.setString(i++, cf);
+			
+			result = statement.executeUpdate();
+			
+			if(result > 0) response = true;
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			DbEntityCloser.close(statement);
+			DbEntityCloser.close(conn);
+		}
+		
+		return response;
 	}
 
 	@Override
@@ -214,41 +236,6 @@ public class MySqlClienteDAO extends MySqlEntityDAO implements ClienteDAO {
 		}
 		
 		return present;
-	}
-	
-	public static void main(String[] args){
-		//ClienteDAO clienteDAO = new MySqlClienteDAO();
-		
-		/*
-		//create
-		ClienteTO c = new ClienteTO("1234567890000000", "ciao", "flynn", LocalDate.now(), "09182349");
-		System.out.println(clienteDAO.create(c));
-		
-		// read
-		ClienteTO cl = clienteDAO.read("FRANZS13A01D447S");
-		System.out.println(cl);
-		
-		// read_cognome
-		List<ClienteTO> li = clienteDAO.readCognome("flynn");
-		for(ClienteTO c : li){
-			System.out.println(c.toString());
-		}
-		
-		// read_all
-		List<ClienteTO> lis = clienteDAO.readAll();
-		for(ClienteTO c : lis){
-			System.out.println(c.toString());
-		}
-		
-		// update
-		ClienteTO c = new ClienteTO("1234567890000000", "ciaoz", "flynnz", LocalDate.now(), "091823491");
-		System.out.println(clienteDAO.update(c));
-		
-		// isPresent
-		System.out.println(clienteDAO.isPresent("1234567890000000"));
-		
-		*/
-		// delete
 	}
 	
 }

@@ -43,6 +43,10 @@ public class GestioneAgenzie {
 		return this.agenziaBO.delete(id);
 	}
 	
+	public boolean deleteCitta(String id){
+		return this.agenziaBO.deleteCitta(id);
+	}
+	
 	public boolean exists(String id){
 		return this.agenziaBO.exists(id);
 	}

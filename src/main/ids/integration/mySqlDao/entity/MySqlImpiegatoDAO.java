@@ -260,6 +260,34 @@ public class MySqlImpiegatoDAO extends MySqlEntityDAO implements ImpiegatoDAO {
 		boolean response = false;
 		
 		try{
+			statement = conn.prepareStatement(queryFactory.getQuery("delete_impiegato"));
+			int i = 1;
+			statement.setString(i++, cf);
+			
+			result = statement.executeUpdate();
+			
+			if(result > 0) response = true;
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+			fire(cf);
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			DbEntityCloser.close(statement);
+			DbEntityCloser.close(conn);
+		}
+		
+		return response;
+	}
+	
+	private boolean fire(String cf) {
+		Connection conn = MySqlConnectionFactory.getConnection();
+		PreparedStatement statement = null;
+		int result;
+		boolean response = false;
+		
+		try{
 			statement = conn.prepareStatement(queryFactory.getQuery("update_stato_impiegato"));
 			int i = 1;
 			statement.setString(i++, cf);
@@ -270,6 +298,7 @@ public class MySqlImpiegatoDAO extends MySqlEntityDAO implements ImpiegatoDAO {
 			
 		}catch(SQLException e){
 			e.printStackTrace();
+			
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{

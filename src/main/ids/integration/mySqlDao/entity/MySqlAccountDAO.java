@@ -233,8 +233,29 @@ public class MySqlAccountDAO  extends MySqlEntityDAO implements AccountDAO{
 
 	@Override
 	public boolean delete(String username) {
-		// TODO Auto-generated method stub
-		return false;
+		Connection conn = MySqlConnectionFactory.getConnection();
+		PreparedStatement statement = null;
+		int result;
+		boolean response = false;
+		
+		try{
+			statement = conn.prepareStatement(queryFactory.getQuery("delete_account"));
+			statement.setString(1, username);
+			
+			result = statement.executeUpdate();
+			
+			if(result > 0) response = true;
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			DbEntityCloser.close(statement);
+			DbEntityCloser.close(conn);
+		}
+		
+		return response;
 	}
 
 	@Override
@@ -261,41 +282,6 @@ public class MySqlAccountDAO  extends MySqlEntityDAO implements AccountDAO{
 		}
 		
 		return present;
-	}
-	
-	public static void main(String[] args){
-		/*
-		AccountDAO accDAO = new MySqlAccountDAO();
-		
-		// create
-		AccountTO ac = new AccountTO("sfaccimmey", "0000", "impiegato");
-		System.out.println(accDAO.create(ac));
-		
-		// read
-		System.out.println(accDAO.read("sfaccimmey").toString());
-		
-		// read_all
-		List<AccountTO> accList = accDAO.readAll();
-		for(AccountTO a : accList){
-			System.out.println(a.toString());
-		}
-		
-		// update
-		AccountTO acco = new AccountTO("sfaccimmey", "1111", "manager");
-		System.out.println(accDAO.update(acco));
-		
-		// isPresent
-		System.out.println(accDAO.isPresent("sfaccimmey"));
-		
-		// login
-		ImpiegatoTO impi = accDAO.login("admin", "admin");
-		if (impi != null) System.out.println(impi.toString() + "\n " + impi.getClass().getName().toString());
-		else System.out.println("null");
-		
-		// read_password
-		System.out.println(accDAO.readPassword("fel002"));
-		*/
-		
 	}
 	
 }

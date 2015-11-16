@@ -12,6 +12,6 @@ public interface AgenziaDAO extends EntityDAO<AgenziaTO>{
 	
 	List<ImpiegatoTO> readImpiegati(String id);
 	
-	
+	boolean deleteCitta(String citta);
 	
 }

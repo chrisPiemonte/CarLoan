@@ -42,10 +42,6 @@ public class GestioneManager {
 		return this.managerBO.getAgenzia(cf);
 	}
 	
-	public List<ImpiegatoTO> getByCognome(String cognome){
-		return this.managerBO.getCognome(cognome);
-	}
-	
 	public boolean changeAgenziaOf(String cf, String newAgenzia){
 		return this.managerBO.changeAgenzia(cf, newAgenzia);
 	}

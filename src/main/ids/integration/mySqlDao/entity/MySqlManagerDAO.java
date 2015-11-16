@@ -22,23 +22,11 @@ public class MySqlManagerDAO extends MySqlEntityDAO implements ManagerDAO{
 	public boolean create(ManagerTO manager) {
 		Connection conn = MySqlConnectionFactory.getConnection();
 		PreparedStatement statement = null;
-		PreparedStatement accountStatement = null;
 		
 		int result = 0;
 		boolean response = false;
 		
 		try{
-			accountStatement = conn.prepareStatement(queryFactory.getQuery("create_account"));
-			int j = 1;
-			accountStatement.setString(j++, manager.getUsername());
-			accountStatement.setString(j++, "d6b558b81ab4503d3ce25c0001513921");
-			accountStatement.setString(j++, "manager");
-			result = accountStatement.executeUpdate();
-			if(result > 0) 
-				result = 0;
-			else 
-				return false;
-			
 			statement = conn.prepareStatement(queryFactory.getQuery("create_impiegato"));
 			int i = 1;
 			statement.setString(i++, manager.getCf());
@@ -245,6 +233,35 @@ public class MySqlManagerDAO extends MySqlEntityDAO implements ManagerDAO{
 			
 		}catch(SQLException e){
 			e.printStackTrace();
+			fire(cf);
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			DbEntityCloser.close(statement);
+			DbEntityCloser.close(conn);
+		}
+		
+		return response;
+	}
+
+	private boolean fire(String cf) {
+		Connection conn = MySqlConnectionFactory.getConnection();
+		PreparedStatement statement = null;
+		int result;
+		boolean response = false;
+		
+		try{
+			statement = conn.prepareStatement(queryFactory.getQuery("update_stato_impiegato"));
+			int i = 1;
+			statement.setString(i++, cf);
+			
+			result = statement.executeUpdate();
+			
+			if(result > 0) response = true;
+			
+		}catch(SQLException e){
+			e.printStackTrace();
+			
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{

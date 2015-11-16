@@ -36,7 +36,6 @@ public class GestioneImpiegati {
 	public boolean exists(String cf){
 		return this.impiegatoBO.exists(cf);
 	}
-	
 
 	public String getAgenziaOf(String cf){
 		return this.impiegatoBO.getAgenzia(cf);
