@@ -35,7 +35,7 @@
                         <Insets bottom="5.0" left="8.0" right="10.0" top="5.0" />
                      </HBox.margin>
                      <image>
-                        <Image url="@style/img/logo.png" />
+                        <Image url="@../style/img/logo.png" />
                      </image>
                   </ImageView>
                   <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0">

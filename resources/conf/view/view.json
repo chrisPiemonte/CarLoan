@@ -39,9 +39,25 @@
         "id": "apriContratto",
         "path": "/main/ids/presentation/view/ApriContratto.fxml"
       },
+{
+        "id": "apriContrattoAdmin",
+        "path": "/main/ids/presentation/view/admin/ApriContratto.fxml"
+      },
+{
+        "id": "apriContrattoManager",
+        "path": "/main/ids/presentation/view/manager/ApriContratto.fxml"
+      },
 	{
 	"id": "chiudiContratto",
         "path": "/main/ids/presentation/view/ChiudiContratto.fxml"
+      },
+{
+	"id": "chiudiContrattoAdmin",
+        "path": "/main/ids/presentation/view/admin/ChiudiContratto.fxml"
+      },
+{
+	"id": "chiudiContrattoManager",
+        "path": "/main/ids/presentation/view/manager/ChiudiContratto.fxml"
       },
  {
         "id": "BootManager",

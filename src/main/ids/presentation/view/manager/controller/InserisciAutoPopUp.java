@@ -87,13 +87,15 @@ public class InserisciAutoPopUp implements Initializable {
 		}
 	
 	public boolean buttonConfirm(){
-		
-		boolean inserito = addAuto(targa.getText(),modello.getText(),stato.getValue().toString().substring(0,1),fascia.getValue().toString(),chilometraggio.getText(),dataManutenzione.getValue());
-		return inserito;
+		if (TaskValidationFactory.controllaInserimentoAuto(targa.getText(),modello.getText(),stato.getValue(),fascia.getValue().toString(),chilometraggio.getText(),dataManutenzione.getValue())){
+				boolean inserito = addAuto(targa.getText(),modello.getText(),stato.getValue().toString().substring(0,1),fascia.getValue().toString(),chilometraggio.getText(),dataManutenzione.getValue());
+				return inserito;
+		}
+		else return false;
 	}
 	
 	public boolean addAuto(String targa, String modello, String stato, String fascia, String chilometraggio,LocalDate dataManutenzione){
-		if (TaskValidationFactory.controllaInserimentoAuto(targa,modello,stato,fascia,chilometraggio,dataManutenzione)){
+		
 			ArrayList<AutoTO> listaAuto = new ArrayList<AutoTO>();
 			FrontController frontController = new DefaultFrontController();
 			ComplexRequest request = new ComplexRequest();
@@ -113,7 +115,7 @@ public class InserisciAutoPopUp implements Initializable {
 				return false;
 			}
 			
-		}else return false;
+		
 	}
 	
 	

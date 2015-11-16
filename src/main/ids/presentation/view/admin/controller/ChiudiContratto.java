@@ -68,7 +68,7 @@ public class ChiudiContratto implements Initializable {
 			 chiudiPopUp();
 			 
 		 });
-		 // chiamo il contratto
+		 annulla.setOnAction(e -> chiudiPopUp());
 		 
 	 }
 	 
@@ -87,7 +87,7 @@ public class ChiudiContratto implements Initializable {
 		 ContrattoTO contratto = response.getParameters().get(0);
 		 double tot = CalcoloTotale.setTotale(contratto.getDataInizio(), contratto.getDataFine(), contratto.getTariffaBase(), Double.parseDouble(textKm.getText()), contratto.getKmNoleggio());
 		 int days = Period.between(contratto.getDataFine(), dataRientro.getValue()).getDays();
-		 boolean confirmation = Message.display("Totale fattura: "+tot+"\n giorni di ritardo:"+days+"\n vuoi chiudere contratto?", AlertType.CONFIRMATION);
+		 boolean confirmation = Message.display("Totale fattura: "+tot+"\n giorni di ritardo:"+days+"\n acconto:"+contratto.getAcconto()+"\n vuoi chiudere contratto?", AlertType.CONFIRMATION);
 		 if (confirmation){
 			 contratto.setTotale(tot);
 			 contratto.setImpFine(CurrentSessionHandler.getCf());
@@ -103,7 +103,7 @@ public class ChiudiContratto implements Initializable {
 		request.setRequest("chiudiContratto");
 		List<Object> chiusura = new ArrayList<Object>();
 		chiusura.add(CurrentSessionHandler.getIdContratto());
-		chiusura.add(CurrentSessionHandler.getUsername());
+		chiusura.add(CurrentSessionHandler.getCf());
 		chiusura.add(Double.parseDouble(textKm.getText()));
 		chiusura.add(tot);
 		request.setParameters(chiusura);

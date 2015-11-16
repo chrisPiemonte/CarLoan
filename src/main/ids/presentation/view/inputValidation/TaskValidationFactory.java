@@ -49,7 +49,9 @@ public class TaskValidationFactory {
 	
 	public static boolean getFasciaValidation(String id,String descrizione, String tariffaG, String tariffaS, String tariffaKm){
 		if (id != null && descrizione != null && tariffaG != null && tariffaS != null && tariffaKm != null ){
-			
+			Message.display("Inserire tutti i campi", AlertType.ERROR);
+			return false;
+			}else{
 			InputValidation i = InputValidationFactory.getValidation("id");
 			if (i.isValid(id)){
 				i = InputValidationFactory.getValidation("nome");
@@ -81,10 +83,7 @@ public class TaskValidationFactory {
 					
 					return false;}
 		
-	} else { 
-		Message.display("Inserire tutti i campi", AlertType.ERROR);
-		return false;
-	}
+	} 
 		}
 	
 	
@@ -94,6 +93,9 @@ public class TaskValidationFactory {
 				
 		
 		if (cf!= null && nome!=null && cognome!= null && dataNascita != null && telefono != null){
+			Message.display("Inserire tutti i campi", AlertType.ERROR);
+			return false;
+			}else{
 		InputValidation i = InputValidationFactory.getValidation("cf");
 			if (i.isValid(cf)){
 				 i = InputValidationFactory.getValidation("nome");
@@ -122,9 +124,6 @@ public class TaskValidationFactory {
 				Message.display("codice fiscale non inserito", AlertType.ERROR);
 				return false;
 			}
-		}else {
-			Message.display("riempire i campi", AlertType.ERROR);
-			return false;
 		}
 		
 	} 
@@ -133,37 +132,28 @@ public class TaskValidationFactory {
 	
 public static boolean controllaInserimentoAuto(String targa,String modello,String stato,String fascia,String chilometraggio,LocalDate dataManutenzione){
 		
-		if (targa!= null && modello!=null && stato!= null && fascia != null && chilometraggio != null && dataManutenzione != null){
+	if (targa != null && modello != null && stato != null && fascia != null && chilometraggio != null && dataManutenzione  != null){
+		Message.display("Inserire tutti i campi", AlertType.ERROR);
+		return false;
+		}else{
 		InputValidation i = InputValidationFactory.getValidation("targa");
-			if (i.isValid(targa)){
-				 i = InputValidationFactory.getValidation("nome");
-				 if (i.isValid(modello)){
-					 i = InputValidationFactory.getValidation("double");
-					 if (i.isValid(chilometraggio)){
-						 return true;
-					 }else { 
-						 Message.display("chilometraggio non valido", AlertType.ERROR);
-						 return false;
-						
-					 }
-				 }else {
-					 Message.display("modello non valido", AlertType.ERROR);
-					 return false;
-				 }
-				 	
-				
-			} else {
-				Message.display("targa non valida", AlertType.ERROR);
+		if (i.isValid(targa)){
+			i = InputValidationFactory.getValidation("nome");
+			if (i.isValid(modello)){
+				return true;
+			}else {
+				Message.display("modello non valido", AlertType.ERROR);
 				return false;
 			}
 		}else {
-			Message.display("riempire i campi", AlertType.ERROR);
+			Message.display("targa non valida", AlertType.ERROR);
 			return false;
 		}
-		
-	} 
+	}
 
 
 
 	
+}		
+		
 }

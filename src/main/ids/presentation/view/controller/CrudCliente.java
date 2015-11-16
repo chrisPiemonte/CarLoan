@@ -72,8 +72,14 @@ public class CrudCliente implements Initializable {
 	public void initialize(URL location, ResourceBundle resources){
 
 		MenuItem logout = new MenuItem("Logout");
+		MenuItem cambiaPass = new MenuItem("Cambia Password...");
 		logout.setOnAction(e -> GestioneDatiPersonali.logout());
-		personalMenu.getItems().addAll(logout);
+		cambiaPass.setOnAction(e -> {
+		
+			GestionePassword i = new GestionePassword();
+			i.cambiaPassword();
+		});
+		personalMenu.getItems().addAll(cambiaPass,logout);
 		contratti.setOnAction(e -> CallViewLoop.contrattiView());
 		auto.setOnAction(e -> CallViewLoop.autoView());
 		fascia.setOnAction(e -> CallViewLoop.fasciaView());

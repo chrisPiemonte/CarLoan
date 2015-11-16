@@ -29,6 +29,7 @@ import main.ids.presentation.request.ComplexRequest;
 import main.ids.presentation.request.RequestType;
 import main.ids.presentation.response.BasicResponse;
 import main.ids.presentation.response.ComplexResponse;
+import main.ids.presentation.view.admin.controller.Message;
 import main.ids.presentation.view.controller.CalcoloTotale;
 import main.ids.presentation.view.inputValidation.InputValidation;
 import main.ids.presentation.view.inputValidation.InputValidationFactory;
@@ -125,6 +126,7 @@ public class ApriContratto implements Initializable {
 		calcolaFattura();
 		
 		});
+		annulla.setOnAction(e -> chiudiPopUp());
 		
 		
 	}
@@ -233,7 +235,13 @@ public class ApriContratto implements Initializable {
 					request.setType(RequestType.SERVICE);
 					ComplexResponse<FasciaTO> response = (ComplexResponse<FasciaTO>) frontController.processRequest(request);
 					FasciaTO selectedFascia =  response.getParameters().get(0);
-					System.out.println(selectedFascia.getTariffaGiornaliera());
+					if (acconto.getText().isEmpty()){
+						Message.display("Inserire acconto", AlertType.ERROR);
+					}else{
+						InputValidation i = InputValidationFactory.getValidation("double");
+						if(i.isValid(acconto.getText())) Message.display("Acconto non valido", AlertType.ERROR);
+						
+					}
 					
 					double tariffaBase = CalcoloTotale.getTariffaBase(selectedFascia, comboMod.getValue().toString(), comboDurata.getValue().toString());
 					double fattura = CalcoloTotale.setTotale(dataInizio.getValue(), dataFine.getValue(), tariffaBase,1,comboMod.getValue().toString());

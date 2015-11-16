@@ -12,6 +12,7 @@ import main.ids.presentation.FrontController;
 import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.response.Response;
 import main.ids.presentation.view.controller.GestioneDatiPersonali;
+import main.ids.presentation.view.controller.GestionePassword;
 import main.ids.presentation.view.model.ClienteModel;
 import main.ids.presentation.view.model.ContrattiModel;
 import main.ids.transferObjects.ClienteTO;
@@ -76,8 +77,14 @@ public class Contratti implements Initializable {
 		
 		
 		MenuItem logout = new MenuItem("Logout");
+		MenuItem cambiaPass = new MenuItem("Cambia Password...");
 		logout.setOnAction(e -> GestioneDatiPersonali.logout());
-		personalMenu.getItems().addAll(logout);
+		cambiaPass.setOnAction(e -> {
+		
+			GestionePassword i = new GestionePassword();
+			i.cambiaPassword();
+		});
+		personalMenu.getItems().addAll(cambiaPass,logout);
 		clienti.setOnAction(e -> CallViewLoop.clientiViewManager());
 		contratti.setOnAction(e -> CallViewLoop.contrattiViewManager());
 		autoView.setOnAction(e -> CallViewLoop.autoViewManager());
@@ -162,7 +169,7 @@ public class Contratti implements Initializable {
 		CurrentSessionHandler.setIdContratto(id);
 		try {
 			ViewsJsonParser vjp = ViewsJsonParser.getInstance();
-			String path = vjp.getViewPath("chiudiContratto");
+			String path = vjp.getViewPath("chiudiContrattoManager");
 		    FXMLLoader loader = new FXMLLoader(getClass().getResource(path));  
 		    Parent root = (Parent) loader.load();  
 		    Scene scene = new Scene(root,600,500);  
@@ -185,7 +192,7 @@ public class Contratti implements Initializable {
 	private void apriContratto(){
 		try {
 		ViewsJsonParser vjp = ViewsJsonParser.getInstance();
-		String path = vjp.getViewPath("apriContratto");
+		String path = vjp.getViewPath("apriContrattoManager");
 	    FXMLLoader loader = new FXMLLoader(getClass().getResource(path));  
 	    Parent root = (Parent) loader.load();  
 	    Scene scene = new Scene(root,600,500);  

@@ -14,6 +14,7 @@ import main.ids.presentation.FrontController;
 import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.response.Response;
 import main.ids.presentation.view.controller.GestioneDatiPersonali;
+import main.ids.presentation.view.controller.GestionePassword;
 import main.ids.presentation.view.model.AgenziaModel;
 import main.ids.presentation.view.model.ClienteModel;
 import main.ids.presentation.view.model.StaffModel;
@@ -86,9 +87,14 @@ public class Staff implements Initializable {
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
 		MenuItem logout = new MenuItem("Logout");
+		MenuItem cambiaPass = new MenuItem("Cambia Password...");
 		logout.setOnAction(e -> GestioneDatiPersonali.logout());
-		personalMenu.getItems().addAll(logout);
+		cambiaPass.setOnAction(e -> {
 		
+			GestionePassword i = new GestionePassword();
+			i.cambiaPassword();
+		});
+		personalMenu.getItems().addAll(cambiaPass,logout);
 		clienti.setOnAction(e -> CallViewLoop.clientiViewAdmin());
 		contratti.setOnAction(e -> CallViewLoop.contrattiViewAdmin());
 		auto.setOnAction(e -> CallViewLoop.autoViewAdmin());

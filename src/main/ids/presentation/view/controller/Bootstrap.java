@@ -43,7 +43,6 @@ public class Bootstrap implements Initializable {
 
 	public void onClick(){
 		frontController = new DefaultFrontController();
-		System.out.println(usernameInput.getText().toString()+" "+passwordInput.getText().toString());
 		boolean isValidInput = login(usernameInput.getText().toString(),passwordInput.getText().toString());
 		if (!isValidInput){
 			System.out.println("OOH");

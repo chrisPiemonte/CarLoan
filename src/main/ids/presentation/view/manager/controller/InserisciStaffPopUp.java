@@ -64,6 +64,8 @@ public class InserisciStaffPopUp implements Initializable {
 				chiudiPopUp();
 			}
 		});
+		
+		annulla.setOnAction(e -> chiudiPopUp());
 	
 	
 	}

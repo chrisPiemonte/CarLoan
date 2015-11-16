@@ -9,7 +9,7 @@
 
 <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="550.0" spacing="8.0" stylesheets="@../style/carloan.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.ids.presentation.view.manager.controller.InserisciStaffPopUp">
    <children>
-      <Label text="Inserisci Fascia">
+      <Label text="Inserisci Staff">
          <font>
             <Font size="17.0" />
          </font>

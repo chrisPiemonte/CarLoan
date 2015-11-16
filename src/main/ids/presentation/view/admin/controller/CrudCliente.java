@@ -16,6 +16,7 @@ import main.ids.presentation.FrontController;
 import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.response.Response;
 import main.ids.presentation.view.controller.GestioneDatiPersonali;
+import main.ids.presentation.view.controller.GestionePassword;
 import main.ids.presentation.view.model.ClienteModel;
 import main.ids.transferObjects.ClienteTO;
 import main.ids.util.json.ViewsJsonParser;
@@ -73,10 +74,15 @@ public class CrudCliente implements Initializable {
 
 	@Override 
 	public void initialize(URL location, ResourceBundle resources){
-
 		MenuItem logout = new MenuItem("Logout");
+		MenuItem cambiaPass = new MenuItem("Cambia Password...");
 		logout.setOnAction(e -> GestioneDatiPersonali.logout());
-		personalMenu.getItems().addAll(logout);
+		cambiaPass.setOnAction(e -> {
+		
+			GestionePassword i = new GestionePassword();
+			i.cambiaPassword();
+		});
+		personalMenu.getItems().addAll(cambiaPass,logout);
 		contratti.setOnAction(e -> CallViewLoop.contrattiViewAdmin());
 		auto.setOnAction(e -> CallViewLoop.autoViewAdmin());
 		clienti.setOnAction(e -> CallViewLoop.clientiViewAdmin());
@@ -93,7 +99,7 @@ public class CrudCliente implements Initializable {
 		nome.setText("Nome");
 		cognome.setCellValueFactory(new PropertyValueFactory<ClienteModel, String>("cognome"));
 		cognome.setText("Cognome");
-		dataNascita = new TableColumn<>("Data Nascita");
+		dataNascita = new TableColumn<ClienteModel, LocalDate>("Data Nascita");
 		dataNascita.setCellValueFactory(new PropertyValueFactory<ClienteModel, LocalDate>("dataNascita"));
 		telefono.setCellValueFactory(new PropertyValueFactory<ClienteModel, String>("telefono"));
 		telefono.setText("Numero di telefono");

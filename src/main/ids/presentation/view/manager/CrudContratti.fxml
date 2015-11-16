@@ -28,7 +28,7 @@
    <top>
       <BorderPane stylesheets="@../style/carloan.css" BorderPane.alignment="CENTER">
          <top>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" styleClass="whiteBar" stylesheets="@style/carloan.css" BorderPane.alignment="CENTER">
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" styleClass="whiteBar" stylesheets="@../style/carloan.css" BorderPane.alignment="CENTER">
                <children>
                    <ImageView fitHeight="100.0" fitWidth="353.0" pickOnBounds="true" preserveRatio="true" styleClass="logo">
                      <HBox.margin>
@@ -160,10 +160,11 @@
             </ScrollPane>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="137.0" prefWidth="508.0" spacing="6.0">
                <children>
-		 		 <Button fx:id="searchButton" mnemonicParsing="false" styleClass="btnOperation" text="Ricerca">
+		 		 <Button fx:id="searchButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="277.0" styleClass="btnOperation" text="Ricerca">
                      <graphic>
                         <TextField fx:id="search" />
                      </graphic></Button>
+                  <Button fx:id="chiudi" mnemonicParsing="false" prefHeight="59.0" prefWidth="153.0" styleClass="btnOperation" text="Chiudi Contratto" />
                   <Button fx:id="apri" mnemonicParsing="false" prefHeight="59.0" prefWidth="132.0" styleClass="btnOperation" text="Apri Contratto" />
                </children>
                <padding>

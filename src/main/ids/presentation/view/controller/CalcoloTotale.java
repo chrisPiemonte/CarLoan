@@ -18,10 +18,11 @@ public class CalcoloTotale {
 			tariffa = days*tariffaBase;
 			return tariffa;
 			}
-		else{
+		else if (modNoleggio.equals("limitata")){
 			tariffa = km*tariffaBase;
 			return tariffa;
-		}
+		}else return tariffa;
+		
 	}
 	
 	public static double getTariffaBase(FasciaTO fascia, String mod, String durata){

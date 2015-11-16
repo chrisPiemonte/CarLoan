@@ -20,6 +20,7 @@ import main.ids.presentation.request.ComplexRequest;
 import main.ids.presentation.request.RequestType;
 import main.ids.presentation.response.BasicResponse;
 import main.ids.presentation.view.controller.Message;
+import main.ids.presentation.view.inputValidation.TaskValidationFactory;
 import main.ids.transferObjects.ClienteTO;
 
 public class InserisciClientePopUp implements Initializable {
@@ -74,11 +75,13 @@ public class InserisciClientePopUp implements Initializable {
 	}
 	
 	public boolean buttonConfirm(){
-		
-		
-		boolean check = addCliente(cf.getText().toString(), nome.getText().toString(),cognome.getText().toString(),dataNascita.getValue(),telefono.getText().toString());
-		return check;
-		
+		if (TaskValidationFactory.controllaInserimentoCliente(cf.getText(), nome.getText(), cognome.getText(), telefono.getText(), dataNascita.getValue())){
+			boolean check = addCliente(cf.getText().toString(), nome.getText().toString(),cognome.getText().toString(),dataNascita.getValue(),telefono.getText().toString());
+			return check;
+		}
+		else{
+			return false;
+		}
 		
 		
 	}
