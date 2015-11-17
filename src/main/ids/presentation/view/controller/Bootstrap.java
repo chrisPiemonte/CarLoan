@@ -13,6 +13,7 @@ import main.ids.presentation.response.Response;
 import main.ids.presentation.view.inputValidation.InputValidation;
 import main.ids.presentation.view.inputValidation.InputValidationFactory;
 import main.ids.transferObjects.ImpiegatoTO;
+import main.ids.presentation.DefaultApplicationController;
 import main.ids.presentation.request.ComplexRequest;
 import main.ids.presentation.request.Request;
 import main.ids.presentation.request.RequestType;
@@ -26,6 +27,14 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**Interfaccia per l'accesso al sistema.
+ * Le credenziali inserite verrano controllate, 
+ * e se verificate, l'{@link DefaultApplicationController} 
+ * caricherà l'interfaccia relativa al tipo d'accesso  
+ * 
+ * @author bi
+ *
+ */
 public class Bootstrap implements Initializable {
 	
 	public TextField usernameInput;
@@ -55,7 +64,12 @@ public class Bootstrap implements Initializable {
 		
 			
 	}		
-	
+	/**Valida le credenziali inserite
+	 * 
+	 * @param username
+	 * @param password
+	 * @return boolean
+	 */
 	public boolean checkInput(String username, String password){
 		if ((username.isEmpty() || password.isEmpty())){
 			Message.display("Campi vuoti", AlertType.ERROR);
@@ -72,7 +86,12 @@ public class Bootstrap implements Initializable {
 		}
 	}
 	
-	
+	/**Controlla se le credenziali d'accesso
+	 * 
+	 * @param username
+	 * @param password
+	 * @return
+	 */
 	public boolean login(String username, String password){
 		if(checkInput(username,password)){
 			ComplexRequest<String> request = new ComplexRequest<String>();
@@ -94,7 +113,10 @@ public class Bootstrap implements Initializable {
 		return false;
 		}
 	}
-	
+	/**Metodo di servizio per azzerare i campi 
+	 * in caso d'errore
+	 * 
+	 */
 	public void clean(){
 		usernameInput.clear();
 		passwordInput.clear();

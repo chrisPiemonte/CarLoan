@@ -7,12 +7,19 @@ import main.ids.presentation.request.Request;
 import main.ids.presentation.response.BasicResponse;
 import main.ids.presentation.response.Response;
 import main.ids.transferObjects.FasciaTO;
-
+	/**Incapsula l'operazione di inserimento di una nuova fascia
+	 * 
+	 * @author bi
+	 *
+	 */
 public class AddFascia implements Command  {
 	
 	private ComplexRequest<FasciaTO> request;
 	private GestioneFasce gestioneFasce;
-	
+		/**Inizializza il relativo application service
+		 * 
+		 * @param request contiene i parametri connessi con l'inserimento
+		 */
 	public AddFascia(Request request){
 		this.gestioneFasce = new GestioneFasce();
 		this.request = (ComplexRequest<FasciaTO>) request;

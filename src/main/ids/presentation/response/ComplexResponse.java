@@ -1,5 +1,9 @@
 package main.ids.presentation.response;
 
+/**
+ * implementano {@link Response}. Utilizzate per risposte
+ * che comprendono parametri di ritorno dalle richieste
+ */
 import java.util.ArrayList;
 import java.util.List;
 

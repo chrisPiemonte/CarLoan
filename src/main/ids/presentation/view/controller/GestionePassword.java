@@ -8,13 +8,20 @@ import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import main.ids.util.json.ViewsJsonParser;
-
+/**Controller che permette la modifica della password personale
+ * accedibile da tutte le interfacce del sistema
+ * 
+ * @author bi
+ *
+ */
 public class GestionePassword {
 	
 	public GestionePassword(){
 		
 	}
-	
+	/**Carica la finestra per il cambio della password
+	 * 
+	 */
 	public void cambiaPassword(){
 		try {
 			ViewsJsonParser vjp = ViewsJsonParser.getInstance();

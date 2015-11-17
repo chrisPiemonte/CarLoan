@@ -3,8 +3,19 @@ package main.ids.presentation;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 
+/**
+ * Permette la gestione di tutte le informazioni riguardanti 
+ * i singoli accessi al sistema 
+ * 
+ * @author bi
+ *
+ */
+
 public class CurrentSessionHandler {
 	public static String  username;
+	/**
+	 * mantiene lo stato della sessione di sistema
+	 */
 	public static Scene sessioneScene;
 	public static Scene scenaPrecedente;
 	public static String tipoAccesso;

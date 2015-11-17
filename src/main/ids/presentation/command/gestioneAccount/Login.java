@@ -8,12 +8,21 @@ import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.response.Response;
 import main.ids.transferObjects.ImpiegatoTO;
 
+/**Incapsula l'operazione di verifica delle credenziali inserite
+ * 
+ * 
+ * @author bi
+ *
+ */
 public class Login implements Command {
 
 	private ComplexRequest<String> request;
 	private GestioneAccount gestioneAccount;
 	
-	
+	/**Inizializza il relativo application service
+	 * 
+	 * @param request contiene le credenziali
+	 */
 	public Login(Request request){
 		this.gestioneAccount = new GestioneAccount();
 		this.request = (ComplexRequest<String>) request;

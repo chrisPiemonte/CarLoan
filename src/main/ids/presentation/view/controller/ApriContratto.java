@@ -39,6 +39,14 @@ import main.ids.transferObjects.ClienteTO;
 import main.ids.transferObjects.ContrattoTO;
 import main.ids.transferObjects.FasciaTO;
 
+/**
+ * Permette l'apertura di un nuovo contratto.
+ * l'input inseriti riguardano il cliente, le modalità 
+ * di noleggio, e le informazioni dell'impiegato 
+ * che esegue l'operazione
+ * @author bi
+ *
+ */
 public class ApriContratto implements Initializable {
 	
 	public TextField cf; 
@@ -128,9 +136,12 @@ public class ApriContratto implements Initializable {
 	}
 	
 
-	/**
+	/**Controlla se il codice fiscale inserito è già 
+	 * presente nel sistema, in caso positivo 
+	 * l'interfaccia riempirà automaticamente 
+	 * i campi relativi all utente
 	 * 
-	 * @param cf
+	 * @param cf codice fiscale
 	 * @return boolean and check if exists
 	 */
 
@@ -174,6 +185,12 @@ public class ApriContratto implements Initializable {
 		
 	}
 	
+	/**Permette la costruzione del menu a tendina delle auto.
+	 * Le auto sono prelevate in base all'agenzia ed allo 
+	 * stato (disponibili o meno) 
+	 * 
+	 */
+
 	public void buildComboAuto(){
 		
 		tmp = FXCollections.observableArrayList();
@@ -200,6 +217,11 @@ public class ApriContratto implements Initializable {
 		
 	}
 	
+	/**Metodo per la costruzione del menu a tendina 
+	 * delle agenzie, per selezionare dove effetuare
+	 * la consegna dell'auto
+	 * 
+	 */
 	
 	public void buildComboAgenzia(){
 		
@@ -221,7 +243,10 @@ public class ApriContratto implements Initializable {
 		
 		
 	}
-	
+	/**Calcola la fattura preliminare del contratto
+	 * in base ad i primi dati inseriti
+	 * 
+	 */
 	public void calcolaFattura(){
 		if(TaskValidationFactory.controllaInserimentoCliente(cf.getText(),nome.getText(),cognome.getText(),telefono.getText(),dataNascita.getValue()))
 		if (checkDate() && checkInserimentoNoleggio()) {
@@ -283,7 +308,10 @@ public class ApriContratto implements Initializable {
 		
 	}
 	
-	
+	/**Controlla che le date siano valide
+	 * 
+	 * @return boolean per la validazione
+	 */
 	public boolean checkDate(){
 		if (dataInizio.getValue() != null && dataFine.getValue() != null ){
 			if (dataInizio.getValue().isAfter(dataFine.getValue())){
@@ -299,7 +327,10 @@ public class ApriContratto implements Initializable {
 		
 	}
 	
-	
+	/**Controllo dei dati,riguardante il noleggio, inseriti
+	 * 
+	 * @return
+	 */
 	
 	public boolean checkInserimentoNoleggio(){
 		if (comboAuto.getValue() != null && comboAgenzia != null && comboMod != null && comboDurata != null){
@@ -310,7 +341,11 @@ public class ApriContratto implements Initializable {
 		}
 	}
 	
-	
+	/**Aggiunge il contratto nel sistema.
+	 * 
+	 * @param contrattoTO {@link ContrattoTO}
+	 * @return
+	 */
 	public boolean addContratto(ContrattoTO contrattoTO){
 		frontController = new DefaultFrontController();
 		ArrayList<ContrattoTO> contratti = new ArrayList<>();
@@ -344,6 +379,10 @@ public class ApriContratto implements Initializable {
 	    stage.close();
 	}
 	
+	/**Modifica lo stato dell'auto utilizzata per il noleggio
+	 * 
+	 * @param targa
+	 */
 	public void modificaStatoAuto(String targa){
 		ArrayList<String> auto = new ArrayList<>();
 		frontController = new DefaultFrontController ();

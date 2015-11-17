@@ -10,7 +10,11 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Alert.AlertType;
 import main.ids.presentation.view.inputValidation.InputValidation;
 import main.ids.presentation.view.inputValidation.InputValidationFactory;
-
+/**Controller per dialog utilizzati per la selezioni di stato e chilometraggio
+ * 
+ * @author bi
+ *
+ */
 public class InputBox {
 	
 	final static String [] arrayData = {"Disponibile", "Non-disponibile", "Manutenzione"};

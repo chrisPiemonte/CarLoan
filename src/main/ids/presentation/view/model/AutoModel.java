@@ -4,7 +4,11 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
-
+/**
+ * Modello per la gestione di dati di tipo {@link AutoTO}
+ * @author bi
+ *
+ */
 public class AutoModel {
 	
 	public SimpleStringProperty targa = new SimpleStringProperty();

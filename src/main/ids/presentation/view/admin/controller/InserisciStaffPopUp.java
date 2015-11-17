@@ -32,6 +32,12 @@ import main.ids.transferObjects.ClienteTO;
 import main.ids.transferObjects.ImpiegatoTO;
 import main.ids.transferObjects.ManagerTO;
 
+/**Permette l'inserimento di staff, quali manager o impiegati
+ * all'interno del sistema in una azienda scelta fra le disponibili
+ * 
+ * @author bi
+ *
+ */
 public class InserisciStaffPopUp implements Initializable {
 
 	public TextField cf;
@@ -105,7 +111,12 @@ public class InserisciStaffPopUp implements Initializable {
 	    stage.close();
 	}
 	
-	
+	/**Controlla l'inserimento de i dati, ed in particolare
+	 * nel caso del manager, controlla se è già presente
+	 * in quanto vi è al più un manager per agenzia
+	 * 
+	 * @return
+	 */
 	public boolean buttonConfirm(){
 		//{
 			if (comboRuolo.getValue() != null){
@@ -148,7 +159,17 @@ public class InserisciStaffPopUp implements Initializable {
 			}
 		//}
 	}
-	
+	/**Permette l'inserimento di un manager ed imposta una password iniziale
+	 * 
+	 * @param cf codice fiscale di un manager
+	 * @param nome nome di battesimo 
+	 * @param cognome cognome 
+	 * @param dataNascita data di nascita
+	 * @param telefono numero di telefono 
+	 * @param agenzia identificativo scelto tra le agenzie disponibili
+	 * @param username per le credenziali d'accesso
+	 * @return controlla l'avvenuto inserimento 
+	 */
 	public boolean addManager(String cf,String nome,String cognome,LocalDate dataNascita, String telefono,String agenzia,String username){
 			if(TaskValidationFactory.controllaInserimentoCliente(cf, nome, cognome, telefono, dataNascita)) {
 				ArrayList<AccountTO> account = new ArrayList<AccountTO>();
@@ -192,7 +213,17 @@ public class InserisciStaffPopUp implements Initializable {
 		}
 			else return false;
 	}
-	
+	/**Permette l'inserimento di un impiegato ed imposta una password iniziale 
+	 * 
+	 * @param cf codice fiscale
+	 * @param nome nome di battesimo 	
+	 * @param cognome cognome
+	 * @param dataNascita data di nascita
+	 * @param telefono numero di telefono 
+	 * @param agenzia id dell'agenzia 
+	 * @param username username per le credenziali d'accesso
+	 * @return verifica se è avvenuto l'inserimento 
+	 */
 		public boolean addImpiegato(String cf,String nome,String cognome,LocalDate dataNascita, String telefono,String agenzia,String username){
 				ArrayList<AccountTO> account = new ArrayList<AccountTO>();
 				AccountTO newAccount = new AccountTO(username, "0000","impiegato");
@@ -254,7 +285,12 @@ public class InserisciStaffPopUp implements Initializable {
 		
 	}
 	
-	
+	/**Controlla se l'username scelto è già esistente 
+	 * nel sistema
+	 * 
+	 * @param username da cercare
+	 * @return boolean di risposta
+	 */
 	public boolean existsAccount(String username){
 		ArrayList<String> list = new ArrayList<>();
 		request = new ComplexRequest();

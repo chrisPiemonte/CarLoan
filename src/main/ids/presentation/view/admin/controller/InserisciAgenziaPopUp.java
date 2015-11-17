@@ -18,7 +18,11 @@ import main.ids.presentation.response.BasicResponse;
 import main.ids.presentation.view.inputValidation.InputValidation;
 import main.ids.presentation.view.inputValidation.InputValidationFactory;
 import main.ids.transferObjects.AgenziaTO;
-
+/**Permette l inserimento di una nuova agenzia
+ * 
+ * @author bi
+ *
+ */
 public class InserisciAgenziaPopUp implements Initializable{
 	
 	public TextField textFieldCittà;
@@ -50,7 +54,10 @@ public class InserisciAgenziaPopUp implements Initializable{
 		
 		
 	}
-	
+	/**verifica i paramentri d'input
+	 * 
+	 * @return un boolean di verifica 
+	 */
 	
 	public boolean checkInput(){
 		
@@ -89,7 +96,9 @@ public class InserisciAgenziaPopUp implements Initializable{
 	    stage.close();
 	}
 	
-	
+	/**Effettua l'inserimento dell'azienda
+	 * 
+	 */
 	public void inserisciAgenzia(){
 		ArrayList<AgenziaTO> agenzie = new ArrayList<>();
 		AgenziaTO agenzia = new AgenziaTO(textFieldCittà.getText(),textFieldIndirizzo.getText(),textFieldTelefono.getText());

@@ -7,13 +7,20 @@ import main.ids.presentation.request.Request;
 import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.response.Response;
 import main.ids.transferObjects.ClienteTO;
-
+	/**Incapsula l'operazione di estrazione di un elemento 
+	 * 
+	 * @author bi
+	 *
+	 */
 public class GetCliente implements Command  {
 	
 	private ComplexRequest<String> request;
 	private GestioneClienti gestioneClienti;
 	
-	
+		/**Inizializza il relativo application service
+		 * 
+		 * @param request contiene parametri relativi all'estrazione
+		 */
 	public GetCliente(Request request){
 		this.gestioneClienti = new GestioneClienti();
 		this.request = (ComplexRequest<String>) request;

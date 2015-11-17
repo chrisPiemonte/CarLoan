@@ -22,7 +22,12 @@ import main.ids.presentation.response.BasicResponse;
 import main.ids.presentation.view.controller.Message;
 import main.ids.transferObjects.AccountTO;
 import main.ids.transferObjects.ImpiegatoTO;
-
+/**Permette l'inserimento di un impiegato all'interno dell'agenzia
+ * di riferimento del manager
+ * 
+ * @author bi
+ *
+ */
 public class InserisciStaffPopUp implements Initializable {
 
 	public TextField cf;
@@ -98,7 +103,19 @@ public class InserisciStaffPopUp implements Initializable {
 		
 		
 	}
-	
+	/**Permette l'aggiunta di un impiegato all interno dell'agenzia
+	 * di riferimento del manager.
+	 * Oltre a questo, inserisce le credeziali d'accesso dell'impiegato
+	 * impostando una password iniziale 
+	 * 
+	 * @param cf codice fiscale dell'impiegato 
+	 * @param nome nome di battesimo dell'impiegato
+	 * @param cognome cognome dell'impiegato
+	 * @param dataNascita data di nascita
+	 * @param telefono numero di telefono 
+	 * @param username username utilizzata per l'accesso al sistema
+	 * @return
+	 */
 	public boolean addStaff(String cf,String nome,String cognome,LocalDate dataNascita, String telefono,String username){
 		ArrayList<String> list = new ArrayList<>();
 		ComplexRequest request = new ComplexRequest();

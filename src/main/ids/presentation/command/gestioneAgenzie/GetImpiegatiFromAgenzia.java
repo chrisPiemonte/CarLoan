@@ -9,13 +9,20 @@ import main.ids.presentation.request.Request;
 import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.response.Response;
 import main.ids.transferObjects.ImpiegatoTO;
-
+/**Incapsula l'operazione di estrazioni di elementi impiegati relativi ad un agenzia
+ * 
+ * @author bi
+ *
+ */
 public class GetImpiegatiFromAgenzia implements Command  {
 	
 	private ComplexRequest<String> request;
 	private GestioneAgenzie gestioneAgenzie;
 	
-	
+	/**Inizializza il relativo application service
+	 * 
+	 * @param request contiene i parametri relativi all'agenzia 
+	 */
 	public GetImpiegatiFromAgenzia(Request request){
 		this.gestioneAgenzie = new GestioneAgenzie();
 		this.request = (ComplexRequest<String>) request;

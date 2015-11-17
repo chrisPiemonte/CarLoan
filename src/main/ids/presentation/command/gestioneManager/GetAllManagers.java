@@ -8,12 +8,19 @@ import main.ids.presentation.request.Request;
 import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.response.Response;
 import main.ids.transferObjects.ManagerTO;
-
+	/**Incapsula l'operazione di estrazione di tutti gli elementi
+	 * 
+	 * @author bi
+	 *
+	 */
 public class GetAllManagers implements Command  {
 	
 	private Request request;
 	private GestioneManager gestioneManager;
-	
+		/**Inizializza il relativo application service
+		 * 
+		 * @param request non contiene parametri relativi all'operazione
+		 */
 	public GetAllManagers(Request request){
 		this.gestioneManager = new GestioneManager();
 		this.request = request;

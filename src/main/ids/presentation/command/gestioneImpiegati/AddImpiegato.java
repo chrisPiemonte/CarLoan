@@ -7,12 +7,19 @@ import main.ids.presentation.request.Request;
 import main.ids.presentation.response.BasicResponse;
 import main.ids.presentation.response.Response;
 import main.ids.transferObjects.ImpiegatoTO;
-
+	/**Incapsula l'operazione di inserimento di un nuovo impiegato 
+	 * 
+	 * @author bi
+	 *
+	 */
 public class AddImpiegato implements Command  {
 	
 	private ComplexRequest<ImpiegatoTO> request;
 	private GestioneImpiegati gestioneImpiegati;
-	
+		/**Inizializza il relativo application service
+		 * 
+		 * @param request contiene i parametri connessi con l'inserimento
+		 */
 	public AddImpiegato(Request request){
 		this.gestioneImpiegati = new GestioneImpiegati();
 		this.request = (ComplexRequest<ImpiegatoTO>) request;

@@ -9,12 +9,19 @@ import main.ids.presentation.request.Request;
 import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.response.Response;
 import main.ids.transferObjects.ImpiegatoTO;
-
+	/**Incapsula l'operazione di estrazione di elementi impiegato, filtrati in base al cognome
+	 * 
+	 * @author bi
+	 *
+	 */
 public class GetImpiegatiByCognome implements Command  {
 	
 	private ComplexRequest<String> request;
 	private GestioneImpiegati gestioneImpiegati;
-	
+		/**Inizializza il relativo application service
+		 * 
+		 * @param request contiene i parametri connessi con l'operazione 
+		 */
 	public GetImpiegatiByCognome(Request request){
 		this.gestioneImpiegati = new GestioneImpiegati();
 		this.request = (ComplexRequest<String>) request;

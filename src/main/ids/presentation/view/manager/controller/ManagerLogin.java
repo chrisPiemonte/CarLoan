@@ -18,7 +18,12 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
-
+/**Controller per la View caricata dopo aver effettuato il login 
+ * come manager
+ * 
+ * @author bi
+ *
+ */
 public class ManagerLogin implements Initializable {
 	
 	public TextField usernameInput;

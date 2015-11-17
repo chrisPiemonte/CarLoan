@@ -7,13 +7,20 @@ import main.ids.presentation.request.Request;
 import main.ids.presentation.response.BasicResponse;
 import main.ids.presentation.response.Response;
 import main.ids.transferObjects.ClienteTO;
-
+	/**Incapsula l'operazione di inserimento di un nuovo elemento 
+	 * 
+	 * @author bi
+	 *
+	 */
 public class AddCliente implements Command  {
 	
 	private ComplexRequest<ClienteTO> request;
 	private GestioneClienti gestioneClienti;
 	
-	
+		/**Inizializza il relativo application service
+		 * 
+		 * @param request contiene i parametri connessi con l'inserimento
+		 */
 	public AddCliente(Request request){
 		this.gestioneClienti = new GestioneClienti();
 		this.request = (ComplexRequest<ClienteTO>) request;

@@ -28,7 +28,12 @@ import main.ids.presentation.view.inputValidation.TaskValidationFactory;
 import main.ids.presentation.view.model.FasciaModel;
 import main.ids.transferObjects.AutoTO;
 import main.ids.transferObjects.FasciaTO;
-
+/**Permette l'aggiunta di un auto all'interno del sistema, 
+ * relativa all'agenzia d appartenenza del manager
+ * 
+ * @author bi
+ *
+ */
 public class InserisciAutoPopUp implements Initializable {
 	
 	public Button annulla;
@@ -93,7 +98,16 @@ public class InserisciAutoPopUp implements Initializable {
 		}
 		else return false;
 	}
-	
+	/**Consente l'inserimento di un auto nella propria agenzia.
+	 * 
+	 * @param targa targa auto 
+	 * @param modello modello dell auto
+	 * @param stato disponibilità dell auto 
+	 * @param fascia fascia relativa al prezzo dell'auto
+	 * @param chilometraggio chilometraggio dell'auto 
+	 * @param dataManutenzione data della manutenzione prevista
+	 * @return verifica l avvenuto inserimento 
+	 */
 	public boolean addAuto(String targa, String modello, String stato, String fascia, String chilometraggio,LocalDate dataManutenzione){
 		
 			ArrayList<AutoTO> listaAuto = new ArrayList<AutoTO>();
@@ -118,7 +132,10 @@ public class InserisciAutoPopUp implements Initializable {
 		
 	}
 	
-	
+	/**Costruisce il menù a tendine per la scelta delle fascie
+	 * dell'auto da inserire
+	 * 
+	 */
 	public void buildFasce(){
 		fasciaList = FXCollections.observableArrayList();
 		FrontController frontController = new DefaultFrontController();

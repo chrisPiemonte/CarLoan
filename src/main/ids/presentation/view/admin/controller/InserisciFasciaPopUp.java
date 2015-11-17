@@ -18,7 +18,12 @@ import main.ids.presentation.request.RequestType;
 import main.ids.presentation.response.BasicResponse;
 import main.ids.presentation.view.inputValidation.TaskValidationFactory;
 import main.ids.transferObjects.FasciaTO;
-
+/**Permette l'inserimento di una Fascia all interno del sistema
+ * 
+ * 
+ * @author bi
+ *
+ */
 public class InserisciFasciaPopUp implements Initializable {
 	
 	public Button annulla;
@@ -75,7 +80,10 @@ public class InserisciFasciaPopUp implements Initializable {
 			buttonClose();
 		
 	}
-	
+	/**Inserisce una fascia 
+	 * 
+	 * @param fascia un elemento di tipo {@link FasciaTO]
+	 */
 	
 	public void addFascia(FasciaTO fascia){
 		

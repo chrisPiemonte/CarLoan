@@ -6,12 +6,19 @@ import main.ids.presentation.request.ComplexRequest;
 import main.ids.presentation.request.Request;
 import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.response.Response;
-
+	/**Incapsula l'estrazione di un attributo agenzia, filtrata in base ad un manager
+	 * 
+	 * @author bi
+	 *
+	 */
 public class GetAgenziaOfManager implements Command  {
 	
 	private ComplexRequest<String> request;
 	private GestioneManager gestioneManager;
-	
+		/**Inizializza il relativo application service
+		 * 
+		 * @param request contiene i parametri del manager
+		 */
 	public GetAgenziaOfManager(Request request){
 		this.gestioneManager = new GestioneManager();
 		this.request = (ComplexRequest<String>) request;

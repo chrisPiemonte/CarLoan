@@ -6,13 +6,20 @@ import main.ids.presentation.request.ComplexRequest;
 import main.ids.presentation.request.Request;
 import main.ids.presentation.response.BasicResponse;
 import main.ids.presentation.response.Response;
-
+/**Incapsula azione di ricerca e verifica di esistenza
+ * 
+ * @author bi
+ *
+ */
 public class ExistsAccount implements Command  {
 
 	private ComplexRequest<String> request;
 	private GestioneAccount gestioneAccount;
 	
-	
+	/**Inizializza il relativo application service
+	 * 
+	 * @param request preleva il parametro per la ricerca
+	 */
 	public ExistsAccount(Request request){
 		this.gestioneAccount = new GestioneAccount();
 		this.request = (ComplexRequest<String>) request;

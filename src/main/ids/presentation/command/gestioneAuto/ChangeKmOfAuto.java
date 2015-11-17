@@ -6,14 +6,21 @@ import main.ids.presentation.request.ComplexRequest;
 import main.ids.presentation.request.Request;
 import main.ids.presentation.response.BasicResponse;
 import main.ids.presentation.response.Response;
-
+/**Incapsula l' azione di modifica di uno stato, da un auto 
+ * 
+ * @author bi
+ *
+ */
 public class ChangeKmOfAuto implements Command  {
 	
 
 	private ComplexRequest<Object> request;
 	private GestioneAuto gestioneAuto;
 	
-	
+	/**Inizializza il relativo application service
+	 * 
+	 * @param request contiene i parametri relativi all'azione 
+	 */
 	public ChangeKmOfAuto(Request request){
 		this.gestioneAuto = new GestioneAuto();
 		this.request = (ComplexRequest<Object>) request;

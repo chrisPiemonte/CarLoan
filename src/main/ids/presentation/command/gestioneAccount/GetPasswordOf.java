@@ -7,13 +7,21 @@ import main.ids.presentation.request.Request;
 import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.response.Response;
 
+/**Incapsula l'operazione di estrazione di una password
+ * 
+ * @author bi
+ *
+ */
 public class GetPasswordOf implements Command  {
 	
 
 	private ComplexRequest<String> request;
 	private GestioneAccount gestioneAccount;
 	
-	
+	/**Inizializza il relativo application service
+	 * 
+	 * @param request contiene oltre al nome di richiesta il parametro di ricerca
+	 */
 	public GetPasswordOf(Request request){
 		this.gestioneAccount = new GestioneAccount();
 		this.request = (ComplexRequest<String>) request;

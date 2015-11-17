@@ -17,7 +17,12 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
-
+/**Controller della View caricata dopo il login al sistema per 
+ * gli impiegati 
+ * 
+ * @author bi
+ *
+ */
 public class ImpiegatoPostLogin implements Initializable {
 	
 	public TextField usernameInput;

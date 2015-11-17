@@ -13,12 +13,19 @@ import main.ids.presentation.request.ComplexRequest;
 import main.ids.presentation.request.RequestType;
 import main.ids.presentation.response.Response;
 import main.ids.util.json.ViewsJsonParser;
-
+/**Controller cje permette il logout tramite il bottone 
+ * presente in tutte le view 
+ * 
+ * @author bi
+ *
+ */
 public class GestioneDatiPersonali {
 	
 	GestioneDatiPersonali instance = new GestioneDatiPersonali();
 	
-	
+	/**Richiede la procedura di logout
+	 * 
+	 */
 	public static void logout(){
 		FrontController frontController = new DefaultFrontController();
 		ComplexRequest request = new ComplexRequest();

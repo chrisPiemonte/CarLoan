@@ -1,4 +1,12 @@
 package main.ids.presentation.response;
+/**
+ * implementa {@link Response}. Utilizzare per 
+ * risposte basilari che non necessitano di 
+ * dati di ritorno, ma comprendono solo un 
+ * boolean per verificare la risposta
+ * @author bi
+ *
+ */
 
 public class BasicResponse implements Response{
 	

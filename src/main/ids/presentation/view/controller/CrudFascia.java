@@ -40,7 +40,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
+/**Controller per la view delle interfacce relative alle macchine 
+ * 
+ * @author bi
+ *
+ */
 public class CrudFascia implements Initializable {
 	
 	public TextField usernameInput;
@@ -105,7 +109,11 @@ public class CrudFascia implements Initializable {
 		
 	}
 	
-	
+	/**Costruzione de i dati presenti in tabella prelevati 
+	 * dal database di sistema.
+	 * Organizzati in base al {@link FasciaModel}
+	 * 
+	 */
 	
 	public void buildData(){
 		listaFasce  = FXCollections.observableArrayList();
@@ -131,36 +139,15 @@ public class CrudFascia implements Initializable {
 		//System.out.println(listaClienti.get(0).getCf());
 	}
 	
-	
+	/**Permette la ricerca di una fascia in base alla descrizione
+	 * 
+	 * @param key chiave relativa la descrizione 
+	 */
 	public void cercaFascia(String key){
 		if (key.equals("")){tabella.setItems(listaFasce);}
 		FilteredList <FasciaModel> filteredData = new FilteredList<>(listaFasce, p->p.getDescrizione().toLowerCase().startsWith(key));
 		tabella.setItems(filteredData);
 	}
-		
-		
-		
-	
-	
-	/*private void addFascia(){
-		try {
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/ids/presentation/view/InserisciFasciaPopUp.fxml"));  
-	    Parent root = (Parent) loader.load();  
-	    Scene scene = new Scene(root,600,500);  
-	    Stage stage = new Stage();  
-	    stage.setScene(scene);  
-	    stage.setTitle("Inserisci Fascia");
-	    stage.initModality(Modality.APPLICATION_MODAL);    
-	    stage.show();  
-		}catch (IOException | NullPointerException e) {
-			
-			e.printStackTrace();
-			
-
-		}
-	}
-	*/
-
 	
 
 

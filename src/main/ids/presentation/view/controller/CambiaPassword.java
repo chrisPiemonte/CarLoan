@@ -19,7 +19,12 @@ import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.view.inputValidation.InputValidation;
 import main.ids.presentation.view.inputValidation.InputValidationFactory;
 import main.ids.transferObjects.AccountTO;
-
+/**Effettua il cambio della password di un account, dall'utente stesso
+ * nell'area relativa ad i proprio dati personali 
+ * 
+ * @author bi
+ *
+ */
 public class CambiaPassword implements Initializable {
 	
 	public PasswordField vecchiaPass;
@@ -36,6 +41,11 @@ public class CambiaPassword implements Initializable {
 		
 	}
 	
+	/**Effettua il cambio di password verificando 
+	 * la vecchia password ed il ripetuto inserimento 
+	 * della nuova
+	 * 
+	 */
 	public void cambia(){
 		FrontController frontController = new DefaultFrontController();
 		ComplexRequest request = new ComplexRequest();

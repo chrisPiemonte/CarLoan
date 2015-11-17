@@ -15,6 +15,11 @@ import main.ids.presentation.command.gestioneManager.*;
 import main.ids.presentation.request.BasicRequest;
 import main.ids.presentation.request.ComplexRequest;
 import main.ids.presentation.request.Request;
+	/**Permette di scomporre le diverse operazioni estraibili rispetto ad una chiave 
+	 * 
+	 * @author bi
+	 *
+	 */
 public class CommandFactory {
 	
 	private static CommandFactory singleton = new CommandFactory();
@@ -100,7 +105,12 @@ public class CommandFactory {
 	public static CommandFactory getIstance(){
 		return singleton;
 	}
-	
+	/**
+	 * 
+	 * @param commandName è la chiave per la selezione dell'operazione 
+	 * @param request contiene i parametri relativi alle operazioni 
+	 * @return ritorna un istanza dell'operazione selezionata
+	 */
 	public Command getCommand(String commandName, Request request) throws ClassNotFoundException{
 		
 		Command command = null;

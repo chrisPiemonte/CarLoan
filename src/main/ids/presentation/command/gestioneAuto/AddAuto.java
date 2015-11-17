@@ -7,14 +7,21 @@ import main.ids.presentation.request.Request;
 import main.ids.presentation.response.BasicResponse;
 import main.ids.presentation.response.Response;
 import main.ids.transferObjects.AutoTO;
-
+/**Incapsula l'operazione di inserimento di una nuova auto 
+ * 
+ * @author bi
+ *
+ */
 public class AddAuto implements Command  {
 	
 
 	private ComplexRequest<AutoTO> request;
 	private GestioneAuto gestioneAuto;
 	
-	
+	/**Inizializza il relativo application service
+	 * 
+	 * @param request contiene i dati relativi
+	 */
 	public AddAuto(Request request){
 		this.gestioneAuto = new GestioneAuto();
 		this.request = (ComplexRequest<AutoTO>) request;

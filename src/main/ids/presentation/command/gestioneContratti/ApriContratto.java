@@ -7,12 +7,19 @@ import main.ids.presentation.request.Request;
 import main.ids.presentation.response.BasicResponse;
 import main.ids.presentation.response.Response;
 import main.ids.transferObjects.ContrattoTO;
-
+	/**Incapsula l'operazione di inserimento di un nuovo contratto
+	 * 
+	 * @author bi
+	 *
+	 */
 public class ApriContratto implements Command  {
 	
 	private ComplexRequest<ContrattoTO> request;
 	private GestioneContratti gestioneContratti;
-	
+		/**Inizializza il relativo application service
+		 * 
+		 * @param request contiene i parametri corrispondenti all'operazione
+		 */
 	public ApriContratto(Request request){
 		this.gestioneContratti = new GestioneContratti();
 		this.request = (ComplexRequest<ContrattoTO>) request;

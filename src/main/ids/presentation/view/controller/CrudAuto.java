@@ -43,7 +43,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
+/**Controller per la view di auto 
+ * con all'interno dati e operazioni relative
+ * 
+ * @author bi
+ *
+ */
 public class CrudAuto implements Initializable {
 	
 	public TextField usernameInput;
@@ -127,7 +132,9 @@ public class CrudAuto implements Initializable {
 	}
 	
 	
-	
+	/**Permette la costruzioni de i dati basati sul {@link AutoModel}
+	 * 
+	 */
 	public void buildData(){
 		listaAuto = FXCollections.observableArrayList();
 		ComplexRequest request = new ComplexRequest();
@@ -155,14 +162,20 @@ public class CrudAuto implements Initializable {
 		//System.out.println(listaClienti.get(0).getCf());
 	}
 	
-	
+	/**Tasto per la ricerca di macchine all interno della view
+	 * 
+	 * @param key la chiave di ricerca è il modello 
+	 */
 	public void cercaAuto(String key){
 		if (key.equals("")){tabella.setItems(listaAuto);}
 		FilteredList <AutoModel> filteredData = new FilteredList<>(listaAuto, p->p.getModello().toLowerCase().startsWith(key));
 		tabella.setItems(filteredData);
 	}
 	
-	
+	/**Imposta un nuovo stato per un auto selezionata
+	 * 
+	 * @param targa targa dell auto selezionata
+	 */
 	public void setStatoAuto(String targa){
 		
 		String newStato = InputBox.displayStato("");
@@ -188,7 +201,10 @@ public class CrudAuto implements Initializable {
 		}
 	
 	}
-	
+	/**Imposta un nuovo chilometraggio
+	 *  
+	 * @param targa la targa dell'auto selezionata
+	 */
 	
 	public void setKmAuto(String targa){
 		String newStato = InputBox.display("Inserire nuovo chilometraggio");

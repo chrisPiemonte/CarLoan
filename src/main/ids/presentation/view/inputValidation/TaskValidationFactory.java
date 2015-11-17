@@ -5,6 +5,16 @@ import java.time.LocalDate;
 import javafx.scene.control.Alert.AlertType;
 import main.ids.presentation.view.controller.Message;
 
+/**
+ * validazione degli input d'interfaccia 
+ * differenti in base ad i dati da inserire.
+ * I vari metodi prenderanno in input i dati da validare
+ * ed in output un boolean che confermerà o meno 
+ * gli input inseriti
+ * 
+ * @author bi
+ *
+ */
 public class TaskValidationFactory {
 
 	public TaskValidationFactory instance = new TaskValidationFactory();

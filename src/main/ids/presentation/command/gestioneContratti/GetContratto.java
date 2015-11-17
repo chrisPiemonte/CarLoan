@@ -7,12 +7,19 @@ import main.ids.presentation.request.Request;
 import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.response.Response;
 import main.ids.transferObjects.ContrattoTO;
-
+	/**Incapsula l'operazione di estrazione di un contratto 
+	 * 
+	 * @author bi
+	 *
+	 */
 public class GetContratto implements Command  {
 	
 	private ComplexRequest<String> request;
 	private GestioneContratti gestioneContratti;
-	
+		/**Inizializza il relativo application service
+		 * 
+		 * @param request contiene i parametri connessi con l'operazione
+		 */
 	public GetContratto(Request request){
 		this.gestioneContratti = new GestioneContratti();
 		this.request = (ComplexRequest<String>) request;

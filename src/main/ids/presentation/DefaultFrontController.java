@@ -17,7 +17,7 @@ public class DefaultFrontController implements FrontController {
 	
 	
 	public DefaultFrontController (){
-		this.applicationController = new ApplicationController();
+		this.applicationController = new DefaultApplicationController();
 		
 		
 		

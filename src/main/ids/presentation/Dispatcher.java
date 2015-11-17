@@ -9,10 +9,20 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import main.ids.presentation.CurrentSessionHandler;
 
+/**
+ * Permette la gestione delle view dell'interfaccia
+ * del sistema
+ * 
+ * @author bi
+ *
+ */
 public class Dispatcher {
 	
 	final static String BOOTSTRAP = "/main/ids/presentation/view/Bootstrap.fxml";
 	
+	/**
+	 * Decidono la grandezza della finestra
+	 */
 	public int height = 700;
 	public int weight = 930;
 	
@@ -30,7 +40,12 @@ public class Dispatcher {
 		return dispatcher;
 	}
 	
-	
+	/**
+	 * Carica le informazioni relative alla scena iniziale
+	 * del sistema
+	 * 
+	 * @return la Scene della pagina d'avvio
+	 */
 	public Scene begin(){
 		
 		try {
@@ -49,6 +64,9 @@ public class Dispatcher {
 		
 	}
 	
+	/**
+	 * Carica l'interfaccia per il logout dal sistema
+	 */
 	
 	public void hastaLaVistaBaby(){
 		try{
@@ -67,7 +85,12 @@ public class Dispatcher {
 		}
 		
 	}
-	
+	/**
+	 * Carica l interfaccia relativa alla richiesta proveniente 
+	 * dall {@link ApplicationController}
+	 * 	
+	 * @param path valore del percorso d'interfaccia richiesto
+	 */
 	public void setInterface(String path){
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource(path));

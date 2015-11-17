@@ -6,6 +6,15 @@ import com.google.gson.JsonObject;
 
 import main.ids.util.exceptions.QueriesJsonFileException;
 
+/**È un insieme di chiavi valori gestite tramite json 
+ * contenente i percorsi delle view ed indentificate 
+ * da una chiave per ogni percorso 
+ * 
+ * @author bi
+ *
+ *
+ */
+
 public class ViewsJsonParser extends JsonParser {
 	
 	private static ViewsJsonParser INSTANCE = new ViewsJsonParser();

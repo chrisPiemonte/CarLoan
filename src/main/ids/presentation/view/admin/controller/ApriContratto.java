@@ -65,6 +65,7 @@ public class ApriContratto implements Initializable {
 	ObservableList<String> listMod = FXCollections.observableArrayList("Illimitato","Limitato");
 	ObservableList<String> listDurata = FXCollections.observableArrayList("giornaliero","settimanale");
 	
+	
 	FrontController frontController;
 	ComplexRequest request ;
 	
@@ -132,8 +133,11 @@ public class ApriContratto implements Initializable {
 	
 
 
-
-
+	/**Controlla la presenza del codice fiscale nel sistema. 
+	 * 
+	 * @param cf codice fiscale 	
+	 * @return boolean 
+	 */
 	public boolean checkCf(String cf){
 		FrontController frontController = new DefaultFrontController ();
 		ArrayList<String> clienti = new ArrayList<String>();

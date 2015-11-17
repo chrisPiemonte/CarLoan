@@ -41,7 +41,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
+/**Controller per la view relative ad i clienti
+ * 
+ * @author bi
+ *
+ */
 public class CrudCliente implements Initializable {
 	
 	
@@ -105,7 +109,9 @@ public class CrudCliente implements Initializable {
 		//tabella.getSelectionModel().selectedIndexProperty().addListener();
 	}
 	
-	
+	/**Permette l apertura della view per l'inserimento di nuovi clienti
+	 * 
+	 */
 	private void addCliente(){
 		try {
 	    FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/ids/presentation/view/InserisciClientePopUp.fxml"));  
@@ -126,7 +132,11 @@ public class CrudCliente implements Initializable {
 	
 	
 	
-	
+	/**Permette la costruzione della tabella prelevando i dati relativi 
+	 * ad i clienti presenti nel sistema.
+	 * I dati vengono inseriti in ase al {@link ClienteModel}
+	 * 
+	 */
 	public void buildData(){
 		listaClienti = FXCollections.observableArrayList();
 		ComplexRequest request = new ComplexRequest();
@@ -149,7 +159,10 @@ public class CrudCliente implements Initializable {
 		//System.out.println(listaClienti.get(0).getCf());
 	}
 	
-	
+	/**Effettua la ricerca di un cliente
+	 * 
+	 * @param key i clienti verranno cercati in base al cognome
+	 */
 	public void cercaCliente(String key){
 		if (key.equals("")){tabella.setItems(listaClienti);}
 		FilteredList <ClienteModel> filteredData = new FilteredList<>(listaClienti, p->p.getCognome().toLowerCase().startsWith(key));

@@ -6,12 +6,19 @@ import main.ids.presentation.request.ComplexRequest;
 import main.ids.presentation.request.Request;
 import main.ids.presentation.response.BasicResponse;
 import main.ids.presentation.response.Response;
-
+	/**Incapsula l'operazione di ricerca e verifica di un elemento all interno del sistema
+	 * 
+	 * @author bi
+	 *
+	 */
 public class ExistsFascia implements Command  {
 	
 	private ComplexRequest<String> request;
 	private GestioneFasce gestioneFasce;
-	
+		/**Inizializza il relativo application service
+		 * 
+		 * @param request contiene i parametri connessi con la ricerca
+		 */
 	public ExistsFascia(Request request){
 		this.gestioneFasce = new GestioneFasce();
 		this.request = (ComplexRequest<String>) request;

@@ -8,13 +8,21 @@ import main.ids.presentation.response.BasicResponse;
 import main.ids.presentation.response.Response;
 import main.ids.transferObjects.AccountTO;
 
+/**Incapsula l'operazione di inserimento di un nuovo account
+ * 
+ * @author bi
+ *
+ */
 public class AddAccount implements Command  {
 	
 
 	private ComplexRequest<AccountTO> request;
 	private GestioneAccount gestioneAccount;
 	
-	
+	/**Inizializza il relativo application service
+	 * 
+	 * @param request
+	 */
 	public AddAccount(Request request){
 		this.gestioneAccount = new GestioneAccount();
 		this.request = (ComplexRequest<AccountTO>) request;

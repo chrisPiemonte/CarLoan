@@ -2,7 +2,11 @@ package main.ids.presentation.view.model;
 
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
-
+/**
+ * Modello per la gestione di dati di tipo {@link ImpiegatoTO}
+ * @author bi
+ *
+ */
 public class StaffModel {
 	
 	public SimpleStringProperty cf = new SimpleStringProperty();

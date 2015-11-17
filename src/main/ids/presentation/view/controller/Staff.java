@@ -31,7 +31,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.PropertyValueFactory;
-
+/**Controller per la gestione della View relativa allo Staff
+ * con le operazioni relative
+ * 
+ * @author bi
+ *
+ */
 public class Staff implements Initializable {
 	
 	public TextField usernameInput;
@@ -92,7 +97,11 @@ public class Staff implements Initializable {
 		buildData();
 		
 	}
-	
+	/**Permette la costruzione de i dati relativi allo staff
+	 * disponendoli in tabella.
+	 * Utilizza lo {@link StaffModel} per la realizzazione
+	 * 
+	 */
 	public void buildData(){
 		listaStaff = FXCollections.observableArrayList();
 		ComplexRequest request = new ComplexRequest();
@@ -117,6 +126,10 @@ public class Staff implements Initializable {
 		//System.out.println(listaClienti.get(0).getCf());
 	}
 	
+	/**Consente la ricerca di elementi dello staff
+	 * 
+	 * @param key la ricerca avviene per cognome
+	 */
 	public void cercaCliente(String key){
 		if (key.equals("")){tabella.setItems(listaStaff);}
 		FilteredList <StaffModel> filteredData = new FilteredList<>(listaStaff, p->p.getCognome().toLowerCase().startsWith(key));

@@ -9,13 +9,20 @@ import main.ids.presentation.request.Request;
 import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.response.Response;
 import main.ids.transferObjects.AutoTO;
-
+	/**Incapsula l'operazione di estrazione di elementi auto, filtrati in base all'agenzia
+	 * 
+	 * @author bi
+	 *
+	 */
 public class GetAutoByAgenzia implements Command {
 	
 
 	private ComplexRequest<String> request;
 	private GestioneAuto gestioneAuto;
-	
+		/**Inizializza il relativo application service
+		 * 
+		 * @param request contiene i parametri corrispondenti all'agenzia
+		 */
 	public GetAutoByAgenzia(Request request){
 		this.gestioneAuto = new GestioneAuto();
 		this.request = (ComplexRequest<String>) request;

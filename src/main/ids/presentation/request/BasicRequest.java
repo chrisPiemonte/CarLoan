@@ -1,5 +1,11 @@
 package main.ids.presentation.request;
 
+/**
+ * Implementa {@link Request}.
+ * Utilizzata per richieste semplici che non necessitano parametri
+ * @author bi
+ *
+ */
 
 public class BasicRequest implements Request{
 

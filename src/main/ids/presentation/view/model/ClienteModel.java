@@ -5,7 +5,11 @@ import java.time.LocalDate;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
-
+/**
+ * Modello per la gestione di dati di tipo {@link ClienteTO}
+ * @author bi
+ *
+ */
 public class ClienteModel {
 	
 	public SimpleStringProperty cf = new SimpleStringProperty();

@@ -8,6 +8,14 @@ import java.util.ArrayList;
 
 import main.ids.presentation.ApplicationController;
 
+/**
+ * Gestisce le {@link Request} provenienti dai controller delle singole 
+ * interfaccie e risponde con un oggetto di tipo {@link Response}
+ *  
+ * 
+ * @author bi
+ *
+ */
 public interface FrontController {
 public Response processRequest(Request request);
 }

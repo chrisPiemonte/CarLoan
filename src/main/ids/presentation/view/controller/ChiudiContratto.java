@@ -34,7 +34,12 @@ import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.view.admin.controller.Message;
 import main.ids.transferObjects.ContrattoTO;
 import main.ids.util.json.ViewsJsonParser;
-
+/**Permette la chiusura del contratto e la stampa della fattura
+ * i dati relativi al contratto verranno prelevati dal {@link CurrentSessionHandler}
+ * 
+ * @author bi
+ *
+ */
 public class ChiudiContratto implements Initializable {
 	
 	FrontController frontController;
@@ -74,7 +79,9 @@ public class ChiudiContratto implements Initializable {
 	 
 	 
 	 
-	 
+	/**Stampa la fattura 
+	 *  
+	 */
 	public void stampaFattura(){
 		FrontController frontController = new DefaultFrontController();
 		 ComplexRequest request = new ComplexRequest();
@@ -96,7 +103,10 @@ public class ChiudiContratto implements Initializable {
 		 }
 	}
 	
-	
+	/**Chiude il contratto e salva il totale effettivo pagato
+	 * 
+	 * @param tot
+	 */
 	public void chiudi(Double tot){
 		FrontController frontController = new DefaultFrontController();
 		ComplexRequest request = new ComplexRequest();

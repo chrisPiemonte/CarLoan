@@ -2,7 +2,11 @@ package main.ids.presentation.view.model;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
-
+/**
+ * Modello per la gestione di dati di tipo {@link AgenziaTO}
+ * @author bi
+ *
+ */
 public class AgenziaModel {
 	
 	public SimpleStringProperty id = new SimpleStringProperty();

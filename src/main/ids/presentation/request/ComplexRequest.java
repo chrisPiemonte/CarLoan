@@ -1,5 +1,8 @@
 package main.ids.presentation.request;
-
+/**
+ * implementa {@link Request}. Utilizzata
+ * per richieste che necessitano di parametri
+ */
 import java.util.ArrayList;
 import java.util.List;
 

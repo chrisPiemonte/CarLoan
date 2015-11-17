@@ -40,7 +40,13 @@ import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
+/**View di gestione relativa ad i contratti. All'interna
+ * di essa c'è una lista dei contratti aperti e chiusi
+ * ed i bottoni per le operazioni su di essi
+ * 
+ * @author bi
+ *
+ */
 public class Contratti implements Initializable {
 	
 	public TextField usernameInput;
@@ -124,7 +130,11 @@ public class Contratti implements Initializable {
 		
 	}
 	
-	
+	/**Costruisce i dati relativi ad i contratti 
+	 * prelevandoli dal database ed utilizzando 
+	 * il {@link ContrattiModel}
+	 * 
+	 */
 	public void buildData(){
 		listaContratti= FXCollections.observableArrayList();
 		ComplexRequest request = new ComplexRequest();
@@ -138,10 +148,6 @@ public class Contratti implements Initializable {
 			tmpList.cliente.set(contratto.getCliente());
 			tmpList.auto.set(contratto.getAuto());
 			tmpList.modNoleggio.set(contratto.getModNoleggio());
-			//Format formatter = new SimpleDateFormat("dd-MM-yyyy");
-			//LocalDate dataNascita = cliente.getDataNascita();
-			//String s = formatter.format(dataNascita);
-			//tmpList.dataNascita.set(s);
 			tmpList.kmPercorsi.set(contratto.getKmPercorsi());
 			tmpList.statoContratto.set(contratto.getStatoContratto());
 			tmpList.totale.set(contratto.getTotale());
@@ -151,9 +157,14 @@ public class Contratti implements Initializable {
 		}
 		
 		tabella.setItems(listaContratti);
-		//System.out.println(listaClienti.get(0).getCf());
+		
 	}
-	
+	/**Tasto per la ricerca di clienti all'interno 
+	 * dei contratti
+	 * 
+	 * 
+	 * @param key è relativo al codice fiscale de i clienti
+	 */
 	public void cercaCliente(String key){
 		if (key.equals("")){tabella.setItems(listaContratti);}
 		FilteredList <ContrattiModel> filteredData = new FilteredList<>(listaContratti, p->p.getCliente().toLowerCase().startsWith(key));
@@ -161,8 +172,11 @@ public class Contratti implements Initializable {
 	}
 	
 	
-	// input are tariffa settimanale,giornaliera, giorni, tipologia tariffa 
-	// tariffa al chilometro 
+	/**Bottone per il caricamento della finestra per la chiusura 
+	 * del contratto selezionato
+	 * 
+	 * @param id
+	 */
 	public void  chiudiContratto(String id){
 		CurrentSessionHandler.setIdContratto(id);
 		try {
@@ -187,6 +201,10 @@ public class Contratti implements Initializable {
 		
 	}
 	
+	/**Bottone per il caricamento della finestra per 
+	 * l'apertura di un nuovo contratto
+	 * 
+	 */
 	private void apriContratto(){
 		try {
 		ViewsJsonParser vjp = ViewsJsonParser.getInstance();

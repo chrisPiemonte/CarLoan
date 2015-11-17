@@ -24,7 +24,16 @@ import main.ids.presentation.view.inputValidation.InputValidation;
 import main.ids.presentation.view.inputValidation.InputValidationFactory;
 import main.ids.presentation.view.inputValidation.TaskValidationFactory;
 import main.ids.transferObjects.ClienteTO;
-
+/**
+ * Finestra per l'inserimento dei nuovi utenti.
+ * Prende in input i dati inseriti tramite l'interfaccia e 
+ * dopo averli convalidati tramite la {@link TaskValidationFactory}
+ * vengono inseriti come parametri di {@link Request} gestiti dal 
+ * {@link DefaultFrontController} che risponde con una {@link Request} per 
+ * confermare l'operazione
+ * @author bi
+ *
+ */
 public class InserisciClientePopUp implements Initializable {
 	
 	public Button annulla;
@@ -67,7 +76,9 @@ public class InserisciClientePopUp implements Initializable {
 		
 	}
 	
-	
+	/**
+	 * metodo per la chiusura della finestra
+	 */
 	public void buttonClose(){
 		Stage stage = (Stage) annulla.getScene().getWindow();
 	    stage.close();
@@ -87,7 +98,16 @@ public class InserisciClientePopUp implements Initializable {
 		
 		
 	}
-	
+	/**
+	 * Metodo per l'inserimento del cliente.
+	 * Prende in input i dati inseriti dall'interfaccia
+	 * @param cf
+	 * @param nome
+	 * @param cognome
+	 * @param dataNascita
+	 * @param telefono
+	 * @return boolean 
+	 */
 	
 	public boolean addCliente(String cf,String nome,String cognome,LocalDate dataNascita, String telefono){
 		
@@ -115,7 +135,9 @@ public class InserisciClientePopUp implements Initializable {
 		buttonClose();
 		
 	}
-	
+	/**
+	 * medoto di servizio per la pulizia dei campi
+	 */
 	public void clean(){
 		cf.clear();
 		nome.clear();
