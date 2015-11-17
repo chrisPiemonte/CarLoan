@@ -25,10 +25,6 @@ public class TaskValidationFactory {
 	
 	public static boolean getClienteValidation(String cf,String nome,String cognome,LocalDate data,String telefono){
 		if(cf != null && nome != null && cognome != null && data != null && telefono != null){
-			Message.display("Inserire tutti i campi", AlertType.ERROR);
-			return false;
-			}
-		else {
 		InputValidation i = InputValidationFactory.getValidation("cf");
 		if (i.isValid(cf)){
 			i = InputValidationFactory.getValidation("nome");
@@ -54,14 +50,14 @@ public class TaskValidationFactory {
 				
 				return false;}
 		
+	}else{	Message.display("Inserire tutti i campi", AlertType.ERROR);
+			return false;
 	}
 	}
 	
 	public static boolean getFasciaValidation(String id,String descrizione, String tariffaG, String tariffaS, String tariffaKm){
 		if (id != null && descrizione != null && tariffaG != null && tariffaS != null && tariffaKm != null ){
-			Message.display("Inserire tutti i campi", AlertType.ERROR);
-			return false;
-			}else{
+			
 			InputValidation i = InputValidationFactory.getValidation("id");
 			if (i.isValid(id)){
 				i = InputValidationFactory.getValidation("nome");
@@ -93,7 +89,10 @@ public class TaskValidationFactory {
 					
 					return false;}
 		
-	} 
+	} else {
+		Message.display("Inserire tutti i campi", AlertType.ERROR);
+		return false;
+	}
 		}
 	
 	
@@ -103,9 +102,7 @@ public class TaskValidationFactory {
 				
 		
 		if (cf!= null && nome!=null && cognome!= null && dataNascita != null && telefono != null){
-			Message.display("Inserire tutti i campi", AlertType.ERROR);
-			return false;
-			}else{
+			
 		InputValidation i = InputValidationFactory.getValidation("cf");
 			if (i.isValid(cf)){
 				 i = InputValidationFactory.getValidation("nome");
@@ -134,6 +131,9 @@ public class TaskValidationFactory {
 				Message.display("codice fiscale non inserito", AlertType.ERROR);
 				return false;
 			}
+		}else {
+			Message.display("Inserire tutti i campi", AlertType.ERROR);
+			return false;
 		}
 		
 	} 
@@ -143,9 +143,7 @@ public class TaskValidationFactory {
 public static boolean controllaInserimentoAuto(String targa,String modello,String stato,String fascia,String chilometraggio,LocalDate dataManutenzione){
 		
 	if (targa != null && modello != null && stato != null && fascia != null && chilometraggio != null && dataManutenzione  != null){
-		Message.display("Inserire tutti i campi", AlertType.ERROR);
-		return false;
-		}else{
+		
 		InputValidation i = InputValidationFactory.getValidation("targa");
 		if (i.isValid(targa)){
 			i = InputValidationFactory.getValidation("nome");
@@ -159,11 +157,16 @@ public static boolean controllaInserimentoAuto(String targa,String modello,Strin
 			Message.display("targa non valida", AlertType.ERROR);
 			return false;
 		}
+	}else {
+		Message.display("Inserire tutti i campi", AlertType.ERROR);
+		return false;
 	}
 
 
 
 	
-}		
+	
 		
+}
+
 }
