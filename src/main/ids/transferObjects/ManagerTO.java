@@ -2,6 +2,11 @@ package main.ids.transferObjects;
 
 import java.time.LocalDate;
 
+/**
+ * Transfer object per il business object {@link ManagerBO}
+ * 
+ * @author chris
+ */
 public class ManagerTO extends ImpiegatoTO{
 	
 	public ManagerTO(){

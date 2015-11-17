@@ -1,8 +1,11 @@
 package main.ids.transferObjects;
 
-public class FasciaTO {
-	
-	// attributi 
+/**
+ * Transfer object per il business object {@link FasciaBO}
+ * 
+ * @author chris
+ */
+public class FasciaTO implements TransferObject {
 	
 	private String id ;
 	private String descrizione;

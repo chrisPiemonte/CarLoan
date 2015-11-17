@@ -5,6 +5,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * Classe che esporta servizi per il rilascio di 
+ * risorse inerenti all'accesso al database
+ * 
+ * @author chris
+ */
 public class DbEntityCloser {
 	
 	public static void close(Connection connection) {

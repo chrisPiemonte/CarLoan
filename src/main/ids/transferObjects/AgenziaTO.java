@@ -1,14 +1,17 @@
 package main.ids.transferObjects;
 
+/**
+ * Transfer object per il business object {@link AgenziaBO}
+ * 
+ * @author chris
+ */
 public class AgenziaTO implements TransferObject {
 	
-	//attributi
 	private String id;
 	private String citta;
 	private String indirizzo;
 	private String telefono;
 	
-	// costruttori
 	public AgenziaTO(String citta, String indirizzo, String telefono){
 		this.citta = citta;
 		this.indirizzo = indirizzo;
@@ -18,7 +21,6 @@ public class AgenziaTO implements TransferObject {
 	public AgenziaTO(){
 	}
 	
-	//operazioni
 	public void setId (String id){
 		this.id = id;
 	}

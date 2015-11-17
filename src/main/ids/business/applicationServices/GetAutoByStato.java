@@ -9,13 +9,20 @@ import main.ids.presentation.response.ComplexResponse;
 import main.ids.presentation.response.Response;
 import main.ids.transferObjects.AutoTO;
 
+/**
+ * Incapsula l'azione di prelevare le auto con un determinato stato 
+ * 
+ * @author chris
+ */
 public class GetAutoByStato implements Command  {
 	
 
 	private ComplexRequest<String> request;
 	private GestioneAuto gestioneAuto;
 	
-	
+	/**
+	 * Costruttore che inizializza il relativo application service
+	 */
 	public GetAutoByStato(Request request){
 		this.gestioneAuto = new GestioneAuto();
 		this.request = (ComplexRequest<String>) request;

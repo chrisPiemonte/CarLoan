@@ -1,5 +1,10 @@
 package main.ids.transferObjects;
 
+/**
+ * Transfer object per il business object {@link AccountBO}
+ * 
+ * @author chris
+ */
 public class AccountTO implements TransferObject {
 	
 	private String username;

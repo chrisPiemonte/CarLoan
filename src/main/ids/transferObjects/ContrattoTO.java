@@ -2,11 +2,13 @@ package main.ids.transferObjects;
 
 import java.time.LocalDate;
 
+/**
+ * Transfer object per il business object {@link ContrattoBO}
+ * 
+ * @author chris
+ */
 public class ContrattoTO implements TransferObject  {
 
-
-	//attributi
-	
 	private String id;
 	private String cliente;
 	private String auto;
@@ -24,9 +26,7 @@ public class ContrattoTO implements TransferObject  {
 	private double tariffaBase;
 	private String statoContratto;
 	private double totale;
-	
-	//costruttore
-	
+
 	public ContrattoTO(String cliente, String auto, String modNoleggio, String kmNoleggio, double prezzoKm,
 			LocalDate dataInizio, LocalDate dataFine, String agenziaInizio, String agenziaFine, String impInizio,
 			String impFine, double acconto, double kmPercorsi, double tariffaBase, String statoContratto, double totale) {

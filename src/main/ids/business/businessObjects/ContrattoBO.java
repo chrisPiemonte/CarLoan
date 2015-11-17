@@ -7,10 +7,18 @@ import main.ids.integration.dao.entity.ContrattoDAO;
 import main.ids.integration.dao.factory.DaoFactory;
 import main.ids.transferObjects.ContrattoTO;
 
+/**
+ * Business Object che incapsula le operazioni consentite
+ * 
+ * @author chris
+ */
 public class ContrattoBO {
 	
 	private ContrattoDAO dao;
-
+	
+	/**
+	 * Costruttore chi inizializza il relativo DAO
+	 */
 	public ContrattoBO() {
 		try {
 			this.dao = DaoFactory.getDAOFactory(DaoFactory.MYSQL).getContrattoDAO();

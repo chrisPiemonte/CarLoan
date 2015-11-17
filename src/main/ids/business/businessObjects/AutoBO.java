@@ -6,10 +6,18 @@ import main.ids.integration.dao.entity.AutoDAO;
 import main.ids.integration.dao.factory.DaoFactory;
 import main.ids.transferObjects.AutoTO;
 
+/**
+ * Business Object che incapsula le operazioni consentite
+ * 
+ * @author chris
+ */
 public class AutoBO {
 
 	private AutoDAO dao;
-
+	
+	/**
+	 * Costruttore chi inizializza il relativo DAO
+	 */
 	public AutoBO() {
 		try {
 			this.dao = DaoFactory.getDAOFactory(DaoFactory.MYSQL).getAutoDAO();

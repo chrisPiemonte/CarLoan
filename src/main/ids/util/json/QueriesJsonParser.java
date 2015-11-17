@@ -6,6 +6,11 @@ import com.google.gson.JsonElement;
 
 import main.ids.util.exceptions.QueriesJsonFileException;
 
+/**
+ * Delegata alla lettura del file queries.json
+ * 
+ * @author chris
+ */
 public class QueriesJsonParser extends JsonParser{
 	
 	private static QueriesJsonParser INSTANCE = new QueriesJsonParser();
@@ -14,6 +19,9 @@ public class QueriesJsonParser extends JsonParser{
 	public final String ID = "id";
 	public final String SQL = "sql";
 	
+	/**
+	 * Inizializza l'attributo json leggendo da file
+	 */
 	protected QueriesJsonParser(){
 		setJsonFile(PATH);
 		if(json.isJsonNull()){
@@ -21,11 +29,22 @@ public class QueriesJsonParser extends JsonParser{
 		}
 	}
 	
+	/**
+	 * Restituisce l'unica istanza di tipo QueriesJsonParser
+	 * 
+	 * @return
+	 */
 	public static QueriesJsonParser getInstance(){
 		return INSTANCE;
 	}
 	
-	
+	/**
+	 * Restituisce una determinata query per un determinato linguaggio
+	 * 
+	 * @param id Query cercata
+	 * @param lang Linguaggio specifico
+	 * @return Query nel linguaggio specifico
+	 */
 	public String getQuery(String id, String lang){
 		JsonArray queries = json.getAsJsonArray(QUERIES_ARRAY);
     	for(JsonElement j : queries){

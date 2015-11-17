@@ -7,10 +7,18 @@ import main.ids.integration.dao.factory.DaoFactory;
 import main.ids.transferObjects.AccountTO;
 import main.ids.transferObjects.ImpiegatoTO;
 
+/**
+ * Business Object che incapsula le operazioni consentite
+ * 
+ * @author chris
+ */
 public class AccountBO {
 	
 	private AccountDAO dao;
-
+	
+	/**
+	 * Costruttore chi inizializza il relativo DAO
+	 */
 	public AccountBO() {
 		try {
 			this.dao = DaoFactory.getDAOFactory(DaoFactory.MYSQL).getAccountDAO();

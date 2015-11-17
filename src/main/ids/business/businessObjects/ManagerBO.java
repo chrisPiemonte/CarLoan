@@ -8,10 +8,18 @@ import main.ids.integration.dao.factory.DaoFactory;
 import main.ids.transferObjects.ImpiegatoTO;
 import main.ids.transferObjects.ManagerTO;
 
+/**
+ * Business Object che incapsula le operazioni consentite
+ * 
+ * @author chris
+ */
 public class ManagerBO {
 
 	private ManagerDAO dao;
-
+	
+	/**
+	 * Costruttore chi inizializza il relativo DAO
+	 */
 	public ManagerBO() {
 		try {
 			this.dao = DaoFactory.getDAOFactory(DaoFactory.MYSQL).getManagerDAO();

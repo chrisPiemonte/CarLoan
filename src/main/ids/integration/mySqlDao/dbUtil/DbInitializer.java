@@ -7,12 +7,23 @@ import java.util.List;
 
 import main.ids.integration.mySqlDao.factory.MySqlConnectionFactory;
 
+/**
+ * Predispone il database per il suo utilizzo
+ * 
+ * @author chris
+ */
 public class DbInitializer {
 
 	private static final String DB_SCHEMA_PATH = "resources/conf/db/db_schema.sql";
 	private static final String DB_POPULATE_PATH = "resources/conf/db/db_populate.sql";
 	private static final String DB = "carloan";
 	
+	/**
+	 * Controlla se il database è già presente
+	 * 
+	 * @param db Nome del database da controllare
+	 * @return True se è già presente, false altrimenti
+	 */
 	public static boolean isPresent(String db){
 		boolean found = false;
 		Connection connection = null;
@@ -41,6 +52,11 @@ public class DbInitializer {
 		return found;
 	}
 	
+	/**
+	 * Inizializza e popola il database 
+	 * 
+	 * @return Esito dell'operazione
+	 */
 	public static boolean init(){
 		boolean done = false;
 		Connection connection = null;

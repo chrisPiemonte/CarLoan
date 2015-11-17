@@ -2,25 +2,23 @@ package main.ids.application;
 
 import javafx.application.Application;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import main.ids.integration.dao.factory.QueryFactory;
-import main.ids.integration.mySqlDao.dbUtil.DbInitializer;
-import main.ids.integration.mySqlDao.factory.SqlQueryFactory;
 
+import main.ids.integration.mySqlDao.dbUtil.DbInitializer;
 import main.ids.presentation.CurrentSessionHandler;
 import main.ids.presentation.DefaultFrontController;
-import main.ids.presentation.request.BasicRequest;
 import main.ids.presentation.request.ComplexRequest;
-import main.ids.presentation.request.Request;
 import main.ids.presentation.request.RequestType;
 import main.ids.presentation.response.ComplexResponse;
-import main.ids.presentation.response.Response;
 import main.ids.presentation.FrontController;
 
+/**
+ * 
+ * Entry point del sistema configura il database e lo Stage iniziale
+ * @author chris
+ *
+ */
 public class EntryPoint extends Application{
 	
 	Stage window;
@@ -35,7 +33,7 @@ public class EntryPoint extends Application{
 	public void start(Stage primaryStage) throws Exception{
 		
 		try {
-			ComplexResponse response ;
+			ComplexResponse response;
 			window = primaryStage;
 			ComplexRequest request = new ComplexRequest();
 			request.setRequest("bootstrap");

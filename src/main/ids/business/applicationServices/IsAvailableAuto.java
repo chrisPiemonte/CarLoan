@@ -6,13 +6,20 @@ import main.ids.presentation.request.Request;
 import main.ids.presentation.response.BasicResponse;
 import main.ids.presentation.response.Response;
 
+/**
+ * Incapsula l'azione di controllare la disponibilità di un auto 
+ * 
+ * @author chris
+ */
 public class IsAvailableAuto implements Command  {
 	
 
 	private ComplexRequest<String> request;
 	private GestioneAuto gestioneAuto;
 	
-	
+	/**
+	 * Costruttore che inizializza il relativo application service
+	 */
 	public IsAvailableAuto(Request request){
 		this.gestioneAuto = new GestioneAuto();
 		this.request = (ComplexRequest<String>) request;

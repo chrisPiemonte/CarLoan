@@ -2,7 +2,12 @@ package main.ids.transferObjects;
 
 import java.time.LocalDate;
 
-public class ImpiegatoTO {
+/**
+ * Transfer object per il business object {@link ImpiegatoBO}
+ * 
+ * @author chris
+ */
+public class ImpiegatoTO implements TransferObject {
 	
 	protected String cf; 
 	protected String nome;

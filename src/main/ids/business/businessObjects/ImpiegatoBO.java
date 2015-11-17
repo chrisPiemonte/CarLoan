@@ -6,10 +6,18 @@ import main.ids.integration.dao.entity.ImpiegatoDAO;
 import main.ids.integration.dao.factory.DaoFactory;
 import main.ids.transferObjects.ImpiegatoTO;
 
+/**
+ * Business Object che incapsula le operazioni consentite
+ * 
+ * @author chris
+ */
 public class ImpiegatoBO {
 
 	private ImpiegatoDAO dao;
-
+	
+	/**
+	 * Costruttore chi inizializza il relativo DAO
+	 */
 	public ImpiegatoBO() {
 		try {
 			this.dao = DaoFactory.getDAOFactory(DaoFactory.MYSQL).getImpiegatoDAO();

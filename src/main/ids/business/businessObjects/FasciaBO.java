@@ -6,10 +6,18 @@ import main.ids.integration.dao.entity.FasciaDAO;
 import main.ids.integration.dao.factory.DaoFactory;
 import main.ids.transferObjects.FasciaTO;
 
+/**
+ * Business Object che incapsula le operazioni consentite
+ * 
+ * @author chris
+ */
 public class FasciaBO {
 
 	private FasciaDAO dao;
-
+	
+	/**
+	 * Costruttore chi inizializza il relativo DAO
+	 */
 	public FasciaBO() {
 		try {
 			this.dao = DaoFactory.getDAOFactory(DaoFactory.MYSQL).getFasciaDAO();

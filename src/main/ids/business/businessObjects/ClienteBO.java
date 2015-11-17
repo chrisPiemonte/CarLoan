@@ -6,10 +6,18 @@ import main.ids.integration.dao.entity.ClienteDAO;
 import main.ids.integration.dao.factory.DaoFactory;
 import main.ids.transferObjects.ClienteTO;
 
+/**
+ * Business Object che incapsula le operazioni consentite
+ * 
+ * @author chris
+ */
 public class ClienteBO {
 	
 	private ClienteDAO dao;
-
+	
+	/**
+	 * Costruttore chi inizializza il relativo DAO
+	 */
 	public ClienteBO() {
 		try {
 			this.dao = DaoFactory.getDAOFactory(DaoFactory.MYSQL).getClienteDAO();

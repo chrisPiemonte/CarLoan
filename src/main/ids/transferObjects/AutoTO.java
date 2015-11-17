@@ -2,9 +2,13 @@ package main.ids.transferObjects;
 
 import java.time.LocalDate;
 
+/**
+ * Transfer object per il business object {@link AutoBO}
+ * 
+ * @author chris
+ */
 public class AutoTO implements TransferObject  {
 	
-	// attributi
 	private String targa;
 	private String modello;
 	private String stato;
@@ -13,7 +17,6 @@ public class AutoTO implements TransferObject  {
 	private LocalDate manutenzioneOrdinaria;
 	private String agenzia;
 	
-	// costruttori
 	public AutoTO (String targa, String modello, String stato, String fascia, double km, LocalDate manutenzioneOrdinaria, String agenzia){
 		this.targa = targa;
 		this.modello = modello;

@@ -2,9 +2,13 @@ package main.ids.transferObjects;
 
 import java.time.LocalDate;
 
+/**
+ * Transfer object per il business object {@link ClienteBO}
+ * 
+ * @author chris
+ */
 public class ClienteTO implements TransferObject {
 	
-	// attributi
 	private String cf;
 	private String nome;
 	private String cognome; 

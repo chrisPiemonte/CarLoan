@@ -4,6 +4,11 @@ import main.ids.integration.dao.entity.*;
 import main.ids.integration.mySqlDao.entity.*;
 import main.ids.integration.dao.factory.DaoFactory;
 
+/**
+ * Restituisce i DAO per il DBMS MySQL
+ * 
+ * @author chris
+ */
 public class MySqlDaoFactory extends DaoFactory{
 
 	@Override
@@ -46,6 +51,12 @@ public class MySqlDaoFactory extends DaoFactory{
 		return (MySqlManagerDAO) getEntityDao(MySqlManagerDAO.class);
 	}
 	
+	/**
+	 * Restituisce un DAO specifico per entità
+	 * 
+	 * @param daoClass La classe del DAO da restituire
+	 * @return Il DAO richiesto
+	 */
 	private Object getEntityDao(Class<?> daoClass){
 		try{
 			return daoClass.newInstance();

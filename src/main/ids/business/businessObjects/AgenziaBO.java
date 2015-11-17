@@ -8,10 +8,18 @@ import main.ids.transferObjects.AgenziaTO;
 import main.ids.transferObjects.ImpiegatoTO;
 import main.ids.transferObjects.ManagerTO;
 
+/**
+ * Business Object che incapsula le operazioni consentite
+ * 
+ * @author chris
+ */
 public class AgenziaBO {
 	 
 	private AgenziaDAO dao;
-
+	
+	/**
+	 * Costruttore chi inizializza il relativo DAO
+	 */
 	public AgenziaBO() {
 		try {
 			this.dao = DaoFactory.getDAOFactory(DaoFactory.MYSQL).getAgenziaDAO();

@@ -5,8 +5,19 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe per la lettura di script SQL
+ * 
+ * @author chris
+ */
 public class SqlScriptReader {
 	
+	/**
+	 * Trasforma ogni statement letto dal file in un stringa
+	 * 
+	 * @param path Path del file SQL da leggere
+	 * @return Lista di statement
+	 */
 	public static List<String> toStatementList(String path){
 		
 		List<String> statementList = new ArrayList<String>();
@@ -31,17 +42,7 @@ public class SqlScriptReader {
 			e.printStackTrace();
 		}
 		
-		
 		return statementList;
 	}
-	
-	public static void main(String[] args){
-		
-		// toStatementList(DB_POPULATE_PATH);
-		// System.out.println(LocalDate.now().toString());
-		
-	}
-	
-	
 	
 }

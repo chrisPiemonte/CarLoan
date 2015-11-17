@@ -6,6 +6,11 @@ import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.commons.codec.binary.Base64;
 
+/**
+ * Cifratore di stringhe 
+ * 
+ * @author chris
+ */
 public class BaseEncrypter implements Encrypter {
 	
 	private String key = "softengisawesome";
@@ -29,7 +34,8 @@ public class BaseEncrypter implements Encrypter {
 
         return null;
     }
-
+	
+	@Override
     public String decrypt(String encrypted) {
         try {
             IvParameterSpec iv = new IvParameterSpec(initVector.getBytes("UTF-8"));
