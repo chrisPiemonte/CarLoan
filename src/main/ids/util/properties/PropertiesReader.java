@@ -36,7 +36,13 @@ public abstract class PropertiesReader {
 	}
 	
 	public String getProperty(String key){
-		return properties.getProperty(key).trim();
+		String property = null;
+		try{
+			property = properties.getProperty(key).trim();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return property;
 	}
 	
 	

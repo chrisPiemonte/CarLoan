@@ -3,7 +3,6 @@ package main.ids.presentation.view.controller;
 import java.time.LocalDate;
 import java.time.Period;
 
-import javafx.scene.control.Alert.AlertType;
 import main.ids.transferObjects.FasciaTO;
 /**Classe per effettuare il calcolo del totale 
  * di un contratto e per la tariffa base relativa
@@ -26,17 +25,19 @@ public class CalcoloTotale {
 	 */
 	public static double setTotale(LocalDate inizio, LocalDate fine,double tariffaBase,double km,String modNoleggio){
 		double tariffa = 0;
-		if (modNoleggio.equals("illimitata")){
-			double days = Period.between(inizio, fine).getDays();
-			if (days == 0) days = 1;
-			tariffa = days*tariffaBase;
-			return tariffa;
+		try{
+			if (modNoleggio.equals("illimitato")){
+				double days = Period.between(inizio, fine).getDays();
+				if (days == 0) days = 1;
+				tariffa = days*tariffaBase;
+				}
+			else if (modNoleggio.equals("limitato")){
+					tariffa = km*tariffaBase;
 			}
-		else if (modNoleggio.equals("limitata")){
-			tariffa = km*tariffaBase;
-			return tariffa;
-		}else return tariffa;
-		
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return tariffa;
 	}
 	/**Calcola la tariffa base all'apertura di un contratto
 	 * 

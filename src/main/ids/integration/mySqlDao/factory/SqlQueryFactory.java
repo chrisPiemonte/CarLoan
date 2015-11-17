@@ -16,19 +16,9 @@ public class SqlQueryFactory extends QueryFactory{
     }
 
 	@Override
-	public String getQuery(String id) throws QueryNotFoundException{
+	public String getQuery(String id){
 		String query = this.queries.getQuery(id, queries.SQL);
-		if(query != null){
-			return query;
-		}else {
-			throw new QueryNotFoundException("Query not found");
-		}
-	}
-	
-	public static void main(String[] args) {
-		QueryFactory qf = SqlQueryFactory.getInstance();
-		System.out.println(qf.getQuery("create_impiegato"));
-
+		return query;
 	}
 	
 }

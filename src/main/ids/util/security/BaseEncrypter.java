@@ -47,11 +47,5 @@ public class BaseEncrypter implements Encrypter {
 
         return null;
     }
-	
-	public static void main(String[] args){
-		// 0000
-		System.out.println(new BaseEncrypter().encrypt("manager"));
-        System.out.println(new BaseEncrypter().decrypt("X7rEg+zBg5IkhU3y5rSdjA=="));
-	}
-	
+    
 }
